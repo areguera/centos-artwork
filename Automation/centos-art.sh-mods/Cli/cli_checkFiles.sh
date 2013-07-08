@@ -1,12 +1,17 @@
 #!/bin/bash
+######################################################################
 #
-# cli_checkFiles.sh -- This function standardizes the way file
-# conditional expressions are applied inside centos-art.sh script.
-# Here is where we answer questions like: is the file a regular file
-# or a directory?  Or, is it a symbolic link? Or even, does it have
-# execution rights, etc.  If the verification fails somehow at any
-# point, an error message is output and centos-art.sh script finishes
-# its execution. 
+#   cli_checkFiles.sh -- This function standardizes the way file
+#   conditional expressions are applied to files.  Here is where
+#   centos-art.sh script answers questions like: is the file a regular
+#   file or a directory?  Or, is it a symbolic link? Or even, does it
+#   have execution rights, etc.  If the verification fails somehow at
+#   any point, an error message is output and centos-art.sh script
+#   finishes its execution. 
+#
+#   Written by: 
+#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
+#     Key fingerprint = D67D 0F82 4CBD 90BC 6421  DF28 7CCE 757C 17CA 3951
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -24,9 +29,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
-# $Id$
-# ----------------------------------------------------------------------
+######################################################################
 
 function cli_checkFiles {
 
@@ -36,32 +39,30 @@ function cli_checkFiles {
     # Define long options.
     local ARGSL='mime:,is-versioned,match:,is-installed'
 
-    # Initialize array variables.
+    # Initialize local array variables.
     local -a CONDITION_COMMAND
     local -a CONDITION_PATTERN
     local -a CONDITION_MESSAGE
 
-    # Initialize array variable counter.
+    # Initialize local counter.
     local COUNTER=0
 
     # Initialize arguments with an empty value and set it as local
     # variable to this function scope. Doing this is very important to
-    # avoid any clash with higher execution environments.
-    local ARGUMENTS=''
+    # avoid any clash with higher execution environments. This
+    # variable is shared for different function environments.
+    local CLI_FUNCTION_ARGUMENTS=''
+    
+    # Redefine arguments using current positional parameters. 
+    cli_setArguments "${@}"
 
-    # Prepare ARGUMENTS for getopt.
-    cli_parseArgumentsReDef "$@"
-
-    # Redefine ARGUMENTS using getopt(1) command parser.
-    cli_parseArguments
-
-    # Redefine positional parameters using ARGUMENTS variable.
-    eval set -- "$ARGUMENTS"
+    # Redefine positional parameters using arguments variable.
+    eval set -- "${CLI_FUNCTION_ARGUMENTS}"
 
     # Look for options passed through positional parameters.
     while true; do
 
-        case "$1" in
+        case "${1}" in
 
             -d )
                 CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='test'
@@ -99,16 +100,16 @@ function cli_checkFiles {
                 ;;
 
             -i | --mime )
-                local MIME=$2
+                local MIME=${2}
                 CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='file'
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-bi'
-                CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`eval_gettext "isn't a \\\"\\\$MIME\\\" file."`"
+                CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`eval_gettext "isn't a \\\"\\\${MIME}\\\" file."`"
                 shift 2
                 ;;
 
             -m | --match )
                 CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='match'
-                CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]="$2"
+                CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]="${2}"
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`eval_gettext "doesn't match its pattern."`"
                 shift 2
                ;;
@@ -139,17 +140,17 @@ function cli_checkFiles {
     # all option-like arguments have been removed from positional
     # parameters list so we are free to go with the verifications.
     local FILE=''
-    local FILES=$@
+    local FILES=${@}
 
-    for FILE in $FILES;do
+    for FILE in ${FILES};do
 
         until [[ ${COUNTER} -eq ${#CONDITION_PATTERN[*]} ]];do
 
-            case ${CONDITION_COMMAND[$COUNTER]} in
+            case ${CONDITION_COMMAND[${COUNTER}]} in
 
                 "test" | "rpm" )
-                ${CONDITION_COMMAND[$COUNTER]} ${CONDITION_PATTERN[$COUNTER]} ${FILE} \
-                    || cli_printMessage "${FILE} ${CONDITION_MESSAGE[$COUNTER]}" --as-error-line
+                ${CONDITION_COMMAND[${COUNTER}]} ${CONDITION_PATTERN[${COUNTER}]} ${FILE} \
+                    || cli_printMessage "${FILE} ${CONDITION_MESSAGE[${COUNTER}]}" --as-error-line
                 ;;
 
                 "centos-art" )
@@ -157,18 +158,18 @@ function cli_checkFiles {
                 # (that would duplicate them unnecessarily).  Instead,
                 # set error messages inside specific functionalities
                 # and use them directly from there.
-                cli_runFnEnvironment ${CONDITION_PATTERN[$COUNTER]} ${FILE}
+                cli_runFnEnvironment ${CONDITION_PATTERN[${COUNTER}]} ${FILE}
                 ;;
 
                 "file" )
-                if [[ ! $(${CONDITION_COMMAND[$COUNTER]} ${CONDITION_PATTERN[$COUNTER]} ${FILE}) == "$MIME" ]];then
-                    cli_printMessage "${FILE} ${CONDITION_MESSAGE[$COUNTER]}" --as-error-line
+                if [[ ! $(${CONDITION_COMMAND[${COUNTER}]} ${CONDITION_PATTERN[${COUNTER}]} ${FILE}) == "${MIME}" ]];then
+                    cli_printMessage "${FILE} ${CONDITION_MESSAGE[${COUNTER}]}" --as-error-line
                 fi
                 ;;
 
                 "match" )
-                if [[ ! ${FILE} =~ "${CONDITION_PATTERN[$COUNTER]}" ]];then
-                    cli_printMessage "${FILE} ${CONDITION_MESSAGE[$COUNTER]}" --as-error-line
+                if [[ ! ${FILE} =~ "${CONDITION_PATTERN[${COUNTER}]}" ]];then
+                    cli_printMessage "${FILE} ${CONDITION_MESSAGE[${COUNTER}]}" --as-error-line
                 fi
                 ;;
 
@@ -178,7 +179,7 @@ function cli_checkFiles {
 
             esac
 
-            COUNTER=$(($COUNTER + 1))
+            COUNTER=$((${COUNTER} + 1))
 
         done
 

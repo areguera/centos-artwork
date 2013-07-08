@@ -1,9 +1,14 @@
 #!/bin/bash
+######################################################################
 #
-# cli_runFnEnvironment.sh -- This function standardizes the way
-# centos-art.sh script is called to itself. The main purpose of this
-# somehow own interface is to control the parent script flow based on
-# specific function environments exit status.
+#   cli_runFnEnvironment.sh -- This function standardizes the way
+#   centos-art.sh script is called to itself. The main purpose of this
+#   somehow own interface is to control the parent script flow based
+#   on specific function environments exit status.
+#
+#   Written by: 
+#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
+#     Key fingerprint = D67D 0F82 4CBD 90BC 6421  DF28 7CCE 757C 17CA 3951
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -21,14 +26,12 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
-# $Id$
-# ----------------------------------------------------------------------
+######################################################################
 
 function cli_runFnEnvironment {
 
     # Execute specific function environment.
-    ${CLI_NAME} $@
+    ${CLI_NAME} ${@}
 
     # Retrieve exit status.
     local STATUS=$?

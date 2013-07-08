@@ -1,6 +1,11 @@
 #!/bin/bash
+########################################################################
 #
-# centos-art.sh -- The CentOS Artwork Repository automation tool.
+#   centos-art.sh -- The CentOS Artwork Repository automation tool.
+#
+#   Written by: 
+#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
+#     Key fingerprint = D67D 0F82 4CBD 90BC 6421  DF28 7CCE 757C 17CA 3951
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -18,78 +23,25 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
-# $Id$
-# ----------------------------------------------------------------------
+########################################################################
 
-# Initialize relative path (from repository first directory level on)
-# used to store bash scripts.
-TCAR_BASHSCRIPTS='Scripts/Bash'
+# Initialize default configuration values.
+. $(dirname ${0})/centos-art.conf
 
-# Verify the working copy absolute path using the command path. It is
-# not possible to consider relative paths here because we are using a
-# symbolic link to create the connection between the centos-art.sh
-# script and the centos-art command. The link location is stored
-# inside ~/bin directory which is outside the repository directory
-# structure. So we cannot use the command path as reference to define
-# the repository working directory each time we run the command.
-# Instead, in order to get the correct working directory path, it is
-# required to finish the script execution when the absolute path
-# points to the ~/bin directory and print an error message explaining
-# the issue. This message cannot be translated to other languages
-# because the TEXTDOMAINDIR variable hasn't been defined yet (it
-# requires the working copy directory path to be defined first).
-if [[ ! $TCAR_WORKDIR ]] || [[ $TCAR_WORKDIR == '' ]] ;then
-
-    if [[ $0 =~ "^${HOME}/bin" ]];then
-        echo "To run centos-art correctly, you need to prepare your workstation first."
-        exit 1
-    fi
-
+# Initialize user-specific configuration values.
+if [[ -f ${TCAR_USER_CONFIG} ]];then
+    . ${TCAR_USER_CONFIG}
 fi
-
-# Initialize absolute path to the working copy. Take care that, in
-# some cases, you might execute centos-art.sh script from a path
-# different to that set in TCAR_WORKDIR variable inside your
-# ~/.bash_profile (e.g., you are changing your working copy from one
-# location to another). In these cases, the last path must be used as
-# reference whenever it doesn't point to user's bin directory. This is
-# another reason to provide the centos-art.sh absolute path when you
-# execute the prepare function.
-if [[ ! $TCAR_WORKDIR =~ "^$(dirname $0)" ]] \
-    && [[ ! $(dirname $0) =~ "^${HOME}/bin" ]];then
-    TCAR_WORKDIR=$(dirname $0 | sed "s,/${TCAR_BASHSCRIPTS},,")
-fi
-
-# Redefine the working copy absolute path considering the (Subversion)
-# previous directory structures used in the repository.
-if [[ -d ${TCAR_WORKDIR}/trunk ]];then
-    TCAR_WORKDIR=${TCAR_WORKDIR}/trunk
-fi
-
-# Initialize repository brand information.
-if [[ ! $TCAR_BRAND ]] || [[ $TCAR_BRAND == "" ]];then
-    TCAR_BRAND='centos'
-fi
-
-# Initialize script-specific configuration variables.
-declare -xr CLI_NAME="${TCAR_BRAND}-art"
-declare -xr CLI_VERSION='0.4'
-declare -xr CLI_LANG_LC=$(echo ${LANG} | cut -d'.' -f1)
-declare -xr CLI_LANG_LL=$(echo ${CLI_LANG_LC} | cut -d'_' -f1)
-declare -xr CLI_LANG_CC=$(echo ${CLI_LANG_LC} | cut -d'_' -f2)
-declare -xr CLI_BASEDIR="${TCAR_WORKDIR}/${TCAR_BASHSCRIPTS}"
-declare -xr CLI_FUNCDIR="${CLI_BASEDIR}/Functions"
 
 # Initialize internationalization through GNU gettext.
 . gettext.sh
-declare -xr TEXTDOMAIN=${CLI_NAME}.sh
-declare -xr TEXTDOMAINDIR=${TCAR_WORKDIR}/Locales/${TCAR_BASHSCRIPTS}
+declare -xr TEXTDOMAIN=${TCAR_CLI_NAME}
+declare -xr TEXTDOMAINDIR=${TCAR_CLI_L10NDIR}
 
-# Initialize absolute path to temporal directory.
-declare -xr TMPDIR="$(mktemp -p /tmp -d ${CLI_NAME}.sh-XXXXXX)"
-
-# Initialize command-line interface.
-if [[ -x ${CLI_FUNCDIR}/Commons/cli.sh ]];then
-    . ${CLI_FUNCDIR}/Commons/cli.sh; export -f 'cli'; cli "$@"
+# Initialize the centos-art.sh script command-line interface.
+if [[ -x ${TCAR_CLI_INIT_FILE} ]];then
+    . ${TCAR_CLI_INIT_FILE}; export -f ${TCAR_CLI_INIT_FUNCTION}
+    ${TCAR_CLI_INIT_FUNCTION} "$@"
+else
+    echo "${TCAR_CLI_INIT_FILE} `gettext "has not execution rights."`"
 fi

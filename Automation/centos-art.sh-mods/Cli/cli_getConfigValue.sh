@@ -1,9 +1,14 @@
 #!/bin/bash
+######################################################################
 #
-# cli_getConfigValue.sh -- This function standardizes the way configuration
-# files are retrieved from configuration files. As arguments, the
-# configuration file absolute path, the configuration section name, and the
-# configuration option name must be provided.
+#   cli_getConfigValue.sh -- This function standardizes the way
+#   configuration values are retrieved from configuration files. As
+#   arguments, the configuration file absolute path, the configuration
+#   section name, and the configuration option name must be provided.
+#
+#   Written by: 
+#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
+#     Key fingerprint = D67D 0F82 4CBD 90BC 6421  DF28 7CCE 757C 17CA 3951
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -21,33 +26,31 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
-# $Id$
-# ----------------------------------------------------------------------
-    
+######################################################################
+
 function cli_getConfigValue {
 
     # Initialize absolute path to configuration file.
-    local CONFIG_ABSPATH="$1"
+    local CONFIGURATION_FILE="${1}"
 
     # Initialize configuration section name where the variable value
     # we want to to retrieve is set in.
-    local CONFIG_SECTION="$2"
+    local CONFIGURATION_SECTION="${2}"
 
     # Initialize variable name we want to retrieve value from.
-    local CONFIG_OPTION="$3"
+    local CONFIGURATION_OPTION="${3}"
 
     # Retrieve configuration lines from configuration file.
-    local CONFIG_LINES=$(cli_getConfigLines \
-        "$CONFIG_ABSPATH" "$CONFIG_SECTION" "$CONFIG_OPTION")
+    local CONFIGURATION_LINES=$(cli_getConfigLines \
+        "${CONFIGURATION_FILE}" "${CONFIGURATION_SECTION}" "${CONFIGURATION_OPTION}")
 
     # Parse configuration lines to retrieve the values of variable
     # names.
-    local CONFIG_VALUE=$(echo $CONFIG_LINES \
+    local CONFIGURATION_VALUE=$(echo ${CONFIGURATION_LINES} \
         | cut -d= -f2- \
         | sed -r -e 's/"//g' -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' )
 
     # Output values related to variable name.
-    echo "$CONFIG_VALUE"
+    echo "${CONFIGURATION_VALUE}"
 
 }

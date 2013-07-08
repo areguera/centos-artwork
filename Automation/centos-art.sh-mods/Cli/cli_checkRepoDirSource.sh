@@ -1,22 +1,26 @@
 #!/bin/bash
+######################################################################
 #
-# cli_checkRepoDirSource.sh -- This function standardizes the path
-# construction to directories inside the working copy, using absolute
-# paths. This function transforms relative paths passed as non-option
-# arguments to centos-art.sh script command-line into absolute paths
-# inside the working copy based on whether you are using Subversion or
-# Git as version control system. Further verifications, (e.g., whether
-# they really exist as directories inside the working copy or not)
-# should be realized outside this function.
+#   cli_checkRepoDirSource.sh -- This function standardizes the path
+#   construction of directories inside the working copy, using
+#   absolute paths. This function transforms relative paths passed as
+#   non-option arguments to centos-art.sh script command-line into
+#   absolute paths inside the working copy based on whether you are
+#   using Subversion or Git as version control system. Further
+#   verifications, (e.g., whether they really exist as directories
+#   inside the working copy or not) should be realized outside this
+#   function.
 #
-# NOTE: Transforming relative paths into absolute paths before
-# processing them is very useful when you need to execute the
-# centos-art.sh script as command (e.g., `centos-art') anywhere
-# inside the workstation.
+#   Use this function whenever you want to be sure non-option
+#   arguments passed to centos-art.sh script command-line do always
+#   point to directories inside the working copy.  Transforming
+#   relative paths into absolute paths, before processing them, is
+#   very useful when you need to execute the centos-art.sh script as
+#   command (e.g., `centos-art') anywhere on your workstation.
 #
-# Use this function whenever you need to be sure that non-option
-# arguments passed to centos-art.sh script command-line will always
-# point to directories inside the working copy.
+#   Written by: 
+#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
+#     Key fingerprint = D67D 0F82 4CBD 90BC 6421  DF28 7CCE 757C 17CA 3951
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -34,9 +38,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
-# $Id$
-# ----------------------------------------------------------------------
+######################################################################
 
 function cli_checkRepoDirSource {
 
@@ -50,11 +52,11 @@ function cli_checkRepoDirSource {
     # used as default location). However, it might be useful to use a
     # dot as argument when you want to include the current location in
     # a list of arguments to process.
-    LOCATION=$(echo "$LOCATION" | sed -r "s,^\.$,$(pwd),g")
+    LOCATION=$(echo "${LOCATION}" | sed -r "s,^\.$,$(pwd),g")
 
     # Remove the working directory absolute path from location to
     # avoid path duplications here.
-    LOCATION=$(echo "$LOCATION" | sed "s,${TCAR_WORKDIR}/,,g")
+    LOCATION=$(echo "${LOCATION}" | sed "s,${TCAR_USER_WRKDIR}/,,g")
 
     # When we use Git as version control system, there isn't a need of
     # using the `trunk', `branches', `tags' convention we were using
@@ -81,7 +83,7 @@ function cli_checkRepoDirSource {
     # messages when we reassign variable values using this function as
     # reference (e.g., in order to prevent error messages from being
     # stored inside variables.).
-    LOCATION=${TCAR_WORKDIR}/${LOCATION}
+    LOCATION=${TCAR_USER_WRKDIR}/${LOCATION}
 
     # Output the absolute path to location.
     echo "${LOCATION}"

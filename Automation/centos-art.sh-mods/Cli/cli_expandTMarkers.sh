@@ -1,10 +1,15 @@
 #!/bin/bash
+######################################################################
 #
-# cli_expandTMarkers.sh -- This function standardizes construction of
-# translation markers and their related expansion. As convention,
-# translation markers must be set inside source files (e.g., Docbook,
-# Svg, etc.) and expanded inside temporal instances used to produce
-# final contents.
+#   cli_expandTMarkers.sh -- This function standardizes construction
+#   of translation markers and their related expansion. As convention,
+#   translation markers must be set inside source files (e.g.,
+#   Docbook, Svg, etc.) and expanded inside temporal instances used to
+#   produce final contents.
+#
+#   Written by: 
+#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
+#     Key fingerprint = D67D 0F82 4CBD 90BC 6421  DF28 7CCE 757C 17CA 3951
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -22,9 +27,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
-# $Id$
-# ----------------------------------------------------------------------
+######################################################################
 
 function cli_expandTMarkers {
 
@@ -36,7 +39,7 @@ function cli_expandTMarkers {
     local COUNTDST=0
 
     # Define source location on which sed replacements take place.
-    local LOCATION="$1"
+    local LOCATION="${1}"
 
     # Verify that source location does exist.
     cli_checkFiles -e ${LOCATION}
@@ -66,23 +69,23 @@ function cli_expandTMarkers {
 
     # Define theme translation markers.
     SRC[((++${#SRC[*]}))]='=THEME='
-    DST[((++${#DST[*]}))]="$(cli_getPathComponent $OUTPUT --motif)"
+    DST[((++${#DST[*]}))]="$(cli_getPathComponent ${OUTPUT} --motif)"
     SRC[((++${#SRC[*]}))]='=THEMENAME='
-    DST[((++${#DST[*]}))]="$(cli_getPathComponent $OUTPUT --motif-name)"
+    DST[((++${#DST[*]}))]="$(cli_getPathComponent ${OUTPUT} --motif-name)"
     SRC[((++${#SRC[*]}))]='=THEMERELEASE='
-    DST[((++${#DST[*]}))]="$(cli_getPathComponent $OUTPUT --motif-release)"
+    DST[((++${#DST[*]}))]="$(cli_getPathComponent ${OUTPUT} --motif-release)"
 
     # Define release-specific translation markers.
     SRC[((++${#SRC[*]}))]='=RELEASE='
-    DST[((++${#DST[*]}))]="$FLAG_RELEASEVER"
+    DST[((++${#DST[*]}))]="${FLAG_RELEASEVER}"
     SRC[((++${#SRC[*]}))]='=MAJOR_RELEASE='
-    DST[((++${#DST[*]}))]="$(echo $FLAG_RELEASEVER | cut -d'.' -f1)"
+    DST[((++${#DST[*]}))]="$(echo ${FLAG_RELEASEVER} | cut -d'.' -f1)"
     SRC[((++${#SRC[*]}))]='=MINOR_RELEASE='
-    DST[((++${#DST[*]}))]="$(echo $FLAG_RELEASEVER | cut -d'.' -f2)"
+    DST[((++${#DST[*]}))]="$(echo ${FLAG_RELEASEVER} | cut -d'.' -f2)"
 
     # Define architectures translation markers.
     SRC[((++${#SRC[*]}))]='=ARCH='
-    DST[((++${#DST[*]}))]="$(cli_getPathComponent $FLAG_BASEARCH --architecture)"
+    DST[((++${#DST[*]}))]="$(cli_getPathComponent ${FLAG_BASEARCH} --architecture)"
 
     # Define url translation markers.
     SRC[((++${#SRC[*]}))]='=URL='
@@ -129,32 +132,32 @@ function cli_expandTMarkers {
     fi
 
     # Define repository translation markers.
-    SRC[((++${#SRC[*]}))]='=(REPO_TLDIR|REPO_HOME|TCAR_WORKDIR)='
-    DST[((++${#DST[*]}))]="${TCAR_WORKDIR}"
+    SRC[((++${#SRC[*]}))]='=(REPO_TLDIR|REPO_HOME|TCAR_USER_WRKDIR)='
+    DST[((++${#DST[*]}))]="${TCAR_USER_WRKDIR}"
 
     # Do replacement of nested translation markers.
-    while [[ $COUNTDST -lt ${#DST[@]} ]];do
+    while [[ ${COUNTDST} -lt ${#DST[@]} ]];do
 
         # Verify existence of translation markers. If there is no
         # translation marker on replacement, continue with the next
         # one in the list.
-        if [[ ! ${DST[$COUNTDST]} =~ '=[A-Z_]+=' ]];then
+        if [[ ! ${DST[${COUNTDST}]} =~ '=[A-Z_]+=' ]];then
             # Increment destination counter.
-            COUNTDST=$(($COUNTDST + 1))
+            COUNTDST=$((${COUNTDST} + 1))
             # The current replacement value doesn't have translation
             # marker inside, so skip it and evaluate the next
             # replacement value in the list.
             continue
         fi
 
-        while [[ $COUNTSRC -lt ${#SRC[*]} ]];do
+        while [[ ${COUNTSRC} -lt ${#SRC[*]} ]];do
 
             # Update replacements.
-            DST[$COUNTDST]=$(echo ${DST[$COUNTDST]} \
-                | sed -r "s!${SRC[$COUNTSRC]}!${DST[$COUNTSRC]}!g")
+            DST[${COUNTDST}]=$(echo ${DST[${COUNTDST}]} \
+                | sed -r "s!${SRC[${COUNTSRC}]}!${DST[${COUNTSRC}]}!g")
 
             # Increment source counter.
-            COUNTSRC=$(($COUNTSRC + 1))
+            COUNTSRC=$((${COUNTSRC} + 1))
 
         done
 
@@ -162,7 +165,7 @@ function cli_expandTMarkers {
         COUNTSRC=0
 
         # Increment destination counter.
-        COUNTDST=$(($COUNTDST + 1))
+        COUNTDST=$((${COUNTDST} + 1))
 
     done
 
@@ -171,10 +174,10 @@ function cli_expandTMarkers {
 
         # Use sed to replace translation markers inside the design
         # model instance.
-        sed -r -i "s!${SRC[$COUNT]}!${DST[$COUNT]}!g" ${LOCATION}
+        sed -r -i "s!${SRC[${COUNT}]}!${DST[${COUNT}]}!g" ${LOCATION}
 
         # Increment counter.
-        COUNT=$(($COUNT + 1))
+        COUNT=$((${COUNT} + 1))
 
     done
 

@@ -1,11 +1,16 @@
 #!/bin/bash
+######################################################################
 #
-# cli_getRepoName.sh -- This function standardizes files and
-# directories name convection inside the working copy of CentOS
-# Artowrk Repository. As convection, regular files are written in
-# lower-case and directories are written capitalized.  Use this
-# function to sanitate the name of regular files and directories on
-# paths you work with.
+#   cli_getRepoName.sh -- This function standardizes files and
+#   directories name convection inside the working copy of CentOS
+#   Artowrk Repository. As convection, regular files are written in
+#   lower-case and directories are written capitalized.  Use this
+#   function to sanitate the name of regular files and directories on
+#   paths you work with.
+#
+#   Written by: 
+#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
+#     Key fingerprint = D67D 0F82 4CBD 90BC 6421  DF28 7CCE 757C 17CA 3951
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -23,35 +28,33 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
-# $Id$
-# ----------------------------------------------------------------------
+######################################################################
 
 function cli_getRepoName {
 
     # Define the name we want to apply verifications to.
-    local NAME="$1"
+    local NAME="${1}"
 
     # Avoid using options as it were names. When name value is empty
     # but an option is provided, the option becomes the first
     # positional argument and is evaluated as it were a name which is
     # something we need to prevent from happening.
-    if [[ $NAME =~ '^-' ]];then
+    if [[ ${NAME} =~ '^-' ]];then
         return
     fi
 
     # Look for options passed through positional parameters.
-    case "$2" in
+    case "${2}" in
 
         -f|--basename )
 
             # Reduce the path passed to use just the non-directory
             # part of it (i.e., the last component in the path; _not_
             # the last "real" directory in the path).
-            NAME=$(basename $NAME)
+            NAME=$(basename ${NAME})
 
             # Clean value.
-            NAME=$(echo $NAME \
+            NAME=$(echo ${NAME} \
                 | tr -s ' ' '_' \
                 | tr '[:upper:]' '[:lower:]')
             ;;
@@ -73,7 +76,7 @@ function cli_getRepoName {
             # directory part in the path.  Assuming there is no
             # directory part but a non-empty value in the path, use
             # that value as directory part and clean it up.
-            if [[ $NAME =~ '.+/.+' ]];then
+            if [[ ${NAME} =~ '.+/.+' ]];then
 
                 # When path information is reduced, we need to
                 # consider that absolute paths contain some
@@ -82,12 +85,12 @@ function cli_getRepoName {
                 # /home/centos, /home/centos/artwork,
                 # /home/centos/artwork/turnk, trunk, etc.) So, we keep
                 # them unchanged for later use.
-                PREFIXDIR=$(echo $NAME \
-                    | sed -r "s,^((${TCAR_WORKDIR}/)?(trunk|branches|tags)/)?.+$,\1,")
+                PREFIXDIR=$(echo ${NAME} \
+                    | sed -r "s,^((${TCAR_USER_WRKDIR}/)?(trunk|branches|tags)/)?.+$,\1,")
 
                 # ... and remove them from the path information we do
                 # want to sanitate.
-                DIRS=$(dirname "$NAME" \
+                DIRS=$(dirname "${NAME}" \
                     | sed -r "s!^${PREFIXDIR}!!" \
                     | tr '/' ' ')
 
@@ -96,14 +99,14 @@ function cli_getRepoName {
                 # At this point, there is not directory part in the
                 # information passed, so use the value passed as
                 # directory part as such. 
-                DIRS=$NAME
+                DIRS=${NAME}
 
             fi
 
-            for DIR in $DIRS;do
+            for DIR in ${DIRS};do
 
                 # Sanitate directory component.
-                if [[ $DIR =~ '^[a-z]' ]];then
+                if [[ ${DIR} =~ '^[a-z]' ]];then
                     DIR=$(echo ${DIR} \
                         | tr -s ' ' '_' \
                         | tr '[:upper:]' '[:lower:]' \
@@ -111,7 +114,7 @@ function cli_getRepoName {
                 fi
 
                 # Rebuild path using sanitized values.
-                CLEANDIRS="${CLEANDIRS}/$DIR"
+                CLEANDIRS="${CLEANDIRS}/${DIR}"
 
             done
 
@@ -120,7 +123,7 @@ function cli_getRepoName {
 
             # Add prefix directory information to sanitate path
             # information.
-            if [[ "$PREFIXDIR" != '' ]];then
+            if [[ "${PREFIXDIR}" != '' ]];then
                 NAME=${PREFIXDIR}${NAME}
             fi
         ;;
@@ -128,6 +131,6 @@ function cli_getRepoName {
     esac
 
     # Print out the clean path string.
-    echo $NAME
+    echo ${NAME}
 
 }

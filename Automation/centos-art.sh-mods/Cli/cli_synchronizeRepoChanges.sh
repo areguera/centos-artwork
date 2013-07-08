@@ -1,9 +1,14 @@
 #!/bin/bash
+######################################################################
 #
-# cli_synchronizeRepoChanges.sh -- This function standardizes the way
-# changes are synchronized between the working copy and the central
-# repository. This function is an interface to the Svn functionality
-# of the centos-art.sh script.
+#   cli_synchronizeRepoChanges.sh -- This function standardizes the
+#   way changes are synchronized between the working copy and the
+#   central repository. This function is an interface to the Svn
+#   functionality of the centos-art.sh script.
+#
+#   Written by: 
+#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
+#     Key fingerprint = D67D 0F82 4CBD 90BC 6421  DF28 7CCE 757C 17CA 3951
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -21,21 +26,19 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
-# $Id$
-# ----------------------------------------------------------------------
+######################################################################
 
 function cli_synchronizeRepoChanges {
 
     # Verify synchronization flag.
-    if [[ ! $FLAG_SYNCHRONIZE == 'true' ]];then
+    if [[ ${FLAG_SYNCHRONIZE} != 'true' ]];then
         return
     fi
     
     # Verify existence of locations passed to this function.
-    cli_checkFiles -e $@
+    cli_checkFiles -e ${@}
 
     # Synchronize changes.
-    cli_runFnEnvironment vcs --synchronize $@
+    cli_runFnEnvironment vcs --synchronize ${@}
 
 }

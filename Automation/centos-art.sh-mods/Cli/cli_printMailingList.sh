@@ -1,8 +1,13 @@
 #!/bin/bash
+######################################################################
 #
-# cli_printMailingList.sh -- This function standardize the way mailing
-# list addresses are printed on content produced by centos-art.sh
-# script.
+#   cli_printMailingList.sh -- This function standardizes the way
+#   mailing list addresses are printed on content produced by
+#   centos-art.sh script.
+#
+#   Written by: 
+#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
+#     Key fingerprint = D67D 0F82 4CBD 90BC 6421  DF28 7CCE 757C 17CA 3951
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -20,9 +25,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
-# $Id$
-# ----------------------------------------------------------------------
+######################################################################
 
 function cli_printMailingList {
 
@@ -37,20 +40,19 @@ function cli_printMailingList {
     # Initialize arguments with an empty value and set it as local
     # variable to this function scope. Doing this is very important to
     # avoid any clash with higher execution environments.
-    local ARGUMENTS=''
+    local CLI_FUNCTION_ARGUMENTS=''
 
-    # Prepare ARGUMENTS for getopt.
-    cli_parseArgumentsReDef "$@"
+    # Process all arguments currently available in this function
+    # environment. If either ARGSS or ARGSL local variables have been
+    # defined, argument processing goes through getopt for validation.
+    cli_setArguments "${@}"
 
-    # Redefine ARGUMENTS using getopt(1) command parser.
-    cli_parseArguments
-
-    # Redefine positional parameters using ARGUMENTS variable.
-    eval set -- "$ARGUMENTS"
+    # Redefine positional parameters using CLI_FUNCTION_ARGUMENTS variable.
+    eval set -- "${CLI_FUNCTION_ARGUMENTS}"
 
     # Look for options passed through command-line.
     while true; do
-        case "$1" in
+        case "${1}" in
 
             --docs )
                 MAILADDRS="${TCAR_BRAND}-docs@$(cli_printUrl --domain)"
@@ -71,6 +73,6 @@ function cli_printMailingList {
     done
 
     # Print mail address.
-    echo "$MAILADDRS"
+    echo "${MAILADDRS}"
 
 }

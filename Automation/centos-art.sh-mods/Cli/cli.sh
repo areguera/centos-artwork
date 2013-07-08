@@ -1,9 +1,13 @@
 #!/bin/bash
+######################################################################
 #
-# cli.sh -- This function initiates the centos-art.sh script
-# command-line interface.  Variables defined in this function are
-# accesible by all other functions. The cli function is the first
-# script executed by centos-art.sh, onces executed in a terminal.
+#   cli.sh -- This function initiates the centos-art.sh script
+#   command-line interface. This is the first script the centos-art.sh
+#   runs, onces it has been executed in a terminal.
+#
+#   Written by: 
+#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
+#     Key fingerprint = D67D 0F82 4CBD 90BC 6421  DF28 7CCE 757C 17CA 3951
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -21,56 +25,23 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
-# $Id$
-# ----------------------------------------------------------------------
+######################################################################
 
 function cli {
 
-    # Initialize global variables.
-    local CLI_FUNCNAME=''
-    local CLI_FUNCDIRNAM=''
-    local CLI_FUNCSCRIPT=''
-    local ARGUMENTS=''
-
-    # Initialize default value to filter flag. The filter flag
-    # (--filter) is used mainly to reduce the number of files to
-    # process. The value of this variable is interpreted as
-    # egrep-posix regular expression.  By default, when the --filter
-    # option is not provided, all paths in the working copy must match
-    # except files under hidden directories like `.svn'. We do this in
-    # conjunction with `cli_getFilesList', when building the list of
-    # files that will be processed.
-    local FLAG_FILTER='[[:alnum:]_/-]+'
-
-    # Initialize default value to verbosity flag. The verbosity flag
-    # (-v | --verbose) controls whether centos-art.sh script prints
-    # messages or not. By default, all messages are suppressed except
-    # those directed to standard error.
-    local FLAG_QUIET='false'
-    
-    # Initialize default value to answer flag. The answer flag
-    # (--answer-yes) controls whether centos-art.sh script does or
-    # does not pass confirmation request points. By default, it
-    # doesn't.
-    local FLAG_ANSWER='false'
-
-    # Initialize default value to commit changes flag. This flag
-    # (--synchronize) controls whether version control system is
-    # triggered or not after realizing changes to source files under
-    # version control.
-    local FLAG_SYNCHRONIZE='false'
+    local CLI_FUNCTION_NAME=''
+    local CLI_FUNCTION_DIR=''
+    local CLI_FUNCTION_FILE=''
+    local CLI_FUNCTION=''
+    local CLI_FUNCTIONS=$(ls ${TCAR_CLI_INIT_DIR}/${TCAR_CLI_INIT_FUNCTION}_*.sh)
 
     # Initialize list of common functionalities to load.
-    local FILES=$(ls ${CLI_FUNCDIR}/Commons/*.sh)
-
-    # Initialize common functionalities.
-    for FILE in ${FILES};do
-        if [[ -x ${FILE} ]];then
-            . ${FILE}
-            export -f $(grep '^function ' ${FILE} | cut -d' ' -f2)
+    for CLI_FUNCTION in ${CLI_FUNCTIONS};do
+        if [[ -x ${CLI_FUNCTION} ]];then
+            . ${CLI_FUNCTION}
+            export -f $(grep '^function ' ${CLI_FUNCTION} | cut -d' ' -f2)
         else
-            echo "`eval_gettext "The \\\$FILE needs to have execution rights."`"
+            echo "${CLI_FUNCTION} `gettext "has not execution rights."`"
             exit
         fi
     done
@@ -85,52 +56,61 @@ function cli {
     # `Ctrl+C').
     trap cli_terminateScriptExecution 0
 
-    # Redefine ARGUMENTS variable using current positional parameters. 
-    cli_parseArgumentsReDef "$@"
+    # Initialize variable holding arguments passed to centos-art.sh
+    # command-line interface.
+    local CLI_FUNCTION_ARGUMENTS=''
+
+    # Redefine arguments using current positional parameters. 
+    cli_setArguments "${@}"
+
+    # Redefine positional parameters using arguments variable.
+    eval set -- "${CLI_FUNCTION_ARGUMENTS}"
 
     # Check function name. The function name is critical for
     # centos-art.sh script to do something coherent. If it is not
     # provided, execute the help functionality and end script
     # execution.
-    if [[ ! "$1" ]] || [[ ! "$1" =~ '^[[:alpha:]]' ]];then
+    if [[ ! "${1}" ]] || [[ ! "${1}" =~ '^[[:alpha:]]' ]];then
         cli_runFnEnvironment help --read --format="texinfo" tcar-fs:::
         exit
     fi
 
-    # Define function name (CLI_FUNCNAME) using the first argument in
+    # Define function name (CLI_FUNCTION_NAME) using the first argument in
     # the command-line.
-    CLI_FUNCNAME=$(cli_getRepoName $1 -f | cut -d '-' -f1)
+    CLI_FUNCTION_NAME=$(cli_getRepoName ${1} -f | cut -d '-' -f1)
 
     # Define function directory.
-    CLI_FUNCDIRNAM=$(cli_getRepoName $CLI_FUNCNAME -d)
+    CLI_FUNCTION_DIR=$(cli_getRepoName ${CLI_FUNCTION_NAME} -d)
 
     # Define function file name.
-    CLI_FUNCSCRIPT=${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}/${CLI_FUNCNAME}.sh
+    CLI_FUNCTION_FILE=${TCAR_CLI_MODSDIR}/${CLI_FUNCTION_DIR}/${CLI_FUNCTION_NAME}.sh
 
     # Check function script execution rights.
-    cli_checkFiles -x "${CLI_FUNCSCRIPT}"
+    cli_checkFiles -x ${CLI_FUNCTION_FILE}
 
     # Remove the first argument passed to centos-art.sh command-line
     # in order to build optional arguments inside functionalities. We
     # start counting from second argument (inclusive) on.
     shift 1
 
-    # Redefine ARGUMENTS using current positional parameters.
-    cli_parseArgumentsReDef "$@"
+    # Process all arguments currently available in this function
+    # environment. If either ARGSS or ARGSL local variables have been
+    # defined, argument processing goes through getopt for validation.
+    cli_setArguments "${@}"
 
     # Define default text editors used by centos-art.sh script.
-    if [[ ! "$EDITOR" =~ '/usr/bin/(vim|emacs|nano)' ]];then
-        EDITOR='/usr/bin/vim'
+    if [[ ! "${TCAR_USER_EDITOR}" =~ '/usr/bin/(vim|emacs|nano)' ]];then
+        TCAR_USER_EDITOR='/usr/bin/vim'
     fi
     
     # Check text editor execution rights.
-    cli_checkFiles -x ${EDITOR}
+    cli_checkFiles -x ${TCAR_USER_EDITOR}
 
     # Go for function initialization. Keep the cli_exportFunctions
     # function calling after all variables and arguments definitions.
-    cli_exportFunctions "${CLI_FUNCDIRNAM}/${CLI_FUNCNAME}"
+    cli_exportFunctions "${CLI_FUNCTION_DIR}/${CLI_FUNCTION_NAME}"
 
     # Execute function.
-    $CLI_FUNCNAME
+    ${CLI_FUNCTION_NAME}
 
 }

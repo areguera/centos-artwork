@@ -1,9 +1,14 @@
 #!/bin/bash
+######################################################################
 #
-# cli_printUrl.sh -- This function standardizes the way URLs are
-# printed by centos-art.sh script. This function describes the
-# domain organization of The CentOS Project through its URLs and
-# provides a way to print them out when needed.
+#   cli_printUrl.sh -- This function standardizes the way URLs are
+#   printed by centos-art.sh script. This function describes the
+#   domain organization of The CentOS Project through its URLs and
+#   provides a way to print them out when needed.
+#
+#   Written by: 
+#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
+#     Key fingerprint = D67D 0F82 4CBD 90BC 6421  DF28 7CCE 757C 17CA 3951
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -21,9 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
-# $Id$
-# ----------------------------------------------------------------------
+######################################################################
 
 function cli_printUrl {
 
@@ -38,20 +41,19 @@ function cli_printUrl {
     # Initialize arguments with an empty value and set it as local
     # variable to this function scope. Doing this is very important to
     # avoid any clash with higher execution environments.
-    local ARGUMENTS=''
+    local CLI_FUNCTION_ARGUMENTS=''
 
-    # Prepare ARGUMENTS for getopt.
-    cli_parseArgumentsReDef "$@"
+    # Process all arguments currently available in this function
+    # environment. If either ARGSS or ARGSL local variables have been
+    # defined, argument processing goes through getopt for validation.
+    cli_setArguments "${@}"
 
-    # Redefine ARGUMENTS using getopt(1) command parser.
-    cli_parseArguments
-
-    # Redefine positional parameters using ARGUMENTS variable.
-    eval set -- "$ARGUMENTS"
+    # Redefine positional parameters using CLI_FUNCTION_ARGUMENTS variable.
+    eval set -- "${CLI_FUNCTION_ARGUMENTS}"
 
     # Look for options passed through command-line.
     while true; do
-        case "$1" in
+        case "${1}" in
 
             --domain )
                 URL="${TCAR_BRAND}.org"
@@ -131,7 +133,7 @@ function cli_printUrl {
                 ;;
 
             --as-html-link )
-                URL="<a href=\"$URL\">${URL}</a>"
+                URL="<a href=\"${URL}\">${URL}</a>"
                 shift 1
                 ;;
 
@@ -144,6 +146,6 @@ function cli_printUrl {
     done
 
     # Print Url.
-    echo "$URL"
+    echo "${URL}"
 
 }

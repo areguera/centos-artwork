@@ -1,7 +1,12 @@
 #!/bin/bash
+######################################################################
 #
-# cli_unsetFunctions.sh -- This function unsets functionalities from
-# `centos-art.sh' script execution environment.
+#   cli_unsetFunctions.sh -- This function unsets functionalities from
+#   centos-art.sh script execution environment.
+#
+#   Written by: 
+#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
+#     Key fingerprint = D67D 0F82 4CBD 90BC 6421  DF28 7CCE 757C 17CA 3951
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -19,21 +24,17 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
-# $Id$
-# ----------------------------------------------------------------------
+######################################################################
 
 function cli_unsetFunctions {
 
-    # Define export id used to retrive function files. This is the
+    # Define export id used to retrieve function files. This is the
     # same export id used to export functions without the directory
     # part.
-    local EXPORTID=$(basename "$1")
+    local FUNCTION_EXPORTID=$(basename "${1}")
 
-    # Verify suffix value used to retrive function files. Assuming no
-    # suffix value is passed as second argument to this function, use
-    # the function name value (CLI_FUNCNAME) as default value.
-    if [[ $EXPORTID == '' ]];then
+    # Verify suffix value used to retrieve function files.
+    if [[ ${FUNCTION_EXPORTID} == '' ]];then
         cli_printMessage "`gettext "The export id was not provided."`" --as-error-line
     fi
 
@@ -41,12 +42,12 @@ function cli_unsetFunctions {
     # list of function definitions previously exported by
     # `cli_exportFunctions'.  Be sure to limit the list to function
     # names that start with the suffix specified only.
-    local FUNCDEF=''
-    local FUNCDEFS=$(declare -F | gawk '{ print $3 }' | egrep "^${EXPORTID}")
+    local FUNCTION_DEF=''
+    local FUNCTION_DEFS=$(declare -F | gawk '{ print $3 }' | egrep "^${FUNCTION_EXPORTID}")
 
     # Unset function names from current execution environment.
-    for FUNCDEF in $FUNCDEFS;do
-        unset -f $FUNCDEF
+    for FUNCTION_DEF in ${FUNCTION_DEFS};do
+        unset -f ${FUNCTION_DEF}
     done
 
 }

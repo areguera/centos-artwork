@@ -1,10 +1,15 @@
 #!/bin/bash
+######################################################################
 #
-# cli_getPathComponent.sh -- This function standardizes the way
-# directory structures are organized inside the working copy of CentOS
-# Artwork Repository. You can use this function to retrieve
-# information from paths (e.g., releases, architectures and theme
-# artistic motifs) or the patterns used to build the paths.
+#   cli_getPathComponent.sh -- This function standardizes the way
+#   directory structures are organized inside the working copy of
+#   CentOS Artwork Repository. You can use this function to retrieve
+#   information from paths (e.g., releases, architectures and theme
+#   artistic motifs) or the patterns used to build the paths.
+#
+#   Written by: 
+#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
+#     Key fingerprint = D67D 0F82 4CBD 90BC 6421  DF28 7CCE 757C 17CA 3951
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -22,9 +27,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
-# $Id$
-# ----------------------------------------------------------------------
+######################################################################
 
 function cli_getPathComponent {
 
@@ -48,39 +51,38 @@ function cli_getPathComponent {
     # Initialize arguments with an empty value and set it as local
     # variable to this function scope. Doing this is very important to
     # avoid any clash with higher execution environments.
-    local ARGUMENTS=''
+    local CLI_FUNCTION_ARGUMENTS=''
 
-    # Prepare ARGUMENTS variable for getopt.
-    cli_parseArgumentsReDef "$@"
+    # Process all arguments currently available in this function
+    # environment. If either ARGSS or ARGSL local variables have been
+    # defined, argument processing goes through getopt for validation.
+    cli_setArguments "${@}"
 
-    # Redefine ARGUMENTS using getopt(1) command parser.
-    cli_parseArguments
-
-    # Redefine positional parameters using ARGUMENTS variable.
-    eval set -- "$ARGUMENTS"
+    # Redefine positional parameters using CLI_FUNCTION_ARGUMENTS variable.
+    eval set -- "${CLI_FUNCTION_ARGUMENTS}"
 
     # Define location we want to apply verifications to.
-    local LOCATION=$(echo $@ | sed -r 's!^.*--[[:space:]](.+)$!\1!')
+    local LOCATION=$(echo ${@} | sed -r 's!^.*--[[:space:]](.+)$!\1!')
 
     # Look for options passed through positional parameters.
     while true;do
 
-        case "$1" in
+        case "${1}" in
 
             --release )
-                echo "$LOCATION" | egrep "${RELEASE}" | sed -r "s!.*/${RELEASE}/.*!\1!"
+                echo "${LOCATION}" | egrep "${RELEASE}" | sed -r "s!.*/${RELEASE}/.*!\1!"
                 shift 1
                 break
                 ;;
 
             --release-major )
-                echo "$LOCATION" | egrep "${RELEASE}" | sed -r "s!.*/${RELEASE}/.*!\2!"
+                echo "${LOCATION}" | egrep "${RELEASE}" | sed -r "s!.*/${RELEASE}/.*!\2!"
                 shift 1
                 break
                 ;;
 
             --release-minor )
-                echo "$LOCATION" | egrep "${RELEASE}" | sed -r "s!.*/${RELEASE}/.*!\4!"
+                echo "${LOCATION}" | egrep "${RELEASE}" | sed -r "s!.*/${RELEASE}/.*!\4!"
                 shift 1
                 break
                 ;;
@@ -92,7 +94,7 @@ function cli_getPathComponent {
                 ;;
 
             --architecture )
-                echo "$LOCATION" | egrep "${ARCHITECTURE}" | sed -r "s!${ARCHITECTURE}!\1!"
+                echo "${LOCATION}" | egrep "${ARCHITECTURE}" | sed -r "s!${ARCHITECTURE}!\1!"
                 shift 1
                 break
                 ;;
@@ -104,19 +106,19 @@ function cli_getPathComponent {
                 ;;
 
             --motif )
-                echo "$LOCATION" | egrep "${THEME_MOTIF}" | sed -r "s!.*${THEME_MOTIF}.*!\1!"
+                echo "${LOCATION}" | egrep "${THEME_MOTIF}" | sed -r "s!.*${THEME_MOTIF}.*!\1!"
                 shift 1
                 break
                 ;;
 
             --motif-name )
-                echo "$LOCATION" | egrep "${THEME_MOTIF}" | sed -r "s!.*${THEME_MOTIF}.*!\2!"
+                echo "${LOCATION}" | egrep "${THEME_MOTIF}" | sed -r "s!.*${THEME_MOTIF}.*!\2!"
                 shift 1
                 break
                 ;;
 
             --motif-release )
-                echo "$LOCATION" | egrep "${THEME_MOTIF}" | sed -r "s!.*${THEME_MOTIF}.*!\3!"
+                echo "${LOCATION}" | egrep "${THEME_MOTIF}" | sed -r "s!.*${THEME_MOTIF}.*!\3!"
                 shift 1
                 break
                 ;;
@@ -128,7 +130,7 @@ function cli_getPathComponent {
                 ;;
 
             --repo-dir )
-                echo "${LOCATION}" | sed "s,${TCAR_WORKDIR}/,,"
+                echo "${LOCATION}" | sed "s,${TCAR_USER_WRKDIR}/,,"
                 shift 1
                 break
                 ;;

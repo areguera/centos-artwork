@@ -1,18 +1,23 @@
 #!/bin/bash
+######################################################################
 #
-# cli_printCopyrightInfo.sh -- This function standardizes the
-# copyright information printed on content produced by centos-art.sh
-# script.
+#   cli_printCopyrightInfo.sh -- This function standardizes the
+#   copyright information printed on content produced by centos-art.sh
+#   script.
 #
-# As far as I understand, the copyright exists to make people create
-# more.  The copyright gives creators the legal power over their
-# creations and so the freedom to distribute them under the ethical
-# terms the creator considers better.  At this moment I don't feel
-# very confident about this legal affairs and their legal
-# implications, but I need to decide what copyright information the
-# centos-art.sh script will print out when it be requested about it.
-# So, in that sake, I'll assume the same copyright information used by
-# The CentOS Wiki (http://wiki.centos.org/) as reference.
+#   As far as I understand, the copyright exists to make people create
+#   more.  The copyright gives creators the legal power over their
+#   creations and so the freedom to distribute them under the ethical
+#   terms the creator considers better.  At this moment I don't feel
+#   very confident about this legal affairs and their legal
+#   implications, but I need to decide what copyright information the
+#   centos-art.sh script will print out when it be requested about it.
+#   So, in that sake, I'll assume the same copyright information used
+#   by The CentOS Wiki (http://wiki.centos.org/) as reference.
+#
+#   Written by: 
+#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
+#     Key fingerprint = D67D 0F82 4CBD 90BC 6421  DF28 7CCE 757C 17CA 3951
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -30,13 +35,11 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
-# $Id$
-# ----------------------------------------------------------------------
+######################################################################
 
 function cli_printCopyrightInfo {
 
-    case "$1" in
+    case "${1}" in
 
         --license )
 
@@ -85,7 +88,7 @@ function cli_printCopyrightInfo {
             local FULL_YEAR=$(\
                 while [[ ${FIRST_YEAR} -le ${LAST_YEAR} ]];do
                     echo -n "${FIRST_YEAR}, "
-                    FIRST_YEAR=$(($FIRST_YEAR + 1))
+                    FIRST_YEAR=$((${FIRST_YEAR} + 1))
                 done)
 
             # Prepare full copyright year string and print it out. 
