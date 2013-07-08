@@ -33,12 +33,12 @@ function prepare_getOptions {
     # Define long options we want to support.
     local ARGSL="help,quiet,answer-yes,packages,locales,links,images,manuals,directories,set-environment,see-environment,synchronize"
 
-    # Redefine ARGUMENTS using getopt(1) command parser.
+    # Redefine CLI_FUNCTION_ARGUMENTS using getopt(1) command parser.
     cli_parseArguments
 
     # Reset positional parameters using output from (getopt) argument
     # parser.
-    eval set -- "$ARGUMENTS"
+    eval set -- "$CLI_FUNCTION_ARGUMENTS"
 
     # Look for options passed through command-line.
     while true; do
@@ -122,7 +122,8 @@ function prepare_getOptions {
         esac
     done
 
-    # Redefine ARGUMENTS variable using current positional parameters. 
+    # Redefine CLI_FUNCTION_ARGUMENTS variable using current
+    # positional parameters. 
     cli_parseArgumentsReDef "$@"
 
 }

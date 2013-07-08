@@ -37,10 +37,11 @@ function prepare {
     # Interpret arguments and options passed through command-line.
     prepare_getOptions
 
-    # Redefine positional parameters using ARGUMENTS. At this point,
-    # option arguments have been removed from ARGUMENTS variable and
-    # only non-option arguments remain in it. 
-    eval set -- "$ARGUMENTS"
+    # Redefine positional parameters using CLI_FUNCTION_ARGUMENTS. At
+    # this point, option arguments have been removed from
+    # CLI_FUNCTION_ARGUMENTS variable and only non-option arguments
+    # remain in it. 
+    eval set -- "$CLI_FUNCTION_ARGUMENTS"
 
     # Execute action names based on whether they were provided or not.
     if [[ $ACTIONNAMS == '' ]];then
