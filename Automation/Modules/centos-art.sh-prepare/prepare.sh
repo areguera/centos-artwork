@@ -27,6 +27,9 @@
 
 function prepare {
 
+    echo 'Hi! I reached the "prepare" function.'
+    exit
+
     local ACTIONNAM=''
     local ACTIONNAMS=''
 

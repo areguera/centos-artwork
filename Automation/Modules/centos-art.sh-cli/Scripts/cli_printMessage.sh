@@ -88,7 +88,7 @@ function cli_printMessage {
             cli_printMessage "${TACAR_CLI_COMMAND} ($(cli_printCaller 2)):" --as-stderr-line
             cli_printMessage "`gettext "The path provided cannot be processed the way you entered it."`" --as-stderr-line
             cli_printMessage "`gettext "Instead, try the following equivalence:"` ${MESSAGE}" --as-stderr-line
-            cli_printMessage "${CLI_FUNCTION_NAME}" --as-toknowmore-line
+            cli_printMessage "${MODULE_NAME}" --as-toknowmore-line
 
             # Finish script execution with exit status 1 (SIGHUP) to
             # imply the script finished because an error.  We are

@@ -29,20 +29,18 @@
 
 function cli {
 
-    local CLI_FUNCTION_NAME=''
-    local CLI_FUNCTION_DIR=''
-    local CLI_FUNCTION_FILE=''
-    local CLI_FUNCTION=''
-    local CLI_FUNCTIONS=$(ls ${TCAR_CLI_INIT_DIR}/${TCAR_CLI_INIT_FUNCTION}_*.sh)
+    # Initialize command-line interface default configuration values.
+    if [[ -f ${TCAR_CLI_INIT_DIR}/cli.conf ]];then
+        . ${TCAR_CLI_INIT_DIR}/cli.conf
+    fi
 
     # Initialize list of common functionalities to load.
-    for CLI_FUNCTION in ${CLI_FUNCTIONS};do
+    for CLI_FUNCTION in $(ls ${TCAR_CLI_INIT_DIR}/Scripts/*.sh);do
         if [[ -x ${CLI_FUNCTION} ]];then
             . ${CLI_FUNCTION}
             export -f $(grep '^function ' ${CLI_FUNCTION} | cut -d' ' -f2)
         else
             echo "${CLI_FUNCTION} `gettext "has not execution rights."`"
-            exit
         fi
     done
 
@@ -56,37 +54,40 @@ function cli {
     # `Ctrl+C').
     trap cli_terminateScriptExecution 0
 
-    # Initialize variable holding arguments passed to centos-art.sh
-    # command-line interface.
-    local CLI_FUNCTION_ARGUMENTS=''
-
     # Redefine arguments using current positional parameters. 
     cli_setArguments "${@}"
 
     # Redefine positional parameters using arguments variable.
-    eval set -- "${CLI_FUNCTION_ARGUMENTS}"
+    eval set -- "${TCAR_MODULE_ARGUMENTS}"
 
-    # Check function name. The function name is critical for
-    # centos-art.sh script to do something coherent. If it is not
-    # provided, execute the help functionality and end script
-    # execution.
-    if [[ ! "${1}" ]] || [[ ! "${1}" =~ '^[[:alpha:]]' ]];then
-        cli_runFnEnvironment help --read --format="texinfo" tcar-fs:::
-        exit
+    # Check the number of arguments passed in the command-line
+    # interface.  The first argument must be the name of the module
+    # you want to execute. So at least one argument must be provided
+    # in the command-line.
+    if [[ $# -lt 1 ]];then
+        cli_printHelp ${TCAR_CLI_NAME}
+    else
+        # Check module's name. The module's name is critical for
+        # centos-art.sh script to do something coherent. If it is not
+        # provided or provided incorrectly, finish the script
+        # execution with help information.
+        if [[ ! "${1}" =~ '^[[:alpha:]]+$' ]];then
+            cli_printHelp ${TCAR_CLI_NAME}-cli
+        fi
     fi
 
-    # Define function name (CLI_FUNCTION_NAME) using the first argument in
-    # the command-line.
-    CLI_FUNCTION_NAME=$(cli_getRepoName ${1} -f | cut -d '-' -f1)
+    # Define function name (MODULE_INIT_NAME) using the first argument
+    # in the command-line.
+    local MODULE_INIT_NAME=$(cli_getRepoName ${1} -f | cut -d '-' -f1)
 
     # Define function directory.
-    CLI_FUNCTION_DIR=$(cli_getRepoName ${CLI_FUNCTION_NAME} -d)
+    local MODULE_INIT_DIR=${TCAR_CLI_BASEDIR}/Modules/${TCAR_CLI_NAME}-${MODULE_INIT_NAME}
 
     # Define function file name.
-    CLI_FUNCTION_FILE=${TCAR_CLI_MODSDIR}/${CLI_FUNCTION_DIR}/${CLI_FUNCTION_NAME}.sh
+    local MODULE_INIT_FILE=${MODULE_INIT_DIR}/${MODULE_INIT_NAME}.sh
 
     # Check function script execution rights.
-    cli_checkFiles -x ${CLI_FUNCTION_FILE}
+    cli_checkFiles -x ${MODULE_INIT_FILE}
 
     # Remove the first argument passed to centos-art.sh command-line
     # in order to build optional arguments inside functionalities. We
@@ -103,9 +104,9 @@ function cli {
 
     # Go for function initialization. Keep the cli_exportFunctions
     # function calling after all variables and arguments definitions.
-    cli_exportFunctions "${CLI_FUNCTION_DIR}/${CLI_FUNCTION_NAME}"
+    cli_exportFunctions "${MODULE_INIT_FILE}"
 
     # Execute function.
-    ${CLI_FUNCTION_NAME} "${@}"
+    ${MODULE_INIT_NAME} "${@}"
 
 }

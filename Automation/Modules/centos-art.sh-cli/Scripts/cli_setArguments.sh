@@ -12,7 +12,7 @@
 #       ARGSL
 #           Stores getopt long arguments definition.  
 #
-#       CLI_FUNCTION_ARGUMENTS
+#       TCAR_MODULE_ARGUMENTS
 #           Stores arguments passed to functions or command-line
 #           interface depending the context it is defined.
 #
@@ -55,7 +55,7 @@ function cli_setArguments {
 
     # Fill up arguments global variable with current positional
     # parameter  information. To avoid interpretation problems, use
-    # single quotes to enclose each argument (CLI_FUNCTION_ARGUMENTS) from
+    # single quotes to enclose each argument (TCAR_MODULE_ARGUMENTS) from
     # command-line individually.
     for ARGUMENT in "${@}"; do
 
@@ -66,22 +66,22 @@ function cli_setArguments {
 
         # Concatenate arguments and enclose them to let getopt to
         # process them when they have spaces inside.
-        CLI_FUNCTION_ARGUMENTS="${CLI_FUNCTION_ARGUMENTS} '${ARGUMENT}'"
+        TCAR_MODULE_ARGUMENTS="${TCAR_MODULE_ARGUMENTS} '${ARGUMENT}'"
 
     done
 
     # Verify non-option arguments passed to command-line. If there
-    # isn't any or dot is provided, redefine the CLI_FUNCTION_ARGUMENTS variable to
+    # isn't any or dot is provided, redefine the TCAR_MODULE_ARGUMENTS variable to
     # use the current location the centos-art.sh script was called
     # from.
-    if [[ -z "${CLI_FUNCTION_ARGUMENTS}" ]];then 
-        CLI_FUNCTION_ARGUMENTS=${PWD}
+    if [[ -z "${TCAR_MODULE_ARGUMENTS}" ]];then 
+        TCAR_MODULE_ARGUMENTS=${PWD}
     fi
 
-    # Redefine positional parameters using CLI_FUNCTION_ARGUMENTS variable.
+    # Redefine positional parameters using TCAR_MODULE_ARGUMENTS variable.
     if [[ ! -z ${ARGSS} ]] || [[ ! -z ${ARGSL} ]];then
-        eval set -- "${CLI_FUNCTION_ARGUMENTS}"
-        CLI_FUNCTION_ARGUMENTS=$(getopt -o "${ARGSS}" -l "${ARGSL}" \
+        eval set -- "${TCAR_MODULE_ARGUMENTS}"
+        TCAR_MODULE_ARGUMENTS=$(getopt -o "${ARGSS}" -l "${ARGSL}" \
             -n "${TCAR_CLI_COMMAND} ($(cli_printCaller 2))" -- "${@}")
         if [[ $? -ne 0 ]];then
             cli_printMessage "`gettext "The argument verification failed."`" --as-error-line
