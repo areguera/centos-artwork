@@ -27,32 +27,55 @@
 
 # Verify absolute path to the working directory. This information is
 # critical for centos-art.sh script to work.
-if [[ ! ${TCAR_REPO_WRKDIR} ]] || [[ -z ${TCAR_REPO_WRKDIR} ]] \
-    || [[ ! -d ${TCAR_REPO_WRKDIR} ]];then
-    if [[ ! -d $(dirname ${0}) ]] || [[ $(dirname ${0}) =~ "^${HOME}/bin" ]];then
-        printf "Enter repository's absolute path:"
-        read TCAR_REPO_WRKDIR
-    fi
+if [[ ! ${TCAR_BASEDIR} ]] || [[ -z ${TCAR_BASEDIR} ]] \
+    || [[ ! -d ${TCAR_BASEDIR} ]];then
+    echo -n "Enter repository's absolute path: "
+    read TCAR_BASEDIR
 fi
 
 # Define automation scripts base directory. We need to define it here
 # in order to reach the configuration file. All other environment
 # variable definitions must be declared inside the configuration file.
-declare -xr TCAR_CLI_BASEDIR=${TCAR_REPO_WRKDIR}/Automation
+if [[ -d ${TCAR_BASEDIR} ]];then
+    declare -xr TCAR_SCRIPT_BASEDIR=${TCAR_BASEDIR}/Automation
+else
+    exit 1
+fi
 
 # Initialize default configuration values.
-. ${TCAR_CLI_BASEDIR}/centos-art.conf
+if [[ -d ${TCAR_SCRIPT_BASEDIR} ]];then
+    . ${TCAR_SCRIPT_BASEDIR}/centos-art.conf
+else
+    exit 1
+fi
 
 # Initialize user-specific configuration values.
 if [[ -f ${TCAR_USER_CONFIG} ]];then
     . ${TCAR_USER_CONFIG}
 fi
 
-# Initialize the centos-art.sh script command-line interface.
-if [[ -x ${TCAR_CLI_INIT_FILE} ]];then
-    . ${TCAR_CLI_INIT_FILE} \
-        && export -f ${TCAR_CLI_INIT} \
-        && ${TCAR_CLI_INIT} "$@"
-else
-    echo "${TCAR_CLI_INIT_FILE} has not execution rights."
-fi
+case ${1} in
+
+    --help )
+        # Print script help.
+        ${TCAR_MANUAL_READER} ${TCAR_SCRIPT_NAME}
+        ;;
+
+    --version )
+        # Print script version.
+        echo "`eval_gettext "Running $TCAR_SCRIPT_NAME (v$TCAR_SCRIPT_VERSION)."`"
+        ;;
+
+    * )
+        # Initialize script command-line interface.
+        if [[ -x ${TCAR_SCRIPT_INIT_FILE} ]];then
+            . ${TCAR_SCRIPT_INIT_FILE} \
+            && export -f ${TCAR_SCRIPT_INIT} \
+            && ${TCAR_SCRIPT_INIT} "$@"
+        else
+            echo "${TCAR_SCRIPT_INIT_FILE} `gettext "has not execution rights."`"
+        fi
+        ;;
+esac
+
+exit 0

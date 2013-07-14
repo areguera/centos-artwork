@@ -1,14 +1,274 @@
 centos-art.sh(1)
 ================
 
-NAME
+Name
 ----
 centos-art.sh - The CentOS artwork repository automation tool
 
-SYNOPSIS
+Synopsis
 --------
-...
+*centos-art.sh* [*--help*|*--version*]::
+    This command provides information about the script itself.
 
-DESCRIPTION
+*centos-art.sh* *MODULE* [*--help|--version*]::
+    This command provides information about the specified module. See
+    the xref:Modules[] section below to see which modules are
+    available.
+
+*centos-art.sh* *MODULE* [*OPTIONS*]::
+    This command executes the specified module. Options here are
+    module-specific. See the xref:Modules[] section below to see which
+    modules are available.
+
+Description
 -----------
-...
+*centos-art.sh* exists to standardize frequent tasks inside the CentOS
+repository.
+
+When you execute the *centos-art.sh* script in a terminal, it will
+request the absolute path where you stored your working copy of CentOS
+artwork repository.  To avoid the absolute path request every time you
+execute the script, you can edit the +~/.bash_profile+ file and set
+the absolute path to your working copy there, as value to
+TCAR_BASEDIR variable.
+
+Once *centos-art.sh* script knows what is the absolute path to your
+working copy, it executes the file *centos-art.conf* to load default
+values to configuration variables into its execution environment.
+After configuration variables have been loaded in the execution
+environment, the script looks whether or not any option was passed as
+first argument to *centos-art.sh* script. If no option was passed, it
+gives control to *cli* module.  At this point, the *centos-art.sh*
+script waits for modules to conclude their job and exit the script
+execution as described in the xref:exit[] section.
+
+anchor:exit[Exit Status]
+
+Exit Status
+-----------
+ * 0 -- Exit successfully without errors.
+ * 1 -- Exit with errors.
+
+anchor:Modules[Modules]
+
+Modules
+-------
+From version 0.5 on, *centos-art.sh* script introduces the idea of
+modules to its base design.  Modules are individual execution
+environments that may nest themselves one inside another to achieve
+high levels of code maintainability.  Modules make it possible to
+divide a big task into smaller tasks that can be easier to debug,
+maintain and share with other modules.
+
+The following modules are available for *centos-art.sh* script:
+
+*cli*::
+    This modules initializes common and specific functions inside
+    *centos-art.sh* script execution environment. This module is
+    loaded internally when you execute the *centos-art.sh* script in a
+    terminal and you probably don't need to execute it in a terminal
+    unless you want to see help or version information about it. This
+    module interprets arguments passed to *centos-art.sh* command-line
+    to execute the associated module (a.k.a., specific functions).
+
+*prepare*::
+    This module standardizes configuration tasks needed by your
+    working copy (e.g., creation of links, images and documentations).
+    This is the first task you should run in your workstation, just
+    after downloading a fresh working copy of CentOS artwork
+    repository.
+
+*render*::
+    This module standardizes the way content is produced inside the
+    repository. Whenever you need to produce images, documentation or
+    localized content this is the module you'll need to use.
+
+*locale*::
+    This module standardizes the way translatable strings are
+    retrieved from source files and put into portable objects for you
+    to edit.  Portable objects produced by this module are used by
+    *render* module to produce localized content.  Whenever you need
+    to produce the intermediate files holding the translatable strings
+    required to produce localized content, use this module.
+
+*help*::
+    This module standardizes the way documentation is produced inside
+    the repository. Whenever you need to manage documentation source
+    files inside the repository, use this module.
+
+*tuneup*::
+    This module standardizes maintenance tasks frequently run inside
+    the repository.
+
+*vcs*::
+    This module standardizes the way version control tasks are
+    performed inside the repository. This module is used internally
+    and you probably don't need to use it from the command line. This
+    module is the interface that let us support different version
+    control systems inside *centos-art.sh* script.
+
+*pack*::
+    This module standardizes the way RPM packages are produced from
+    content available in the repository. When ever you need to produce
+    RPM packages with information available in the repository, use
+    this module.
+
+Directory Structure
+~~~~~~~~~~~~~~~~~~~
+Inside the repository, modules related to *centos-art.sh* script are
+stored in the directory +Automation/Modules+.
+
+*Modules/*::
+    This directory contains module's modules.
+*Manuals/*::
+    This directory contains module's documentation in manpage format.
+    The structure of this directory is as follows:
++
+-------------------------------------
+Manuals/
+|-- ${LANG}/
+|   |-- man${SECTION_NUMBER}
+|   `-- ${MODULE_NAME}.${SECTION_NUMBER}
+`-- man${SECTION_NUMBER}
+    `-- ${MODULE_NAME}.${SECTION_NUMBER}
+-------------------------------------
+
+*Locales/*::
+    This directory contains module's translations using GNU gettext
+    standards. The structure of this directory is as follows:
++
+-------------------------------------
+Locales/
+`-- ${LANG}/
+    |-- LC_MESSAGES
+    |   `-- ${MODULE_NAME}.sh.mo
+    |-- ${MODULE_NAME}.sh.po
+    |-- ${MODULE_NAME}.sh.pot
+    |-- ${MODULE_NAME}.xml.po
+    `-- ${MODULE_NAME}.xml.pot
+-------------------------------------
+
+*Scripts/*::
+    This directory contains module's function scripts. Here is where
+    all the tasks the module is useful to are written and organized.
+    As convention the following structure is used:
++
+-------------------------------------
+Scripts/
+`-- ${MODULE_NAME}_${FUNCTION_NAME}.sh
+-------------------------------------
++
+{asccidoc-br}
++
+Inside each function script, there is a top comment where you should
+put the name of the function script, a brief description about what it
+does, as well as author and copying information. After the top comment
+and separated by one white line, you should define the function
+sentence using the long format.
++
+-------------------------------------
+#!/bin/bash
+########################################################################
+#
+#   ${MODULE_NAME}_${FUNCTION_NAME}.sh -- ${FUNCTION_DESCRIPTION}
+#
+#   Written by:
+#   * ${AUTHOR_NAME} <${AUTHOR_EMAIL}>, ${YEARS}
+#
+# Copyright (C) ${YEAR} The CentOS Project
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or (at
+# your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#
+########################################################################
+
+function ${MODULE_NAME}_${FUNCTION_NAME} {
+    ...
+}
+-------------------------------------
++
+[NOTE]
+If your are planning to contribute a new module to *centos-art.sh*
+script, please, consider using the layout described above for all your
+function scripts, consistently.
+
+*$\{MODULE_NAME}.asciidoc*::
+    This file contains the module's documentation source. From this
+    file it is possible to produce the same documentation in other
+    formats including manpage, html and pdf. Whenever you need to
+    improve the module's documentation, edit this file.
+*$\{MODULE_NAME}.conf*::
+    This file contains the module's configuration variables. These
+    variables are exported to the environment and remain there as long
+    as the script execution environment is alive. Some variables are
+    read-only others not.
++
+The configuration file provides explanation about each environment
+variable it exports. If you want to know more about what these
+variables are, open this file and read the comments near each
+variable.
+
+*$\{MODULE_NAME}.sh*::
+    This is the module's initialization script. The first file
+    executed when the module called from the command-line. This file
+    provides access to argument parsing and controls how
+    module-specific function scripts are called. This is the starting
+    point for writing modules. You can write a complete module using
+    this file only but, frequently, it is convenient as the module
+    complexity grows to divide it in smaller pieces (function scripts)
+    to improve maintainability and error findings.
+*$\{MODULE_NAME}.xml*::
+    This file is produced from *$\{MODULE_NAME}.asciidoc* and is used as
+    source to retrieve translatable strings. Translatable strings
+    retrieved from this file are stored in the module's *Locales/*
+    directory and used to produce localized mapages inside module's
+    *Manuals/$\{LANG}/man$\{SECTION_NUMBER}/* directory.
+
+Options
+-------
+
+*--help*::
+    Display program's help (this page).
+
+*--version*::
+    Display program's name and version.
+
+Reporting Bugs
+--------------
+Report bugs on the *automation* category of *centos-artwork* project
+at the https://centos.org.cu/bugs/[The CentOS Bugs] website.
+
+Author
+------
+Written by mailto:al@centos.org.cu[Alain Reguera Delgado]
+
+Copyright
+---------
+Copyright (C) 2013 The CentOS Project
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or (at
+your option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+// vim: set syntax=asciidoc:
