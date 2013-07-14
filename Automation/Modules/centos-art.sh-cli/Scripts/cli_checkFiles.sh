@@ -51,13 +51,13 @@ function cli_checkFiles {
     # variable to this function scope. Doing this is very important to
     # avoid any clash with higher execution environments. This
     # variable is shared for different function environments.
-    local TCAR_MODULE_ARGUMENTS=''
+    local TCAR_ARGUMENTS=''
     
     # Redefine arguments using current positional parameters. 
     cli_setArguments "${@}"
 
     # Redefine positional parameters using arguments variable.
-    eval set -- "${TCAR_MODULE_ARGUMENTS}"
+    eval set -- "${TCAR_ARGUMENTS}"
 
     # Look for options passed through positional parameters.
     while true; do

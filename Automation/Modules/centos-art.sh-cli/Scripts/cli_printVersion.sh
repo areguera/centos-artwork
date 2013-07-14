@@ -1,11 +1,8 @@
 #!/bin/bash
 ######################################################################
 #
-#   cli_terminateScriptExecution.sh -- This function standardizes the
-#   actions that must be realized just before leaving the script
-#   execution (e.g., cleaning temporal files).  This function is the
-#   one called when interruption signals like EXIT, SIGHUP, SIGINT and
-#   SIGTERM are detected.
+#   cli_printVersion.sh -- This function standardizes the way
+#   centos-art.sh script prints version about itself.
 #
 #   Written by: 
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -29,13 +26,9 @@
 #
 ######################################################################
 
-function cli_terminateScriptExecution {
+function cli_printVersion {
 
-    # Remove temporal directory.
-    rm -r ${TCAR_SCRIPT_TEMPDIR}
-
-    # NOTE: Don't specify an exit status here. As convenction we do
-    # this when error messages are triggerd. See `--as-error-line'
-    # option from `cli_printMessage' functionality.
+    cli_printMessage "`eval_gettext "Running module $MODULE_NAME (v$MODULE_VERSION) through $TCAR_SCRIPT_NAME (v$TCAR_SCRIPT_VERSION)."`" --as-stdout-line
+    exit 0
 
 }

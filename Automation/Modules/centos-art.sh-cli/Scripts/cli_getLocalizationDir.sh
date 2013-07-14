@@ -51,7 +51,7 @@ function cli_getLocalizationDir {
 
         * )
             LOCATION=$(echo "${LOCATION}" \
-                | sed -r -e "s!(Identity|Scripts|Documentation)!Locales/\1!")/${CLI_LANG_LC}
+                | sed -r -e "s!(Identity|Scripts|Documentation)!Locales/\1!")/${TCAR_SCRIPT_LANG_LC}
             ;;
 
     esac 

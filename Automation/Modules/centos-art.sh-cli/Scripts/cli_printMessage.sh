@@ -72,8 +72,8 @@ function cli_printMessage {
         --as-error-line )
 
             # Build the error message.
-            cli_printMessage "${TCAR_CLI_COMMAND} ($(cli_printCaller 2)): ${MESSAGE}" --as-stderr-line
-            cli_printMessage "$(cli_printCaller "2" "--name")" --as-toknowmore-line
+            cli_printMessage "${TCAR_SCRIPT_COMMAND} ($(cli_printCaller 1)): ${MESSAGE}" --as-stderr-line
+            cli_printMessage "${MODULE_NAME}" --as-toknowmore-line
 
             # Finish script execution with exit status 1 (SIGHUP) to
             # imply the script finished because an error.  We are
@@ -85,7 +85,7 @@ function cli_printMessage {
         --as-suggestion-line )
 
             # Build the error message.
-            cli_printMessage "${TACAR_CLI_COMMAND} ($(cli_printCaller 2)):" --as-stderr-line
+            cli_printMessage "${TCAR_SCRIPT_COMMAND} ($(cli_printCaller 1)):" --as-stderr-line
             cli_printMessage "`gettext "The path provided cannot be processed the way you entered it."`" --as-stderr-line
             cli_printMessage "`gettext "Instead, try the following equivalence:"` ${MESSAGE}" --as-stderr-line
             cli_printMessage "${MODULE_NAME}" --as-toknowmore-line
@@ -98,7 +98,7 @@ function cli_printMessage {
             ;;
 
         --as-toknowmore-line )
-            cli_printMessage "`gettext "To know more, run"` ${TCAR_CLI_COMMAND} help --id=${MESSAGE} " --as-stderr-line
+            cli_printMessage "`gettext "To know more, run"` ${TCAR_SCRIPT_COMMAND} ${MESSAGE} --help" --as-stderr-line
             ;;
 
         --as-yesornorequest-line )

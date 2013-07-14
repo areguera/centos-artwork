@@ -51,15 +51,15 @@ function cli_getPathComponent {
     # Initialize arguments with an empty value and set it as local
     # variable to this function scope. Doing this is very important to
     # avoid any clash with higher execution environments.
-    local TCAR_MODULE_ARGUMENTS=''
+    local TCAR_ARGUMENTS=''
 
     # Process all arguments currently available in this function
     # environment. If either ARGSS or ARGSL local variables have been
     # defined, argument processing goes through getopt for validation.
     cli_setArguments "${@}"
 
-    # Redefine positional parameters using TCAR_MODULE_ARGUMENTS variable.
-    eval set -- "${TCAR_MODULE_ARGUMENTS}"
+    # Redefine positional parameters using TCAR_ARGUMENTS variable.
+    eval set -- "${TCAR_ARGUMENTS}"
 
     # Define location we want to apply verifications to.
     local LOCATION=$(echo ${@} | sed -r 's!^.*--[[:space:]](.+)$!\1!')

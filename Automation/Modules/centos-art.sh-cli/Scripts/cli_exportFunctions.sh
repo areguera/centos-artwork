@@ -46,8 +46,7 @@ function cli_exportFunctions {
     local FUNCTION_PATTERN="^function[[:space:]]+${MODULE_INIT_FILENAME}(_[[:alnum:]]+)?[[:space:]]+{[[:space:]]*$"
 
     # Define the list of files.
-    local MODULE_SCRIPT_FILE=''
-    local MODULE_SCRIPT_FILES="${MODULE_INIT_FILE} 
+    local MODULE_SCRIPTS="${MODULE_INIT_FILE}
         $(cli_getFilesList ${MODULE_SCRIPTS_DIR} \
         --pattern="${MODULE_DIR}/.+\.sh$" --maxdepth='1' \
         --mindepth='1' --type='f')"
@@ -56,30 +55,30 @@ function cli_exportFunctions {
     # location specified stop the script execution. Otherwise the
     # script will surely try to execute a function that haven't been
     # exported yet and report an error about it.
-    if [[ -z ${MODULE_SCRIPT_FILES} ]];then
+    if [[ -z ${MODULE_SCRIPTS} ]];then
         cli_printMessage "${FUNCNAME}: `gettext "No function file was found."`" --as-error-line
     fi
 
     # Process the list of files.
-    for MODULE_SCRIPT_FILE in ${MODULE_SCRIPT_FILES};do
+    for MODULE_SCRIPT in ${MODULE_SCRIPTS};do
 
         # Verify the execution rights for function file.
-        cli_checkFiles -x ${MODULE_SCRIPT_FILE}
+        cli_checkFiles -x ${MODULE_SCRIPT}
 
         # Verify that function files have not been already exported.
         # If they have been already exported don't export them again.
         # Instead, continue with the next function file in the list.
-        declare -F | gawk '{ print $3 }' | egrep "^${MODULE_SCRIPT_FILE}$" > /dev/null
+        declare -F | gawk '{ print $3 }' | egrep "^${MODULE_SCRIPT}$" > /dev/null
         if [[ $? -eq 0 ]];then
             continue
         fi
 
         # Initialize the function file.
-        . ${MODULE_SCRIPT_FILE}
+        . ${MODULE_SCRIPT}
 
         # Export the function names inside the file to current shell
         # script environment.
-        export -f $(egrep "${FUNCTION_PATTERN}" ${MODULE_SCRIPT_FILE} | gawk '{ print $2 }')
+        export -f $(egrep "${FUNCTION_PATTERN}" ${MODULE_SCRIPT} | gawk '{ print $2 }')
 
     done
 

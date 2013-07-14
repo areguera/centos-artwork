@@ -54,13 +54,6 @@ function cli_expandTMarkers {
     SRC[((++${#SRC[*]}))]='=COPYRIGHT_HOLDER_PREDICATE='
     DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --holder-predicate)"
 
-    # Define name of branding files. This files are mainly used under
-    # Identity/(Images|Models)/Brands/ directory structure. These
-    # file names may vary from one project to another so we use this
-    # variable to control the name of such files.
-    SRC[((++${#SRC[*]}))]='=BRAND='
-    DST[((++${#DST[*]}))]="${TCAR_BRAND}"
-
     # Define license translation markers.
     SRC[((++${#SRC[*]}))]='=LICENSE='
     DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --license)"
@@ -117,23 +110,23 @@ function cli_expandTMarkers {
 
     # Define locale translation markers.
     SRC[((++${#SRC[*]}))]='=LOCALE='
-    DST[((++${#DST[*]}))]="${CLI_LANG_LC}"
+    DST[((++${#DST[*]}))]="${TCAR_SCRIPT_LANG_LC}"
     SRC[((++${#SRC[*]}))]='=LOCALE_LL='
-    DST[((++${#DST[*]}))]="${CLI_LANG_LL}"
+    DST[((++${#DST[*]}))]="${TCAR_SCRIPT_LANG_LL}"
     SRC[((++${#SRC[*]}))]='=LOCALE_CC='
-    DST[((++${#DST[*]}))]="${CLI_LANG_CC}"
+    DST[((++${#DST[*]}))]="${TCAR_SCRIPT_LANG_CC}"
 
     # Define domain translation markers for domains.
     SRC[((++${#SRC[*]}))]='=DOMAIN_LL='
-    if [[ ! ${CLI_LANG_LL} =~ '^en' ]];then
-        DST[((++${#DST[*]}))]="${CLI_LANG_LL}"
+    if [[ ! ${TCAR_SCRIPT_LANG_LL} =~ '^en' ]];then
+        DST[((++${#DST[*]}))]="${TCAR_SCRIPT_LANG_LL}"
     else
         DST[((++${#DST[*]}))]=""
     fi
 
     # Define repository translation markers.
-    SRC[((++${#SRC[*]}))]='=(REPO_TLDIR|REPO_HOME|TCAR_USER_WRKDIR)='
-    DST[((++${#DST[*]}))]="${TCAR_USER_WRKDIR}"
+    SRC[((++${#SRC[*]}))]='=(REPO_TLDIR|REPO_HOME|TCAR_BASEDIR)='
+    DST[((++${#DST[*]}))]="${TCAR_BASEDIR}"
 
     # Do replacement of nested translation markers.
     while [[ ${COUNTDST} -lt ${#DST[@]} ]];do

@@ -34,18 +34,16 @@ function cli_getTemporalFile {
     # instances are created previous to be parsed by inkscape in order
     # to be exported as png. In such cases .svg file extension is
     # required in order to avoid complains from inkscape.
-    local NAME="$(cli_getRepoName ${1} -f)"
+    local FILENAME="$(cli_getRepoName ${1} -f)"
 
     # Check default base name for temporal file, it can't be an empty
     # value.
-    if [[ "${NAME}" == '' ]];then
+    if [[ -z "${FILENAME}" ]];then
         cli_printMessage "`gettext "The first argument cannot be empty."`" --as-error-line
     fi
 
-    # Define absolute path for temporal file. 
-    local TEMPFILE="${TCAR_CLI_TEMPDIR}/${NAME}"
-
-    # Output absolute path to final temporal file.
-    echo ${TEMPFILE}
+    # Define absolute path for temporal file and send it out to
+    # standard output.
+    echo "${TCAR_SCRIPT_TEMPDIR}/${FILENAME}"
 
 }

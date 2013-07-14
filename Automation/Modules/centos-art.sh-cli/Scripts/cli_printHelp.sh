@@ -1,11 +1,8 @@
 #!/bin/bash
 ######################################################################
 #
-#   cli_terminateScriptExecution.sh -- This function standardizes the
-#   actions that must be realized just before leaving the script
-#   execution (e.g., cleaning temporal files).  This function is the
-#   one called when interruption signals like EXIT, SIGHUP, SIGINT and
-#   SIGTERM are detected.
+#   cli_printHelp.sh -- This function standardizes the way
+#   centos-art.sh script prints help about itself.
 #
 #   Written by: 
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -29,13 +26,9 @@
 #
 ######################################################################
 
-function cli_terminateScriptExecution {
+function cli_printHelp {
 
-    # Remove temporal directory.
-    rm -r ${TCAR_SCRIPT_TEMPDIR}
-
-    # NOTE: Don't specify an exit status here. As convenction we do
-    # this when error messages are triggerd. See `--as-error-line'
-    # option from `cli_printMessage' functionality.
+    ${TCAR_MANUAL_READER} "${MODULE_NAME}"
+    exit 0
 
 }

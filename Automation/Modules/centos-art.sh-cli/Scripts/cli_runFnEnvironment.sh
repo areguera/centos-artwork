@@ -31,7 +31,7 @@
 function cli_runFnEnvironment {
 
     # Execute specific function environment.
-    ${CLI_NAME} ${@}
+    ${MODULE_NAME} ${@}
 
     # Retrieve exit status.
     local STATUS=$?

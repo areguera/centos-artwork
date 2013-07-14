@@ -30,17 +30,17 @@
 function cli {
 
     # Initialize command-line interface default configuration values.
-    if [[ -f ${TCAR_CLI_INIT_DIR}/cli.conf ]];then
-        . ${TCAR_CLI_INIT_DIR}/cli.conf
+    if [[ -f ${TCAR_SCRIPT_INIT_DIR}/cli.conf ]];then
+        . ${TCAR_SCRIPT_INIT_DIR}/cli.conf
     fi
 
     # Initialize list of common functionalities to load.
-    for CLI_FUNCTION in $(ls ${TCAR_CLI_INIT_DIR}/Scripts/*.sh);do
-        if [[ -x ${CLI_FUNCTION} ]];then
-            . ${CLI_FUNCTION}
-            export -f $(grep '^function ' ${CLI_FUNCTION} | cut -d' ' -f2)
+    for MODULE_SCRIPT in $(ls ${TCAR_SCRIPT_INIT_DIR}/Scripts/*.sh);do
+        if [[ -x ${MODULE_SCRIPT} ]];then
+            . ${MODULE_SCRIPT}
+            export -f $(grep '^function ' ${MODULE_SCRIPT} | cut -d' ' -f2)
         else
-            echo "${CLI_FUNCTION} `gettext "has not execution rights."`"
+            echo "${MODULE_SCRIPT} `gettext "has not execution rights."`"
         fi
     done
 
@@ -54,37 +54,30 @@ function cli {
     # `Ctrl+C').
     trap cli_terminateScriptExecution 0
 
-    # Redefine arguments using current positional parameters. 
-    cli_setArguments "${@}"
+    # Define module arguments local to this function. This is very
+    # important in order to provide option parsing for different
+    # function environment levels.
+    local TCAR_ARGUMENTS=''
 
-    # Redefine positional parameters using arguments variable.
-    eval set -- "${TCAR_MODULE_ARGUMENTS}"
-
-    # Check the number of arguments passed in the command-line
-    # interface.  The first argument must be the name of the module
-    # you want to execute. So at least one argument must be provided
+    # Define module's name (MODULE_NAME) using the first argument
     # in the command-line.
-    if [[ $# -lt 1 ]];then
-        cli_printHelp ${TCAR_CLI_NAME}
-    else
-        # Check module's name. The module's name is critical for
-        # centos-art.sh script to do something coherent. If it is not
-        # provided or provided incorrectly, finish the script
-        # execution with help information.
-        if [[ ! "${1}" =~ '^[[:alpha:]]+$' ]];then
-            cli_printHelp ${TCAR_CLI_NAME}-cli
-        fi
+    local MODULE_NAME=$(cli_getRepoName "${1}" "-f" | cut -d '-' -f1)
+
+    # Define regular expression to match available modules.
+    local MODULE_NAME_LIST=$(ls ${TCAR_SCRIPT_BASEDIR}/Modules/ \
+        | sed -r 's/.+-([[:alnum:]]+)$/\1/' \
+        | tr '\n' '|' | sed -r 's/\|$//')
+
+    # Check module's name possible values.
+    if [[ ! ${MODULE_NAME} =~ "^(${MODULE_NAME_LIST})$" ]];then
+        cli_printMessage "`gettext "The module provided isn't valid."`" --as-error-line
     fi
 
-    # Define function name (MODULE_INIT_NAME) using the first argument
-    # in the command-line.
-    local MODULE_INIT_NAME=$(cli_getRepoName ${1} -f | cut -d '-' -f1)
-
     # Define function directory.
-    local MODULE_INIT_DIR=${TCAR_CLI_BASEDIR}/Modules/${TCAR_CLI_NAME}-${MODULE_INIT_NAME}
+    local MODULE_DIR=${TCAR_SCRIPT_BASEDIR}/Modules/${TCAR_SCRIPT_NAME}-${MODULE_NAME}
 
     # Define function file name.
-    local MODULE_INIT_FILE=${MODULE_INIT_DIR}/${MODULE_INIT_NAME}.sh
+    local MODULE_INIT_FILE=${MODULE_DIR}/${MODULE_NAME}.sh
 
     # Check function script execution rights.
     cli_checkFiles -x ${MODULE_INIT_FILE}
@@ -93,6 +86,14 @@ function cli {
     # in order to build optional arguments inside functionalities. We
     # start counting from second argument (inclusive) on.
     shift 1
+
+    # When the word cli is provided as module to centos-art.sh script,
+    # the cli module reduces its mission to just printing help and
+    # version information about itself. After that, it must finish the
+    # script execution successfully.
+    if [[ ${MODULE_NAME} == "${TCAR_SCRIPT_INIT}" ]];then
+        cli_getOptions "${@}"
+    fi
 
     # Define default text editors used by centos-art.sh script.
     if [[ ! "${TCAR_USER_EDITOR}" =~ '/usr/bin/(vim|emacs|nano)' ]];then
@@ -107,6 +108,6 @@ function cli {
     cli_exportFunctions "${MODULE_INIT_FILE}"
 
     # Execute function.
-    ${MODULE_INIT_NAME} "${@}"
+    ${MODULE_NAME} "${@}"
 
 }
