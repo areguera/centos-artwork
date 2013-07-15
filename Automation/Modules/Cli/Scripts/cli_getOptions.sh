@@ -53,7 +53,9 @@ function cli_getOptions {
     # Define valid long options.
     local ARGSL="help,version"
 
-    # Initialize arguments local to this function environment.
+    # Define module arguments local to this function. This is very
+    # important in order to provide option parsing for different
+    # function environment levels.
     local TCAR_ARGUMENTS=''
 
     # Redefine arguments using getopt(1) command parser.

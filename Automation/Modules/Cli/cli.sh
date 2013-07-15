@@ -29,12 +29,7 @@
 
 function cli {
 
-    # Initialize command-line interface default configuration values.
-    if [[ -f ${TCAR_SCRIPT_INIT_DIR}/cli.conf ]];then
-        . ${TCAR_SCRIPT_INIT_DIR}/cli.conf
-    fi
-
-    # Initialize list of common functionalities to load.
+    # Initialize command-line interface common functions.
     for MODULE_SCRIPT in $(ls ${TCAR_SCRIPT_INIT_DIR}/Scripts/*.sh);do
         if [[ -x ${MODULE_SCRIPT} ]];then
             . ${MODULE_SCRIPT}
@@ -54,60 +49,16 @@ function cli {
     # `Ctrl+C').
     trap cli_terminateScriptExecution 0
 
-    # Define module arguments local to this function. This is very
-    # important in order to provide option parsing for different
-    # function environment levels.
-    local TCAR_ARGUMENTS=''
-
-    # Define module's name (MODULE_NAME) using the first argument
-    # in the command-line.
-    local MODULE_NAME=$(cli_getRepoName "${1}" "-f" | cut -d '-' -f1)
-
-    # Define regular expression to match available modules.
-    local MODULE_NAME_LIST=$(ls ${TCAR_SCRIPT_BASEDIR}/Modules/ \
-        | sed -r 's/.+-([[:alnum:]]+)$/\1/' \
-        | tr '\n' '|' | sed -r 's/\|$//')
-
-    # Check module's name possible values.
-    if [[ ! ${MODULE_NAME} =~ "^(${MODULE_NAME_LIST})$" ]];then
-        cli_printMessage "`gettext "The module provided isn't valid."`" --as-error-line
+    # Initialize command-line interface default configuration values.
+    if [[ -f ${TCAR_SCRIPT_INIT_DIR}/${TCAR_SCRIPT_INIT}.conf ]];then
+        . ${TCAR_SCRIPT_INIT_DIR}/${TCAR_SCRIPT_INIT}.conf
     fi
 
-    # Define function directory.
-    local MODULE_DIR=${TCAR_SCRIPT_BASEDIR}/Modules/${TCAR_SCRIPT_NAME}-${MODULE_NAME}
-
-    # Define function file name.
-    local MODULE_INIT_FILE=${MODULE_DIR}/${MODULE_NAME}.sh
-
-    # Check function script execution rights.
-    cli_checkFiles -x ${MODULE_INIT_FILE}
-
-    # Remove the first argument passed to centos-art.sh command-line
-    # in order to build optional arguments inside functionalities. We
-    # start counting from second argument (inclusive) on.
-    shift 1
-
-    # When the word cli is provided as module to centos-art.sh script,
-    # the cli module reduces its mission to just printing help and
-    # version information about itself. After that, it must finish the
-    # script execution successfully.
-    if [[ ${MODULE_NAME} == "${TCAR_SCRIPT_INIT}" ]];then
+    # Verify first argument passed to centos-art.sh script.
+    if [[ ${1} == "${TCAR_SCRIPT_INIT}" ]];then
         cli_getOptions "${@}"
+    else
+        cli_initModule "${@}"
     fi
-
-    # Define default text editors used by centos-art.sh script.
-    if [[ ! "${TCAR_USER_EDITOR}" =~ '/usr/bin/(vim|emacs|nano)' ]];then
-        TCAR_USER_EDITOR='/usr/bin/vim'
-    fi
-    
-    # Check text editor execution rights.
-    cli_checkFiles -x ${TCAR_USER_EDITOR}
-
-    # Go for function initialization. Keep the cli_exportFunctions
-    # function calling after all variables and arguments definitions.
-    cli_exportFunctions "${MODULE_INIT_FILE}"
-
-    # Execute function.
-    ${MODULE_NAME} "${@}"
 
 }
