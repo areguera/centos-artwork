@@ -56,7 +56,7 @@ function cli_printMessage {
             # paths in order to free horizontal space on final output
             # messages.
             echo "${MESSAGE}" | sed -r \
-                -e "s!${TCAR_USER_WRKDIR}/!!g" \
+                -e "s!${TCAR_BASEDIR}/!!g" \
                 -e "s!> /!> !g" \
                 -e "s!/{2,}!/!g" \
                 | gawk 'BEGIN { FS=": " }
@@ -154,12 +154,12 @@ function cli_printMessage {
 
         --as-notrailingnew-line )
             echo -e -n "${MESSAGE}" | sed -r \
-                -e "s!${TCAR_USER_WRKDIR}/!!g" 1>&2
+                -e "s!${TCAR_BASEDIR}/!!g" 1>&2
             ;;
 
         --as-stderr-line )
             echo "${MESSAGE}" | sed -r \
-                -e "s!${TCAR_USER_WRKDIR}/!!g" 1>&2
+                -e "s!${TCAR_BASEDIR}/!!g" 1>&2
             ;;
 
     esac
