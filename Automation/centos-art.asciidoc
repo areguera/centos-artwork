@@ -121,8 +121,8 @@ stored in the directory +Automation/Modules+.
 *Modules/*::
     This directory contains module's modules.
 *Manuals/*::
-    This directory contains module's documentation in manpage format.
-    The structure of this directory is as follows:
+    This directory contains module's documentation produced by *help*
+    module.  The structure of this directory looks as follow:
 +
 -------------------------------------
 Manuals/
@@ -134,8 +134,8 @@ Manuals/
 -------------------------------------
 
 *Locales/*::
-    This directory contains module's translations using GNU gettext
-    standards. The structure of this directory is as follows:
+    This directory contains module's translations produced by *locale*
+    module. The structure of this directory looks as follow:
 +
 -------------------------------------
 Locales/
@@ -149,9 +149,10 @@ Locales/
 -------------------------------------
 
 *Scripts/*::
-    This directory contains module's function scripts. Here is where
-    all the tasks the module is useful to are written and organized.
-    As convention the following structure is used:
+    This directory contains function scripts written by module's
+    writers. Here is where all the tasks the module is useful to are
+    written and organized.  As convention the following structure is
+    used:
 +
 -------------------------------------
 Scripts/
