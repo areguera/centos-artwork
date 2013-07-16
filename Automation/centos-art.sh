@@ -31,6 +31,7 @@ if [[ ! ${TCAR_BASEDIR} ]] || [[ -z ${TCAR_BASEDIR} ]] \
     || [[ ! -d ${TCAR_BASEDIR} ]];then
     echo -n "Enter repository's absolute path: "
     read TCAR_BASEDIR
+    declare -xr TCAR_BASEDIR
 fi
 
 # Define automation scripts base directory. We need to define it here
