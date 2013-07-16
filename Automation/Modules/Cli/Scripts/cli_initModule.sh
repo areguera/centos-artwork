@@ -55,6 +55,13 @@ function cli_initModule {
     # start counting from second argument (inclusive) on.
     shift 1
 
+    # Verify number of arguments passed to centos-art.sh script. By
+    # default, to all modules, when no option is provided the version
+    # information is printed.
+    if [[ $# -lt 1 ]];then
+        cli_printVersion
+    fi
+
     # Go for function initialization. Keep the cli_exportFunctions
     # function calling after all variables and arguments definitions.
     cli_exportFunctions "${MODULE_INIT_FILE}"
