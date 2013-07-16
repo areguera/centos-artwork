@@ -58,25 +58,42 @@ fi
 case ${1} in
 
     --help )
-        # Print script help.
+        # Print script's help.
         ${TCAR_MANUAL_READER} ${TCAR_SCRIPT_NAME}
         ;;
 
     --version )
-        # Print script version.
+        # Print script's name and version.
         echo "`eval_gettext "Running $TCAR_SCRIPT_NAME (v$TCAR_SCRIPT_VERSION)."`"
         ;;
 
     * )
-        # Initialize script command-line interface.
-        if [[ -x ${TCAR_SCRIPT_INIT_FILE} ]];then
-            . ${TCAR_SCRIPT_INIT_FILE} \
-            && export -f ${TCAR_SCRIPT_INIT} \
-            && ${TCAR_SCRIPT_INIT} "$@"
-        else
-            echo "${TCAR_SCRIPT_INIT_FILE} `gettext "has not execution rights."`"
-        fi
+
+        # Export script's environment functions.
+        for SCRIPT_FILE in $(ls ${TCAR_SCRIPT_BASEDIR}/Scripts/*.sh);do
+            if [[ -x ${SCRIPT_FILE} ]];then
+                . ${SCRIPT_FILE}
+                export -f $(grep '^function ' ${SCRIPT_FILE} | cut -d' ' -f2)
+            else
+                echo "${SCRIPT_FILE} `gettext "has not execution rights."`"
+            fi
+        done
+
+        # Trap signals in order to terminate the script execution
+        # correctly (e.g., removing all temporal files before
+        # leaving).  Trapping the exit signal seems to be enough by
+        # now, since it is always present as part of the script
+        # execution flow. Each time the centos-art.sh script is
+        # executed it will inevitably end with an EXIT signal at some
+        # point of its execution, even if it is interrupted in the
+        # middle of its execution (e.g., through `Ctrl+C').
+        trap cli_terminateScriptExecution 0
+
+        # Export script's module environment.
+        cli_initModule "${@}"
+
         ;;
+
 esac
 
 exit 0

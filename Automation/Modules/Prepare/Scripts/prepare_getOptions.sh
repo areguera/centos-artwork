@@ -1,10 +1,10 @@
 #!/bin/bash
 ######################################################################
 #
-#   prepare_getOptions.sh -- This function parses command options
-#   provided to `centos-art.sh' script when the first argument in the
-#   command-line is the `prepare' word. To parse options, this
-#   function makes use of getopt program.
+#   prepare_getOptions.sh -- This function parses options passed to
+#   `centos-art.sh' script command-line, when the first argument is
+#   the `prepare' word. To parse options, this function makes use of
+#   getopt program.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013

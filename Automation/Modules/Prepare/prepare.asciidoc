@@ -29,10 +29,11 @@ The *prepare* module has the following options:
 *--quiet*::
     This option suppresses all outputs except script's errors.
 *--packages*::
-    This option verifies whether or not required packages are installed in the
-    workstation. When required packages are not installed in the workstation,
-    the *prepare* module executes the *yum install* command through *sudo* to
-    install the required packages.
+    This option verifies whether or not required packages are
+    installed in the workstation. When required packages are not
+    installed in the workstation, the *prepare* module executes the
+    *yum install* command through *sudo* to install the required
+    packages.
 *--images*::
     This option calls the *render* module of *centos-art.sh* script
     and produces content related to all +images.conf+ files found

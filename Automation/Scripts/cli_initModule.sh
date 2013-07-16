@@ -33,7 +33,7 @@ function cli_initModule {
     local MODULE_NAME=$(cli_getRepoName "${1}" "-f" | cut -d '-' -f1)
 
     # Define regular expression to match available modules.
-    local MODULE_NAME_LIST=$(ls ${MODULE_BASEDIR}/ \
+    local MODULE_NAME_LIST=$(ls ${TCAR_SCRIPT_MODULES_BASEDIR} \
         | tr '\n' '|' | sed -r 's/\|$//' | tr '[[:upper:]]' '[[:lower:]]')
 
     # Check module's name possible values.
@@ -42,7 +42,7 @@ function cli_initModule {
     fi
 
     # Define function directory.
-    local MODULE_DIR=${MODULE_BASEDIR}/$(cli_getRepoName "${MODULE_NAME}" "-d")
+    local MODULE_DIR=${TCAR_SCRIPT_MODULES_BASEDIR}/$(cli_getRepoName "${MODULE_NAME}" "-d")
 
     # Define function file name.
     local MODULE_INIT_FILE=${MODULE_DIR}/${MODULE_NAME}.sh
@@ -61,6 +61,15 @@ function cli_initModule {
     if [[ $# -lt 1 ]];then
         cli_printVersion
     fi
+
+    # Redefine internationalization configuration variables.
+    declare -x TEXTDOMAIN=${MODULE_NAME}
+    declare -x TEXTDOMAINDIR=${MODULE_DIR}/Locales
+
+    # Redefine manuals configuration values.
+    declare -x TCAR_MANUAL_FILE=${MODULE_DIR}/${MODULE_NAME}.asciidoc
+    declare -x TCAR_MANUAL_SEARCHPATH=${MODULE_DIR}/Manuals
+    declare -x TCAR_MANUAL_READER="/usr/bin/man -M ${TCAR_MANUAL_SEARCHPATH}"
 
     # Go for function initialization. Keep the cli_exportFunctions
     # function calling after all variables and arguments definitions.

@@ -28,19 +28,22 @@ repository.
 When you execute the *centos-art.sh* script in a terminal, it will
 request the absolute path where you stored your working copy of CentOS
 artwork repository.  To avoid the absolute path request every time you
-execute the script, you can edit the +~/.bash_profile+ file and set
-the absolute path to your working copy there, as value to
+execute the script, you can edit the +~/.bash_profile+ file and
+declare the absolute path to your working copy there, as value to
 TCAR_BASEDIR variable.
 
-Once *centos-art.sh* script knows what is the absolute path to your
-working copy, it executes the file *centos-art.conf* to load default
-values to configuration variables into its execution environment.
-After configuration variables have been loaded in the execution
-environment, the script looks whether or not any option was passed as
-first argument to *centos-art.sh* script. If no option was passed, it
-gives control to *cli* module.  At this point, the *centos-art.sh*
-script waits for modules to conclude their job and exit the script
-execution as described in the xref:exit[] section.
+Once *centos-art.sh* script knows what the absolute path to your
+working copy is, it executes the file *centos-art.conf* to load
+default values to configuration variables into its execution
+environment.  After configuration variables have been loaded in the
+execution environment, the script looks for supported options in the
+first argument. If the options passed are recognized the script
+process them. If the options aren't recognized or no option is passed
+at all, the *centos-art.sh* script exports common functions and
+executes the module specified as first argument, assuming the first
+argument is a valid module name of course.  Finally, the
+*centos-art.sh* script waits for the module script to conclude its job
+and exits the as described in the xref:exit[] section.
 
 anchor:exit[Exit Status]
 
@@ -56,20 +59,11 @@ Modules
 From version 0.5 on, *centos-art.sh* script introduces the idea of
 modules to its base design.  Modules are individual execution
 environments that may nest themselves one inside another to achieve
-high levels of code maintainability.  Modules make it possible to
-divide a big task into smaller tasks that can be easier to debug,
-maintain and share with other modules.
+high levels maintainability.  Modules make it possible to divide a big
+task into smaller tasks that can be easier to debug, maintain and
+share with other modules.
 
 The following modules are available for *centos-art.sh* script:
-
-*cli*::
-    This modules initializes common and specific functions inside
-    *centos-art.sh* script execution environment. This module is
-    loaded internally when you execute the *centos-art.sh* script in a
-    terminal and you probably don't need to execute it in a terminal
-    unless you want to see help or version information about it. This
-    module interprets arguments passed to *centos-art.sh* command-line
-    to execute the associated module (a.k.a., specific functions).
 
 *prepare*::
     This module standardizes configuration tasks needed by your
@@ -124,40 +118,41 @@ stored in the directory +Automation/Modules+.
     This directory contains module's documentation produced by *help*
     module.  The structure of this directory looks as follow:
 +
--------------------------------------
+----------------------------------------------------------------------
 Manuals/
 |-- ${LANG}/
 |   |-- man${SECTION_NUMBER}
 |   `-- ${MODULE_NAME}.${SECTION_NUMBER}
 `-- man${SECTION_NUMBER}
     `-- ${MODULE_NAME}.${SECTION_NUMBER}
--------------------------------------
+----------------------------------------------------------------------
 
 *Locales/*::
     This directory contains module's translations produced by *locale*
     module. The structure of this directory looks as follow:
 +
--------------------------------------
+----------------------------------------------------------------------
 Locales/
 `-- ${LANG}/
     |-- LC_MESSAGES
-    |   `-- ${MODULE_NAME}.sh.mo
+    |   |-- ${MODULE_NAME}.sh.mo
+    |   `-- ${MODULE_NAME}.docbook.mo
     |-- ${MODULE_NAME}.sh.po
     |-- ${MODULE_NAME}.sh.pot
-    |-- ${MODULE_NAME}.xml.po
-    `-- ${MODULE_NAME}.xml.pot
--------------------------------------
+    |-- ${MODULE_NAME}.docbook.po
+    `-- ${MODULE_NAME}.docbook.pot
+----------------------------------------------------------------------
 
 *Scripts/*::
     This directory contains function scripts written by module's
-    writers. Here is where all the tasks the module is useful to are
-    written and organized.  As convention the following structure is
+    writers. Here is where all the tasks the module is useful for are
+    written and stored in.  As convention the following structure is
     used:
 +
--------------------------------------
+----------------------------------------------------------------------
 Scripts/
 `-- ${MODULE_NAME}_${FUNCTION_NAME}.sh
--------------------------------------
+----------------------------------------------------------------------
 +
 {asccidoc-br}
 +
@@ -167,9 +162,9 @@ does, as well as author and copying information. After the top comment
 and separated by one white line, you should define the function
 sentence using the long format.
 +
--------------------------------------
+----------------------------------------------------------------------
 #!/bin/bash
-########################################################################
+######################################################################
 #
 #   ${MODULE_NAME}_${FUNCTION_NAME}.sh -- ${FUNCTION_DESCRIPTION}
 #
@@ -180,8 +175,8 @@ sentence using the long format.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or (at
-# your option) any later version.
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
 #
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -192,12 +187,12 @@ sentence using the long format.
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-########################################################################
+######################################################################
 
 function ${MODULE_NAME}_${FUNCTION_NAME} {
     ...
 }
--------------------------------------
+----------------------------------------------------------------------
 +
 [NOTE]
 If your are planning to contribute a new module to *centos-art.sh*
@@ -229,12 +224,6 @@ variable.
     this file only but, frequently, it is convenient as the module
     complexity grows to divide it in smaller pieces (function scripts)
     to improve maintainability and error findings.
-*$\{MODULE_NAME}.xml*::
-    This file is produced from *$\{MODULE_NAME}.asciidoc* and is used as
-    source to retrieve translatable strings. Translatable strings
-    retrieved from this file are stored in the module's *Locales/*
-    directory and used to produce localized mapages inside module's
-    *Manuals/$\{LANG}/man$\{SECTION_NUMBER}/* directory.
 
 Options
 -------
@@ -245,10 +234,14 @@ Options
 *--version*::
     Display program's name and version.
 
+Bugs
+----
+The module *pack* isn't implemented yet.
+
 Reporting Bugs
 --------------
-Report bugs on the *automation* category of *centos-artwork* project
-at the https://centos.org.cu/bugs/[The CentOS Bugs] website.
+Report bugs inside the *automation* category of *centos-artwork*
+project, at the https://centos.org.cu/bugs/[The CentOS Bugs] website.
 
 Author
 ------
