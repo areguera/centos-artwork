@@ -1,9 +1,14 @@
 #!/bin/bash
+######################################################################
 #
-# prepare_getOptions.sh -- This function parses command options
-# provided to `centos-art.sh' script when the first argument in the
-# command-line is the `prepare' word. To parse options, this function
-# makes use of getopt program.
+#   prepare_getOptions.sh -- This function parses command options
+#   provided to `centos-art.sh' script when the first argument in the
+#   command-line is the `prepare' word. To parse options, this
+#   function makes use of getopt program.
+#
+#   Written by:
+#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
+#     Key fingerprint = D67D 0F82 4CBD 90BC 6421  DF28 7CCE 757C 17CA 3951
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -21,87 +26,83 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
-# $Id$
-# ----------------------------------------------------------------------
+######################################################################
 
 function prepare_getOptions {
 
     # Define short options we want to support.
-    local ARGSS="h,q"
+    local ARGSS="h,v,q"
 
     # Define long options we want to support.
-    local ARGSL="help,quiet,answer-yes,packages,locales,links,images,manuals,directories,set-environment,see-environment,synchronize"
+    local ARGSL="help,version,quiet,yes,packages,links,images,manuals,all,directories,synchronize"
 
-    # Redefine CLI_FUNCTION_ARGUMENTS using getopt(1) command parser.
-    cli_parseArguments
+    # Define module arguments local to this function. This is very
+    # important in order to provide option parsing for different
+    # function environment levels.
+    local TCAR_ARGUMENTS=''
 
-    # Reset positional parameters using output from (getopt) argument
-    # parser.
-    eval set -- "$CLI_FUNCTION_ARGUMENTS"
+    # Redefine arguments using getopt(1) command parser.
+    cli_setArguments "${@}"
+
+    # Reset positional parameters on this function, using output
+    # produced from (getopt) arguments parser.
+    eval set -- "${TCAR_ARGUMENTS}"
 
     # Look for options passed through command-line.
     while true; do
         case "$1" in
 
             -h | --help )
-                cli_runFnEnvironment help --read --format="texinfo" "tcar-fs::scripts:bash-functions-prepare"
-                shift 1
-                exit
+                cli_printHelp
+                ;;
+
+            -v | --version )
+                cli_printVersion
                 ;;
 
             -q | --quiet )
-                FLAG_QUIET="true"
+                TCAR_FLAG_QUIET="true"
                 shift 1
                 ;;
 
-            --answer-yes )
-                FLAG_ANSWER="true"
-                shift 1
-                ;;
-
-            --set-environment )
-                ACTIONNAMS="${ACTIONNAMS} prepare_updateEnvironment"
-                shift 1
-                ;;
-
-            --see-environment )
-                ACTIONNAMS="${ACTIONNAMS} prepare_seeEnvironment"
+            --yes )
+                TCAR_FLAG_YES="true"
                 shift 1
                 ;;
 
             --packages )
-                ACTIONNAMS="${ACTIONNAMS} prepare_updatePackages"
-                shift 1
-                ;;
-
-            --locales )
-                ACTIONNAMS="${ACTIONNAMS} prepare_updateLocales"
-                shift 1
-                ;;
-
-            --links )
-                ACTIONNAMS="${ACTIONNAMS} prepare_updateLinks"
+                MODULE_ACTIONS="${MODULE_ACTIONS} prepare_setPackages"
                 shift 1
                 ;;
 
             --images )
-                ACTIONNAMS="${ACTIONNAMS} prepare_updateImages"
+                MODULE_ACTIONS="${MODULE_ACTIONS} prepare_setImages"
                 shift 1
                 ;;
 
             --manuals )
-                ACTIONNAMS="${ACTIONNAMS} prepare_updateManuals"
+                MODULE_ACTIONS="${MODULE_ACTIONS} prepare_setManuals"
+                shift 1
+                ;;
+
+            --links )
+                MODULE_ACTIONS="${MODULE_ACTIONS} prepare_setLinks"
+                shift 1
+                ;;
+
+            --all )
+                MODULE_ACTIONS="prepare_setPackages prepare_setImages
+                    prepare_setManuals prepare_setLinks"
                 shift 1
                 ;;
 
             --directories )
-                ACTIONNAMS="${ACTIONNAMS} prepare_updateDirectoryStructure"
+                MODULE_ACTIONS="${MODULE_ACTIONS} prepare_updateDirectoryStructure"
                 shift 1
                 ;;
 
             --synchronize )
-                FLAG_SYNCHRONIZE="true"
+                TCAR_FLAG_SYNCHRONIZE="true"
                 shift 1
                 ;;
 
@@ -121,9 +122,5 @@ function prepare_getOptions {
 
         esac
     done
-
-    # Redefine CLI_FUNCTION_ARGUMENTS variable using current
-    # positional parameters. 
-    cli_parseArgumentsReDef "$@"
 
 }

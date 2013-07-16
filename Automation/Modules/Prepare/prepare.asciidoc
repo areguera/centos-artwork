@@ -1,0 +1,83 @@
+prepare(1)
+==========
+
+Name
+----
+prepare - Prepare your workstation to start using the CentOS artwork
+repository.
+
+Synopsis
+--------
+centos-art prepare [--help|--version|--quiet|--yes|--packages|--images|--manuals|--links|--directories|--synchronize]
+
+Description
+-----------
+The *prepare* module of *centos-art.sh* script standardizes the
+configuration tasks you need to perform after downloading a fresh
+working copy of CentOS artwork repository.
+
+Options
+-------
+The *prepare* module has the following options:
+
+*--help*::
+    This option shows the module's documentation (this page).
+*--version*::
+    This option shows the module's name and version.
+*--yes*::
+    This option assumes yes to all questions.
+*--quiet*::
+    This option suppresses all outputs except script's errors.
+*--packages*::
+    This option verifies whether or not required packages are installed in the
+    workstation. When required packages are not installed in the workstation,
+    the *prepare* module executes the *yum install* command through *sudo* to
+    install the required packages.
+*--images*::
+    This option calls the *render* module of *centos-art.sh* script
+    and produces content related to all +images.conf+ files found
+    inside the repository's root directory.
+*--manuals*::
+    This option calls the *render* module of *centos-art.sh* script
+    and produces content related to all +manual.conf+ files found
+    inside the repository's root directory.
+*--links*::
+    This option calls the *render* module of *centos-art.sh* script
+    and produces content related to all +links.conf+ files found
+    inside the repository's root directory.
+*--directories*::
+    This option produces mirrored directories structures.
+*--synchronize*::
+    This option brings remote changes from central repository up to
+    the working copy and pushes local changes from working copy up to
+    the central repository, using the repository's version control
+    system (e.g., git or subversion).
+
+Reporting Bugs
+--------------
+Report bugs on the *automation* category of *centos-artwork* project
+at the https://centos.org.cu/bugs/[The CentOS Bugs] website.
+
+Author
+------
+Written by mailto:al@centos.org.cu[Alain Reguera Delgado]
+
+Copyright
+---------
+Copyright (C) 2013 The CentOS Project
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or (at
+your option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+// vim: set syntax=asciidoc:
