@@ -41,10 +41,16 @@ function tcar_setModuleEnvironment {
         tcar_printMessage "`gettext "The module provided isn't valid."`" --as-error-line
     fi
 
-    # Define function directory.
+    # Define module's directory.
     local MODULE_DIR=${TCAR_SCRIPT_MODULES_BASEDIR}/$(tcar_getRepoName "${MODULE_NAME}" "-d")
 
-    # Define function file name.
+    # Define module's related directories.
+    local MODULE_DIR_MODULES=${MODULE_DIR}/Modules
+    local MODULE_DIR_MANUALS=${MODULE_DIR}/Manuals
+    local MODULE_DIR_SCRIPTS=${MODULE_DIR}/Scripts
+    local MODULE_DIR_LOCALES=${MODULE_DIR}/Locales
+
+    # Define module's initialization file.
     local MODULE_INIT_FILE=${MODULE_DIR}/${MODULE_NAME}.sh
 
     # Check function script execution rights.
@@ -52,7 +58,7 @@ function tcar_setModuleEnvironment {
 
     # Remove the first argument passed to centos-art.sh command-line
     # in order to build optional arguments inside functionalities. We
-    # start counting from second argument (inclusive) on.
+    # start counting from second argument on, inclusively.
     shift 1
 
     # Verify number of arguments passed to centos-art.sh script. By
@@ -71,17 +77,12 @@ function tcar_setModuleEnvironment {
     declare -x TEXTDOMAIN=${MODULE_NAME}
     declare -x TEXTDOMAINDIR=${MODULE_DIR}/Locales
 
-    # Redefine module-specific manuals configuration values.
-    declare -x TCAR_MANUAL_FILE=${MODULE_DIR}/${MODULE_NAME}.asciidoc
-    declare -x TCAR_MANUAL_SEARCHPATH=${MODULE_DIR}/Manuals
-    declare -x TCAR_MANUAL_READER="/usr/bin/man -M ${TCAR_MANUAL_SEARCHPATH}"
+    # Load module-specific (function) scripts into current execution
+    # environment.  Keep the tcar_setModuleEnvironmentScripts function
+    # call after all variables and arguments definitions.
+    tcar_setModuleEnvironmentScripts
 
-    # Go for function initialization. Keep the
-    # tcar_setModuleEnvironmentScripts function calling after all
-    # variables and arguments definitions.
-    tcar_setModuleEnvironmentScripts "${MODULE_INIT_FILE}"
-
-    # Execute function.
+    # Execute module-specific initialization script.
     ${MODULE_NAME} "${@}"
 
 }

@@ -29,25 +29,13 @@
 
 function tcar_setModuleEnvironmentScripts {
 
-    # Retrieve export identifier for the function we want to export.
-    local MODULE_INIT_FILE="${1}"
-
-    # Verify the export identification existence.
-    tcar_checkFiles -x ${MODULE_INIT_FILE}
-
-    # Define the source location where function files are placed in.
-    local MODULE_SCRIPTS_DIR=$(dirname ${MODULE_INIT_FILE})/Scripts
-
-    # Define suffix used to retrieve function files.
-    local MODULE_INIT_FILENAME=$(basename "${MODULE_INIT_FILE}" | sed -r 's/\.sh$//')
-
     # Define the pattern used to retrieve function names from function
     # files.
-    local FUNCTION_PATTERN="^function[[:space:]]+${MODULE_INIT_FILENAME}(_[[:alnum:]]+)?[[:space:]]+{[[:space:]]*$"
+    local FUNCTION_PATTERN="^function[[:space:]]+${MODULE_NAME}(_[[:alnum:]]+)?[[:space:]]+{[[:space:]]*$"
 
     # Define the list of files.
     local MODULE_SCRIPTS="${MODULE_INIT_FILE}
-        $(tcar_getFilesList ${MODULE_SCRIPTS_DIR} \
+        $(tcar_getFilesList ${MODULE_DIR_SCRIPTS} \
         --pattern="${MODULE_DIR}/.+\.sh$" --maxdepth='1' \
         --mindepth='1' --type='f')"
 

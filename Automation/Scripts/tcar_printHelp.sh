@@ -28,7 +28,7 @@
 
 function tcar_printHelp {
 
-    ${TCAR_MANUAL_READER} "${MODULE_NAME}"
+    /usr/bin/man -M ${MODULE_DIR_MANUALS} "${MODULE_NAME}"
     exit 0
 
 }
