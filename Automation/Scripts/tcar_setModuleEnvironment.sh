@@ -62,11 +62,16 @@ function tcar_setModuleEnvironment {
         tcar_printVersion
     fi
 
-    # Redefine internationalization configuration variables.
+    # Redefine module-specific configuration values.
+    if [[ -f ${MODULE_DIR}/${MODULE_NAME}.conf.sh ]];then
+        . ${MODULE_DIR}/${MODULE_NAME}.conf.sh
+    fi
+
+    # Redefine module-specific internationalization configuration variables.
     declare -x TEXTDOMAIN=${MODULE_NAME}
     declare -x TEXTDOMAINDIR=${MODULE_DIR}/Locales
 
-    # Redefine manuals configuration values.
+    # Redefine module-specific manuals configuration values.
     declare -x TCAR_MANUAL_FILE=${MODULE_DIR}/${MODULE_NAME}.asciidoc
     declare -x TCAR_MANUAL_SEARCHPATH=${MODULE_DIR}/Manuals
     declare -x TCAR_MANUAL_READER="/usr/bin/man -M ${TCAR_MANUAL_SEARCHPATH}"

@@ -37,11 +37,6 @@
 
 function prepare {
 
-    # Initialize module-specific configuration values.
-    if [[ -f ${MODULE_DIR}/${MODULE_NAME}.conf ]];then
-        . ${MODULE_DIR}/${MODULE_NAME}.conf
-    fi
-
     # Interpret arguments and options passed through command-line.
     prepare_getOptions "${@}"
 
