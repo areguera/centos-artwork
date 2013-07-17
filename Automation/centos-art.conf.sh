@@ -1,8 +1,8 @@
 #!/bin/bash
 ######################################################################
 #
-#   centos-art.conf -- This file provides default configuration values
-#   to centos-art.sh script.
+#   centos-art.conf.sh -- This file provides default configuration
+#   values to centos-art.sh script.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2013
