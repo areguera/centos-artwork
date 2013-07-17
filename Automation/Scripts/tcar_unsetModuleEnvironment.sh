@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   tcar_unsetFunctions.sh -- This function unsets functionalities from
+#   tcar_unsetModuleEnvironment.sh -- This function unsets functionalities from
 #   centos-art.sh script execution environment.
 #
 #   Written by: 
@@ -26,7 +26,7 @@
 #
 ######################################################################
 
-function tcar_unsetFunctions {
+function tcar_unsetModuleEnvironment {
 
     # Define export id used to retrieve function files. This is the
     # same export id used to export functions without the directory
