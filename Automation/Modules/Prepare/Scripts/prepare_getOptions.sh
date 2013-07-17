@@ -97,7 +97,7 @@ function prepare_getOptions {
                 ;;
 
             --directories )
-                MODULE_ACTIONS="${MODULE_ACTIONS} prepare_updateDirectoryStructure"
+                MODULE_ACTIONS="${MODULE_ACTIONS} prepare_setDirStructure"
                 shift 1
                 ;;
 

@@ -1,39 +1,42 @@
 #!/bin/bash
+######################################################################
 #
-# prepare_updateDirectoryStructure.sh -- This function standardizes
-# the relation between source directory structures and target
-# directory structures inside the repository. This function takes
-# source and target paths as arguments, analyses them and builds the
-# target directory structure based on source directory structure. This
-# function must be executed before executing production functions like
-# render.
+#   prepare_setDirStructure.sh -- This function standardizes
+#   the relation between source directory structures and target
+#   directory structures inside the repository. 
 #
-# In order for this verification to work, all source directory
-# structures provided must be organized using one directory level more
-# than its related target directory. The purpose of this directory is
-# content categorization. For example, consider the following path:
+#   This function takes source and target directory paths as
+#   arguments, analyses them and builds the target directory structure
+#   based on source directory structure.  This function must be
+#   executed before executing production modules like render.
 #
-#   ---------------++++++++++++++++++++++++
-#   ${SOURCE_PATH}/${CATEGORY}/${COMPONENT}
-#   ---------------++++++++++++++++++++++++
-#   ++++++++++++++++++++++++++++++++++------------
-#   ${TARGET_PATH}/${NAME}/${VERSION}/${COMPONENT}
-#   ++++++++++++++++++++++++++++++++++------------
+#   In order for this verification to work, all source directory
+#   structures provided must be organized using one directory level
+#   more than its related target directory. The purpose of this
+#   directory is content categorization. For example, consider the
+#   following path:
 #
-# So we end with the following path:
+#       ---------------++++++++++++++++++++++++
+#       ${SOURCE_PATH}/${CATEGORY}/${COMPONENT}
+#       ---------------++++++++++++++++++++++++
+#       ++++++++++++++++++++++++++++++++++------------
+#       ${TARGET_PATH}/${NAME}/${VERSION}/${COMPONENT}
+#       ++++++++++++++++++++++++++++++++++------------
 #
-#   ${TARGET_PATH}/${CATEGORY}/${COMPONENT}
+#   So we end with the following path:
+#
+#       ${TARGET_PATH}/${CATEGORY}/${COMPONENT}
 # 
-# In this path, ${CATEGORY} makes reference to a categorization
-# directory used to describe source components related to target
-# components. However, in the target side, such ${CATEGORY} directory
-# is not needed and should be removed from it in order to get the
-# final target path, which is:  
+#   In this path, ${CATEGORY} makes reference to a categorization
+#   directory used to describe source components related to target
+#   components. However, in the target side, such ${CATEGORY}
+#   directory is not needed and should be removed from it in order to
+#   get the final target path, which is:  
 #
-#   ${TARGET_PATH}/${COMPONENT}
+#       ${TARGET_PATH}/${COMPONENT}
 #
-# ${CATEGORY} is always a one-level directory, but ${COMPONENT} might
-# have several levels deep.
+#   ${CATEGORY} is always a one-level directory, but ${COMPONENT}
+#   might have several levels deep.
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -51,11 +54,9 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
-# $Id$
-# ----------------------------------------------------------------------
+######################################################################
 
-function prepare_updateDirectoryStructure {
+function prepare_setDirStructure {
 
     # Define absolute path to design models' directory structure. This
     # directory contains the directory structure you want to verify
