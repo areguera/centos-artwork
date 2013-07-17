@@ -1,8 +1,8 @@
 #!/bin/bash
 ######################################################################
 #
-#   tcar_setModule.sh -- This function initiates module environments
-#   inside the centos-art.sh script.
+#   tcar_setModuleEnvironment.sh -- This function initiates module
+#   environments inside the centos-art.sh script.
 #
 #   Written by: 
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -26,7 +26,7 @@
 #
 ######################################################################
 
-function tcar_setModule {
+function tcar_setModuleEnvironment {
 
     # Define module's name (MODULE_NAME) using the first argument
     # in the command-line.
@@ -71,9 +71,10 @@ function tcar_setModule {
     declare -x TCAR_MANUAL_SEARCHPATH=${MODULE_DIR}/Manuals
     declare -x TCAR_MANUAL_READER="/usr/bin/man -M ${TCAR_MANUAL_SEARCHPATH}"
 
-    # Go for function initialization. Keep the tcar_setModuleScripts
-    # function calling after all variables and arguments definitions.
-    tcar_setModuleScripts "${MODULE_INIT_FILE}"
+    # Go for function initialization. Keep the
+    # tcar_setModuleEnvironmentScripts function calling after all
+    # variables and arguments definitions.
+    tcar_setModuleEnvironmentScripts "${MODULE_INIT_FILE}"
 
     # Execute function.
     ${MODULE_NAME} "${@}"

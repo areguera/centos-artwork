@@ -90,7 +90,7 @@ case ${1} in
         trap tcar_terminateScriptExecution 0
 
         # Export script's module environment.
-        tcar_setModule "${@}"
+        tcar_setModuleEnvironment "${@}"
 
         ;;
 
