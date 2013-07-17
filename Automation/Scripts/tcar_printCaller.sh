@@ -1,11 +1,8 @@
 #!/bin/bash
 ######################################################################
 #
-#   cli_terminateScriptExecution.sh -- This function standardizes the
-#   actions that must be realized just before leaving the script
-#   execution (e.g., cleaning temporal files).  This function is the
-#   one called when interruption signals like EXIT, SIGHUP, SIGINT and
-#   SIGTERM are detected.
+#   tcar_printCaller.sh -- This function standardizes the way caller
+#   information is retrieved.
 #
 #   Written by: 
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -15,8 +12,8 @@
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or (at
-# your option) any later version.
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
 #
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -29,13 +26,32 @@
 #
 ######################################################################
 
-function cli_terminateScriptExecution {
+function tcar_printCaller {
 
-    # Remove temporal directory.
-    rm -r ${TCAR_SCRIPT_TEMPDIR}
+    local EXPR=${1}
+    local OPTS=${2}
 
-    # NOTE: Don't specify an exit status here. As convenction we do
-    # this when error messages are triggerd. See `--as-error-line'
-    # option from `cli_printMessage' functionality.
+    case ${OPTS} in
+
+        --line )
+            caller ${EXPR} | gawk '{ print $1 }'
+            ;;
+
+        --name )
+            caller ${EXPR} | gawk '{ print $2 }'
+            ;;
+
+        --path )
+            caller ${EXPR} | gawk '{ print $3 }'
+            ;;
+
+        * )
+            # Define where the error was originated inside the
+            # centos-art.sh script. Print out the function name and
+            # line from the caller.
+            caller ${EXPR} | gawk '{ print $2 " L." $1 }'
+            ;;
+
+    esac
 
 }

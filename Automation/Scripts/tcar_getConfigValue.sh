@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   cli_getConfigValue.sh -- This function standardizes the way
+#   tcar_getConfigValue.sh -- This function standardizes the way
 #   configuration values are retrieved from configuration files. As
 #   arguments, the configuration file absolute path, the configuration
 #   section name, and the configuration option name must be provided.
@@ -28,7 +28,7 @@
 #
 ######################################################################
 
-function cli_getConfigValue {
+function tcar_getConfigValue {
 
     # Initialize absolute path to configuration file.
     local CONFIGURATION_FILE="${1}"
@@ -41,7 +41,7 @@ function cli_getConfigValue {
     local CONFIGURATION_OPTION="${3}"
 
     # Retrieve configuration lines from configuration file.
-    local CONFIGURATION_LINES=$(cli_getConfigLines \
+    local CONFIGURATION_LINES=$(tcar_getConfigLines \
         "${CONFIGURATION_FILE}" "${CONFIGURATION_SECTION}" "${CONFIGURATION_OPTION}")
 
     # Parse configuration lines to retrieve the values of variable

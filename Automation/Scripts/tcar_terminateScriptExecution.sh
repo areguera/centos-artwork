@@ -1,10 +1,11 @@
 #!/bin/bash
 ######################################################################
 #
-#   cli_getConfigSectionNames.sh -- This function standardizes the way
-#   section names are retrieved from configuration files. Once section
-#   names are retrieved they are printed to standard output for
-#   further processing.
+#   tcar_terminateScriptExecution.sh -- This function standardizes the
+#   actions that must be realized just before leaving the script
+#   execution (e.g., cleaning temporal files).  This function is the
+#   one called when interruption signals like EXIT, SIGHUP, SIGINT and
+#   SIGTERM are detected.
 #
 #   Written by: 
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -28,17 +29,13 @@
 #
 ######################################################################
 
-function cli_getConfigSectionNames {
+function tcar_terminateScriptExecution {
 
-    # Define absolute path to configuration file we want to retrieve
-    # section names from. 
-    local CONFIGURATION_FILE=${1}
+    # Remove temporal directory.
+    rm -r ${TCAR_SCRIPT_TEMPDIR}
 
-    # Verify existence of configuration file.
-    cli_checkFiles ${CONFIGURATION_FILE} -f
-
-    # Output all section names without brackets, one per line.
-    egrep '^\[[[:alnum:]._-]+\][[:space:]]*$' ${CONFIGURATION_FILE} \
-        | sed -r 's/\[(.+)\]/\1/'
+    # NOTE: Don't specify an exit status here. As convenction we do
+    # this when error messages are triggerd. See `--as-error-line'
+    # option from `tcar_printMessage' functionality.
 
 }

@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   cli_unsetFunctions.sh -- This function unsets functionalities from
+#   tcar_unsetFunctions.sh -- This function unsets functionalities from
 #   centos-art.sh script execution environment.
 #
 #   Written by: 
@@ -26,7 +26,7 @@
 #
 ######################################################################
 
-function cli_unsetFunctions {
+function tcar_unsetFunctions {
 
     # Define export id used to retrieve function files. This is the
     # same export id used to export functions without the directory
@@ -35,12 +35,12 @@ function cli_unsetFunctions {
 
     # Verify suffix value used to retrieve function files.
     if [[ ${FUNCTION_EXPORTID} == '' ]];then
-        cli_printMessage "`gettext "The export id was not provided."`" --as-error-line
+        tcar_printMessage "`gettext "The export id was not provided."`" --as-error-line
     fi
 
     # Define list of format-specific functionalities. This is the
     # list of function definitions previously exported by
-    # `cli_exportFunctions'.  Be sure to limit the list to function
+    # `tcar_exportFunctions'.  Be sure to limit the list to function
     # names that start with the suffix specified only.
     local FUNCTION_DEF=''
     local FUNCTION_DEFS=$(declare -F | gawk '{ print $3 }' | egrep "^${FUNCTION_EXPORTID}")

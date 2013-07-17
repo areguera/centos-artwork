@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   cli_exportFunctions.sh -- This function standardizes the way
+#   tcar_exportFunctions.sh -- This function standardizes the way
 #   specific functionalities are exported to centos-art.sh script
 #   environment.
 #
@@ -27,13 +27,13 @@
 #
 ######################################################################
 
-function cli_exportFunctions {
+function tcar_exportFunctions {
 
     # Retrieve export identifier for the function we want to export.
     local MODULE_INIT_FILE="${1}"
 
     # Verify the export identification existence.
-    cli_checkFiles -x ${MODULE_INIT_FILE}
+    tcar_checkFiles -x ${MODULE_INIT_FILE}
 
     # Define the source location where function files are placed in.
     local MODULE_SCRIPTS_DIR=$(dirname ${MODULE_INIT_FILE})/Scripts
@@ -47,7 +47,7 @@ function cli_exportFunctions {
 
     # Define the list of files.
     local MODULE_SCRIPTS="${MODULE_INIT_FILE}
-        $(cli_getFilesList ${MODULE_SCRIPTS_DIR} \
+        $(tcar_getFilesList ${MODULE_SCRIPTS_DIR} \
         --pattern="${MODULE_DIR}/.+\.sh$" --maxdepth='1' \
         --mindepth='1' --type='f')"
 
@@ -56,14 +56,14 @@ function cli_exportFunctions {
     # script will surely try to execute a function that haven't been
     # exported yet and report an error about it.
     if [[ -z ${MODULE_SCRIPTS} ]];then
-        cli_printMessage "${FUNCNAME}: `gettext "No function file was found."`" --as-error-line
+        tcar_printMessage "${FUNCNAME}: `gettext "No function file was found."`" --as-error-line
     fi
 
     # Process the list of files.
     for MODULE_SCRIPT in ${MODULE_SCRIPTS};do
 
         # Verify the execution rights for function file.
-        cli_checkFiles -x ${MODULE_SCRIPT}
+        tcar_checkFiles -x ${MODULE_SCRIPT}
 
         # Verify that function files have not been already exported.
         # If they have been already exported don't export them again.

@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   cli_getConfigLines.sh -- This function standardizes the way
+#   tcar_getConfigLines.sh -- This function standardizes the way
 #   configuration lines are retrieved form configuration files. As
 #   arguments, the configuration file absolute path, the configuration
 #   section name, and the configuration option name must be provided.
@@ -28,13 +28,13 @@
 #
 ######################################################################
 
-function cli_getConfigLines {
+function tcar_getConfigLines {
 
     # Initialize absolute path to configuration file.
     local CONFIGURATION_FILE="${1}"
 
     # Verify that configuration file does exist.
-    cli_checkFiles -e ${CONFIGURATION_FILE}
+    tcar_checkFiles -e ${CONFIGURATION_FILE}
 
     # Initialize configuration section name where the variable value
     # we want to to retrieve is set in.
@@ -42,7 +42,7 @@ function cli_getConfigLines {
 
     # Be sure the configuration section name has the correct format.
     if [[ ! ${CONFIGURATION_SECTION} =~ '^[[:alnum:]._-]+$' ]];then
-        cli_printMessage "`gettext "The configuration section provided is incorrect."`" --as-error-line
+        tcar_printMessage "`gettext "The configuration section provided is incorrect."`" --as-error-line
     fi
 
     # Initialize variable name we want to retrieve value from.

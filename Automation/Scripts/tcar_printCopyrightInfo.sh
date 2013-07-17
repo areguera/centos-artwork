@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   cli_printCopyrightInfo.sh -- This function standardizes the
+#   tcar_printCopyrightInfo.sh -- This function standardizes the
 #   copyright information printed on content produced by centos-art.sh
 #   script.
 #
@@ -37,7 +37,7 @@
 #
 ######################################################################
 
-function cli_printCopyrightInfo {
+function tcar_printCopyrightInfo {
 
     case "${1}" in
 
@@ -50,7 +50,7 @@ function cli_printCopyrightInfo {
         --license-url )
 
             # Print the url related to license name.
-            cli_printUrl --cc-sharealike
+            tcar_printUrl --cc-sharealike
             ;;
 
         --first-year )
@@ -73,15 +73,15 @@ function cli_printCopyrightInfo {
 
         --years-range )
 
-            local FIRST_YEAR=$(cli_printCopyrightInfo --first-year)
-            local LAST_YEAR=$(cli_printCopyrightInfo --last-year)
+            local FIRST_YEAR=$(tcar_printCopyrightInfo --first-year)
+            local LAST_YEAR=$(tcar_printCopyrightInfo --last-year)
             echo "${FIRST_YEAR}-${LAST_YEAR}"
             ;;
 
         --years-list )
 
-            local FIRST_YEAR=$(cli_printCopyrightInfo --first-year)
-            local LAST_YEAR=$(cli_printCopyrightInfo --last-year)
+            local FIRST_YEAR=$(tcar_printCopyrightInfo --first-year)
+            local LAST_YEAR=$(tcar_printCopyrightInfo --last-year)
 
             # Define full copyright year string based on first and
             # last year.
@@ -103,14 +103,14 @@ function cli_printCopyrightInfo {
 
         --holder-predicate )
 
-            local HOLDER=$(cli_printCopyrightInfo --holder)
+            local HOLDER=$(tcar_printCopyrightInfo --holder)
             echo "${HOLDER}. `gettext "All rights reserved."`"
             ;;
 
         * )
 
-            local YEAR=$(cli_printCopyrightInfo --last-year)
-            local HOLDER=$(cli_printCopyrightInfo --holder)
+            local YEAR=$(tcar_printCopyrightInfo --last-year)
+            local HOLDER=$(tcar_printCopyrightInfo --holder)
             echo "Copyright © ${YEAR} ${HOLDER}"
             ;;
 

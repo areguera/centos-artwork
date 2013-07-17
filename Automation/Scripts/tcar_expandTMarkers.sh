@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   cli_expandTMarkers.sh -- This function standardizes construction
+#   tcar_expandTMarkers.sh -- This function standardizes construction
 #   of translation markers and their related expansion. As convention,
 #   translation markers must be set inside source files (e.g.,
 #   Docbook, Svg, etc.) and expanded inside temporal instances used to
@@ -29,7 +29,7 @@
 #
 ######################################################################
 
-function cli_expandTMarkers {
+function tcar_expandTMarkers {
 
     # Initialize variables.
     local -a SRC
@@ -42,31 +42,31 @@ function cli_expandTMarkers {
     local LOCATION="${1}"
 
     # Verify that source location does exist.
-    cli_checkFiles -e ${LOCATION}
+    tcar_checkFiles -e ${LOCATION}
 
     # Define copyright translation markers.
     SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEAR(_LAST)?='
-    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --year)"
+    DST[((++${#DST[*]}))]="$(tcar_printCopyrightInfo --year)"
     SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEAR(S)?_LIST='
-    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --years-list)"
+    DST[((++${#DST[*]}))]="$(tcar_printCopyrightInfo --years-list)"
     SRC[((++${#SRC[*]}))]='=COPYRIGHT_HOLDER='
-    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --holder)"
+    DST[((++${#DST[*]}))]="$(tcar_printCopyrightInfo --holder)"
     SRC[((++${#SRC[*]}))]='=COPYRIGHT_HOLDER_PREDICATE='
-    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --holder-predicate)"
+    DST[((++${#DST[*]}))]="$(tcar_printCopyrightInfo --holder-predicate)"
 
     # Define license translation markers.
     SRC[((++${#SRC[*]}))]='=LICENSE='
-    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --license)"
+    DST[((++${#DST[*]}))]="$(tcar_printCopyrightInfo --license)"
     SRC[((++${#SRC[*]}))]='=LICENSE_URL='
-    DST[((++${#DST[*]}))]="$(cli_printCopyrightInfo --license-url)"
+    DST[((++${#DST[*]}))]="$(tcar_printCopyrightInfo --license-url)"
 
     # Define theme translation markers.
     SRC[((++${#SRC[*]}))]='=THEME='
-    DST[((++${#DST[*]}))]="$(cli_getPathComponent ${OUTPUT} --motif)"
+    DST[((++${#DST[*]}))]="$(tcar_getPathComponent ${OUTPUT} --motif)"
     SRC[((++${#SRC[*]}))]='=THEMENAME='
-    DST[((++${#DST[*]}))]="$(cli_getPathComponent ${OUTPUT} --motif-name)"
+    DST[((++${#DST[*]}))]="$(tcar_getPathComponent ${OUTPUT} --motif-name)"
     SRC[((++${#SRC[*]}))]='=THEMERELEASE='
-    DST[((++${#DST[*]}))]="$(cli_getPathComponent ${OUTPUT} --motif-release)"
+    DST[((++${#DST[*]}))]="$(tcar_getPathComponent ${OUTPUT} --motif-release)"
 
     # Define release-specific translation markers.
     SRC[((++${#SRC[*]}))]='=RELEASE='
@@ -78,35 +78,35 @@ function cli_expandTMarkers {
 
     # Define architectures translation markers.
     SRC[((++${#SRC[*]}))]='=ARCH='
-    DST[((++${#DST[*]}))]="$(cli_getPathComponent ${FLAG_BASEARCH} --architecture)"
+    DST[((++${#DST[*]}))]="$(tcar_getPathComponent ${FLAG_BASEARCH} --architecture)"
 
     # Define url translation markers.
     SRC[((++${#SRC[*]}))]='=URL='
-    DST[((++${#DST[*]}))]=$(cli_printUrl '--home' '--with-locale')
+    DST[((++${#DST[*]}))]=$(tcar_printUrl '--home' '--with-locale')
     SRC[((++${#SRC[*]}))]='=URL_WIKI='
-    DST[((++${#DST[*]}))]=$(cli_printUrl '--wiki' '--with-locale')
+    DST[((++${#DST[*]}))]=$(tcar_printUrl '--wiki' '--with-locale')
     SRC[((++${#SRC[*]}))]='=URL_LISTS='
-    DST[((++${#DST[*]}))]=$(cli_printUrl '--lists' '--with-locale')
+    DST[((++${#DST[*]}))]=$(tcar_printUrl '--lists' '--with-locale')
     SRC[((++${#SRC[*]}))]='=URL_FORUMS='
-    DST[((++${#DST[*]}))]=$(cli_printUrl '--forums' '--with-locale')
+    DST[((++${#DST[*]}))]=$(tcar_printUrl '--forums' '--with-locale')
     SRC[((++${#SRC[*]}))]='=URL_MIRRORS='
-    DST[((++${#DST[*]}))]=$(cli_printUrl '--mirrors' '--with-locale')
+    DST[((++${#DST[*]}))]=$(tcar_printUrl '--mirrors' '--with-locale')
     SRC[((++${#SRC[*]}))]='=URL_DOCS='
-    DST[((++${#DST[*]}))]=$(cli_printUrl '--docs' '--with-locale')
+    DST[((++${#DST[*]}))]=$(tcar_printUrl '--docs' '--with-locale')
     SRC[((++${#SRC[*]}))]='=URL_PROJECTS='
-    DST[((++${#DST[*]}))]=$(cli_printUrl '--projects' '--with-locale')
+    DST[((++${#DST[*]}))]=$(tcar_printUrl '--projects' '--with-locale')
     SRC[((++${#SRC[*]}))]='=URL_BUGS='
-    DST[((++${#DST[*]}))]=$(cli_printUrl '--bugs' '--with-locale')
+    DST[((++${#DST[*]}))]=$(tcar_printUrl '--bugs' '--with-locale')
     SRC[((++${#SRC[*]}))]='=URL_SVN='
-    DST[((++${#DST[*]}))]=$(cli_printUrl '--svn' '--with-locale')
+    DST[((++${#DST[*]}))]=$(tcar_printUrl '--svn' '--with-locale')
     SRC[((++${#SRC[*]}))]='=URL_TRAC='
-    DST[((++${#DST[*]}))]=$(cli_printUrl '--trac' '--with-locale')
+    DST[((++${#DST[*]}))]=$(tcar_printUrl '--trac' '--with-locale')
     SRC[((++${#SRC[*]}))]='=URL_PLANET='
-    DST[((++${#DST[*]}))]=$(cli_printUrl '--planet' '--with-locale')
+    DST[((++${#DST[*]}))]=$(tcar_printUrl '--planet' '--with-locale')
 
     # Define emails translation markers.
     SRC[((++${#SRC[*]}))]='=MAIL_DOCS='
-    DST[((++${#DST[*]}))]="$(cli_printMailingList --docs)"
+    DST[((++${#DST[*]}))]="$(tcar_printMailingList --docs)"
 
     # Define locale translation markers.
     SRC[((++${#SRC[*]}))]='=LOCALE='

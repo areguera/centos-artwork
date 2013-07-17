@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   cli_getRepoName.sh -- This function standardizes files and
+#   tcar_getRepoName.sh -- This function standardizes files and
 #   directories name convection inside the working copy of CentOS
 #   Artowrk Repository. As convection, regular files are written in
 #   lower-case and directories are written capitalized.  Use this
@@ -30,7 +30,7 @@
 #
 ######################################################################
 
-function cli_getRepoName {
+function tcar_getRepoName {
 
     # Define the name we want to apply verifications to.
     local NAME="${1}"

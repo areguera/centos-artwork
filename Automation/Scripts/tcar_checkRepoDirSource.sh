@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   cli_checkRepoDirSource.sh -- This function standardizes the path
+#   tcar_checkRepoDirSource.sh -- This function standardizes the path
 #   construction of directories inside the working copy, using
 #   absolute paths. This function transforms relative paths passed as
 #   non-option arguments to centos-art.sh script command-line into
@@ -40,7 +40,7 @@
 #
 ######################################################################
 
-function cli_checkRepoDirSource {
+function tcar_checkRepoDirSource {
 
     local LOCATION=${1}
 
@@ -78,7 +78,7 @@ function cli_checkRepoDirSource {
     #   centos-art render Documentation/Manuals/Docbook/Tcar-ug
     #
     # There isn't a need of verifying the paths built here.  This is
-    # something we do later, using the cli_checkFiles function. We
+    # something we do later, using the tcar_checkFiles function. We
     # don't do the file verification here to avoid malformed error
     # messages when we reassign variable values using this function as
     # reference (e.g., in order to prevent error messages from being

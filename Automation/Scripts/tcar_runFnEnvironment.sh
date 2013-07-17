@@ -1,8 +1,10 @@
 #!/bin/bash
 ######################################################################
 #
-#   cli_printCaller.sh -- This function standardizes the way caller
-#   information is retrieved.
+#   tcar_runFnEnvironment.sh -- This function standardizes the way
+#   centos-art.sh script is called to itself. The main purpose of this
+#   somehow own interface is to control the parent script flow based
+#   on specific function environments exit status.
 #
 #   Written by: 
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -12,8 +14,8 @@
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
+# the Free Software Foundation; either version 2 of the License, or (at
+# your option) any later version.
 #
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -26,32 +28,17 @@
 #
 ######################################################################
 
-function cli_printCaller {
+function tcar_runFnEnvironment {
 
-    local EXPR=${1}
-    local OPTS=${2}
+    # Execute specific function environment.
+    ${MODULE_NAME} ${@}
 
-    case ${OPTS} in
+    # Retrieve exit status.
+    local STATUS=$?
 
-        --line )
-            caller ${EXPR} | gawk '{ print $1 }'
-            ;;
-
-        --name )
-            caller ${EXPR} | gawk '{ print $2 }'
-            ;;
-
-        --path )
-            caller ${EXPR} | gawk '{ print $3 }'
-            ;;
-
-        * )
-            # Define where the error was originated inside the
-            # centos-art.sh script. Print out the function name and
-            # line from the caller.
-            caller ${EXPR} | gawk '{ print $2 " L." $1 }'
-            ;;
-
-    esac
+    # Finish script execution based on exit status.
+    if [[ ${STATUS} -ne 0 ]];then
+        exit ${STATUS}
+    fi
 
 }

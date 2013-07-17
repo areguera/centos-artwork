@@ -1,8 +1,10 @@
 #!/bin/bash
 ######################################################################
 #
-#   cli_printHelp.sh -- This function standardizes the way
-#   centos-art.sh script prints help about itself.
+#   tcar_synchronizeRepoChanges.sh -- This function standardizes the
+#   way changes are synchronized between the working copy and the
+#   central repository. This function is an interface to the Svn
+#   functionality of the centos-art.sh script.
 #
 #   Written by: 
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -26,9 +28,17 @@
 #
 ######################################################################
 
-function cli_printHelp {
+function tcar_synchronizeRepoChanges {
 
-    ${TCAR_MANUAL_READER} "${MODULE_NAME}"
-    exit 0
+    # Verify synchronization flag.
+    if [[ ${FLAG_SYNCHRONIZE} != 'true' ]];then
+        return
+    fi
+    
+    # Verify existence of locations passed to this function.
+    tcar_checkFiles -e ${@}
+
+    # Synchronize changes.
+    tcar_runFnEnvironment vcs --synchronize ${@}
 
 }

@@ -1,10 +1,8 @@
 #!/bin/bash
 ######################################################################
 #
-#   cli_runFnEnvironment.sh -- This function standardizes the way
-#   centos-art.sh script is called to itself. The main purpose of this
-#   somehow own interface is to control the parent script flow based
-#   on specific function environments exit status.
+#   tcar_printHelp.sh -- This function standardizes the way
+#   centos-art.sh script prints help about itself.
 #
 #   Written by: 
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -28,17 +26,9 @@
 #
 ######################################################################
 
-function cli_runFnEnvironment {
+function tcar_printHelp {
 
-    # Execute specific function environment.
-    ${MODULE_NAME} ${@}
-
-    # Retrieve exit status.
-    local STATUS=$?
-
-    # Finish script execution based on exit status.
-    if [[ ${STATUS} -ne 0 ]];then
-        exit ${STATUS}
-    fi
+    ${TCAR_MANUAL_READER} "${MODULE_NAME}"
+    exit 0
 
 }

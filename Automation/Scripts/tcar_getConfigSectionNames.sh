@@ -1,8 +1,10 @@
 #!/bin/bash
 ######################################################################
 #
-#   cli_printVersion.sh -- This function standardizes the way
-#   centos-art.sh script prints version about itself.
+#   tcar_getConfigSectionNames.sh -- This function standardizes the way
+#   section names are retrieved from configuration files. Once section
+#   names are retrieved they are printed to standard output for
+#   further processing.
 #
 #   Written by: 
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -26,9 +28,17 @@
 #
 ######################################################################
 
-function cli_printVersion {
+function tcar_getConfigSectionNames {
 
-    cli_printMessage "`eval_gettext "Running module $MODULE_NAME (v$MODULE_VERSION) through $TCAR_SCRIPT_NAME (v$TCAR_SCRIPT_VERSION)."`" --as-stdout-line
-    exit 0
+    # Define absolute path to configuration file we want to retrieve
+    # section names from. 
+    local CONFIGURATION_FILE=${1}
+
+    # Verify existence of configuration file.
+    tcar_checkFiles ${CONFIGURATION_FILE} -f
+
+    # Output all section names without brackets, one per line.
+    egrep '^\[[[:alnum:]._-]+\][[:space:]]*$' ${CONFIGURATION_FILE} \
+        | sed -r 's/\[(.+)\]/\1/'
 
 }

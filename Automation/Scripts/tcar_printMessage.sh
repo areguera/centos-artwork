@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   cli_printMessage.sh -- This function standardizes the way messages
+#   tcar_printMessage.sh -- This function standardizes the way messages
 #   are printed by centos-art.sh script.
 #
 #   Written by: 
@@ -26,14 +26,14 @@
 #
 ######################################################################
 
-function cli_printMessage {
+function tcar_printMessage {
 
     local MESSAGE="${1}"
     local FORMAT="${2}"
 
     # Verify message variable, it cannot have an empty value.
     if [[ -z ${MESSAGE} ]];then
-        cli_printMessage "`gettext "The message cannot be empty."`" --as-error-line
+        tcar_printMessage "`gettext "The message cannot be empty."`" --as-error-line
     fi
 
     # Define message horizontal width. This is the max number of
@@ -72,8 +72,8 @@ function cli_printMessage {
         --as-error-line )
 
             # Build the error message.
-            cli_printMessage "${TCAR_SCRIPT_COMMAND} ($(cli_printCaller 1)): ${MESSAGE}" --as-stderr-line
-            cli_printMessage "${MODULE_NAME}" --as-toknowmore-line
+            tcar_printMessage "${TCAR_SCRIPT_COMMAND} ($(tcar_printCaller 1)): ${MESSAGE}" --as-stderr-line
+            tcar_printMessage "${MODULE_NAME}" --as-toknowmore-line
 
             # Finish script execution with exit status 1 (SIGHUP) to
             # imply the script finished because an error.  We are
@@ -85,10 +85,10 @@ function cli_printMessage {
         --as-suggestion-line )
 
             # Build the error message.
-            cli_printMessage "${TCAR_SCRIPT_COMMAND} ($(cli_printCaller 1)):" --as-stderr-line
-            cli_printMessage "`gettext "The path provided cannot be processed the way you entered it."`" --as-stderr-line
-            cli_printMessage "`gettext "Instead, try the following equivalence:"` ${MESSAGE}" --as-stderr-line
-            cli_printMessage "${MODULE_NAME}" --as-toknowmore-line
+            tcar_printMessage "${TCAR_SCRIPT_COMMAND} ($(tcar_printCaller 1)):" --as-stderr-line
+            tcar_printMessage "`gettext "The path provided cannot be processed the way you entered it."`" --as-stderr-line
+            tcar_printMessage "`gettext "Instead, try the following equivalence:"` ${MESSAGE}" --as-stderr-line
+            tcar_printMessage "${MODULE_NAME}" --as-toknowmore-line
 
             # Finish script execution with exit status 1 (SIGHUP) to
             # imply the script finished because an error.  We are
@@ -98,7 +98,7 @@ function cli_printMessage {
             ;;
 
         --as-toknowmore-line )
-            cli_printMessage "`gettext "To know more, run"` ${TCAR_SCRIPT_COMMAND} ${MESSAGE} --help" --as-stderr-line
+            tcar_printMessage "`gettext "To know more, run"` ${TCAR_SCRIPT_COMMAND} ${MESSAGE} --help" --as-stderr-line
             ;;
 
         --as-yesornorequest-line )
@@ -119,7 +119,7 @@ function cli_printMessage {
             else
 
                 # Print the question to standard error.
-                cli_printMessage "${MESSAGE} [${Y}/${N}]" --as-request-line
+                tcar_printMessage "${MESSAGE} [${Y}/${N}]" --as-request-line
 
                 # Redefine default answer based on user's input.
                 read ANSWER
@@ -145,11 +145,11 @@ function cli_printMessage {
             ;;
 
         --as-response-line )
-            cli_printMessage "--> ${MESSAGE}" --as-stderr-line
+            tcar_printMessage "--> ${MESSAGE}" --as-stderr-line
             ;;
 
         --as-request-line )
-            cli_printMessage "${MESSAGE}:\040" --as-notrailingnew-line
+            tcar_printMessage "${MESSAGE}:\040" --as-notrailingnew-line
             ;;
 
         --as-notrailingnew-line )
@@ -188,85 +188,85 @@ function cli_printMessage {
             ;;
 
         --as-banner-line )
-            cli_printMessage '-' --as-separator-line
-            cli_printMessage "${MESSAGE}" --as-stdout-line
-            cli_printMessage '-' --as-separator-line
+            tcar_printMessage '-' --as-separator-line
+            tcar_printMessage "${MESSAGE}" --as-stdout-line
+            tcar_printMessage '-' --as-separator-line
             ;;
 
         --as-processing-line )
-            cli_printMessage "`gettext "Processing"`: ${MESSAGE}" --as-stdout-line
+            tcar_printMessage "`gettext "Processing"`: ${MESSAGE}" --as-stdout-line
             ;;
 
         --as-cropping-line )
-            cli_printMessage "`gettext "Cropping from"`: ${MESSAGE}" --as-stdout-line
+            tcar_printMessage "`gettext "Cropping from"`: ${MESSAGE}" --as-stdout-line
             ;;
 
         --as-tuningup-line )
-            cli_printMessage "`gettext "Tuning-up"`: ${MESSAGE}" --as-stdout-line
+            tcar_printMessage "`gettext "Tuning-up"`: ${MESSAGE}" --as-stdout-line
             ;;
 
         --as-checking-line )
-            cli_printMessage "`gettext "Checking"`: ${MESSAGE}" --as-stdout-line
+            tcar_printMessage "`gettext "Checking"`: ${MESSAGE}" --as-stdout-line
             ;;
 
         --as-combining-line )
-            cli_printMessage "`gettext "Combining"`: ${MESSAGE}" --as-stdout-line
+            tcar_printMessage "`gettext "Combining"`: ${MESSAGE}" --as-stdout-line
             ;;
 
         --as-creating-line | --as-updating-line )
             if [[ -a "${MESSAGE}" ]];then
-                cli_printMessage "`gettext "Updating"`: ${MESSAGE}" --as-stdout-line
+                tcar_printMessage "`gettext "Updating"`: ${MESSAGE}" --as-stdout-line
             else
-                cli_printMessage "`gettext "Creating"`: ${MESSAGE}" --as-stdout-line
+                tcar_printMessage "`gettext "Creating"`: ${MESSAGE}" --as-stdout-line
             fi
             ;;
 
         --as-deleting-line )
-            cli_printMessage "`gettext "Deleting"`: ${MESSAGE}" --as-stdout-line
+            tcar_printMessage "`gettext "Deleting"`: ${MESSAGE}" --as-stdout-line
             ;;
 
         --as-reading-line )
-            cli_printMessage "`gettext "Reading"`: ${MESSAGE}" --as-stdout-line
+            tcar_printMessage "`gettext "Reading"`: ${MESSAGE}" --as-stdout-line
             ;;
 
         --as-savedas-line )
-            cli_printMessage "`gettext "Saved as"`: ${MESSAGE}" --as-stdout-line
+            tcar_printMessage "`gettext "Saved as"`: ${MESSAGE}" --as-stdout-line
             ;;
             
         --as-linkto-line )
-            cli_printMessage "`gettext "Linked to"`: ${MESSAGE}" --as-stdout-line
+            tcar_printMessage "`gettext "Linked to"`: ${MESSAGE}" --as-stdout-line
             ;;
         
         --as-movedto-line )
-            cli_printMessage "`gettext "Moved to"`: ${MESSAGE}" --as-stdout-line
+            tcar_printMessage "`gettext "Moved to"`: ${MESSAGE}" --as-stdout-line
             ;;
 
         --as-translation-line )
-            cli_printMessage "`gettext "Translation"`: ${MESSAGE}" --as-stdout-line
+            tcar_printMessage "`gettext "Translation"`: ${MESSAGE}" --as-stdout-line
             ;;
 
         --as-translating-line )
-            cli_printMessage "`gettext "Translating"`: ${MESSAGE}" --as-stdout-line
+            tcar_printMessage "`gettext "Translating"`: ${MESSAGE}" --as-stdout-line
             ;;
 
         --as-validating-line )
-            cli_printMessage "`gettext "Validating"`: ${MESSAGE}" --as-stdout-line
+            tcar_printMessage "`gettext "Validating"`: ${MESSAGE}" --as-stdout-line
             ;;
 
         --as-template-line )
-            cli_printMessage "`gettext "Template"`: ${MESSAGE}" --as-stdout-line
+            tcar_printMessage "`gettext "Template"`: ${MESSAGE}" --as-stdout-line
             ;;
 
         --as-configuration-line )
-            cli_printMessage "`gettext "Configuration"`: ${MESSAGE}" --as-stdout-line
+            tcar_printMessage "`gettext "Configuration"`: ${MESSAGE}" --as-stdout-line
             ;;
 
         --as-palette-line )
-            cli_printMessage "`gettext "Palette"`: ${MESSAGE}" --as-stdout-line
+            tcar_printMessage "`gettext "Palette"`: ${MESSAGE}" --as-stdout-line
             ;;
 
         --as-inkscape-line )
-            cli_printMessage "${MESSAGE}" --as-stdout-line
+            tcar_printMessage "${MESSAGE}" --as-stdout-line
             ;;
 
     esac

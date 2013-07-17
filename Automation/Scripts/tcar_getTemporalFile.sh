@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   cli_getTemporalFile.sh -- This function returns the absolute path
+#   tcar_getTemporalFile.sh -- This function returns the absolute path
 #   you need to use to create temporal files. Use this function
 #   whenever you need to create temporal files inside centos-art.sh
 #   script.
@@ -28,18 +28,18 @@
 #
 ######################################################################
 
-function cli_getTemporalFile {
+function tcar_getTemporalFile {
 
     # Define base name for temporal file. This is required when svg
     # instances are created previous to be parsed by inkscape in order
     # to be exported as png. In such cases .svg file extension is
     # required in order to avoid complains from inkscape.
-    local FILENAME="$(cli_getRepoName ${1} -f)"
+    local FILENAME="$(tcar_getRepoName ${1} -f)"
 
     # Check default base name for temporal file, it can't be an empty
     # value.
     if [[ -z "${FILENAME}" ]];then
-        cli_printMessage "`gettext "The first argument cannot be empty."`" --as-error-line
+        tcar_printMessage "`gettext "The first argument cannot be empty."`" --as-error-line
     fi
 
     # Define absolute path for temporal file and send it out to

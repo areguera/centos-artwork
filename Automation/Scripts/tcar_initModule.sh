@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   cli_initModule.sh -- This function initiates module environments
+#   tcar_initModule.sh -- This function initiates module environments
 #   inside the centos-art.sh script.
 #
 #   Written by: 
@@ -26,11 +26,11 @@
 #
 ######################################################################
 
-function cli_initModule {
+function tcar_initModule {
 
     # Define module's name (MODULE_NAME) using the first argument
     # in the command-line.
-    local MODULE_NAME=$(cli_getRepoName "${1}" "-f" | cut -d '-' -f1)
+    local MODULE_NAME=$(tcar_getRepoName "${1}" "-f" | cut -d '-' -f1)
 
     # Define regular expression to match available modules.
     local MODULE_NAME_LIST=$(ls ${TCAR_SCRIPT_MODULES_BASEDIR} \
@@ -38,17 +38,17 @@ function cli_initModule {
 
     # Check module's name possible values.
     if [[ ! ${MODULE_NAME} =~ "^(${MODULE_NAME_LIST})$" ]];then
-        cli_printMessage "`gettext "The module provided isn't valid."`" --as-error-line
+        tcar_printMessage "`gettext "The module provided isn't valid."`" --as-error-line
     fi
 
     # Define function directory.
-    local MODULE_DIR=${TCAR_SCRIPT_MODULES_BASEDIR}/$(cli_getRepoName "${MODULE_NAME}" "-d")
+    local MODULE_DIR=${TCAR_SCRIPT_MODULES_BASEDIR}/$(tcar_getRepoName "${MODULE_NAME}" "-d")
 
     # Define function file name.
     local MODULE_INIT_FILE=${MODULE_DIR}/${MODULE_NAME}.sh
 
     # Check function script execution rights.
-    cli_checkFiles -x ${MODULE_INIT_FILE}
+    tcar_checkFiles -x ${MODULE_INIT_FILE}
 
     # Remove the first argument passed to centos-art.sh command-line
     # in order to build optional arguments inside functionalities. We
@@ -59,7 +59,7 @@ function cli_initModule {
     # default, to all modules, when no option is provided the version
     # information is printed.
     if [[ $# -lt 1 ]];then
-        cli_printVersion
+        tcar_printVersion
     fi
 
     # Redefine internationalization configuration variables.
@@ -71,9 +71,9 @@ function cli_initModule {
     declare -x TCAR_MANUAL_SEARCHPATH=${MODULE_DIR}/Manuals
     declare -x TCAR_MANUAL_READER="/usr/bin/man -M ${TCAR_MANUAL_SEARCHPATH}"
 
-    # Go for function initialization. Keep the cli_exportFunctions
+    # Go for function initialization. Keep the tcar_exportFunctions
     # function calling after all variables and arguments definitions.
-    cli_exportFunctions "${MODULE_INIT_FILE}"
+    tcar_exportFunctions "${MODULE_INIT_FILE}"
 
     # Execute function.
     ${MODULE_NAME} "${@}"

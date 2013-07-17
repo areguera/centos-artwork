@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   cli_getFilesList.sh -- This function standardizes the way list of
+#   tcar_getFilesList.sh -- This function standardizes the way list of
 #   files are built inside centos-art.sh script. This function outputs
 #   a sorted and unique list of files based on the options and
 #   locations passed as argument.
@@ -28,7 +28,7 @@
 #
 ######################################################################
 
-function cli_getFilesList {
+function tcar_getFilesList {
 
     # Define short options.
     local ARGSS=''
@@ -50,7 +50,7 @@ function cli_getFilesList {
     # Process all arguments currently available in this function
     # environment. If either ARGSS or ARGSL local variables have been
     # defined, argument processing goes through getopt for validation.
-    cli_setArguments "${@}"
+    tcar_setArguments "${@}"
 
     # Redefine positional parameters using TCAR_ARGUMENTS variable.
     eval set -- "${TCAR_ARGUMENTS}"
@@ -96,7 +96,7 @@ function cli_getFilesList {
     # look files for.
 
     # Verify that locations does exist.
-    cli_checkFiles -e ${@}
+    tcar_checkFiles -e ${@}
 
     # Redefine pattern as regular expression. When we use regular
     # expressions with find, regular expressions are evaluated against

@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   cli_checkFiles.sh -- This function standardizes the way file
+#   tcar_checkFiles.sh -- This function standardizes the way file
 #   conditional expressions are applied to files.  Here is where
 #   centos-art.sh script answers questions like: is the file a regular
 #   file or a directory?  Or, is it a symbolic link? Or even, does it
@@ -31,7 +31,7 @@
 #
 ######################################################################
 
-function cli_checkFiles {
+function tcar_checkFiles {
 
     # Define short options.
     local ARGSS='i:,r,m:,n,d,e,f,h,x'
@@ -54,7 +54,7 @@ function cli_checkFiles {
     local TCAR_ARGUMENTS=''
     
     # Redefine arguments using current positional parameters. 
-    cli_setArguments "${@}"
+    tcar_setArguments "${@}"
 
     # Redefine positional parameters using arguments variable.
     eval set -- "${TCAR_ARGUMENTS}"
@@ -150,7 +150,7 @@ function cli_checkFiles {
 
                 "test" | "rpm" )
                 ${CONDITION_COMMAND[${COUNTER}]} ${CONDITION_PATTERN[${COUNTER}]} ${FILE} \
-                    || cli_printMessage "${FILE} ${CONDITION_MESSAGE[${COUNTER}]}" --as-error-line
+                    || tcar_printMessage "${FILE} ${CONDITION_MESSAGE[${COUNTER}]}" --as-error-line
                 ;;
 
                 "centos-art" )
@@ -158,23 +158,23 @@ function cli_checkFiles {
                 # (that would duplicate them unnecessarily).  Instead,
                 # set error messages inside specific functionalities
                 # and use them directly from there.
-                cli_runFnEnvironment ${CONDITION_PATTERN[${COUNTER}]} ${FILE}
+                tcar_runFnEnvironment ${CONDITION_PATTERN[${COUNTER}]} ${FILE}
                 ;;
 
                 "file" )
                 if [[ ! $(${CONDITION_COMMAND[${COUNTER}]} ${CONDITION_PATTERN[${COUNTER}]} ${FILE}) == "${MIME}" ]];then
-                    cli_printMessage "${FILE} ${CONDITION_MESSAGE[${COUNTER}]}" --as-error-line
+                    tcar_printMessage "${FILE} ${CONDITION_MESSAGE[${COUNTER}]}" --as-error-line
                 fi
                 ;;
 
                 "match" )
                 if [[ ! ${FILE} =~ "${CONDITION_PATTERN[${COUNTER}]}" ]];then
-                    cli_printMessage "${FILE} ${CONDITION_MESSAGE[${COUNTER}]}" --as-error-line
+                    tcar_printMessage "${FILE} ${CONDITION_MESSAGE[${COUNTER}]}" --as-error-line
                 fi
                 ;;
 
                 * )
-                cli_printMessage "`gettext "The condition command provided isn't supported."`" --as-error-line
+                tcar_printMessage "`gettext "The condition command provided isn't supported."`" --as-error-line
                 ;;
 
             esac

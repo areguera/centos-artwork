@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   cli_getPathComponent.sh -- This function standardizes the way
+#   tcar_getPathComponent.sh -- This function standardizes the way
 #   directory structures are organized inside the working copy of
 #   CentOS Artwork Repository. You can use this function to retrieve
 #   information from paths (e.g., releases, architectures and theme
@@ -29,7 +29,7 @@
 #
 ######################################################################
 
-function cli_getPathComponent {
+function tcar_getPathComponent {
 
     # Define short options.
     local ARGSS=''
@@ -56,7 +56,7 @@ function cli_getPathComponent {
     # Process all arguments currently available in this function
     # environment. If either ARGSS or ARGSL local variables have been
     # defined, argument processing goes through getopt for validation.
-    cli_setArguments "${@}"
+    tcar_setArguments "${@}"
 
     # Redefine positional parameters using TCAR_ARGUMENTS variable.
     eval set -- "${TCAR_ARGUMENTS}"

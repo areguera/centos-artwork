@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   cli_printMailingList.sh -- This function standardizes the way
+#   tcar_printMailingList.sh -- This function standardizes the way
 #   mailing list addresses are printed on content produced by
 #   centos-art.sh script.
 #
@@ -27,7 +27,7 @@
 #
 ######################################################################
 
-function cli_printMailingList {
+function tcar_printMailingList {
 
     local MAILADDRS=''
 
@@ -45,7 +45,7 @@ function cli_printMailingList {
     # Process all arguments currently available in this function
     # environment. If either ARGSS or ARGSL local variables have been
     # defined, argument processing goes through getopt for validation.
-    cli_setArguments "${@}"
+    tcar_setArguments "${@}"
 
     # Redefine positional parameters using TCAR_ARGUMENTS variable.
     eval set -- "${TCAR_ARGUMENTS}"
@@ -55,7 +55,7 @@ function cli_printMailingList {
         case "${1}" in
 
             --docs )
-                MAILADDRS="${TCAR_BRAND}-docs@$(cli_printUrl --domain)"
+                MAILADDRS="${TCAR_BRAND}-docs@$(tcar_printUrl --domain)"
                 shift 1
                 ;;
 

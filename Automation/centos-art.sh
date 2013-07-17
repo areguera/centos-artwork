@@ -87,10 +87,10 @@ case ${1} in
         # executed it will inevitably end with an EXIT signal at some
         # point of its execution, even if it is interrupted in the
         # middle of its execution (e.g., through `Ctrl+C').
-        trap cli_terminateScriptExecution 0
+        trap tcar_terminateScriptExecution 0
 
         # Export script's module environment.
-        cli_initModule "${@}"
+        tcar_initModule "${@}"
 
         ;;
 

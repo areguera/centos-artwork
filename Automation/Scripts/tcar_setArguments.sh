@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   cli_setArguments.sh -- This function uses getopt to process
+#   tcar_setArguments.sh -- This function uses getopt to process
 #   arguments passed to centos-art.sh script.
 #
 #   This function works with the following three variables:
@@ -43,7 +43,7 @@
 #
 ######################################################################
 
-function cli_setArguments {
+function tcar_setArguments {
 
     # Verify existence of arguments that will be processed. If there
     # is none, return to caller.
@@ -93,7 +93,7 @@ function cli_setArguments {
         # Verify getopt's exit status and finish the script execution
         # with an error message, if it failed.
         if [[ $? -ne 0 ]];then
-            cli_printMessage "`gettext "The argument verification failed."`" --as-error-line
+            tcar_printMessage "`gettext "The argument verification failed."`" --as-error-line
         fi
 
     fi

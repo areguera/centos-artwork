@@ -1,10 +1,8 @@
 #!/bin/bash
 ######################################################################
 #
-#   cli_synchronizeRepoChanges.sh -- This function standardizes the
-#   way changes are synchronized between the working copy and the
-#   central repository. This function is an interface to the Svn
-#   functionality of the centos-art.sh script.
+#   tcar_printVersion.sh -- This function standardizes the way
+#   centos-art.sh script prints version about itself.
 #
 #   Written by: 
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -28,17 +26,9 @@
 #
 ######################################################################
 
-function cli_synchronizeRepoChanges {
+function tcar_printVersion {
 
-    # Verify synchronization flag.
-    if [[ ${FLAG_SYNCHRONIZE} != 'true' ]];then
-        return
-    fi
-    
-    # Verify existence of locations passed to this function.
-    cli_checkFiles -e ${@}
-
-    # Synchronize changes.
-    cli_runFnEnvironment vcs --synchronize ${@}
+    tcar_printMessage "`eval_gettext "Running module $MODULE_NAME (v$MODULE_VERSION) through $TCAR_SCRIPT_NAME (v$TCAR_SCRIPT_VERSION)."`" --as-stdout-line
+    exit 0
 
 }

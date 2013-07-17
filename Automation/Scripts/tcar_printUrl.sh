@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   cli_printUrl.sh -- This function standardizes the way URLs are
+#   tcar_printUrl.sh -- This function standardizes the way URLs are
 #   printed by centos-art.sh script. This function describes the
 #   domain organization of The CentOS Project through its URLs and
 #   provides a way to print them out when needed.
@@ -28,7 +28,7 @@
 #
 ######################################################################
 
-function cli_printUrl {
+function tcar_printUrl {
 
     local URL=''
 
@@ -46,7 +46,7 @@ function cli_printUrl {
     # Process all arguments currently available in this function
     # environment. If either ARGSS or ARGSL local variables have been
     # defined, argument processing goes through getopt for validation.
-    cli_setArguments "${@}"
+    tcar_setArguments "${@}"
 
     # Redefine positional parameters using TCAR_ARGUMENTS variable.
     eval set -- "${TCAR_ARGUMENTS}"
@@ -61,62 +61,62 @@ function cli_printUrl {
                 ;;
 
             --home )
-                URL="http://www.$(cli_printUrl --domain)/"
+                URL="http://www.$(tcar_printUrl --domain)/"
                 shift 1
                 ;;
 
             --lists )
-                URL="http://lists.$(cli_printUrl --domain)/"
+                URL="http://lists.$(tcar_printUrl --domain)/"
                 shift 1
                 ;;
 
             --wiki )
-                URL="http://wiki.$(cli_printUrl --domain)/"
+                URL="http://wiki.$(tcar_printUrl --domain)/"
                 shift 1
                 ;;
 
             --forums )
-                URL="http://forums.$(cli_printUrl --domain)/"
+                URL="http://forums.$(tcar_printUrl --domain)/"
                 shift 1
                 ;;
 
             --bugs )
-                URL="http://bugs.$(cli_printUrl --domain)/"
+                URL="http://bugs.$(tcar_printUrl --domain)/"
                 shift 1
                 ;;
 
             --projects )
-                URL="https://projects.$(cli_printUrl --domain)/"
+                URL="https://projects.$(tcar_printUrl --domain)/"
                 shift 1
                 ;;
 
             --svn )
-                URL="$(cli_printUrl --projects)svn/"
+                URL="$(tcar_printUrl --projects)svn/"
                 shift 1
                 ;;
 
             --trac )
-                URL="$(cli_printUrl --projects)trac/"
+                URL="$(tcar_printUrl --projects)trac/"
                 shift 1
                 ;;
 
             --planet )
-                URL="http://planet.$(cli_printUrl --domain)/"
+                URL="http://planet.$(tcar_printUrl --domain)/"
                 shift 1
                 ;;
 
             --docs )
-                URL="http://docs.$(cli_printUrl --domain)/"
+                URL="http://docs.$(tcar_printUrl --domain)/"
                 shift 1
                 ;;
 
             --mirrors )
-                URL="http://mirrors.$(cli_printUrl --domain)/"
+                URL="http://mirrors.$(tcar_printUrl --domain)/"
                 shift 1
                 ;;
 
             --irc )
-                URL="http://$(cli_printUrl --home)modules/tinycontent/index.php?id=8"
+                URL="http://$(tcar_printUrl --home)modules/tinycontent/index.php?id=8"
                 shift 1
                 ;;
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   cli_getLocalizationDir.sh -- This function standardizes the way
+#   tcar_getLocalizationDir.sh -- This function standardizes the way
 #   localization paths are created. The first argument of this
 #   function must be a path pointing a directory inside the
 #   repository.
@@ -28,12 +28,12 @@
 #
 ######################################################################
 
-function cli_getLocalizationDir {
+function tcar_getLocalizationDir {
 
     # Sanitate non-option arguments to be sure they match the
     # directory conventions established by centos-art.sh script
     # against source directory locations in the working copy.
-    LOCATION=$(cli_checkRepoDirSource "${1}")
+    LOCATION=$(tcar_checkRepoDirSource "${1}")
 
     # In case the location specified would be a file, remove the file
     # part from the path so only its parent directory remains.
