@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   tcar_getModuleScripts.sh -- This function standardizes the way
+#   tcar_setModuleScripts.sh -- This function standardizes the way
 #   specific functionalities are exported to centos-art.sh script
 #   environment.
 #
@@ -27,7 +27,7 @@
 #
 ######################################################################
 
-function tcar_getModuleScripts {
+function tcar_setModuleScripts {
 
     # Retrieve export identifier for the function we want to export.
     local MODULE_INIT_FILE="${1}"

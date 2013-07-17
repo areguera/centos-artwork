@@ -39,6 +39,6 @@ function tcar_synchronizeRepoChanges {
     tcar_checkFiles -e ${@}
 
     # Synchronize changes.
-    tcar_runFnEnvironment vcs --synchronize ${@}
+    tcar_setFnEnvironment vcs --synchronize ${@}
 
 }

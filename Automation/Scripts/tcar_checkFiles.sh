@@ -158,7 +158,7 @@ function tcar_checkFiles {
                 # (that would duplicate them unnecessarily).  Instead,
                 # set error messages inside specific functionalities
                 # and use them directly from there.
-                tcar_runFnEnvironment ${CONDITION_PATTERN[${COUNTER}]} ${FILE}
+                tcar_setFnEnvironment ${CONDITION_PATTERN[${COUNTER}]} ${FILE}
                 ;;
 
                 "file" )

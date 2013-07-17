@@ -64,6 +64,6 @@ function prepare_setConfiguration {
     fi
 
     # Process configuration files using render module.
-    tcar_runFnEnvironment render ${CONFIGURATION_FILES}
+    tcar_setFnEnvironment render ${CONFIGURATION_FILES}
 
 }

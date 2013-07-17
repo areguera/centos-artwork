@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   tcar_runFnEnvironment.sh -- This function standardizes the way
+#   tcar_setFnEnvironment.sh -- This function standardizes the way
 #   centos-art.sh script is called to itself. The main purpose of this
 #   somehow own interface is to control the parent script flow based
 #   on specific function environments exit status.
@@ -28,7 +28,7 @@
 #
 ######################################################################
 
-function tcar_runFnEnvironment {
+function tcar_setFnEnvironment {
 
     # Execute specific function environment.
     ${MODULE_NAME} ${@}
