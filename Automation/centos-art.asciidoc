@@ -67,14 +67,15 @@ The following modules are available for *centos-art.sh* script:
 
 *prepare*::
     This module standardizes configuration tasks needed by your
-    working copy (e.g., creation of links, images and documentations).
-    This is the first task you should run in your workstation, just
-    after downloading a fresh working copy of CentOS artwork
-    repository.
+    working copy (e.g., verify whether required packages are installed
+    or not in your workstation). This is the first task you should run
+    in your workstation, just after downloading a fresh working copy
+    of CentOS artwork repository.
 
 *render*::
     This module standardizes the way content is produced inside the
-    repository. Whenever you need to produce images, documentation or
+    repository. This function relies on configuration files to do its
+    work. Whenever you need to produce images, documentation or
     localized content this is the module you'll need to use.
 
 *locale*::

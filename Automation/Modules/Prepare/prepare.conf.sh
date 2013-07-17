@@ -30,6 +30,5 @@
 # Module-specific configuration variables.
 # --------------------------------------------------------------------
 declare -xr MODULE_VERSION='0.1'
-declare -x  MODULE_BASEDIR=${MODULE_DIR}/Modules
 declare -x  MODULE_ACTIONS=''
 

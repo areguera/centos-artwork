@@ -1,10 +1,9 @@
 #!/bin/bash
 ######################################################################
 #
-#   prepare_setConfiguration.sh -- This function builds a list of
-#   configuration files and calls the render module for processing it.
-#   The list of configuration files is built using the first argument
-#   provided to this function as reference.
+#   prepare_setRepository.sh -- This function builds a list of all
+#   configuration files inside the repository and calls the render
+#   module for processing it.
 #
 #   Written by: 
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -28,13 +27,7 @@
 #
 ######################################################################
 
-function prepare_setConfiguration {
-
-    local FILENAME=${1}
-    
-    # Verify the file  name passed to this function. Just to avoid
-    # trickery when building the list of configuration files.
-    tcar_checkFiles "${FILENAME}" --match="^(images|links|manual)$"
+function prepare_setRepository {
 
     # Build list of configuration files to be produced.
     local CONFIGURATION_FILES=$(tcar_getFilesList \

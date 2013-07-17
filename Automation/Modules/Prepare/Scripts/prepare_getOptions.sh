@@ -31,10 +31,10 @@
 function prepare_getOptions {
 
     # Define short options we want to support.
-    local ARGSS="h,v,q"
+    local ARGSS="h,v,q,y"
 
     # Define long options we want to support.
-    local ARGSL="help,version,quiet,yes,packages,links,images,manuals,all,synchronize"
+    local ARGSL="help,version,quiet,yes,packages,repository"
 
     # Define module arguments local to this function. This is very
     # important in order to provide option parsing for different
@@ -65,7 +65,7 @@ function prepare_getOptions {
                 shift 1
                 ;;
 
-            --yes )
+            -y | --yes )
                 TCAR_FLAG_YES="true"
                 shift 1
                 ;;
@@ -75,29 +75,8 @@ function prepare_getOptions {
                 shift 1
                 ;;
 
-            --images )
-                MODULE_ACTIONS="${MODULE_ACTIONS} prepare_setImages"
-                shift 1
-                ;;
-
-            --manuals )
-                MODULE_ACTIONS="${MODULE_ACTIONS} prepare_setManuals"
-                shift 1
-                ;;
-
-            --links )
-                MODULE_ACTIONS="${MODULE_ACTIONS} prepare_setLinks"
-                shift 1
-                ;;
-
-            --all )
-                MODULE_ACTIONS="prepare_setPackages prepare_setImages
-                    prepare_setManuals prepare_setLinks"
-                shift 1
-                ;;
-
-            --synchronize )
-                TCAR_FLAG_SYNCHRONIZE="true"
+            --repository )
+                MODULE_ACTIONS="${MODULE_ACTIONS} prepare_setRepository"
                 shift 1
                 ;;
 
