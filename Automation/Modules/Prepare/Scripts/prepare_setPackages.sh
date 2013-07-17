@@ -55,19 +55,19 @@ function prepare_setPackages {
     fi
 
     if [[ ! -z ${PACKAGES_UNINSTALLED} ]];then
-        cli_printMessage "`gettext "The following packages need to be installed:"`" --as-banner-line
+        tcar_printMessage "`gettext "The following packages need to be installed:"`" --as-banner-line
         for PACKAGE in ${PACKAGES_UNINSTALLED};do
             if [[ ${PACKAGE} =~ ${PACKAGES_THIRDPARTY} ]];then
-                cli_printMessage "${PACKAGE} (`gettext "from third party repository"`)" --as-response-line
+                tcar_printMessage "${PACKAGE} (`gettext "from third party repository"`)" --as-response-line
             else
-                cli_printMessage "${PACKAGE}" --as-response-line
+                tcar_printMessage "${PACKAGE}" --as-response-line
             fi
         done
-        cli_printMessage '-' --as-separator-line
-        cli_printMessage "`gettext "Do you want to continue"`" --as-yesornorequest-line
+        tcar_printMessage '-' --as-separator-line
+        tcar_printMessage "`gettext "Do you want to continue"`" --as-yesornorequest-line
         sudo yum install ${YUM_OPTIONS} ${PACKAGES_UNINSTALLED}
     else
-        cli_printMessage "`gettext "All required packages are already installed."`" --as-banner-line
+        tcar_printMessage "`gettext "All required packages are already installed."`" --as-banner-line
     fi
 
 }

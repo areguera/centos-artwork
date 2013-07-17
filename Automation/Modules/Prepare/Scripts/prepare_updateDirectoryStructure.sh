@@ -60,15 +60,15 @@ function prepare_updateDirectoryStructure {
     # Define absolute path to design models' directory structure. This
     # directory contains the directory structure you want to verify
     # inside target path.
-    local SOURCE_PATH=$(cli_checkRepoDirSource "${1}")
+    local SOURCE_PATH=$(tcar_checkRepoDirSource "${1}")
 
     # Verify existence source path, just to be sure it was passed and
     # it is a valid directory.
-    cli_checkFiles ${SOURCE_PATH} -d
+    tcar_checkFiles ${SOURCE_PATH} -d
 
     # Define absolute path to directory inside the repository where
     # you want to replicate the source path directory structure.
-    local TARGET_PATH=$(cli_checkRepoDirSource "${2}")
+    local TARGET_PATH=$(tcar_checkRepoDirSource "${2}")
 
     # NOTE: It is possible that target path doesn't exist. So verify
     # the relation between target and source path. If there is a
@@ -76,7 +76,7 @@ function prepare_updateDirectoryStructure {
     # using the related source directory as reference.
 
     # Define list of directories inside source path.
-    local SOURCE_DIRS=$(cli_getFilesList ${SOURCE_PATH} \
+    local SOURCE_DIRS=$(tcar_getFilesList ${SOURCE_PATH} \
         --pattern='.+/[[:alpha:]]+$' --type=d)
 
     # Iterate through directories inside source path and verify

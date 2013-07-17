@@ -42,7 +42,7 @@ function prepare_getOptions {
     local TCAR_ARGUMENTS=''
 
     # Redefine arguments using getopt(1) command parser.
-    cli_setArguments "${@}"
+    tcar_setArguments "${@}"
 
     # Reset positional parameters on this function, using output
     # produced from (getopt) arguments parser.
@@ -53,11 +53,11 @@ function prepare_getOptions {
         case "$1" in
 
             -h | --help )
-                cli_printHelp
+                tcar_printHelp
                 ;;
 
             -v | --version )
-                cli_printVersion
+                tcar_printVersion
                 ;;
 
             -q | --quiet )

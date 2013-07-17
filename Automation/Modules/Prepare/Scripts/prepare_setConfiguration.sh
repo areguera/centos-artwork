@@ -34,10 +34,10 @@ function prepare_setConfiguration {
     
     # Verify the file  name passed to this function. Just to avoid
     # trickery when building the list of configuration files.
-    cli_checkFiles "${FILENAME}" --match="^(images|links|manual)$"
+    tcar_checkFiles "${FILENAME}" --match="^(images|links|manual)$"
 
     # Build list of configuration files to be produced.
-    local CONFIGURATION_FILES=$(cli_getFilesList \
+    local CONFIGURATION_FILES=$(tcar_getFilesList \
         ${TCAR_BASEDIR} --type="f" --pattern=".+/${FILENAME}\.conf")
 
     # Verify list of configuration files.
@@ -64,6 +64,6 @@ function prepare_setConfiguration {
     fi
 
     # Process configuration files using render module.
-    cli_runFnEnvironment render ${CONFIGURATION_FILES}
+    tcar_runFnEnvironment render ${CONFIGURATION_FILES}
 
 }
