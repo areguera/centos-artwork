@@ -1,31 +1,28 @@
 #!/bin/bash
 ######################################################################
 #
-#   prepare_setDirStructure.sh -- This function standardizes
-#   the relation between source directory structures and target
-#   directory structures inside the repository. 
+#   prepare_setDirStructure.sh -- This function standardizes the
+#   relation between source and target directory structures inside the
+#   repository.
 #
-#   This function takes source and target directory paths as
-#   arguments, analyses them and builds the target directory structure
-#   based on source directory structure.  This function must be
-#   executed before executing production modules like render.
+#   This function takes two arguments. The first is the source
+#   directory and the second is the target directory where you wan to
+#   reproduce the source directory structure.  In order for this to
+#   work, all source directory structures provided to this function
+#   must have one level of directories more than its related target
+#   directory.  The purpose of this level is content categorization.
+#   For example, consider the following path:
 #
-#   In order for this verification to work, all source directory
-#   structures provided must be organized using one directory level
-#   more than its related target directory. The purpose of this
-#   directory is content categorization. For example, consider the
-#   following path:
-#
-#       ---------------++++++++++++++++++++++++
-#       ${SOURCE_PATH}/${CATEGORY}/${COMPONENT}
-#       ---------------++++++++++++++++++++++++
-#       ++++++++++++++++++++++++++++++++++------------
-#       ${TARGET_PATH}/${NAME}/${VERSION}/${COMPONENT}
-#       ++++++++++++++++++++++++++++++++++------------
+#       ----------++++++++++++++++++++++++
+#       ${SOURCE}/${CATEGORY}/${COMPONENT}
+#       ----------++++++++++++++++++++++++
+#       +++++++++++++++++++++++++++++------------
+#       ${TARGET}/${NAME}/${VERSION}/${COMPONENT}
+#       +++++++++++++++++++++++++++++------------
 #
 #   So we end with the following path:
 #
-#       ${TARGET_PATH}/${CATEGORY}/${COMPONENT}
+#       ${TARGET}/${CATEGORY}/${COMPONENT}
 # 
 #   In this path, ${CATEGORY} makes reference to a categorization
 #   directory used to describe source components related to target
@@ -33,10 +30,10 @@
 #   directory is not needed and should be removed from it in order to
 #   get the final target path, which is:  
 #
-#       ${TARGET_PATH}/${COMPONENT}
+#       ${TARGET}/${COMPONENT}
 #
 #   ${CATEGORY} is always a one-level directory, but ${COMPONENT}
-#   might have several levels deep.
+#   might have several levels deep inside.
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -61,15 +58,15 @@ function prepare_setDirStructure {
     # Define absolute path to design models' directory structure. This
     # directory contains the directory structure you want to verify
     # inside target path.
-    local SOURCE_PATH=$(tcar_checkRepoDirSource "${1}")
+    local SOURCE_DIRECTORY=$(tcar_checkRepoDirSource "${1}")
 
     # Verify existence source path, just to be sure it was passed and
     # it is a valid directory.
-    tcar_checkFiles ${SOURCE_PATH} -d
+    tcar_checkFiles ${SOURCE_DIR} -d
 
     # Define absolute path to directory inside the repository where
     # you want to replicate the source path directory structure.
-    local TARGET_PATH=$(tcar_checkRepoDirSource "${2}")
+    local TARGET_DIRECTORY=$(tcar_checkRepoDirSource "${2}")
 
     # NOTE: It is possible that target path doesn't exist. So verify
     # the relation between target and source path. If there is a
@@ -77,34 +74,25 @@ function prepare_setDirStructure {
     # using the related source directory as reference.
 
     # Define list of directories inside source path.
-    local SOURCE_DIRS=$(tcar_getFilesList ${SOURCE_PATH} \
-        --pattern='.+/[[:alpha:]]+$' --type=d)
+    local DIRECTORIES=$(tcar_getFilesList ${SOURCE_DIRECTORY} \
+        --pattern='.+/[[:alpha:]]+$' --type='d')
 
     # Iterate through directories inside source path and verify
     # whether or not they exist in the target path. If they don't
     # exist create them.
-    for SOURCE_DIR in ${SOURCE_DIRS};do
+    for DIRECTORY in ${DIRECTORIES};do
 
-        local SOURCE_DIR_BASENAME=$(echo ${SOURCE_DIR} \
-            | sed -r "s,${SOURCE_PATH}/,,")
+        local DIRECTORY_BASENAME=$(echo ${DIRECTORY} \
+            | sed -r "s,${SOURCE_DIRECTORY}/,,")
 
-        local TARGET_DIR=${TARGET_PATH}/${SOURCE_DIR_BASENAME}
-
-        if [[ ${SOURCE_DIR} == ${SOURCE_DIR_BASENAME} ]];then
+        if [[ ${DIRECTORY} == ${DIRECTORY_BASENAME} ]];then
             continue
         fi
 
-        # Keep this for debugging ;)
-        #echo '---'
-        #echo $SOURCE_DIR_BASENAME;
-        #echo $SOURCE_DIR;
-        #echo $TARGET_DIR;
-        #echo $TARGET_PATH;
-        #echo '---'
-        #continue
+        local DIRECTORY_TARGET=${TARGET_DIRECTORY}/${DIRECTORY_BASENAME}
 
-        if [[ ! -d ${TARGET_DIR} ]];then
-            mkdir -p ${TARGET_DIR}
+        if [[ ! -d ${DIRECTORY_TARGET} ]];then
+            mkdir -p ${DIRECTORY_TARGET}
         fi
 
     done
