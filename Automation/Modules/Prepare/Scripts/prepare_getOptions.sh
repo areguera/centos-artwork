@@ -96,11 +96,6 @@ function prepare_getOptions {
                 shift 1
                 ;;
 
-            --directories )
-                MODULE_ACTIONS="${MODULE_ACTIONS} prepare_setDirStructure"
-                shift 1
-                ;;
-
             --synchronize )
                 TCAR_FLAG_SYNCHRONIZE="true"
                 shift 1

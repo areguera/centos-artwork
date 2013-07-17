@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   prepare_setDirStructure.sh -- This function standardizes the
+#   render_setDirStructure.sh -- This function standardizes the
 #   relation between source and target directory structures inside the
 #   repository.
 #
@@ -53,7 +53,7 @@
 #
 ######################################################################
 
-function prepare_setDirStructure {
+function render_setDirStructure {
 
     # Define absolute path to design models' directory structure. This
     # directory contains the directory structure you want to verify
