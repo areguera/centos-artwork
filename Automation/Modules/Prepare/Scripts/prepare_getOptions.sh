@@ -34,7 +34,7 @@ function prepare_getOptions {
     local ARGSS="h,v,q"
 
     # Define long options we want to support.
-    local ARGSL="help,version,quiet,yes,packages,links,images,manuals,all,directories,synchronize"
+    local ARGSL="help,version,quiet,yes,packages,links,images,manuals,all,synchronize"
 
     # Define module arguments local to this function. This is very
     # important in order to provide option parsing for different
