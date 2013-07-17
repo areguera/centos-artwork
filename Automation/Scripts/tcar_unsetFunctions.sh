@@ -34,13 +34,13 @@ function tcar_unsetFunctions {
     local FUNCTION_EXPORTID=$(basename "${1}")
 
     # Verify suffix value used to retrieve function files.
-    if [[ ${FUNCTION_EXPORTID} == '' ]];then
+    if [[ -z ${FUNCTION_EXPORTID} ]];then
         tcar_printMessage "`gettext "The export id was not provided."`" --as-error-line
     fi
 
     # Define list of format-specific functionalities. This is the
     # list of function definitions previously exported by
-    # `tcar_exportFunctions'.  Be sure to limit the list to function
+    # `tcar_getModuleScripts'.  Be sure to limit the list to function
     # names that start with the suffix specified only.
     local FUNCTION_DEF=''
     local FUNCTION_DEFS=$(declare -F | gawk '{ print $3 }' | egrep "^${FUNCTION_EXPORTID}")

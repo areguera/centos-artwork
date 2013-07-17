@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   tcar_expandTMarkers.sh -- This function standardizes construction
+#   tcar_setTranslationMarkers.sh -- This function standardizes construction
 #   of translation markers and their related expansion. As convention,
 #   translation markers must be set inside source files (e.g.,
 #   Docbook, Svg, etc.) and expanded inside temporal instances used to
@@ -29,7 +29,7 @@
 #
 ######################################################################
 
-function tcar_expandTMarkers {
+function tcar_setTranslationMarkers {
 
     # Initialize variables.
     local -a SRC
