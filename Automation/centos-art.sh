@@ -45,7 +45,7 @@ fi
 
 # Initialize default configuration values.
 if [[ -d ${TCAR_SCRIPT_BASEDIR} ]];then
-    . ${TCAR_SCRIPT_BASEDIR}/centos-art.conf
+    . ${TCAR_SCRIPT_BASEDIR}/centos-art.conf.sh
 else
     exit 1
 fi

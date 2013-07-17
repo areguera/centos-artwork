@@ -130,7 +130,7 @@ declare -x  TCAR_USER_EDITOR=/bin/vi
 # centos-art.sh behaves in a multi-user environment. This variable
 # must be read-only.
 #
-declare -xr TCAR_USER_CONFIG=${HOME}/.centos-art.conf
+declare -xr TCAR_USER_CONFIG=${HOME}/.centos-art.conf.sh
 
 # --------------------------------------------------------------------
 # Flag-related configuration variables.
