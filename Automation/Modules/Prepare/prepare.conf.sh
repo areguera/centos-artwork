@@ -1,8 +1,8 @@
 #!/bin/bash
 ######################################################################
 #
-#   prepare.conf.sh -- This file provides default configuration values
-#   to centos-art.sh script's prepare module.
+#   prepare.conf.sh -- This file provides the configuration variables
+#   used by prepare module.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2013
@@ -26,9 +26,5 @@
 #
 ######################################################################
 
-# --------------------------------------------------------------------
-# Module-specific configuration variables.
-# --------------------------------------------------------------------
 declare -xr MODULE_VERSION='0.1'
 declare -x  MODULE_ACTIONS=''
-
