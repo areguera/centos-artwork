@@ -27,70 +27,44 @@
 function locale_getOptions {
 
     # Define short options we want to support.
-    local ARGSS="h,q"
+    local ARGSS="h"
 
     # Define long options we want to support.
-    local ARGSL="help,quiet,filter:,answer-yes,update,edit,delete,dont-create-mo,is-localizable,synchronize"
+    local ARGSL="help,filter:,update,edit,delete"
 
-    # Redefine ARGUMENTS using getopt(1) command parser.
-    cli_parseArguments
+    # Redefine arguments using getopt(1) command parser.
+    tcar_setArguments "${@}"
 
-    # Reset positional parameters using output from (getopt) argument
-    # parser.
-    eval set -- "${ARGUMENTS}"
+    # Reset positional parameters on this function, using output
+    # produced from (getopt) arguments parser.
+    eval set -- "${TCAR_ARGUMENTS}"
 
     # Look for options passed through command-line.
     while true; do
         case "$1" in
 
             -h | --help )
-                cli_runFnEnvironment help --read --format="texinfo" "tcar-fs::scripts:bash-functions-locale"
-                shift 1
+                tcar_printHelp
                 exit
                 ;;
 
-            -q | --quiet )
-                FLAG_QUIET="true"
-                shift 1
-                ;;
-
             --filter )
-                FLAG_FILTER="$2"
+                TCAR_FLAG_FILTER="$2"
                 shift 2
                 ;;
 
-            --answer-yes )
-                FLAG_ANSWER="true"
-                shift 1
-                ;;
-
             --update )
-                ACTIONNAMS="$ACTIONNAMS locale_updateMessages"
+                LOCALE_ACTIONS="$LOCALE_ACTIONS update"
                 shift 1
                 ;;
 
             --edit )
-                ACTIONNAMS="$ACTIONNAMS locale_editMessages"
+                LOCALE_ACTIONS="$LOCALE_ACTIONS edit"
                 shift 1
                 ;;
 
             --delete )
-                ACTIONNAMS="$ACTIONNAMS locale_deleteMessages"
-                shift 1
-                ;;
-
-            --is-localizable )
-                ACTIONNAMS="$ACTIONNAMS locale_isLocalizable"
-                shift 1
-                ;;
-
-            --dont-create-mo )
-                FLAG_DONT_CREATE_MO="true"
-                shift 1
-                ;;
-
-            --synchronize )
-                FLAG_SYNCHRONIZE="true"
+                LOCALE_ACTIONS="$LOCALE_ACTIONS delete"
                 shift 1
                 ;;
 
@@ -110,13 +84,8 @@ function locale_getOptions {
         esac
     done
 
-    # Verify action names. When no action name is specified, print an
-    # error message explaining an action is required at least.
-    if [[ $ACTIONNAMS == '' ]];then
-        cli_printMessage "`gettext "You need to provide one action at least."`" --as-error-line
-    fi
-
-    # Redefine ARGUMENTS variable using current positional parameters. 
-    cli_parseArgumentsReDef "$@"
+    # Redefine arguments using current positional parameters. Only
+    # paths should remain as arguments, at this point.
+    TCAR_ARGUMENTS="${@}"
 
 }

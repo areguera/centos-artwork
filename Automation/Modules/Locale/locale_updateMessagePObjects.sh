@@ -1,10 +1,14 @@
 #!/bin/bash
+######################################################################
 #
-# locale_updateMessagePObjects.sh -- This function initializes the
-# portable object when it doesn't exist. When the portable object does
-# exist, it is updated instead. In both cases, the portable object
-# template is used as source to merge changes inside the portable
-# object.
+#   Modules/Locale/locale_updateMessagePObjects.sh -- This function
+#   initializes the portable object when it doesn't exist. When the
+#   portable object does exist, it is updated instead. In both cases,
+#   the portable object template is used as source to merge changes
+#   inside the portable object.
+#
+#   Written by:
+#   * Alain Reguera Delgado <al@centos.org.cu>
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -22,41 +26,41 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
-# $Id$
-# ----------------------------------------------------------------------
+######################################################################
 
 function locale_updateMessagePObjects {
 
-    local FILE="$1"
+    local POT="$1"
 
     # Verify the portable object template. The portable object
     # template is used to create the portable object. We cannot
     # continue without it. 
-    cli_checkFiles -e "${FILE}.pot"
+    tcar_checkFiles "${POT}" -f
+
+    PO=$(dirname ${TRANSLATIONS[0]})/messages.po
 
     # Print action message.
-    cli_printMessage "${FILE}.po" --as-creating-line
+    tcar_printMessage "${PO}" --as-creating-line
 
     # Verify existence of portable object. The portable object is the
     # file translators edit in order to make translation works.
-    if [[ -f ${FILE}.po ]];then
+    if [[ -f ${PO} ]];then
 
         # Update portable object merging both portable object and
         # portable object template.
-        msgmerge --output="${FILE}.po" "${FILE}.po" "${FILE}.pot" --quiet
+        msgmerge --output="${PO}" "${PO}" "${POT}" --quiet
 
     else
 
         # Initiate portable object using portable object template.
         # Do not print msginit sterr output, use centos-art action
         # message instead.
-        msginit -i ${FILE}.pot -o ${FILE}.po --width=70 \
+        msginit -i ${POT} -o ${PO} --width=70 \
             --no-translator > /dev/null 2>&1
 
     fi
 
     # Sanitate metadata inside the PO file.
-    locale_updateMessageMetadata "${FILE}.po"
+    locale_updateMessageMetadata "${PO}"
 
 }

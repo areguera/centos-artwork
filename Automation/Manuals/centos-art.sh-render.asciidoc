@@ -10,15 +10,15 @@ configuration files.
 Synopsis
 --------
 
-+centos-art.sh render [OPTIONS] [DIRECTORY ...]+
+centos-art.sh render [OPTIONS] [DIRECTORY ...]
 
 Description
 -----------
 
 When you execute the *render* module, it looks for configuration files
-inside the +DIRECTORY+ specified in the command-line and processes
-them in the order they were found. When no +DIRECTORY+ is specified to
-*centos-art.sh* script, the *render* module looks for configuration
+inside the ``DIRECTORY'' specified in the command-line and processes
+them in the order they were found. When no ``DIRECTORY'' is specified
+to *centos-art.sh* script, the *render* module looks for configuration
 files inside the current directory it was executed from.  If no
 configuration file is found, the *render* module will end its
 execution with an error message.
@@ -35,9 +35,9 @@ The *render* module accepts the following options:
 *--filter="REGEX"*::
     This option reduces the number of section blocks inside
     configuration files the *render* module will take for processing.
-    +REGEX+ is a regular expression pattern matching one or more
+    ``REGEX'' is a regular expression pattern matching one or more
     section names inside the configuration files found under
-    +DIRECTORY+.
+    ``DIRECTORY''.
 
 Configuration Files
 -------------------
@@ -61,68 +61,46 @@ introduced by using the +#+ character at the beginning of lines.
 Commentaries defined this way are excluded from processing so you can
 use them freely.
 
-The configuration files are processed from top to bottom. This is very
-important aspect to consider in situations where you need to grantee
-an specific content production priority inside a configuration file
-(e.g., you have several files in a configuration file and need to
-produce some of them before others). So, section blocks set first in
-the configuration file are processed first and section blocks set
-later are processed later.
+The configuration files are processed from top to bottom. This is a
+very important aspect to consider in situations where you need to
+grantee specific priority for content production (e.g., you have
+several files in a configuration file and need to produce some of them
+before others). So, because configuration files are processed from top
+to bottom, section blocks set first in the configuration file are
+processed first and section blocks set later are processed later.
 
 The configuration files can be divided in separated configuration
-files to produce section blocks with an specific priority.  For
-example, if you have the file +render.conf+, you can divide its
-content in +render-1.conf+, +render-2.conf+ to produce section blocks
-inside +render-1.conf+ first and +render-2.conf+ later. This sort of
-division is very useful when the configuration file begins to grow, or
-you want to control the order in which specific groups of files are
-produced inside +DIRECTORY+.
+files to produce specific section blocks with a given priority.  For
+example, if you have the file ``render.conf'', you can divide its
+content in ``render-1.conf'', ``render-2.conf'' to produce section
+blocks inside ``render-1.conf'' first and ``render-2.conf'' later.
+This sort of division might be very useful when the configuration file
+begins to grow, or you want to control the order in which specific
+groups of files are produced inside ``DIRECTORY''.
 
-To describe final files production, the *render* module's accepts the
-following configuration variables inside configuration files:
+Inside configuration files, configuration variables can take different
+meanings based on the section contexts. The context of a section block
+is defined by the *render-type* variables.
 
 *render-type*::
-    Optional. This variable specifies the sort of content rendition
+    Optional. This variable specifies the type of content rendition
     the *render* module will perform. This variable can take one of
-    the following values: +archive+, +asciidoc+, +compress+, +direct+,
-    +palette+, and +svg+. When this variable is not present in the
-    configuration file or has not a value set, the *render* module
-    tries to determine the sort of rendition to perform based on the
-    first file path passed through *render-from* variable.
+    the following values: ``archive'', ``asciidoc'', ``compress'',
+    ``images'', ``palette'', and ``svg''. When this variable is not
+    set, the *render* module tries to determine the type of rendition
+    based on the file extension of the first file passed through
+    *render-from* variable. If no valid value is found there either,
+    the *render* module ends with an error message.
 *render-from*::
     Required. This variable specifies the file name of the source file
     (design model) used to produce the final file specified in the
     section line. This option can receive absolute paths and relative
-    paths.  Absolute paths begin with a slash (+/+) character while
-    relative paths begin with the dot slash (+./+) characters or no
-    character at all.
-*locale-from*::
-    Optional. This variable specifies the absolute path to the
-    +messages.po+ file used as reference to produce localized versions
-    of the final files.
-+
-When this variable is provided, the files you specified in the
-*render-from* variable must be XML-based files (e.g., SVG, DocBook).
-The localization of source files will take place when the current
-locale information of your terminal session is different to English
-(e.g., +LANG=es_ES.UTF-8+).
-+
-Localized versions of the final file will be stored in a
-locale-specific directory placed at the same level of the related
-configuration file.
-+
-This variable accepts more than one value. If you pass more than one
-translation file through *locale-from* variable, the first file in the
-list will always contain the source file translatable strings and the
-rest will be considered as shared translations files. Example of
-shared translation files include files containing licenses
-translations. Shared translation files won't be initiated or updated
-by *render* module.
-+
-To initiate new +messages.po+ files or update existent ones, you need
-to use the *locale* module of *centos-art.sh* script.
+    paths.  Absolute paths begin with a slash (``/'') character while
+    relative paths begin with the dot slash (``./'') characters or no
+    character at all. This variable can receive more than one value by
+    using either path expansion in one variable definition, or several
+    variables definitions.
 
-[[using-paths]]
 Using Paths
 ~~~~~~~~~~~
 
@@ -155,13 +133,12 @@ spaces (e.g., +/some/dir/{file1,file2,file3}+). In order for path
 expansion to work correctly, all the file names you put inside the
 curly brackets' list must exist in the location specified first.
 
-[[using-environment-variables]]
 Using Environment Variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The configuration files let you to use environment variables inside
-them. This might be very useful in situation where you need to provide
-absolute paths based on specific information (e.g., the current locale
+them. This might result very useful when you need to provide absolute
+paths based on variable information (e.g., the current locale
 information).  Some of the most important environment variables used
 by *centos-art.sh* script -and its configuration files- are described
 below:
@@ -170,7 +147,7 @@ below:
     This variable contains the absolute path to your repository's
     working copy. The value of this variable is defined as read-only
     inside *centos-art.sh* script and cannot be modified later. As a
-    matter of convenience, users make use of their +~/.bash_profile+
+    matter of convenience, users make use of their ``~/.bash_profile''
     file to define this variable there and, this way, skip the
     sometimes annoyance absolute path questioning the *centos-art.sh*
     script does in order to know the absolute path of the working copy
@@ -180,58 +157,21 @@ Whenever you set absolute paths inside configuration files to refer
 locations inside your working copy, it is necessary that you use the
 +TCAR_BASEDIR+ environment variable in front of each path definition
 you set.
-
-+LANG+::
-    This variable contains the environment's current locale
-    information.
-
 +TCAR_SCRIPT_LANG_LL+::
     This variable contains the language part of the current locale
     information. For instance, if the current locale is
     ``en_US.UTF-8'', the value of this variable would be ``en''.
-
 +TCAR_SCRIPT_LANG_CC+::
     This variable contains the country part of the current locale
     information. For instance, if the current locale is
     ``en_US.UTF-8'', the value of this variable would be ``US''.
-
 +TCAR_SCRIPT_LANG_LC+::
     This variable contains the current locale information in ll_CC
     format (e.g., es_ES).
++LANG+::
+    This variable contains the environment's current locale
+    information.
 
-+HOME+::
-    This variable contains the absolute path to current user's home
-    directory.  The value of this variable is set by the operating
-    system when the user opens a terminal session.
-+
-Whenever you need to set user-specific absolute paths inside
-configuration files, use this variable.
-
-[[rendering-files-directly]]
-Rendering Image Files From Other Image Files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To render image files from other image files, the *render-type*
-variable must be set to ``images'' and one or more image files must be
-provided in the *render-from* variable. When the *render* module finds
-a section block with this characteristics, it applies the value of
-*command* variable to all files found in *render-from* variable to
-produce the final file specified in the section name. 
-
-When the *command* variable is not specified, the ``/usr/bin/convert
--append'' command is used as default.  This command takes all the
-images passed through *render-from* and appends them from top to
-bottom and saves the result in the file you specified in the section
-name.  When you render files this way, the order in which you define
-source files through *render-from* may affect the final result based
-in the *command* you provided.
-
-The ``images'' rendition type provides an interface for external image
-manipulation programs, like ImageMagick and NetPbm. You can use these
-programs to manipulate images in great detail through the
-command-line.
-
-[[rendering-archives]]
 Rendering Archives
 ~~~~~~~~~~~~~~~~~~
 
@@ -242,7 +182,6 @@ final file specified in the section line. When the command variable is
 not specified, the +/bin/tar --remove-files -czf+ command is used as
 default.
 
-[[rendering-image-files]]
 Rendering Image Files
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -339,7 +278,29 @@ tool set, run the following command: *+identify -list format+*.
     available. In case they don't exist the *render* module ends its
     execution with an error message.
 
-[[rendering-images-with-reduced-number-of-colros]]
+Rendering Image Files From Other Image Files
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To render image files from other image files, the *render-type*
+variable must be set to ``images'' and one or more image files must be
+provided in the *render-from* variable. When the *render* module finds
+a section block with this characteristics, it applies the value of
+*command* variable to all files found in *render-from* variable to
+produce the final file specified in the section name. 
+
+When the *command* variable is not specified, the ``/usr/bin/convert
+-append'' command is used as default.  This command takes all the
+images passed through *render-from* and appends them from top to
+bottom and saves the result in the file you specified in the section
+name.  When you render files this way, the order in which you define
+source files through *render-from* may affect the final result based
+in the *command* you provided.
+
+The ``images'' rendition type provides an interface for external image
+manipulation programs, like ImageMagick and NetPbm. You can use these
+programs to manipulate images in great detail through the
+command-line.
+
 Rendering Images With Reduced Number Of Colors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -468,19 +429,30 @@ them.
 When the *formats* variable is not set, the ``xhtml'' value is used as
 default value.
 
-Localization Files
-------------------
+Rendering Localized Images
+--------------------------
 
-When the current locale code you are using in your terminal's session
-is not English, the *render* module uses localization files specified
-by *locale-from* variable to produce final versions of source files
-for your current locale information.  Localization files are created
-and edited through *locale* module.  Thus, in order for you to produce
-localized content you need to create the localization files through
-*locale* module first and then run the *render* module.
+To produce localized content, you need to set the *locale-from*
+variable in the section block you want to provide translations and
+point its value to the translation file where string translations will
+take place. Then, you need to check the value of LANG environment
+variable to be sure it has the locale information you want to
+translate messages for.
 
-To know more about localization files, see *locale* module's
-documentation.
+If the LANG environment variable has the value you expect, run the
+*locale* module on the ``DIRECTORY'' you want to locale content.  This
+read the source files you specified in *render-from* variable and
+would create the translation files (a.k.a., portable objects) you need
+to edit to provide the string translations from one language to
+another. Verify the translation file exist and edit it to provide the
+strings translations. Once the strings have been translated, execute
+the *render* module on the ``DIRECTORY''.
+
+When the *render* module finds the *locale-from* variable in a section
+block, it uses the *xml2po* program to create a localized instance of
+each source file it finds in *render-from* variable.  Then, using the
+source files' localized instances, it produces the final files based
+on *render-type* variable's value.
 
 Examples
 --------

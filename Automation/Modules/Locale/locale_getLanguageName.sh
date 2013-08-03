@@ -27,7 +27,7 @@ function locale_getLanguageName {
 
     local LANGNAME="`gettext "Unknown"`"
 
-    case ${CLI_LANG_LL} in
+    case ${TCAR_SCRIPT_LANG_LL} in
 
         'aa' )
         LANGNAME="`gettext "Afar"`"

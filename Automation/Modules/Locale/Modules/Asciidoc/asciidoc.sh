@@ -24,7 +24,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function locale_updateMessageXmlDocbook {
+function asciidoc {
 
     # Define location where translation files will be stored in.
     local L10N_WORKDIR=$(cli_getLocalizationDir ${ACTIONVAL})

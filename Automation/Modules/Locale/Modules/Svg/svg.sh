@@ -1,19 +1,19 @@
 #!/bin/bash
 ######################################################################
 #
-#   tcar_printHelp.sh -- This function standardizes the way
-#   centos-art.sh script prints help about itself.
+#   Modules/Locale/Modules/Svg/svg.sh -- This function parses
+#   XML-based files (e.g., scalable vector graphics), retrieves
+#   translatable strings and creates/update gettext portable objects.
 #
-#   Written by: 
-#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
-#     Key fingerprint = D67D 0F82 4CBD 90BC 6421  DF28 7CCE 757C 17CA 3951
+#   Written by:
+#   * Alain Reguera Delgado <al@centos.org.cu>
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or (at
-# your option) any later version.
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
 #
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -26,9 +26,10 @@
 #
 ######################################################################
 
-function tcar_printHelp {
+function svg {
 
-    /usr/bin/man -M ${TCAR_SCRIPT_BASEDIR}/Manuals/ "centos-art.sh-${MODULE_NAME}"
-    exit 0
+    for LOCALE_ACTION in ${LOCALE_ACTIONS};do
+        tcar_setModuleEnvironment ${LOCALE_ACTION} "${@}"
+    done
 
 }

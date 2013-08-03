@@ -1,3 +1,2 @@
 #!/bin/bash
-declare -x  LOCALE_ACTIONS=''
 declare -x  TCAR_SCRIPT_MODULES_BASEDIR=${MODULE_DIR_MODULES}

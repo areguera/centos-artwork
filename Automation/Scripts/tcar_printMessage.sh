@@ -242,6 +242,10 @@ function tcar_printMessage {
             tcar_printMessage "`gettext "Combining"`: ${MESSAGE}" --as-stdout-line
             ;;
 
+        --as-editing-line )
+            tcar_printMessage "`gettext "Editing"`: ${MESSAGE}" --as-stdout-line
+            ;;
+
         --as-creating-line | --as-updating-line )
             if [[ -a "${MESSAGE}" ]];then
                 tcar_printMessage "`gettext "Updating"`: ${MESSAGE}" --as-stdout-line

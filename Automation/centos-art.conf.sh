@@ -122,7 +122,7 @@ declare -x TCAR_MANUAL_READER="/usr/bin/man -M ${TCAR_MANUAL_SEARCHPATH}"
 # will be use when you need to write commit messages and anything that
 # requires text edition.
 #
-declare -x  TCAR_USER_EDITOR=/bin/vi
+declare -x  TCAR_USER_EDITOR=/usr/bin/vim
 #
 # Set user-specific configuration file used by centos-art.sh script to
 # determine where to retrieve user-specific configuration values.

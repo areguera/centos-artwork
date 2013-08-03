@@ -33,22 +33,10 @@ function locale_updateMessageBinary {
     # Define absolute path to final portable object. This is the file
     # that contains all the individual function translation messages
     # and is used to build the machine object (.mo) file.
-    local PO_FILE=${L10N_WORKDIR}/${TEXTDOMAIN}.po
-
-    # Define list of portable objects to work with. This list must be
-    # built using the portable objects inside the working copy as
-    # reference not the information in the central repository
-    # (IMPORTANT: all of them must be included in this list, so
-    # FLAG_FILTER mustn't be applied here). Thus, when we are
-    # selective about the functionalities we want to use, it is
-    # possible to have translation messages only for those
-    # functionalities we did download into the working copy and no
-    # others. There is no need to have translation messages for
-    # functionalities we didn't download.
-    local PO_FILES=$(cli_getFilesList ${L10N_WORKDIR} --type='f' --pattern="^.+/messages.po$")
+    local PO_FILE=${TRANSLATION[0]}
 
     # Define absolute path to machine object directory.
-    local MO_DIR="${L10N_WORKDIR}/LC_MESSAGES"
+    local MO_DIR="$(dirame ${CONFIGURATION})/${TCAR_SCRIPT_LANG_LC}/LC_MESSAGES"
 
     # Define absolute path to machine object file.
     local MO_FILE="${MO_DIR}/${TEXTDOMAIN}.mo"
