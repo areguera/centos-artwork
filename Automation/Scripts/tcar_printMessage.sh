@@ -71,8 +71,15 @@ function tcar_printMessage {
 
         --as-error-line )
 
+            # Build the error trail. This is very useful for tracking
+            # the error down.
+            tcar_printMessage '-' --as-separator-line
+            tcar_printMessage "${FUNCNAME[*]}" --as-tree-line
+
             # Build the error message.
-            tcar_printMessage "${TCAR_SCRIPT_COMMAND} ($(tcar_printCaller 1)): ${MESSAGE}" --as-stderr-line
+            tcar_printMessage '-' --as-separator-line
+            tcar_printMessage "$(tcar_printCaller 1) ${MESSAGE}" --as-stdout-line
+            tcar_printMessage '-' --as-separator-line
             tcar_printMessage "${MODULE_NAME}" --as-toknowmore-line
 
             # Finish script execution with exit status 1 (SIGHUP) to
@@ -82,12 +89,34 @@ function tcar_printMessage {
             exit 1
             ;;
 
+        --as-tree-line )
+            local NAME
+            local -a FN
+            for NAME in ${MESSAGE};do
+                FN[++((${#FN[*]}))]=${NAME}
+            done
+            local COUNT=$(( ${#FN[*]} - 2 ))
+            local SEPARATOR='`--'
+            local SPACES=0
+            echo "${TCAR_SCRIPT_BASEDIR}/${TCAR_SCRIPT_NAME}" 1>&2
+            while [[ ${COUNT} -gt 0  ]];do
+                if [[ ${COUNT} -eq $(( ${#FN[*]} - 2 )) ]];then
+                    echo ${SEPARATOR} ${FN[${COUNT}]}
+                else
+                    echo ${FN[${COUNT}]} \
+                        | gawk '{ printf "%'${SPACES}'s%s %s\n", "", "'${SEPARATOR}'", $1 }'
+                fi
+                COUNT=$((${COUNT} - 1))
+                SPACES=$((${SPACES} + 4))
+            done
+            ;;
+
         --as-suggestion-line )
 
             # Build the error message.
-            tcar_printMessage "${TCAR_SCRIPT_COMMAND} ($(tcar_printCaller 1)):" --as-stderr-line
-            tcar_printMessage "`gettext "The path provided cannot be processed the way you entered it."`" --as-stderr-line
-            tcar_printMessage "`gettext "Instead, try the following equivalence:"` ${MESSAGE}" --as-stderr-line
+            tcar_printMessage "${TCAR_SCRIPT_COMMAND} ($(tcar_printCaller 1)):" --as-stdout-line
+            tcar_printMessage "`gettext "The path provided cannot be processed the way you entered it."`" --as-stdout-line
+            tcar_printMessage "`gettext "Instead, try the following equivalence:"` ${MESSAGE}" --as-stdout-line
             tcar_printMessage "${MODULE_NAME}" --as-toknowmore-line
 
             # Finish script execution with exit status 1 (SIGHUP) to
@@ -98,7 +127,7 @@ function tcar_printMessage {
             ;;
 
         --as-toknowmore-line )
-            tcar_printMessage "`gettext "To know more, run"` ${TCAR_SCRIPT_COMMAND} ${MESSAGE} --help" --as-stderr-line
+            tcar_printMessage "`gettext "To know more, run"` ${TCAR_SCRIPT_COMMAND} ${MESSAGE} --help" --as-stdout-line
             ;;
 
         --as-yesornorequest-line )
@@ -145,7 +174,7 @@ function tcar_printMessage {
             ;;
 
         --as-response-line )
-            tcar_printMessage "--> ${MESSAGE}" --as-stderr-line
+            tcar_printMessage "--> ${MESSAGE}" --as-stdout-line
             ;;
 
         --as-request-line )
@@ -181,10 +210,10 @@ function tcar_printMessage {
                 until [[ ${MESSAGE_WIDTH} -eq 0 ]];do
                     echo -n "$(echo ${MESSAGE} | sed -r 's!(.).*!\1!')"
                     MESSAGE_WIDTH=$((${MESSAGE_WIDTH} - 1))
-                done)
+                done) 
 
             # Draw the separator line.
-            echo "${MESSAGE}"
+            echo "${MESSAGE}" 1>&2
             ;;
 
         --as-banner-line )

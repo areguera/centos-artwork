@@ -83,12 +83,19 @@ div.section > div.titlepage h4.title {
     font-size: 1.2em;
     }
 
+div.refnamediv {
+    padding-top: 1.5em;
+
+}
+
 div.refentry div.refnamediv h2 span {
     font-family: "DejaVuLG Mono", monospace
     }
 
 div.refentry div.refsynopsisdiv h2,
-div.refentry div.refsection h2 {
+div.refnamediv h2,
+div.refentry div.refsection h2,
+div.refsect1 h2 {
     border-bottom: 1px solid #DADADA;
     }
 

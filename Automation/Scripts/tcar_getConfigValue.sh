@@ -30,27 +30,23 @@
 
 function tcar_getConfigValue {
 
-    # Initialize absolute path to configuration file.
     local CONFIGURATION_FILE="${1}"
 
-    # Initialize configuration section name where the variable value
-    # we want to to retrieve is set in.
     local CONFIGURATION_SECTION="${2}"
 
-    # Initialize variable name we want to retrieve value from.
     local CONFIGURATION_OPTION="${3}"
 
-    # Retrieve configuration lines from configuration file.
     local CONFIGURATION_LINES=$(tcar_getConfigLines \
         "${CONFIGURATION_FILE}" "${CONFIGURATION_SECTION}" "${CONFIGURATION_OPTION}")
 
-    # Parse configuration lines to retrieve the values of variable
-    # names.
-    local CONFIGURATION_VALUE=$(echo ${CONFIGURATION_LINES} \
-        | cut -d= -f2- \
-        | sed -r -e 's/"//g' -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' )
+    for CONFIGURATION_LINE in "${CONFIGURATION_LINES}";do
 
-    # Output values related to variable name.
-    echo "${CONFIGURATION_VALUE}"
+        local CONFIGURATION_VALUE=$(echo "${CONFIGURATION_LINE}" \
+            | cut -d= -f2- | sed -r -e 's/"//g' -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+
+        eval echo ${CONFIGURATION_VALUE}
+
+    done
+
 
 }

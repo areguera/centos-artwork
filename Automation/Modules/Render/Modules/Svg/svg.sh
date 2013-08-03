@@ -1,14 +1,20 @@
 #!/bin/bash
+######################################################################
 #
-# svg.sh -- This function performs base-rendition action for SVG
-# files.
+#   Modules/Render/Modules/Svg/svg.sh -- This file initializes the svg
+#   module. The svg module takes SVG fies as input and produces
+#   different kind of images based on either simple or advanced
+#   rendition flow.
+#
+#   Written by:
+#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or (at
-# your option) any later version.
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
 #
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -19,51 +25,34 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
-# $Id$
-# ----------------------------------------------------------------------
+######################################################################
 
 function svg {
 
-    # Apply translation to design model in order to produce the
-    # translated design model instance.
-    svg_doTranslation
+    COMMAND=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "command")
+    if [[ -z ${COMMAND} ]];then
+        if [[ ${#SOURCES[*]} -gt 1 ]];then
+            COMMAND="/usr/bin/convert +append"
+        else
+            COMMAND="/bin/cp"
+        fi
+    fi
 
-    # Expand translation markers inside design model instance.
-    cli_expandTMarkers ${INSTANCE}
+    RENDER_FLOWS=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "render-flow")
+    if [[ -z ${RENDER_FLOWS} ]];then
+        RENDER_FLOWS='base'
+    fi
 
-    # Initialize the export id used inside design templates. This
-    # value defines the design area we want to export.
-    local EXPORTID='CENTOSARTWORK'
+    BRANDS=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "brand")
+    COMMENT=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "comment")
 
-    # Verify the export id.
-    svg_checkModelExportId "$INSTANCE" "$EXPORTID" 
+    local EXPORTID=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "export-id")
+    if [[ -z ${EXPORTID} ]];then
+        EXPORTID="CENTOSARTWORK"
+    fi
 
-    # Check existence of external files. Inside design templates and
-    # their instances, external files are used to refer the background
-    # information required by the design template. If such background
-    # information is not available the image is produced without
-    # background information. This is something that need to be
-    # avoided.
-    svg_checkModelAbsref "$INSTANCE"
-
-    # Render template instance using inkscape and save the output.
-    local INKSCAPE_OUTPUT="$(\
-        inkscape $INSTANCE --export-id=$EXPORTID --export-png=${FILE}.png)"
-
-    # Modify output from inkscape to fit the centos-art.sh script
-    # output visual style.
-    cli_printMessage "$(echo "$INKSCAPE_OUTPUT" | egrep '^Area' \
-        | sed -r "s!^Area!`gettext "Area"`:!")" --as-inkscape-line
-    cli_printMessage "$(echo "$INKSCAPE_OUTPUT" | egrep '^Background' \
-        | sed -r "s!^Background (RRGGBBAA):(.*)!`gettext "Background"`: \1 \2!")" --as-inkscape-line
-    cli_printMessage "$(echo "$INKSCAPE_OUTPUT" | egrep '^Bitmap saved as' \
-        | sed -r "s!^Bitmap saved as:!`gettext "Saved as"`:!")" --as-inkscape-line
-
-    # Perform format post-rendition.
-    svg_doPostActions
-
-    # Perform format last-rendition.
-    svg_doLastActions
+    for RENDER_FLOW in ${RENDER_FLOWS} ;do
+        tcar_setModuleEnvironment "${RENDER_FLOW}" "${@}"
+    done
 
 }

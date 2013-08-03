@@ -56,7 +56,7 @@ function tcar_checkRepoDirSource {
 
     # Remove the working directory absolute path from location to
     # avoid path duplications here.
-    LOCATION=$(echo "${LOCATION}" | sed "s,${TCAR_USER_WRKDIR}/,,g")
+    LOCATION=$(echo "${LOCATION}" | sed "s,${TCAR_BASEDIR}/,,g")
 
     # When we use Git as version control system, there isn't a need of
     # using the `trunk', `branches', `tags' convention we were using
@@ -83,7 +83,7 @@ function tcar_checkRepoDirSource {
     # messages when we reassign variable values using this function as
     # reference (e.g., in order to prevent error messages from being
     # stored inside variables.).
-    LOCATION=${TCAR_USER_WRKDIR}/${LOCATION}
+    LOCATION=${TCAR_BASEDIR}/${LOCATION}
 
     # Output the absolute path to location.
     echo "${LOCATION}"

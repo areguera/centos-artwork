@@ -46,9 +46,6 @@ function tcar_setModuleEnvironment {
 
     # Define module's related directories.
     local MODULE_DIR_MODULES=${MODULE_DIR}/Modules
-    local MODULE_DIR_MANUALS=${MODULE_DIR}/Manuals
-    local MODULE_DIR_SCRIPTS=${MODULE_DIR}/Scripts
-    local MODULE_DIR_LOCALES=${MODULE_DIR}/Locales
 
     # Define module's initialization file.
     local MODULE_INIT_FILE=${MODULE_DIR}/${MODULE_NAME}.sh
@@ -61,21 +58,18 @@ function tcar_setModuleEnvironment {
     # start counting from second argument on, inclusively.
     shift 1
 
-    # Verify number of arguments passed to centos-art.sh script. By
-    # default, to all modules, when no option is provided the version
-    # information is printed.
-    if [[ $# -lt 1 ]];then
-        tcar_printVersion
-    fi
-
     # Redefine module-specific configuration values.
     if [[ -f ${MODULE_DIR}/${MODULE_NAME}.conf.sh ]];then
         . ${MODULE_DIR}/${MODULE_NAME}.conf.sh
     fi
 
-    # Redefine module-specific internationalization configuration variables.
-    declare -x TEXTDOMAIN=${MODULE_NAME}
-    declare -x TEXTDOMAINDIR=${MODULE_DIR}/Locales
+    # Verify the number of arguments passed to centos-art.sh script.
+    # By default, to all modules, when no argument is provided after
+    # the module name, use the current directory as default directory
+    # to look for configuration files.
+    if [[ $# -eq 0 ]];then
+        set -- ${PWD}
+    fi
 
     # Load module-specific (function) scripts into current execution
     # environment.  Keep the tcar_setModuleEnvironmentScripts function
@@ -84,5 +78,8 @@ function tcar_setModuleEnvironment {
 
     # Execute module-specific initialization script.
     ${MODULE_NAME} "${@}"
+
+    # Unset the module environment.
+    tcar_unsetModuleEnvironment "${MODULE_NAME}"
 
 }

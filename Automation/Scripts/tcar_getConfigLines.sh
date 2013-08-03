@@ -33,17 +33,9 @@ function tcar_getConfigLines {
     # Initialize absolute path to configuration file.
     local CONFIGURATION_FILE="${1}"
 
-    # Verify that configuration file does exist.
-    tcar_checkFiles -e ${CONFIGURATION_FILE}
-
     # Initialize configuration section name where the variable value
     # we want to to retrieve is set in.
     local CONFIGURATION_SECTION="${2}"
-
-    # Be sure the configuration section name has the correct format.
-    if [[ ! ${CONFIGURATION_SECTION} =~ '^[[:alnum:]._-]+$' ]];then
-        tcar_printMessage "`gettext "The configuration section provided is incorrect."`" --as-error-line
-    fi
 
     # Initialize variable name we want to retrieve value from.
     local CONFIGURATION_OPTION="${3}"
@@ -56,12 +48,15 @@ function tcar_getConfigLines {
         CONFIGURATION_OPTION='[[:alnum:]_./-]+[[:space:]]*='
     fi
 
-    # Retrieve configuration lines from configuration file.
+    # Retrieve configuration lines from configuration file. Don't sort
+    # the value of this value so as to preserve the order given in the
+    # configuration file. This is important because configuration
+    # files are being used for setting render-from priorities.
     local CONFIGURATION_LINES=$(cat ${CONFIGURATION_FILE} \
         | egrep -v '^#' \
         | egrep -v '^[[:space:]]*$' \
         | sed -r -n "/^\[${CONFIGURATION_SECTION}\][[:space:]]*$/,/^\[/p" \
-        | egrep -v '^\[' | sort | uniq \
+        | egrep -v '^\[' \
         | egrep "^${CONFIGURATION_OPTION}")
 
     # Output value related to variable name.

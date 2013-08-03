@@ -42,7 +42,7 @@ function tcar_setTranslationMarkers {
     local LOCATION="${1}"
 
     # Verify that source location does exist.
-    tcar_checkFiles -e ${LOCATION}
+    tcar_checkFiles -f ${LOCATION}
 
     # Define copyright translation markers.
     SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEAR(_LAST)?='
@@ -62,11 +62,11 @@ function tcar_setTranslationMarkers {
 
     # Define theme translation markers.
     SRC[((++${#SRC[*]}))]='=THEME='
-    DST[((++${#DST[*]}))]="$(tcar_getPathComponent ${OUTPUT} --motif)"
+    DST[((++${#DST[*]}))]="$(tcar_getPathComponent ${TARGET} --motif)"
     SRC[((++${#SRC[*]}))]='=THEMENAME='
-    DST[((++${#DST[*]}))]="$(tcar_getPathComponent ${OUTPUT} --motif-name)"
+    DST[((++${#DST[*]}))]="$(tcar_getPathComponent ${TARGET} --motif-name)"
     SRC[((++${#SRC[*]}))]='=THEMERELEASE='
-    DST[((++${#DST[*]}))]="$(tcar_getPathComponent ${OUTPUT} --motif-release)"
+    DST[((++${#DST[*]}))]="$(tcar_getPathComponent ${TARGET} --motif-version)"
 
     # Define release-specific translation markers.
     SRC[((++${#SRC[*]}))]='=RELEASE='
@@ -125,7 +125,7 @@ function tcar_setTranslationMarkers {
     fi
 
     # Define repository translation markers.
-    SRC[((++${#SRC[*]}))]='=(REPO_TLDIR|REPO_HOME|TCAR_BASEDIR)='
+    SRC[((++${#SRC[*]}))]='=(REPO_TLDIR|REPO_HOME|TCAR_BASEDIR|TCAR_WORKDIR)='
     DST[((++${#DST[*]}))]="${TCAR_BASEDIR}"
 
     # Do replacement of nested translation markers.

@@ -162,7 +162,7 @@ function tcar_checkFiles {
                 ;;
 
                 "file" )
-                if [[ ! $(${CONDITION_COMMAND[${COUNTER}]} ${CONDITION_PATTERN[${COUNTER}]} ${FILE}) == "${MIME}" ]];then
+                if [[ ! $(${CONDITION_COMMAND[${COUNTER}]} ${CONDITION_PATTERN[${COUNTER}]} ${FILE}) =~ "${MIME}" ]];then
                     tcar_printMessage "${FILE} ${CONDITION_MESSAGE[${COUNTER}]}" --as-error-line
                 fi
                 ;;

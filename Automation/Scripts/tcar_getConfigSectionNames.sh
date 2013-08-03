@@ -37,8 +37,16 @@ function tcar_getConfigSectionNames {
     # Verify existence of configuration file.
     tcar_checkFiles ${CONFIGURATION_FILE} -f
 
-    # Output all section names without brackets, one per line.
-    egrep '^\[[[:alnum:]._-]+\][[:space:]]*$' ${CONFIGURATION_FILE} \
-        | sed -r 's/\[(.+)\]/\1/'
+    # Define regular expression pattern used to retrieve section names
+    # from configuration files. Don't permit any regular expression
+    # meta-character either.
+    local CONFIGURATION_SECTION_REGEX='^\[[[:alnum:]_.-]+\][[:space:]]*$'
+
+    # Output all section names without brackets, one per line. Don't
+    # permit any kind of expansion here. Section names are used as
+    # reference to retrieve information from configuration file,
+    # expanding them would create different points of verifications.
+    egrep ${CONFIGURATION_SECTION_REGEX} ${CONFIGURATION_FILE} \
+        | sed -r 's,\[(.+)\],\1,'
 
 }

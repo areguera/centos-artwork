@@ -35,10 +35,10 @@ function tcar_getPathComponent {
     local ARGSS=''
 
     # Define long options.
-    local ARGSL='release,release-major,release-minor,release-pattern,architecture,architecture-pattern,motif,motif-name,motif-release,motif-pattern,repo-dir'
+    local ARGSL='release,release-major,release-minor,release-pattern,architecture,architecture-pattern,motif,motif-name,motif-version,motif-pattern,repo-dir'
 
     # Define release pattern.
-    local RELEASE="(([[:digit:]]+)(\.([[:digit:]]+))?)"
+    local VERSION="(([[:digit:]]+)(\.([[:digit:]]+))?)"
 
     # Define architecture pattern. Make it match the architectures the
     # CentOS distribution is able to be installed on.
@@ -46,7 +46,7 @@ function tcar_getPathComponent {
 
     # Define regular expression pattern that match the theme artistic
     # motif component inside the path strings.
-    local THEME_MOTIF="Identity/Images/Themes/(([[:alnum:]]+)/(${RELEASE}))"
+    local THEME_MOTIF="Themes/Motifs/(([[:alnum:]]+)/(${VERSION}))"
 
     # Initialize arguments with an empty value and set it as local
     # variable to this function scope. Doing this is very important to
@@ -70,25 +70,25 @@ function tcar_getPathComponent {
         case "${1}" in
 
             --release )
-                echo "${LOCATION}" | egrep "${RELEASE}" | sed -r "s!.*/${RELEASE}/.*!\1!"
+                echo "${LOCATION}" | egrep "${VERSION}" | sed -r "s!.*/${VERSION}/.*!\1!"
                 shift 1
                 break
                 ;;
 
             --release-major )
-                echo "${LOCATION}" | egrep "${RELEASE}" | sed -r "s!.*/${RELEASE}/.*!\2!"
+                echo "${LOCATION}" | egrep "${VERSION}" | sed -r "s!.*/${VERSION}/.*!\2!"
                 shift 1
                 break
                 ;;
 
             --release-minor )
-                echo "${LOCATION}" | egrep "${RELEASE}" | sed -r "s!.*/${RELEASE}/.*!\4!"
+                echo "${LOCATION}" | egrep "${VERSION}" | sed -r "s!.*/${VERSION}/.*!\4!"
                 shift 1
                 break
                 ;;
 
             --release-pattern )
-                echo "${RELEASE}"
+                echo "${VERSION}"
                 shift 1
                 break
                 ;;
@@ -117,7 +117,7 @@ function tcar_getPathComponent {
                 break
                 ;;
 
-            --motif-release )
+            --motif-version )
                 echo "${LOCATION}" | egrep "${THEME_MOTIF}" | sed -r "s!.*${THEME_MOTIF}.*!\3!"
                 shift 1
                 break

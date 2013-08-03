@@ -34,10 +34,13 @@ function tcar_setModuleEnvironmentScripts {
     local FUNCTION_PATTERN="^function[[:space:]]+${MODULE_NAME}(_[[:alnum:]]+)?[[:space:]]+{[[:space:]]*$"
 
     # Define the list of files.
-    local MODULE_SCRIPTS="${MODULE_INIT_FILE}
-        $(tcar_getFilesList ${MODULE_DIR_SCRIPTS} \
-        --pattern="${MODULE_DIR}/.+\.sh$" --maxdepth='1' \
-        --mindepth='1' --type='f')"
+    local MODULE_SCRIPTS="${MODULE_INIT_FILE}"
+    if [[ -d ${MODULE_DIR} ]];then
+        MODULE_SCRIPTS="${MODULE_SCRIPTS} 
+            $(tcar_getFilesList ${MODULE_DIR} \
+            --pattern="${MODULE_DIR}/${MODULE_NAME}_.+\.sh$" --maxdepth='1' \
+            --mindepth='1' --type='f')"
+    fi
 
     # Verify the list of files. If no function file exists for the
     # location specified stop the script execution. Otherwise the
