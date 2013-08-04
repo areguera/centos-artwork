@@ -18,7 +18,7 @@
 #
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPO_FILESE.  See the GNU
 # General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
@@ -34,10 +34,10 @@ function locale_updateMessageMetadata {
     local -a DST
 
     # Retrieve absolute path of portable object we'll work with.
-    local PO="${1}"
+    local PO_FILE="${1}"
 
     # Check existence of file before work with it.
-    tcar_checkFiles "${PO}" -f
+    tcar_checkFiles "${PO_FILE}" -f
 
     # Define pattern lines. The pattern lines are put inside portable
     # objects through xgettext and xml2po commands. In the case of
@@ -49,18 +49,18 @@ function locale_updateMessageMetadata {
     SRC[1]="\"Report-Msgid-Bugs-To:"
     SRC[2]="\"Last-Translator: (.+)?"
     SRC[3]="\"Language-Team:"
-    SRC[4]="\"PO-Revision-Date:"
+    SRC[4]="\"PO_FILE-Revision-Date:"
 
     # Define replacement lines for pattern line.
     DST[0]="\"Project-Id-Version: ${TCAR_SCRIPT_NAME} ${TCAR_SCRIPT_VERSION}\\\n\""
     DST[1]="\"Report-Msgid-Bugs-To: Documentation SIG <centos-docs@centos.org.cu>\\\n\""
     DST[2]="\"Last-Translator: Documentation SIG <centos-docs@centos.org.cu>\\\n\""
     DST[3]="\"Language-Team: $(locale_getLanguageName)\\\n\""
-    DST[4]="\"PO-Revision-Date: $(date "+%F %H:%M%z")\\\n\""
+    DST[4]="\"PO_FILE-Revision-Date: $(date "+%F %H:%M%z")\\\n\""
 
     # Change pattern lines with their replacement lines.
     while [[ $COUNT -lt ${#SRC[*]} ]];do
-        sed -i -r "/${SRC[$COUNT]}/c${DST[$COUNT]}" ${PO}
+        sed -i -r "/${SRC[$COUNT]}/c${DST[$COUNT]}" ${PO_FILE}
         COUNT=$(($COUNT + 1))
     done
 
@@ -69,13 +69,13 @@ function locale_updateMessageMetadata {
     # does when xgettext is used. So, in order to have such metadata
     # field in all .pot files, verify its existence and add it if it
     # doesn't exist.
-    egrep "^\"${SRC[1]}" ${PO} > /dev/null
+    egrep "^\"${SRC[1]}" ${PO_FILE} > /dev/null
     if [[ $? -ne 0 ]];then
-        sed -i -r "/^\"${SRC[0]}/a${DST[1]}" ${PO}
+        sed -i -r "/^\"${SRC[0]}/a${DST[1]}" ${PO_FILE}
     fi
 
     # Replace package information using gettext domain information.
-    sed -i -r "s/PACKAGE/${TCAR_SCRIPT_NAME} ${TCAR_SCRIPT_VERSION}/g" ${PO}
+    sed -i -r "s/PACKAGE/${TCAR_SCRIPT_NAME} ${TCAR_SCRIPT_VERSION}/g" ${PO_FILE}
 
     # Remove absolute path to the working copy so it doesn't appear on
     # comments related to locations. Remember that people can download
@@ -83,7 +83,7 @@ function locale_updateMessageMetadata {
     # version those changes each time a translation message be
     # updated. To be consistent about this, show path information from
     # first level on. Don't show the variable part of the path.
-    sed -i -r "s,${TCAR_BASEDIR}/,,g" ${PO}
+    sed -i -r "s,${TCAR_BASEDIR}/,,g" ${PO_FILE}
 
     # Unset array variables to avoid undesired concatenations.
     unset SRC

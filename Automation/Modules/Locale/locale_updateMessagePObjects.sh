@@ -30,37 +30,43 @@
 
 function locale_updateMessagePObjects {
 
-    local POT="$1"
+    local POT_FILE="${1}"
 
     # Verify the portable object template. The portable object
     # template is used to create the portable object. We cannot
     # continue without it. 
-    tcar_checkFiles "${POT}" -f
+    tcar_checkFiles ${POT_FILE} -f
 
-    PO=$(dirname ${TRANSLATIONS[0]})/messages.po
+    # Define PO's location using first translation file as reference.
+    local PO_FILE=${TRANSLATIONS[0]}
+
+    # Create the PO's parent directory if it doesn't exist.
+    if [[ ! -d $(dirname ${PO_FILE}) ]];then
+        mkdir -p $(dirname ${PO_FILE})
+    fi
 
     # Print action message.
-    tcar_printMessage "${PO}" --as-creating-line
+    tcar_printMessage "${PO_FILE}" --as-creating-line
 
     # Verify existence of portable object. The portable object is the
     # file translators edit in order to make translation works.
-    if [[ -f ${PO} ]];then
+    if [[ -f ${PO_FILE} ]];then
 
         # Update portable object merging both portable object and
         # portable object template.
-        msgmerge --output="${PO}" "${PO}" "${POT}" --quiet
+        msgmerge --output-file="${PO_FILE}" "${PO_FILE}" "${POT_FILE}" --quiet
 
     else
 
         # Initiate portable object using portable object template.
         # Do not print msginit sterr output, use centos-art action
         # message instead.
-        msginit -i ${POT} -o ${PO} --width=70 \
+        msginit -i ${POT_FILE} -o ${PO_FILE} --width=70 \
             --no-translator > /dev/null 2>&1
 
     fi
 
     # Sanitate metadata inside the PO file.
-    locale_updateMessageMetadata "${PO}"
+    locale_updateMessageMetadata "${PO_FILE}"
 
 }

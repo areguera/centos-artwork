@@ -34,10 +34,7 @@ function locale_setLocaleType {
   
         local SECTION=${SECTIONS[${COUNTER}]}
 
-        local RENDER_TYPE=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "render-type")
-
         local RENDER_FROM=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "render-from")
-
         for SOURCE in ${RENDER_FROM};do
             if [[ ${SOURCE} =~ "^/" ]];then
                 SOURCES[((++${#SOURCES[*]}))]=${SOURCE}
@@ -46,12 +43,12 @@ function locale_setLocaleType {
             fi
         done
 
+        local RENDER_TYPE=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "render-type")
         if [[ -z ${RENDER_TYPE} ]];then
            RENDER_TYPE=$(echo ${SOURCES[0]} | sed -r 's/.+\.([[:alpha:]]+)$/\1/') 
         fi
 
         local LOCALE_FROM=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "locale-from")
-
         for TRANSLATION in ${LOCALE_FROM};do
             if [[ ${TRANSLATION} =~ "^/" ]];then
                 TRANSLATIONS[((++${#TRANSLATIONS[*]}))]=${TRANSLATION}
@@ -60,8 +57,15 @@ function locale_setLocaleType {
             fi
         done
 
+        RENDER_FLOW=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "render-flow")
+        if [[ -z ${RENDER_FLOW} ]];then
+            RENDER_FLOW='article'
+        fi
+
         # Initialize locale's modules.
-        tcar_setModuleEnvironment "${RENDER_TYPE}" "${@}"
+        for LOCALE_ACTION in ${LOCALE_ACTIONS};do
+            tcar_setModuleEnvironment "${LOCALE_ACTION}" "${@}"
+        done
 
         # Increment section's counter.
         COUNTER=$(( ${COUNTER} + 1 ))

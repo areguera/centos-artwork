@@ -28,43 +28,30 @@
 
 function svg {
 
-    local FILE=''
-    local POT=$(dirname ${CONFIGURATION})/messages.pot
-    local TEMPFILES=''
+    local SVG_FILE=''
 
-    # Define regular expression to match extensions of shell scripts
-    # we use inside the repository.
-    local EXTENSION='(svgz|svg)'
+    for SVG_FILE in ${SOURCES[*]};do
 
-    # Process list of directories, one by one.
-    for FILE in ${SOURCES[*]};do
+        # Define POT's default location using the source file as
+        # reference. The portable object template is
+        # locale-independent so it must be out of locale-specific
+        # directories.
+        local POT_FILE=$(basename ${SVG_FILE}).pot
 
-        local TEMPFILE=$(tcar_getTemporalFile $(basename ${FILE}))
+        tcar_printMessage "${POT_FILE}" --as-creating-line
 
-        if [[ $(file -b -i ${FILE}) =~ '^application/x-gzip$' ]];then
-            /bin/zcat ${FILE} > ${TEMPFILE}
-        else
-            /bin/cat ${FILE} > ${TEMPFILE}
-        fi
+        local SVG_INSTANCE=$(tcar_getTemporalFile $(basename ${SVG_FILE}))
 
-        TEMPFILES="${TEMPFILE} ${TEMPFILES}"
+        svg_createSvgInstance
+
+        locale_convertXmlToPot "${SVG_INSTANCE}" "${POT_FILE}"
+
+        # Verify, initialize or merge portable objects from portable
+        # object templates.
+        locale_updateMessagePObjects "${POT_FILE}"
 
     done
 
-    #
-    if [[ ! -d $(dirname ${TRANSLATIONS[0]}) ]];then
-        mkdir -p $(dirname ${TRANSLATIONS[0]})
-    fi
 
-    # Print action message.
-    tcar_printMessage "${POT}" --as-creating-line
-
-    # Create the portable object template.
-    cat ${TEMPFILES} | xml2po -a -l ${TCAR_SCRIPT_LANG_LC} - \
-        | msgcat --output=${POT} --width=70 --no-location -
-
-    # Verify, initialize or merge portable objects from portable
-    # object templates.
-    locale_updateMessagePObjects "${POT}"
 
 }
