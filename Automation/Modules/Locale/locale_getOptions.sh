@@ -84,6 +84,10 @@ function locale_getOptions {
         esac
     done
 
+    if [[ -z ${LOCALE_ACTIONS} ]];then
+        LOCALE_ACTIONS='update'
+    fi
+
     # Redefine arguments using current positional parameters. Only
     # paths should remain as arguments, at this point.
     TCAR_ARGUMENTS="${@}"
