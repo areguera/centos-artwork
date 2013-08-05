@@ -68,17 +68,17 @@ function extended {
     for FGCOLOR in ${FGCOLORS};do
 
         # Verify value passed as foreground color.
-        tcar_checkFiles ${FGCOLOR} --match="^[a-fA-F0-9]{3,6}$"
+        tcar_checkFiles -m '^[a-fA-F0-9]{3,6}$' ${FGCOLOR}
 
         for BGCOLOR in ${BGCOLORS};do
 
             # Verify value passed as background color.
-            tcar_checkFiles ${BGCOLOR} --match="^[a-fA-F0-9]{6}-(0|1)$"
+            tcar_checkFiles -m '^[a-fA-F0-9]{6}-(0|1)$' ${BGCOLOR}
 
             for HEIGHT in ${HEIGHTS};do
 
                 # Verify value passed as height.
-                tcar_checkFiles ${HEIGHT} --match="^[[:digit:]]+$"
+                tcar_checkFiles -m '^[[:digit:]]+$' ${HEIGHT}
 
                 # Do base rendition actions.
                 extended_setBaseRendition

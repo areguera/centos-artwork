@@ -31,14 +31,12 @@
 function locale_updateMessagePObjects {
 
     local POT_FILE="${1}"
+    local PO_FILE="${2}"
 
     # Verify the portable object template. The portable object
     # template is used to create the portable object. We cannot
     # continue without it. 
-    tcar_checkFiles ${POT_FILE} -f
-
-    # Define PO's location using first translation file as reference.
-    local PO_FILE=${TRANSLATIONS[0]}
+    tcar_checkFiles -ef ${POT_FILE}
 
     # Create the PO's parent directory if it doesn't exist.
     if [[ ! -d $(dirname ${PO_FILE}) ]];then

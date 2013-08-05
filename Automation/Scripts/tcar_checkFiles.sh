@@ -33,12 +33,6 @@
 
 function tcar_checkFiles {
 
-    # Define short options.
-    local ARGSS='i:,r,m:,n,d,e,f,h,x'
-
-    # Define long options.
-    local ARGSL='mime:,is-versioned,match:,is-installed'
-
     # Initialize local array variables.
     local -a CONDITION_COMMAND
     local -a CONDITION_PATTERN
@@ -47,94 +41,66 @@ function tcar_checkFiles {
     # Initialize local counter.
     local COUNTER=0
 
-    # Initialize arguments with an empty value and set it as local
-    # variable to this function scope. Doing this is very important to
-    # avoid any clash with higher execution environments. This
-    # variable is shared for different function environments.
-    local TCAR_ARGUMENTS=''
-    
-    # Redefine arguments using current positional parameters. 
-    tcar_setArguments "${@}"
+    OPTIND=1
+    while getopts "i:,r,m:,n,d,e,f,h,x" OPTION ${@}; do
 
-    # Redefine positional parameters using arguments variable.
-    eval set -- "${TCAR_ARGUMENTS}"
+        case "${OPTION}" in
 
-    # Look for options passed through positional parameters.
-    while true; do
-
-        case "${1}" in
-
-            -d )
+            d )
                 CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='test'
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-d'
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "isn't a directory."`"
-                shift 1
                 ;;
 
-            -e )
+            e )
                 CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='test'
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-e'
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "doesn't exist."`"
-                shift 1
                 ;;
 
-            -f )
+            f )
                 CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='test'
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-f'
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "isn't a regular file."`"
-                shift 1
                 ;;
 
-            -h )
+            h )
                 CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='test'
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-h'
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "isn't a symbolic link."`"
-                shift 1
                 ;;
 
-            -x )
+            x )
                 CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='test'
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-x'
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "isn't an executable file."`"
-                shift 1
                 ;;
 
-            -i | --mime )
-                local MIME=${2}
+            i )
+                local MIME=${OPTARG}
                 CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='file'
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-bi'
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`eval_gettext "isn't a \\\"\\\${MIME}\\\" file."`"
-                shift 2
                 ;;
 
-            -m | --match )
+            m )
                 CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='match'
-                CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]="${2}"
+                CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]="${OPTARG}"
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`eval_gettext "doesn't match its pattern."`"
-                shift 2
-               ;;
-
-            -r | --is-versioned )
-                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]="centos-art"
-                CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]="vcs --is-versioned"
-                CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]=""
-                shift 1
                 ;;
 
-            -n | --is-installed )
+            n )
                 CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]="rpm"
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]="-q --quiet"
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "isn't installed in the system."`"
-                shift 1
-                ;;
-
-            -- )
-                shift 1
-                break
                 ;;
 
         esac
     done
+
+    # Clean up positional parameters to reflect the fact that options
+    # have been processed already.
+    shift $(( ${OPTIND} - 1 ))
 
     # Define list of files we want to apply verifications to, now that
     # all option-like arguments have been removed from positional
@@ -162,7 +128,7 @@ function tcar_checkFiles {
                 ;;
 
                 "file" )
-                if [[ ! $(${CONDITION_COMMAND[${COUNTER}]} ${CONDITION_PATTERN[${COUNTER}]} ${FILE}) =~ "${MIME}" ]];then
+                if [[ ! $(${CONDITION_COMMAND[${COUNTER}]} ${CONDITION_PATTERN[${COUNTER}]} ${FILE}) =~ "^${MIME}" ]];then
                     tcar_printMessage "${FILE} ${CONDITION_MESSAGE[${COUNTER}]}" --as-error-line
                 fi
                 ;;

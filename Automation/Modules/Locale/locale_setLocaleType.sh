@@ -42,7 +42,7 @@ function locale_setLocaleType {
                 SOURCES[((++${#SOURCES[*]}))]=$(dirname ${CONFIGURATION})/${SOURCE}
             fi
         done
-
+        
         local RENDER_TYPE=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "render-type")
         if [[ -z ${RENDER_TYPE} ]];then
            RENDER_TYPE=$(echo ${SOURCES[0]} | sed -r 's/.+\.([[:alpha:]]+)$/\1/') 
@@ -61,6 +61,8 @@ function locale_setLocaleType {
         if [[ -z ${RENDER_FLOW} ]];then
             RENDER_FLOW='article'
         fi
+
+        PO_FILE=${TRANSLATIONS[0]}
 
         # Initialize locale's modules.
         for LOCALE_ACTION in ${LOCALE_ACTIONS};do

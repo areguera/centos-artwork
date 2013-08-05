@@ -32,7 +32,7 @@ function asciidoc_setBaseRendition {
 
     while [[ ${COUNTER} -lt ${#SOURCES[*]} ]];do
 
-        tcar_checkFiles "${SOURCES[${COUNTER}]}" -f --match='\.asciidoc$'
+        tcar_checkFiles -ef -m '\.asciidoc$' "${SOURCES[${COUNTER}]}"
 
         # Define file name for design model instances. We need to use
         # a random string in from of it to prevent duplication.
@@ -57,7 +57,7 @@ function asciidoc_setBaseRendition {
 
         # Make your best to be sure the source instance you are
         # processing is a valid DocBook file.
-        tcar_checkFiles ${TARGET_INSTANCES[${COUNTER}]} --mime='^text/xml$'
+        tcar_checkFiles -i 'text/xml' ${TARGET_INSTANCES[${COUNTER}]}
 
         # Expand any translation file that might exist.
         tcar_setTranslationMarkers ${TARGET_INSTANCES[${COUNTER}]}

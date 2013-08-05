@@ -45,12 +45,6 @@
 
 function tcar_setArguments {
 
-    # Verify existence of arguments that will be processed. If there
-    # is none, return to caller.
-    if [[ -z "${@}" ]];then
-        return
-    fi
-
     local ARGUMENT=''
 
     # Fill up arguments global variable with current positional
@@ -62,7 +56,7 @@ function tcar_setArguments {
         # Remove any single quote from arguments passed to
         # centos-art.sh script. We will use single quotes for grouping
         # option values so white space can be passed through them.
-        ARGUMENT=$(echo "${ARGUMENT}" | tr -d "'")
+        ARGUMENT=$(printf %s "${ARGUMENT}" | tr -d "'")
 
         # Concatenate arguments and enclose them to let getopt to
         # process them when they have spaces inside.

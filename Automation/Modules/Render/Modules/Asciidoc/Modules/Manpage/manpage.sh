@@ -4,11 +4,11 @@ function manpage {
 
     local MANSECT=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "mansect")
 
-    tcar_checkFiles ${MANSECT} --match='[1-9]'
+    tcar_checkFiles -m '[1-9]' "${MANSECT}"
 
     for FORMAT in ${FORMATS};do
 
-        tcar_checkFiles ${FORMAT} --match='(xhtml|manpage)'
+        tcar_checkFiles -m '(xhtml|manpage)' "${FORMAT}"
 
         case ${FORMAT} in 
 

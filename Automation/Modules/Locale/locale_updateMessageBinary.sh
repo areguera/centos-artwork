@@ -25,39 +25,13 @@
 
 function locale_updateMessageBinary {
 
-    # Verify machine object creation flag.
-    if [[ ${FLAG_DONT_CREATE_MO} == 'true' ]];then
-        return
-    fi
-
-    # Define absolute path to final portable object. This is the file
-    # that contains all the individual function translation messages
-    # and is used to build the machine object (.mo) file.
-    local PO_FILE=${TRANSLATION[0]}
-
-    # Define absolute path to machine object directory.
-    local MO_DIR="$(dirame ${CONFIGURATION})/${TCAR_SCRIPT_LANG_LC}/LC_MESSAGES"
-
-    # Define absolute path to machine object file.
-    local MO_FILE="${MO_DIR}/${TEXTDOMAIN}.mo"
-
     # Print action message.
-    cli_printMessage "${PO_FILE}" --as-creating-line
-
-    # Combine all the function individual portable objects into just
-    # one portable object. Be sure to use just the first translation
-    # found, otherwise the automated flow will be broken for you to
-    # decide which one of two or more variants should remain in the
-    # portable object.
-    msgcat ${PO_FILES} --use-first --output-file=${PO_FILE}
-    
-    # Print action message.
-    cli_printMessage "${MO_FILE}" --as-creating-line
+    tcar_printMessage "${MO_FILE}" --as-creating-line
 
     # Verify absolute path to machine object directory, if it doesn't
     # exist create it.
-    if [[ ! -d ${MO_DIR} ]];then
-        mkdir -p ${MO_DIR}
+    if [[ ! -d $(dirname ${MO_FILE}) ]];then
+        mkdir -p $(dirname ${MO_FILE})
     fi
 
     # Create machine object from portable object.

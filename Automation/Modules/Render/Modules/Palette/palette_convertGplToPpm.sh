@@ -48,6 +48,6 @@ function palette_convertGplToPpm {
     rm ${FILES[*]}
 
     # Verify PPM palette existence.
-    tcar_checkFiles -e "${PALETTE_PPM}"
+    tcar_checkFiles -ef "${PALETTE_PPM}"
 
 }

@@ -42,7 +42,7 @@ function tcar_setTranslationMarkers {
     local LOCATION="${1}"
 
     # Verify that source location does exist.
-    tcar_checkFiles -f ${LOCATION}
+    tcar_checkFiles -ef ${LOCATION}
 
     # Define copyright translation markers.
     SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEAR(_LAST)?='

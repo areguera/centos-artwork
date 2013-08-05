@@ -116,7 +116,7 @@ function render_setRenderType {
                 fi
             done
 
-            tcar_checkFiles "${TRANSLATIONS[*]}" -f
+            tcar_checkFiles -ef ${TRANSLATIONS[*]}
 
         fi
 

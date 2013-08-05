@@ -38,7 +38,7 @@ function svg_setBaseRendition {
     while [[ ${COUNTER} -lt ${#SOURCES[*]} ]];do
 
         # Verify existence and extension of design models.
-        tcar_checkFiles ${SOURCES[${COUNTER}]} -f --match='\.(svgz|svg)$'
+        tcar_checkFiles -ef -m '\.(svgz|svg)$' ${SOURCES[${COUNTER}]} 
 
         # Define file name for design model instances. We need to use
         # a random string in from of it to prevent duplication.
@@ -59,7 +59,7 @@ function svg_setBaseRendition {
 
         # Make your best to be sure the source instance you are
         # processing is a valid Scalable Vector Graphic (SVG) file.
-        tcar_checkFiles ${SOURCE_INSTANCES[${COUNTER}]} --mime='^text/xml$'
+        tcar_checkFiles -i 'text/xml' ${SOURCE_INSTANCES[${COUNTER}]}
 
         # Expand any translation file that might exist.
         tcar_setTranslationMarkers ${SOURCE_INSTANCES[${COUNTER}]}

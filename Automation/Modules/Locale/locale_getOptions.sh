@@ -1,8 +1,12 @@
 #!/bin/bash
+######################################################################
 #
-# locale_getOptions.sh -- This function interprets option parameters
-# passed to `locale' functionality and defines action names
-# accordingly.
+#   locale_getOptions.sh -- This function interprets option parameters
+#   passed to `locale' functionality and defines action names
+#   accordingly.
+#
+#   Written by:
+#   * Alain Reguera Delgado <al@centos.org.cu>
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -20,9 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
-# $Id$
-# ----------------------------------------------------------------------
+######################################################################
 
 function locale_getOptions {
 

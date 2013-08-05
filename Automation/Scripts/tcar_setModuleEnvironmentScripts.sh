@@ -38,8 +38,7 @@ function tcar_setModuleEnvironmentScripts {
     if [[ -d ${MODULE_DIR} ]];then
         MODULE_SCRIPTS="${MODULE_SCRIPTS} 
             $(tcar_getFilesList ${MODULE_DIR} \
-            --pattern="${MODULE_DIR}/${MODULE_NAME}_.+\.sh$" --maxdepth='1' \
-            --mindepth='1' --type='f')"
+            --pattern="${MODULE_DIR}/${MODULE_NAME}_[[:alnum:]]+\.sh$" --type='f')"
     fi
 
     # Verify the list of files. If no function file exists for the
@@ -54,7 +53,7 @@ function tcar_setModuleEnvironmentScripts {
     for MODULE_SCRIPT in ${MODULE_SCRIPTS};do
 
         # Verify the execution rights for function file.
-        tcar_checkFiles -x ${MODULE_SCRIPT}
+        tcar_checkFiles -ex ${MODULE_SCRIPT}
 
         # Verify that function files have not been already exported.
         # If they have been already exported don't export them again.

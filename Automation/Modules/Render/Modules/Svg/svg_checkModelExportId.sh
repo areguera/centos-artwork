@@ -32,10 +32,10 @@ function svg_checkModelExportId {
     local EXPORTID="$2"
 
     # Verify instance.
-    tcar_checkFiles -e ${INSTANCE}
+    tcar_checkFiles -ef ${INSTANCE}
 
     # Verify export id.
-    tcar_checkFiles ${EXPORTID} --match="[[:alnum:]]+"
+    tcar_checkFiles -m '[[:alnum:]]+' ${EXPORTID}
 
     # Check export id inside design templates.
     grep "id=\"${EXPORTID}\"" ${INSTANCE} > /dev/null

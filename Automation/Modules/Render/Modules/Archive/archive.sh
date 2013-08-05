@@ -37,7 +37,7 @@ function archive {
     # Let file names to be changed before compressing them.
     for SOURCE in ${SOURCES[*]};do
         FILE_LH=$(echo ${SOURCE} | gawk -F: '{ print $1}')
-        tcar_checkFiles ${FILE_LH} -f
+        tcar_checkFiles -ef ${FILE_LH}
         FILE_RH=$(echo ${SOURCE} | gawk -F: '{ print $2}')
         cp ${FILE_LH} ${TCAR_SCRIPT_TEMPDIR}/${FILE_RH}
     done

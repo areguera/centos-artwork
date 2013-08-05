@@ -51,7 +51,7 @@ function tcar_setModuleEnvironment {
     local MODULE_INIT_FILE=${MODULE_DIR}/${MODULE_NAME}.sh
 
     # Check function script execution rights.
-    tcar_checkFiles -x ${MODULE_INIT_FILE}
+    tcar_checkFiles -ex ${MODULE_INIT_FILE}
 
     # Remove the first argument passed to centos-art.sh command-line
     # in order to build optional arguments inside functionalities. We

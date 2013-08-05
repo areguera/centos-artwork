@@ -64,7 +64,7 @@ case ${1} in
 
     --version )
         # Print script's name and version.
-        echo "`eval_gettext "Running $TCAR_SCRIPT_NAME (v$TCAR_SCRIPT_VERSION)."`"
+        echo "`eval_gettext "Running \\\${TCAR_SCRIPT_NAME} (v\\\${TCAR_SCRIPT_VERSION})."`"
         ;;
 
     * )
@@ -91,7 +91,6 @@ case ${1} in
 
         # Export script's module environment.
         tcar_setModuleEnvironment "${@}"
-
         ;;
 
 esac

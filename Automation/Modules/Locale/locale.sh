@@ -42,32 +42,17 @@ function locale {
         tcar_printMessage "`gettext "The English language cannot be localized to itself."`" --as-error-line
     fi
 
-    # Process directories passed as arguments. 
-    for DIRECTORY in "$@";do
-
-        # Sanitate non-option arguments to be sure they match the
-        # directory conventions established by centos-art.sh script
-        # against source directory locations in the working copy.
-        DIRECTORY=$(tcar_checkRepoDirSource ${DIRECTORY})
-
-        # Retrieve list of configuration files from directory.
-        CONFIGURATIONS=$(tcar_getFilesList ${DIRECTORY} \
-            --pattern=".+/.+\.conf$" --type="f")
-
-        # Verify non-option arguments passed to centos-art.sh
-        # command-line. The path provided as argument must exist in
-        # the repository.  Otherwise, it would be possible to create
-        # arbitrary directories inside the repository without any
-        # meaning. In order to be sure all required directories are
-        # available in the repository it is necessary use the prepare
-        # functionality.
-        tcar_checkFiles ${CONFIGURATIONS} -f
-
-        # Process each configuration file.
-        for CONFIGURATION in ${CONFIGURATIONS};do
-            locale_setLocaleType "${@}"
-        done
-
+    # Process arguments based on whether they are files or
+    # directories.
+    for ARGUMENT in ${@};do
+        ARGUMENT=$(tcar_checkRepoDirSource "${ARGUMENT}")
+        if [[ -f ${ARGUMENT} ]];then
+            locale_setFileProcessing "${ARGUMENT}"
+        elif [[ -d ${ARGUMENT} ]];then
+            locale_setDirProcessing "${ARGUMENT}"
+        else
+            tcar_printMessage "`gettext "The argument provided isn't valid."`" --as-error-line
+        fi
     done
 
 }

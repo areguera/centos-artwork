@@ -34,7 +34,7 @@ function compress {
         COMMAND="/bin/gzip"
     fi
 
-    tcar_checkFiles ${SOURCES[*]} -f
+    tcar_checkFiles -ef ${SOURCES[*]}
 
     ${COMMAND} ${SOURCES[*]}
 

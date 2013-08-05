@@ -35,7 +35,7 @@ function tcar_getConfigSectionNames {
     local CONFIGURATION_FILE=${1}
 
     # Verify existence of configuration file.
-    tcar_checkFiles ${CONFIGURATION_FILE} -f
+    tcar_checkFiles -ef ${CONFIGURATION_FILE}
 
     # Define regular expression pattern used to retrieve section names
     # from configuration files. Don't permit any regular expression

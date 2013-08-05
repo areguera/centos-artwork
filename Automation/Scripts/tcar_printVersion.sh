@@ -28,7 +28,7 @@
 
 function tcar_printVersion {
 
-    tcar_printMessage "`eval_gettext "Running module $MODULE_NAME (v$MODULE_VERSION) through $TCAR_SCRIPT_NAME (v$TCAR_SCRIPT_VERSION)."`" --as-stdout-line
+    tcar_printMessage "`eval_gettext "Running module \\\${MODULE_NAME} (v\\\${MODULE_VERSION}) through \\\${TCAR_SCRIPT_NAME} (v\\\${TCAR_SCRIPT_VERSION})."`" --as-stdout-line
     exit 0
 
 }

@@ -33,7 +33,7 @@ function svg_setBrandInformation {
         local FILENAME=$(echo ${BRAND} | cut -d: -f1)
         local GEOMETRY=$(echo ${BRAND} | cut -d: -f2)
 
-        tcar_checkFiles ${FILENAME} -f
+        tcar_checkFiles -ef ${FILENAME}
 
         /usr/bin/composite -geometry ${GEOMETRY} ${FILENAME} ${TARGET} ${TARGET}
 

@@ -32,7 +32,7 @@ function asciidoc {
     if [[ -z ${RENDER_FLOW} ]];then
         RENDER_FLOW="article"
     fi
-    tcar_checkFiles "${RENDER_FLOW}" --match='^(article|book|manpage)$'
+    tcar_checkFiles -m '^(article|book|manpage)$' "${RENDER_FLOW}"
 
     FORMATS=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" 'formats')
     if [[ -z ${FORMATS} ]];then

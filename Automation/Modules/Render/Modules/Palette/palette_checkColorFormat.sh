@@ -34,7 +34,7 @@ function palette_checkColorFormats {
     # Loop through colors and perform format verification as specified
     # by pattern.
     for COLOR in ${PALETTE_COLORS};do
-        tcar_checkFiles ${COLOR} --match='#[0-9a-f]{6}$'
+        tcar_checkFiles -m '^#[0-9a-f]{6}$' "${COLOR}"
     done
 
 }

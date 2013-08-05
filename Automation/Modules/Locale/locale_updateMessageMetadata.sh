@@ -37,7 +37,7 @@ function locale_updateMessageMetadata {
     local PO_FILE="${1}"
 
     # Check existence of file before work with it.
-    tcar_checkFiles "${PO_FILE}" -f
+    tcar_checkFiles -ef "${PO_FILE}"
 
     # Define pattern lines. The pattern lines are put inside portable
     # objects through xgettext and xml2po commands. In the case of
@@ -45,37 +45,25 @@ function locale_updateMessageMetadata {
     # or refer the Documentation SIG only. This way translators' names
     # will survive metadata updates. We don't want they have to type
     # their name each time they edit a file.
-    SRC[0]="\"Project-Id-Version:"
-    SRC[1]="\"Report-Msgid-Bugs-To:"
-    SRC[2]="\"Last-Translator: (.+)?"
-    SRC[3]="\"Language-Team:"
-    SRC[4]="\"PO_FILE-Revision-Date:"
+    SRC[0]="\"Project-Id-Version: (.+)?"
+    SRC[1]="\"Last-Translator: (.+)?"
+    SRC[2]="\"Language-Team: (.+)?"
+    SRC[3]="\"PO-Revision-Date: (.+)?"
 
     # Define replacement lines for pattern line.
     DST[0]="\"Project-Id-Version: ${TCAR_SCRIPT_NAME} ${TCAR_SCRIPT_VERSION}\\\n\""
-    DST[1]="\"Report-Msgid-Bugs-To: Documentation SIG <centos-docs@centos.org.cu>\\\n\""
-    DST[2]="\"Last-Translator: Documentation SIG <centos-docs@centos.org.cu>\\\n\""
-    DST[3]="\"Language-Team: $(locale_getLanguageName)\\\n\""
-    DST[4]="\"PO_FILE-Revision-Date: $(date "+%F %H:%M%z")\\\n\""
+    DST[1]="\"Last-Translator: Localization SIG <centos-l10n-${TCAR_SCRIPT_LANG_LL}@centos.org.cu>\\\n\""
+    DST[2]="\"Language-Team: $(locale_getLanguageName)\\\n\""
+    DST[3]="\"PO-Revision-Date: $(date "+%F %H:%M%z")\\\n\""
 
     # Change pattern lines with their replacement lines.
-    while [[ $COUNT -lt ${#SRC[*]} ]];do
-        sed -i -r "/${SRC[$COUNT]}/c${DST[$COUNT]}" ${PO_FILE}
-        COUNT=$(($COUNT + 1))
+    while [[ ${COUNT} -lt ${#SRC[*]} ]];do
+        sed -i -r "/${SRC[${COUNT}]}/c${DST[${COUNT}]}" ${PO_FILE}
+        COUNT=$((${COUNT} + 1))
     done
 
-    # When the .pot file is created using xml2po the
-    # `Report-Msgid-Bugs-To:' metadata field isn't created like it
-    # does when xgettext is used. So, in order to have such metadata
-    # field in all .pot files, verify its existence and add it if it
-    # doesn't exist.
-    egrep "^\"${SRC[1]}" ${PO_FILE} > /dev/null
-    if [[ $? -ne 0 ]];then
-        sed -i -r "/^\"${SRC[0]}/a${DST[1]}" ${PO_FILE}
-    fi
-
     # Replace package information using gettext domain information.
-    sed -i -r "s/PACKAGE/${TCAR_SCRIPT_NAME} ${TCAR_SCRIPT_VERSION}/g" ${PO_FILE}
+    sed -i -r "s/PACKAGE/${TCAR_SCRIPT_NAME}-${TCAR_SCRIPT_VERSION}/g" ${PO_FILE}
 
     # Remove absolute path to the working copy so it doesn't appear on
     # comments related to locations. Remember that people can download

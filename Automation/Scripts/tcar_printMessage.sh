@@ -42,7 +42,7 @@ function tcar_printMessage {
     local MESSAGE_WIDTH=66
 
     # Remove empty spaces from message.
-    MESSAGE=$(echo ${MESSAGE} | sed -r -e 's!^[[:space:]]+!!')
+    MESSAGE=$(printf %s "${MESSAGE}" | sed -r -e 's!^[[:space:]]+!!')
 
     # Print messages that will always be printed no matter what value
     # the TCAR_FLAG_QUIET variable has.
@@ -55,7 +55,7 @@ function tcar_printMessage {
             # convenience, we transform absolute paths into relative
             # paths in order to free horizontal space on final output
             # messages.
-            echo "${MESSAGE}" | sed -r \
+            printf %s "${MESSAGE}" | sed -r \
                 -e "s!${TCAR_BASEDIR}/!!g" \
                 -e "s!> /!> !g" \
                 -e "s!/{2,}!/!g" \
@@ -80,7 +80,6 @@ function tcar_printMessage {
             tcar_printMessage '-' --as-separator-line
             tcar_printMessage "$(tcar_printCaller 1) ${MESSAGE}" --as-stdout-line
             tcar_printMessage '-' --as-separator-line
-            tcar_printMessage "${MODULE_NAME}" --as-toknowmore-line
 
             # Finish script execution with exit status 1 (SIGHUP) to
             # imply the script finished because an error.  We are

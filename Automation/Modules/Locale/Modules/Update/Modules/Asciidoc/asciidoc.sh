@@ -50,7 +50,7 @@ function asciidoc {
 
         # Verify, initialize or merge portable objects from portable
         # object templates.
-        locale_updateMessagePObjects "${POT_FILE}"
+        locale_updateMessagePObjects "${POT_FILE}" "${PO_FILE}"
 
     done
         

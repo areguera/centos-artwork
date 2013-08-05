@@ -56,7 +56,7 @@ function render {
         # meaning. In order to be sure all required directories are
         # available in the repository it is necessary use the prepare
         # functionality.
-        tcar_checkFiles ${CONFIGURATIONS} -f
+        tcar_checkFiles -ef ${CONFIGURATIONS}
 
         # Process each configuration file.
         for CONFIGURATION in ${CONFIGURATIONS};do

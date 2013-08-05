@@ -51,7 +51,7 @@ function svg_checkModelAbsref {
     FILE="${1}"
 
     # Verify existence of file we need to retrieve absolute paths from.
-    tcar_checkFiles -e "${FILE}"
+    tcar_checkFiles -ef "${FILE}"
 
     # Retrieve absolute paths from file.
     BG_DST_FILES=$(egrep "(sodipodi:absref|xlink:href)=\"${HOME}.+" ${FILE} \
@@ -134,7 +134,7 @@ function svg_checkModelAbsref {
                 ${BG_SRC_FILE} ${BG_DST_FILE}
 
             # Verify required background information.
-            tcar_checkFiles -e ${BG_DST_FILE}
+            tcar_checkFiles -ef ${BG_DST_FILE}
 
         fi
 

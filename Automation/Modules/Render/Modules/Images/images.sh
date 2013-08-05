@@ -31,7 +31,7 @@
 
 function images {
 
-    tcar_checkFiles ${SOURCE[*]} --mime="^image"
+    tcar_checkFiles -i "image" ${SOURCE[*]}
 
     COMMAND=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "command")
     if [[ -z ${COMMAND} ]];then
