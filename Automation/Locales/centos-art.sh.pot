@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: centos-art.sh 0.5\n"
 "Report-Msgid-Bugs-To: centos-l10n-es@centos.org.cu\n"
-"POT-Creation-Date: 2013-08-05 00:00-0400\n"
+"POT-Creation-Date: 2013-08-05 00:54-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2106,6 +2106,13 @@ msgstr ""
 msgid "Palette"
 msgstr ""
 
+#: /home/al/Projects/centos-artwork.git-localhost/Automation/Scripts/tcar_printVersion.sh:31
+#, sh-format
+msgid ""
+"Running module ${MODULE_NAME} (v${MODULE_VERSION}) through "
+"${TCAR_SCRIPT_NAME} (v${TCAR_SCRIPT_VERSION})."
+msgstr ""
+
 #: /home/al/Projects/centos-artwork.git-localhost/Automation/Scripts/tcar_setArguments.sh:90
 msgid "The argument verification failed."
 msgstr ""
@@ -2114,12 +2121,17 @@ msgstr ""
 msgid "The module provided isn't valid."
 msgstr ""
 
-#: /home/al/Projects/centos-artwork.git-localhost/Automation/Scripts/tcar_setModuleEnvironmentScripts.sh:50
+#: /home/al/Projects/centos-artwork.git-localhost/Automation/Scripts/tcar_setModuleEnvironmentScripts.sh:49
 msgid "No function file was found."
 msgstr ""
 
 #: /home/al/Projects/centos-artwork.git-localhost/Automation/Scripts/tcar_unsetModuleEnvironment.sh:38
 msgid "The export id was not provided."
+msgstr ""
+
+#: /home/al/Projects/centos-artwork.git-localhost/Automation/centos-art.sh:67
+#, sh-format
+msgid "Running ${TCAR_SCRIPT_NAME} (v${TCAR_SCRIPT_VERSION})."
 msgstr ""
 
 #: /home/al/Projects/centos-artwork.git-localhost/Automation/centos-art.sh:78

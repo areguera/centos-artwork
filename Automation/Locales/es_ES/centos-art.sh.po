@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: centos-art.sh 0.5\n"
 "Report-Msgid-Bugs-To: centos-l10n-es@centos.org.cu\n"
-"POT-Creation-Date: 2013-08-05 00:00-0400\n"
-"PO-Revision-Date: 2013-08-05 00:00-0400\n"
+"POT-Creation-Date: 2013-08-05 00:54-0400\n"
+"PO-Revision-Date: 2013-08-05 00:54-0400\n"
 "Last-Translator: Localization SIG <centos-l10n-es@centos.org.cu>\n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -2108,6 +2108,15 @@ msgstr "Configuración"
 msgid "Palette"
 msgstr "Paleta"
 
+#: Automation/Scripts/tcar_printVersion.sh:31
+#, sh-format
+msgid ""
+"Running module ${MODULE_NAME} (v${MODULE_VERSION}) through "
+"${TCAR_SCRIPT_NAME} (v${TCAR_SCRIPT_VERSION})."
+msgstr ""
+"Corriendo el módulo ${MODULE_NAME} (v${MODULE_VERSION}) a través de "
+"${TCAR_SCRIPT_NAME} (v${TCAR_SCRIPT_VERSION})."
+
 #: Automation/Scripts/tcar_setArguments.sh:90
 msgid "The argument verification failed."
 msgstr "La verificación de argumento falló."
@@ -2116,7 +2125,7 @@ msgstr "La verificación de argumento falló."
 msgid "The module provided isn't valid."
 msgstr "El módulo suministrado no es válido."
 
-#: Automation/Scripts/tcar_setModuleEnvironmentScripts.sh:50
+#: Automation/Scripts/tcar_setModuleEnvironmentScripts.sh:49
 msgid "No function file was found."
 msgstr "Ninguna función fue encontrada."
 
@@ -2124,6 +2133,14 @@ msgstr "Ninguna función fue encontrada."
 msgid "The export id was not provided."
 msgstr "El identificador de exportación no fue suministrado."
 
+#: Automation/centos-art.sh:67
+#, sh-format
+msgid "Running ${TCAR_SCRIPT_NAME} (v${TCAR_SCRIPT_VERSION})."
+msgstr "Corriendo ${TCAR_SCRIPT_NAME} (v${TCAR_SCRIPT_VERSION})."
+
 #: Automation/centos-art.sh:78
 msgid "has not execution rights."
 msgstr "no tiene permiso de ejecución."
+
+#~ msgid "Running"
+#~ msgstr "Corriendo"
