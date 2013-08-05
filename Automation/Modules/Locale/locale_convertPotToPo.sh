@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   Modules/Locale/locale_updateMessagePObjects.sh -- This function
+#   Modules/Locale/locale_convertPotToPo.sh -- This function
 #   initializes the portable object when it doesn't exist. When the
 #   portable object does exist, it is updated instead. In both cases,
 #   the portable object template is used as source to merge changes
@@ -28,7 +28,7 @@
 #
 ######################################################################
 
-function locale_updateMessagePObjects {
+function locale_convertPotToPo {
 
     local POT_FILE="${1}"
     local PO_FILE="${2}"
@@ -65,6 +65,6 @@ function locale_updateMessagePObjects {
     fi
 
     # Sanitate metadata inside the PO file.
-    locale_updateMessageMetadata "${PO_FILE}"
+    locale_updatePoMetadata "${PO_FILE}"
 
 }

@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   locale_updateMessageMetadata.sh -- This function sanitates .pot
+#   locale_updatePoMetadata.sh -- This function sanitates .pot
 #   and .po files to use common translation markers inside top
 #   comment.  Later, replacement of common translation markers is
 #   applied to set the final information.
@@ -27,7 +27,7 @@
 #
 ######################################################################
 
-function locale_updateMessageMetadata {
+function locale_updatePoMetadata {
 
     local COUNT=0
     local -a SRC

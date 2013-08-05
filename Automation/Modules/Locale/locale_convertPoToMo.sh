@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# locale_updateMessageBinary.sh -- This function creates/updates
+# locale_convertPoToMo.sh -- This function creates/updates
 # machine objects (.mo) from portable objects (.po).
 #
 # Copyright (C) 2009-2013 The CentOS Project
@@ -23,7 +23,7 @@
 # $Id$
 # ----------------------------------------------------------------------
 
-function locale_updateMessageBinary {
+function locale_convertPoToMo {
 
     # Print action message.
     tcar_printMessage "${MO_FILE}" --as-creating-line
