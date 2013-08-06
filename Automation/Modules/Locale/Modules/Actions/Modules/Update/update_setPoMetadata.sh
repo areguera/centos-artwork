@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function locale_updatePoMetadata {
+function update_setPoMetadata {
 
     local COUNT=0
     local -a SRC
@@ -26,7 +26,7 @@ function locale_updatePoMetadata {
     # Define replacement lines for pattern line.
     DST[0]="\"Project-Id-Version: ${TCAR_SCRIPT_NAME} ${TCAR_SCRIPT_VERSION}\\\n\""
     DST[1]="\"Last-Translator: Localization SIG <centos-l10n-${TCAR_SCRIPT_LANG_LL}@centos.org.cu>\\\n\""
-    DST[2]="\"Language-Team: $(locale_getLanguageName)\\\n\""
+    DST[2]="\"Language-Team: $(update_getLanguageName)\\\n\""
     DST[3]="\"PO-Revision-Date: $(date "+%F %H:%M%z")\\\n\""
 
     # Change pattern lines with their replacement lines.

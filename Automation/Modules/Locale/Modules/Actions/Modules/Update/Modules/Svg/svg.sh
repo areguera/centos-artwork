@@ -18,11 +18,11 @@ function svg {
 
         svg_createSvgInstance
 
-        locale_convertXmlToPot "${SVG_INSTANCE}" "${POT_FILE}"
+        update_convertXmlToPot "${SVG_INSTANCE}" "${POT_FILE}"
 
         # Verify, initialize or merge portable objects from portable
         # object templates.
-        locale_convertPotToPo "${POT_FILE}" "${PO_FILE}"
+        update_convertPotToPo "${POT_FILE}" "${PO_FILE}"
 
     done
 

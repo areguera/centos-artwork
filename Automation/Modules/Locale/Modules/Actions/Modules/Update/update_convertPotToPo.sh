@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function locale_convertPotToPo {
+function update_convertPotToPo {
 
     local POT_FILE="${1}"
     local PO_FILE="${2}"
@@ -37,6 +37,6 @@ function locale_convertPotToPo {
     fi
 
     # Sanitate metadata inside the PO file.
-    locale_updatePoMetadata "${PO_FILE}"
+    update_setPoMetadata "${PO_FILE}"
 
 }

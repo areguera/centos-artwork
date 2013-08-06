@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function locale_getLanguageName {
+function update_getLanguageName {
 
     local LANGNAME="`gettext "Unknown"`"
 

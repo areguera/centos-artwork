@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function locale_convertPoToMo {
+function update_convertPoToMo {
 
     # Print action message.
     tcar_printMessage "${MO_FILE}" --as-creating-line

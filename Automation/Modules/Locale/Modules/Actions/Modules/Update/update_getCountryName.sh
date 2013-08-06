@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function locale_getCountryName {
+function update_getCountryName {
 
     local COUNTRYNAME="`gettext "Unknown"`"
 

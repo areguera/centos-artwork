@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function locale_convertXmlToPot {
+function update_convertXmlToPot {
 
     local XML_FILE=${1}
     local POT_FILE=${2}

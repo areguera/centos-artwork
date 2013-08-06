@@ -16,7 +16,7 @@ function sh {
 
     # Verify, initialize or update portable objects from portable
     # object templates.
-    locale_convertPotToPo "${POT_FILE}" "${PO_FILE}"
+    update_convertPotToPo "${POT_FILE}" "${PO_FILE}"
 
     # At this point some changes might be realized inside the PO file,
     # so we need to update the related MO file based on recently
@@ -24,6 +24,6 @@ function sh {
     # print out the most up to date revision of localized messages.
     # Notice that this is required only if we were localizing shell
     # scripts.
-    locale_convertPoToMo
+    update_convertPoToMo
 
 }

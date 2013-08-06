@@ -18,11 +18,11 @@ function asciidoc {
 
         asciidoc_convertAsciidocToDocbook
 
-        locale_convertXmlToPot "${DOCBOOK_FILE}" "${POT_FILE}"
+        update_convertXmlToPot "${DOCBOOK_FILE}" "${POT_FILE}"
 
         # Verify, initialize or merge portable objects from portable
         # object templates.
-        locale_convertPotToPo "${POT_FILE}" "${PO_FILE}"
+        update_convertPotToPo "${POT_FILE}" "${PO_FILE}"
 
     done
         
