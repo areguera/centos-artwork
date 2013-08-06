@@ -1,11 +1,15 @@
 #!/bin/bash
 ######################################################################
 #
-#   locale.sh -- This function provides internationalization features
-#   for centos-art.sh script through GNU gettext standard processes.
+#   Initialize the locale module. This module let you edit, delete and
+#   create/update translation files using gettext procedures. The
+#   translation files produced by this module are used by render
+#   module to produce localized images, documentation and automation
+#   scripts output messages.
 #
 #   Written by:
-#   * Alain Reguera Delgado <al@centos.org.cu>
+#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
+#     Key fingerprint = D67D 0F82 4CBD 90BC 6421  DF28 7CCE 757C 17CA 3951
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #

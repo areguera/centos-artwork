@@ -1,4 +1,5 @@
 #!/bin/bash
+
 function locale_convertXmlToPot {
 
     local XML_FILE=${1}

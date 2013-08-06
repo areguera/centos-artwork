@@ -1,4 +1,5 @@
 #!/bin/bash
+
 function file_getConfiguration {
 
     # Define the rendition do you want to perform.

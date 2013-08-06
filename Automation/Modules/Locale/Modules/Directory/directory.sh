@@ -1,4 +1,5 @@
 #!/bin/bash
+
 function directory {
 
     # Sanitate non-option arguments to be sure they match the

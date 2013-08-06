@@ -1,31 +1,4 @@
 #!/bin/bash
-######################################################################
-#
-#   locale_updatePoMetadata.sh -- This function sanitates .pot
-#   and .po files to use common translation markers inside top
-#   comment.  Later, replacement of common translation markers is
-#   applied to set the final information.
-#
-#   Written by:
-#   * Alain Reguera Delgado <al@centos.org.cu>
-#
-# Copyright (C) 2009-2013 The CentOS Project
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPO_FILESE.  See the GNU
-# General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#
-######################################################################
 
 function locale_updatePoMetadata {
 
