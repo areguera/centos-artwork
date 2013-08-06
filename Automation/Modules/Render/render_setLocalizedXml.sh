@@ -53,9 +53,18 @@ function render_setLocalizedXml {
         # Combine translations into the translation instance.
         msgcat -u -o ${TRANSLATION_INSTANCE} ${TRANSLATIONS[*]}
 
+        # Move to translation's directory before processing source
+        # file in order for relative calls (e.g., image files) inside
+        # the source files can be found by xml2po and no warning be
+        # printed from it.
+        pushd $(dirname ${TRANSLATIONS[0]}) > /dev/null
+
         # Create the translated instance of design model.
-        ${COMMAND} ${SOURCE} | xml2po -a -l ${TCAR_SCRIPT_LANG_LL} \
+        ${COMMAND} ${SOURCE} | xml2po -a -l ${TCAR_SCRIPT_LANG_LC} \
             -p ${TRANSLATION_INSTANCE} -o ${TARGET} -
+
+        # Return to previous location.
+        popd > /dev/null
 
         # Remove .xml2po.mo temporal file.
         if [[ -f ./.xml2po.mo ]];then
@@ -66,6 +75,15 @@ function render_setLocalizedXml {
         # translations.
         if [[ -f ${TRANSLATION_INSTANCE} ]];then
             rm ${TRANSLATION_INSTANCE}
+        fi
+
+        # xml2po bug? For some reason, xml2po is not adding the lang
+        # attribute to refentry tag, when producing manpages document
+        # types.  This make intrinsic docbook construction for
+        # manpages like Name and Synopsis to be not localized.  This
+        # doesn't happens with article and book document types.
+        if [[ ${RENDER_FLOW} == 'manpage' ]];then
+            sed -i -r "s/<refentry>/<refentry lang=\"${TCAR_SCRIPT_LANG_LC}\">/" ${TARGET}
         fi
 
     else

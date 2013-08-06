@@ -5,8 +5,8 @@ function asciidoc_setXhtmlRendition {
     local TARGET="${1}"
 
     RENDER_PAGES=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "render-page")
-    if [[ -z ${RENDER_PAGE} ]];then
-        RENDER_PAGE='single'
+    if [[ -z ${RENDER_PAGES} ]];then
+        RENDER_PAGES='single'
     fi
     tcar_checkFiles -m '^(single|chunks)$' "${RENDER_PAGE}"
 
