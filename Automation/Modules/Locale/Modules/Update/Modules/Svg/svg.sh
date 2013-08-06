@@ -36,7 +36,7 @@ function svg {
         # reference. The portable object template is
         # locale-independent so it must be out of locale-specific
         # directories.
-        local POT_FILE=$(basename ${SVG_FILE}).pot
+        local POT_FILE=${SVG_FILE}.pot
 
         tcar_printMessage "${POT_FILE}" --as-creating-line
 

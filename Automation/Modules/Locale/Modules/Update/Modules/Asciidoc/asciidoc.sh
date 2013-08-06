@@ -38,7 +38,7 @@ function asciidoc {
         # reference. The portable object template is
         # locale-independent so it must be out of locale-specific
         # directories.
-        local POT_FILE=$(basename ${ASCIIDOC_FILE}).pot
+        local POT_FILE=${ASCIIDOC_FILE}.pot
 
         tcar_printMessage "${POT_FILE}" --as-creating-line
 
