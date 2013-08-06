@@ -1,5 +1,5 @@
 #!/bin/bash
-function locale_setDirProcessing {
+function directory {
 
     # Sanitate non-option arguments to be sure they match the
     # directory conventions established by centos-art.sh script
@@ -20,7 +20,7 @@ function locale_setDirProcessing {
 
     # Process each configuration file.
     for CONFIGURATION in ${CONFIGURATIONS};do
-        locale_setLocaleType "${@}"
+        directory_getConfiguration "${@}"
     done
 
 }

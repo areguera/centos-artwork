@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function locale_setLocaleType {
+function directory_getConfiguration {
 
     local SECTION=''
     local -a SECTIONS
@@ -64,10 +64,8 @@ function locale_setLocaleType {
 
         PO_FILE=${TRANSLATIONS[0]}
 
-        # Initialize locale's modules.
-        for LOCALE_ACTION in ${LOCALE_ACTIONS};do
-            tcar_setModuleEnvironment "${LOCALE_ACTION}" "${@}"
-        done
+        # Initialize locale's actions module.
+        tcar_setModuleEnvironment "actions" "${@}"
 
         # Increment section's counter.
         COUNTER=$(( ${COUNTER} + 1 ))

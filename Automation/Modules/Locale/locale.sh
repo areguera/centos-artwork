@@ -42,14 +42,14 @@ function locale {
         tcar_printMessage "`gettext "The English language cannot be localized to itself."`" --as-error-line
     fi
 
-    # Process arguments based on whether they are files or
-    # directories.
+    # Process arguments passed to locale module, based on whether they
+    # are files or directories.
     for ARGUMENT in ${@};do
         ARGUMENT=$(tcar_checkRepoDirSource "${ARGUMENT}")
         if [[ -f ${ARGUMENT} ]];then
-            locale_setFileProcessing "${ARGUMENT}"
+            tcar_setModuleEnvironment "file" "${@}"
         elif [[ -d ${ARGUMENT} ]];then
-            locale_setDirProcessing "${ARGUMENT}"
+            tcar_setModuleEnvironment "directory" "${@}"
         else
             tcar_printMessage "`gettext "The argument provided isn't valid."`" --as-error-line
         fi
