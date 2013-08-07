@@ -3,7 +3,8 @@ centos-art.sh-locale(1)
 
 Name
 ----
-centos-art.sh-locale - Retrieve, edit and delete translation files for
+
+centos-art.sh-locale - Create, edit and delete translation files for
 images, documents and automation scripts.
 
 Synopsis
@@ -15,8 +16,8 @@ Description
 -----------
 
 The *locale* produces translations files for images, documents and
-automation scripts based on the current locale information. In order
-to produce locale-specific translation files, the current language
+automation scripts based on the LANG environment variable. In order to
+produce locale-specific translation files, the current language
 information set by the LANG environment variable must be different to
 English (`en'). If the current language is English, the *locale*
 module ends its execution with an error message. When the current

@@ -46,6 +46,7 @@ function tcar_setModuleEnvironment {
 
     # Define module's related directories.
     local MODULE_DIR_MODULES=${MODULE_DIR}/Modules
+    local MODULE_DIR_MANUALS=${MODULE_DIR}/Manuals
 
     # Define module's initialization file.
     local MODULE_INIT_FILE=${MODULE_DIR}/${MODULE_NAME}.sh

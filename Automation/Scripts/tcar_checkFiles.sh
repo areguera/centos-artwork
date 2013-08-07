@@ -47,38 +47,38 @@ function tcar_checkFiles {
         case "${OPTION}" in
 
             d )
-                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='test'
+                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='/usr/bin/test'
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-d'
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "isn't a directory."`"
                 ;;
 
             e )
-                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='test'
+                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='/usr/bin/test'
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-e'
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "doesn't exist."`"
                 ;;
 
             f )
-                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='test'
+                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='/usr/bin/test'
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-f'
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "isn't a regular file."`"
                 ;;
 
             h )
-                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='test'
+                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='/usr/bin/test'
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-h'
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "isn't a symbolic link."`"
                 ;;
 
             x )
-                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='test'
+                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='/usr/bin/test'
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-x'
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "isn't an executable file."`"
                 ;;
 
             i )
                 local MIME=${OPTARG}
-                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='file'
+                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='/usr/bin/file'
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-bi'
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`eval_gettext "isn't a \\\"\\\${MIME}\\\" file."`"
                 ;;
@@ -90,7 +90,7 @@ function tcar_checkFiles {
                 ;;
 
             n )
-                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]="rpm"
+                CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]="/bin/rpm"
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]="-q --quiet"
                 CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "isn't installed in the system."`"
                 ;;
@@ -114,7 +114,7 @@ function tcar_checkFiles {
 
             case ${CONDITION_COMMAND[${COUNTER}]} in
 
-                "test" | "rpm" )
+                "/usr/bin/test" | "/bin/rpm" )
                 ${CONDITION_COMMAND[${COUNTER}]} ${CONDITION_PATTERN[${COUNTER}]} ${FILE} \
                     || tcar_printMessage "${FILE} ${CONDITION_MESSAGE[${COUNTER}]}" --as-error-line
                 ;;
@@ -127,7 +127,7 @@ function tcar_checkFiles {
                 tcar_setFnEnvironment ${CONDITION_PATTERN[${COUNTER}]} ${FILE}
                 ;;
 
-                "file" )
+                "/usr/bin/file" )
                 if [[ ! $(${CONDITION_COMMAND[${COUNTER}]} ${CONDITION_PATTERN[${COUNTER}]} ${FILE}) =~ "^${MIME}" ]];then
                     tcar_printMessage "${FILE} ${CONDITION_MESSAGE[${COUNTER}]}" --as-error-line
                 fi

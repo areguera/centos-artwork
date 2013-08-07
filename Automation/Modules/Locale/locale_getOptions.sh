@@ -3,10 +3,10 @@
 function locale_getOptions {
 
     # Define short options we want to support.
-    local ARGSS="h,v"
+    local ARGSS="h::,v"
 
     # Define long options we want to support.
-    local ARGSL="help,version,filter:,update,edit,delete"
+    local ARGSL="help::,version,filter:,update,edit,delete"
 
     # Redefine arguments using getopt(1) command parser.
     tcar_setArguments "${@}"
@@ -17,10 +17,11 @@ function locale_getOptions {
 
     # Look for options passed through command-line.
     while true; do
-        case "$1" in
+        case "${1}" in
 
             -h | --help )
-                tcar_printHelp
+                tcar_printHelp "${2}"
+                shift 2
                 ;;
 
             -v | --version )
@@ -28,22 +29,22 @@ function locale_getOptions {
                 ;;
 
             --filter )
-                TCAR_FLAG_FILTER="$2"
+                TCAR_FLAG_FILTER="${2}"
                 shift 2
                 ;;
 
             --update )
-                LOCALE_ACTIONS="$LOCALE_ACTIONS update"
+                ACTIONS="${ACTIONS} update"
                 shift 1
                 ;;
 
             --edit )
-                LOCALE_ACTIONS="$LOCALE_ACTIONS edit"
+                ACTIONS="${ACTIONS} edit"
                 shift 1
                 ;;
 
             --delete )
-                LOCALE_ACTIONS="$LOCALE_ACTIONS delete"
+                ACTIONS="${ACTIONS} delete"
                 shift 1
                 ;;
 
@@ -63,8 +64,8 @@ function locale_getOptions {
         esac
     done
 
-    if [[ -z ${LOCALE_ACTIONS} ]];then
-        LOCALE_ACTIONS='update'
+    if [[ -z ${ACTIONS} ]];then
+        ACTIONS='update'
     fi
 
     # Redefine arguments using current positional parameters. Only

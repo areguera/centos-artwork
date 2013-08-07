@@ -63,13 +63,13 @@ function render_setLocalizedXml {
         ${COMMAND} ${SOURCE} | xml2po -a -l ${TCAR_SCRIPT_LANG_LC} \
             -p ${TRANSLATION_INSTANCE} -o ${TARGET} -
 
-        # Return to previous location.
-        popd > /dev/null
-
         # Remove .xml2po.mo temporal file.
         if [[ -f ./.xml2po.mo ]];then
             rm ./.xml2po.mo
         fi
+
+        # Return to previous location.
+        popd > /dev/null
 
         # Remove instance created to store both licenses and template
         # translations.

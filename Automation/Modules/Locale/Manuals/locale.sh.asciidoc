@@ -1,0 +1,70 @@
+locale.sh(1)
+============
+
+Name
+----
+
+locale.sh - The locale module's initialization script.
+
+Synopsis
+--------
+
+----------------------------------------------------------------------
+centos-art.sh locale ...
+`-- tcar_setModuleEnvironment
+    `-- locale
+----------------------------------------------------------------------
+
+Description
+-----------
+
+When the first argument passed to *centos-art.sh* script is the word
+*locale*, the *centos-art.sh* script initializes the *locale* module
+by loading the *locale.sh* file into its execution environment. The
+*locale.sh* file's main purpose is to:
+
+1. Interpret arguments and options passed through command-line using
+   the _locale_getOptions_ procedure.
+
+2. Redefine positional parameters using ARGUMENTS local variable.  At
+   this point, option arguments have been removed from TCAR_ARGUMENTS
+   variable and only non-option arguments remain in it.
+
+3. Verify the current locale information to avoid English messages
+   from being localized to themselves. The English language is used as
+   reference to write translatable strings inside the source files.
+
+4. Process arguments passed to locale module, based on whether they
+   are files or directories.
+
+Author
+------
+
+Written by mailto:al@centos.org.cu[Alain Reguera Delgado]
+
+Copyright
+---------
+
+Copyright (C) 2009-2013 The CentOS Project
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or (at
+your option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+See Also
+--------
+
+centos-art.sh-locale(1), locale.conf.sh(1)
+
+
+// vim: set syntax=asciidoc:

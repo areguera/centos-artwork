@@ -28,7 +28,14 @@
 
 function tcar_printHelp {
 
-    /usr/bin/man -M ${TCAR_SCRIPT_BASEDIR}/Manuals/ "centos-art.sh-${MODULE_NAME}"
+    local MANPAGE="centos-art.sh-${MODULE_NAME}"
+
+    if [[ ! -z ${1} ]];then
+        MANPAGE=${1}
+    fi
+
+    /usr/bin/man -M ${TCAR_SCRIPT_BASEDIR}/Manuals/:${MODULE_DIR_MANUALS}/ \
+        "${MANPAGE}"
     exit 0
 
 }
