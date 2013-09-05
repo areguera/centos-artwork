@@ -1,0 +1,257 @@
+/*
+ * stylesheet.css --  This file resets the browser's default visual
+ * style using The CentOS Project corporate visual style.
+ *
+ * Copyright (C) 2013 The CentOS Artwork SIG
+ *
+ * This CSS is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This CSS is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *
+ */
+
+/* Reset browsers default margins and paddings
+-----------------------------------------------*/
+
+* {
+    margin: 0;
+    padding: 0;
+    }
+
+/* Define html
+-----------------------------------------------*/
+
+html {
+    background-color: #FFF;
+    background-image: url("/webenv/images/html.png");
+    }
+
+/* Define body
+-----------------------------------------------*/
+
+body {
+    font-family: "DejaVu Sans", "Liberation Sans", sans-serif;
+    font-size: 0.85em;
+    margin: 0 30px 0 30px;      /* <- with 30px of left and right margin  */
+    color: #000;
+    background: #FFF;
+    }
+
+/* Links 
+-----------------------------------------------*/
+
+a:link  { text-decoration: none; color: #0044B3; }
+a:hover { text-decoration: underline; color: green; }
+a:active { text-decoration: underline; color: green; }
+a:visited { text-decoration: none; color: #0044B3; }
+a:visited:hover { text-decoration: underline; color: green; }
+
+/* Headings
+-----------------------------------------------*/
+
+h1 {
+    font-size: 2em;
+    line-height: 1.5em;
+    }
+
+h2 {
+    font-size: 1.5em;
+    line-height: 1.5em;
+    margin-top: 1.5em;
+    }
+
+h3 {
+    font-size: 1.2em;
+    line-height: 1.2em;
+    margin-top: 1.2em;
+    }
+
+h4 {
+    font-size: 1.2em;
+    line-height: 1.2em;
+    margin-top: 1.2em;
+    }
+
+h5 {
+    font-size: 1.1em;
+    line-height: 1.1em;
+    margin-top: 1.1em;
+    }
+
+h6 {
+    font-size: 1em;
+    line-height: 1em;
+    margin-top: 1em;
+    }
+
+/* Paragraphs
+-----------------------------------------------*/
+
+p {
+    margin: 1em 0 1.5em 0;
+    line-height: 1.5em;
+    }
+
+/* Images
+-----------------------------------------------*/
+
+img {
+    border: none;
+    }
+
+/* Quotations
+-----------------------------------------------*/
+
+blockquote {
+    background: #fafafa;
+    border-color: #eeeeee;
+    border-width: 1px;
+    border-style: solid;
+    border-left-width: 4px;
+    margin-left: 1.5em;
+    padding: 0.5em;
+    margin-top: 1em;
+    margin-bottom: 1.3em;
+    }
+
+q:before {
+    content: " “";
+    }
+
+q:after {
+    content: "” ";
+    }
+
+q q:before {
+    content: " ‘";
+    }
+
+q q:after {
+    content: "’ ";
+    }
+
+address {
+    margin-left: 1.5em;
+    }
+
+/* Preformatted Texts
+-----------------------------------------------*/
+
+pre {
+    font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+    padding: 0.7em 1em;
+    margin: 1em 0 1.5em 0;
+    white-space: pre;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #E5E5E5;
+    border-left-width: 5px;
+    background: #FFFAE9;
+    overflow: auto;
+    }
+
+/* Phrase Elements
+-----------------------------------------------*/
+
+tt,
+samp,
+kbd,
+code {
+    font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+    white-space: nowrap;
+    }
+
+/* Page Lines
+-----------------------------------------------*/
+
+hr {
+    clear: both;
+    height: 1px ! important;
+    border: none;
+    background-color: #DADADA;
+    }
+
+/* Lists
+-----------------------------------------------*/
+
+ul,
+ol,
+dl {
+    margin: 1.5em 0 1.5em 2.5em;
+    }
+
+ul {
+    list-style: circle outside url("images/ul.png");
+    }
+
+ol {
+    list-style-image: none !important;
+    }
+
+ul li,
+ol li {
+    line-height: 1.5em;
+    }
+
+ul ul,
+ul ol,
+ol ul,
+ol ol {
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    }
+
+ul li p,
+ol li p {
+    margin-bottom: 0.3em;
+    }
+
+dl dd {
+    margin-left: 2.5em;
+    }
+
+dl ol,
+dl ul {
+    margin-left: 3.5em;
+    }
+
+/* Tables 
+-----------------------------------------------*/
+
+table {
+    border-collapse: collapse;
+    }
+
+table caption {
+    font-style: italic;
+    text-align: center;
+    }
+
+table tr th {
+    font-weight: bold;
+    }
+
+table tr td,
+table tr th {
+    border: 1pt;
+    border-style: solid;
+    border-color: #CCC;
+    padding: 0.5em;
+    vertical-align: top;
+    }
+
+table tr td p,
+table tr td pre {
+    margin: 0;
+    padding: 0;
+    }

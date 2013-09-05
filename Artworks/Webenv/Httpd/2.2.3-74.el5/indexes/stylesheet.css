@@ -1,0 +1,126 @@
+/*
+ * stylesheet.css -- This file customizes the directory listing
+ * screens produced by httpd, using The CentOS Project corporate
+ * visual style.
+ *
+ * Copyright (C) 2013 The CentOS Artwork SIG
+ *
+ * This CSS is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This CSS is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *
+ */
+
+/* Reset browser's default values. 
+-----------------------------------------------*/
+@import url(../stylesheet.css);
+
+/*
+-----------------------------------------------*/
+
+body { 
+	padding: 0px;
+}
+
+/* Tables
+-----------------------------------------------*/
+
+table { 
+	border-collapse: collapse; 
+}
+
+table tr td, 
+table tr th { 
+	border: none; 
+	padding: 0.3em; 
+	vertical-align: middle;
+}
+
+address { line-height: 2em; color: #ccc; font-size: small;}
+
+#wrap,
+#header,
+#footer {
+    min-width: 728px;
+    }
+
+/* Header
+-----------------------------------------------*/
+
+#header,
+#footer{
+	background: #204C8D url("/webenv/images/header.png") 0 0 repeat;
+	min-height: 46px;
+	}
+
+/* Content
+-----------------------------------------------*/
+
+#wrap {
+    background-color: #FFF;
+    padding: 0 10px;
+	}
+
+#page {
+    padding: 10px;
+    }
+
+.pageline {
+    clear: both;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /* sync these values, line-height is needed for IE */
+    height: 5px;
+    line-height: 5px;
+    background: #628ECA;
+    }
+
+#logo img {
+    border: none;
+    margin-left: 10px;
+    }
+
+#content {
+    }
+
+#header .indexof {
+    border-bottom: 2px dotted #628ECA;
+    border-top: 1px solid #C9C9C9;
+}
+
+#footer .indexof {
+    border-bottom: 1px solid #C9C9C9;
+    border-top: 2px dotted #628ECA;
+}
+
+.indexof {
+    background: none repeat scroll 0 0 #EDF4FF;
+    clear: both;
+    display: block;
+    padding-left: 20px;
+    font-weight: bold;
+    line-height: 2em;
+}
+
+#footer #credits {
+    color: #EEEEEE;
+    font-size: x-small;
+    padding: 1em;
+    text-align: left;
+}
+
+#footer #credits a {
+    color: #FFF;
+    font-style: italic;
+    }
