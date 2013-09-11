@@ -27,7 +27,7 @@
 
 function tcar_printVersion {
 
-    tcar_printMessage "${MODULE_NAME} (${TCAR_SCRIPT_NAME} v${TCAR_SCRIPT_VERSION})" --as-stdout-line
+    tcar_printMessage "${MODULE_NAME} (${TCAR_SCRIPT_NAME} ${TCAR_SCRIPT_VERSION})" --as-stdout-line
     exit 0
 
 }
