@@ -44,6 +44,8 @@ function tcar_setTranslationMarkers {
     tcar_checkFiles -ef ${LOCATION}
 
     # Define copyright translation markers.
+    SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEAR_FIRST='
+    DST[((++${#DST[*]}))]="$(tcar_printCopyrightInfo --first-year)"
     SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEAR(_LAST)?='
     DST[((++${#DST[*]}))]="$(tcar_printCopyrightInfo --year)"
     SRC[((++${#SRC[*]}))]='=COPYRIGHT_YEAR(S)?_LIST='

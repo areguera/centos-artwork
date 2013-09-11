@@ -50,8 +50,9 @@ function tcar_checkRepoDirSource {
     # argument to centos-art command-line, the current location is
     # used as default location). However, it might be useful to use a
     # dot as argument when you want to include the current location in
-    # a list of arguments to process.
-    LOCATION=$(echo "${LOCATION}" | sed -r "s,^\.$,$(pwd),g")
+    # a list of arguments to process. Don't forget that dot slash can
+    # be used to refere locations relatively.
+    LOCATION=$(echo "${LOCATION}" | sed -r "s,^\.(/[[:alnum:]_/-.]+)?$,$(pwd)\1,g")
 
     # Remove the working directory absolute path from location to
     # avoid path duplications here.
