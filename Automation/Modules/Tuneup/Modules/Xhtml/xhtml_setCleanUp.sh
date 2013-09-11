@@ -1,7 +1,11 @@
 #!/bin/bash
+######################################################################
 #
-# sh.sh -- This function standardizes maintainance tasks for Shell
-# script files.
+#   xhtml_setCleanUp.sh -- This function creates valid XHTML files
+#   from (probably malformed) HTML files.
+#
+#   Written by:
+#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -19,14 +23,16 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
-# $Id$
-# ----------------------------------------------------------------------
+######################################################################
 
-function sh {
+function xhtml_setCleanUp {
 
-    # Rebuild top comment inside shell scripts, mainly to update
-    # copyright information.
-    sh_doTopComment
+    sed -i -r -f "${MODULE_DIR_CONFIGS}/cleanup-before.sed" "${FILE}"
+
+    /usr/bin/xmllint --html --xmlout --format --noblanks \
+        --nonet --nowarning \
+        --output ${FILE} ${FILE} 2&> /dev/null
+
+    sed -i -r -f "${MODULE_DIR_CONFIGS}/cleanup-after.sed" "${FILE}"
 
 }

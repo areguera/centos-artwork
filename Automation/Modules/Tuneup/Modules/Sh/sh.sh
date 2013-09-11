@@ -1,6 +1,10 @@
 #!/bin/bash
 #
-# svg.sh -- This function standardizes maintainance of SVG files.
+#   sh.sh -- This module standardizes file Bash scripts maintenance
+#   tasks inside the repository.
+#
+#   Written by:
+#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -18,16 +22,11 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
-# $Id$
-# ----------------------------------------------------------------------
+######################################################################
 
-function svg {
+function sh {
 
-    # Update metadata information.
-    svg_doMetadata
-
-    # Remove all unused items.
-    svg_doVacuumDefs
+    sh_setTopComment
+    sh_setVariableNames
 
 }

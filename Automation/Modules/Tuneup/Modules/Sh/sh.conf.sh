@@ -1,7 +1,10 @@
 #!/bin/bash
 #
-# svg_doVacuumDefs.sh -- This function removes all unused items from
-# the <lt>defs<gt> section of the SVG file.
+#   sh.conf.sh -- This file defines environment variables for
+#   sh module's execution environment.
+#
+#   Written by:
+#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -19,13 +22,6 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
-# $Id$
-# ----------------------------------------------------------------------
+######################################################################
 
-function svg_doVacuumDefs {
-
-    # Vacuum unused svg definition using inkscape.
-    inkscape --vacuum-defs $FILE &> /dev/null
-
-}
+declare -x  TCAR_SCRIPT_MODULES_BASEDIR=${MODULE_DIR_MODULES}

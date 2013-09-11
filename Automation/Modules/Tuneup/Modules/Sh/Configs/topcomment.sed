@@ -1,9 +1,13 @@
 #!/bin/sed
+######################################################################
 #
-# topcomment.sed -- This file standardizes the top comment inside
-# centos-art.sh scripts.
+#   topcomment.sed -- This file standardizes the top comment inside
+#   centos-art.sh scripts.
 #
-# Copyright (C) 2009-2013 The CentOS Artwork SIG
+#   Written by:
+#   * Alain Reguera Delgado <al@centos.org.cu>
+#
+# Copyright (C) 2009-2013 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,11 +23,12 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
-# $Id$
-# ----------------------------------------------------------------------
-/^# +Copyright .*$/a\
-# Copyright (C) 2009-=COPYRIGHT_YEAR_LAST= =COPYRIGHT_HOLDER=\
+######################################################################
+/^#[[:space:]]*Written by:[[:space:]]*$/a\
+#   Written by:\
+#   * Alain Reguera Delgado <al@centos.org.cu>, =COPYRIGHT_YEAR_FIRST=-=COPYRIGHT_YEAR_LAST=\
+#\
+# Copyright (C) =COPYRIGHT_YEAR_FIRST=-=COPYRIGHT_YEAR_LAST= =COPYRIGHT_HOLDER=\
 #\
 # This program is free software; you can redistribute it and/or modify\
 # it under the terms of the GNU General Public License as published by\
@@ -39,16 +44,13 @@
 # along with this program; if not, write to the Free Software\
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.\
 #\
-# ----------------------------------------------------------------------
+######################################################################
 
 # Remove previous copyright notice, just to be sure the one above be
 # used always.
-/^# +Copyright .*$/,/^# -{70}$/{
+/^#[[:space:]]*Written by:[[:space:]]*$/,/^#{70}$/{
 d
 }
-
-# Remove more than one space after comments.
-s/^# +/# /
 
 # Define script first line.
 1c\

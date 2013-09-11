@@ -1,7 +1,8 @@
 #!/bin/bash
+######################################################################
 #
-# xhtml.sh -- This function standardizes maintainance tasks of XHTML
-# files.
+#   sh_setVariableNames.sh -- This function standardizes presentation
+#   of variable's names inside shell scripts.
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -19,14 +20,18 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
-# $Id$
-# ----------------------------------------------------------------------
+######################################################################
 
-function xhtml {
+function sh_setVariableNames {
 
-    # Transforms xhtml headings to make them accessible (e.g., through
-    # a table of contents).
-    xhtml_doToc
+    local -a COMMANDS
+
+    # Write non-array variable names all in upper case and between
+    # brackets. For example: ${VARIABLE} -> ${VARIABLE}
+    COMMANDS[++((${#COMMANDS[*]}))]='s/\$(\w+\b|@)/${\U\1}/g'
+
+    for COMMAND in ${COMMANDS[*]};do
+        sed -r -i ${COMMAND} ${FILE}
+    done
 
 }

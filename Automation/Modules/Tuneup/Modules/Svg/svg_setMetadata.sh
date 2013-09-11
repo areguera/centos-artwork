@@ -1,8 +1,12 @@
 #!/bin/bash
+######################################################################
 #
-# svg_doMetadata.sh -- This function updates metadata values inside
-# scalable vector graphic (SVG) files using default values from The
-# CentOS Project.
+#   svg_setMetadata.sh -- This function updates metadata values inside
+#   scalable vector graphic (SVG) files using default values from The
+#   CentOS Project.
+#
+#   Written by:
+#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -20,28 +24,27 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
-# $Id$
-# ----------------------------------------------------------------------
+######################################################################
 
-function svg_doMetadata {
+function svg_setMetadata {
 
     # Define template file name.
-    local TEMPLATE="${TUNEUP_CONFIG_DIR}/metadata.sed"
+    local TEMPLATE="${MODULE_DIR_CONFIGS}/metadata.sed"
 
     # Check template file existence.
-    cli_checkFiles -e $TEMPLATE
+    tcar_checkFiles -ef ${TEMPLATE}
 
     # Build title from file path.
-    local TITLE=$(basename "$FILE")
+    local TITLE=$(basename "${FILE}")
 
     # Build url from file path.
-    local URL=$(echo $FILE | sed 's!/home/centos!https://projects.centos.org/svn!')
+    local URL=$(echo ${FILE} \
+        | sed 's!/home/centos!https://projects.centos.org/svn!')
 
     # Build keywords from file path. Do not include filename, it is
     # already on title.
     local KEY=''
-    local KEYS=$(dirname "$FILE" | cut -d/ -f6- | tr '/' '\n')
+    local KEYS=$(dirname "${FILE}" | cut -d/ -f6- | tr '/' '\n')
 
     # Build keywords using SVG standard format. Note that this
     # information is inserted inside template file. The template file
@@ -51,38 +54,39 @@ function svg_doMetadata {
     # another backslash so one of them passes literally to template
     # file.
     KEYS=$(\
-        for KEY in $KEYS;do
-            echo "            <rdf:li>$KEY</rdf:li>\\"
+        for KEY in ${KEYS};do
+            echo "            <rdf:li>${KEY}</rdf:li>\\"
         done)
 
     # Redefine template instance file name.
-    local INSTANCE=$(cli_getTemporalFile $TEMPLATE)
+    local INSTANCE=$(tcar_getTemporalFile ${TEMPLATE})
 
     # Create instance.
-    cp $TEMPLATE $INSTANCE
+    cp ${TEMPLATE} ${INSTANCE}
 
     # Check template instance. We cannot continue if the template
     # instance couldn't be created.
-    cli_checkFiles -e $INSTANCE
+    tcar_checkFiles -e ${INSTANCE}
 
     # Expand translation markers inside template instance.
     sed -r -i \
-        -e "s!=TITLE=!$TITLE!" \
-        -e "s!=URL=!$URL!" \
-        -e "s!=DATE=!$(date "+%Y-%m-%d")!" $INSTANCE
-    sed -i -r "/=KEYWORDS=/c\\${KEYS}" $INSTANCE
-    sed -i -r 's/>$/>\\/g' $INSTANCE
-    cli_expandTMarkers $INSTANCE
+        -e "s!=TITLE=!${TITLE}!" \
+        -e "s!=URL=!${URL}!" \
+        -e "s!=DATE=!$(date "+%Y-%m-%d")!" ${INSTANCE}
+    sed -i -r "/=KEYWORDS=/c\\${KEYS}" ${INSTANCE}
+    sed -i -r 's/>$/>\\/g' ${INSTANCE}
+
+    tcar_setTranslationMarkers ${INSTANCE}
 
     # Update scalable vector graphic using template instance.
-    sed -i -f $INSTANCE $FILE
+    sed -i -f ${INSTANCE} ${FILE}
 
     # Remove template instance.
-    if [[ -f $INSTANCE ]];then
-        rm $INSTANCE
+    if [[ -f ${INSTANCE} ]];then
+        rm ${INSTANCE}
     fi
 
     # Sanitate scalable vector graphic.
-    sed -i -r '/^[[:space:]]*$/d' $FILE
+    sed -i -r '/^[[:space:]]*$/d' ${FILE}
 
 }

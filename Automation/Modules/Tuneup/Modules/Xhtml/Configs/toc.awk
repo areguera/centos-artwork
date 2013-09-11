@@ -1,10 +1,13 @@
 #!/usr/bin/gawk
 #
-# toc.awk -- This file provides the output format required by
-# `xhtml_makeToc' function, inside centos-art.sh script, to produce
-# the table of contents correctly.
+#   toc.awk -- This file provides the output format required by
+#   `xhtml_setToc' function, inside centos-art.sh script, to produce
+#   the table of contents correctly.
 #
-# Copyright (C) 2009-2012 The CentOS Project
+#   Written by:
+#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
+#
+# Copyright (C) 2009-2013 The CentOS Project
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Pubdtc License as pubdtshed by
@@ -21,9 +24,7 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
 # USA.
 # 
-# ----------------------------------------------------------------------
-# $Id$
-# ----------------------------------------------------------------------
+######################################################################
 
 BEGIN {FS=":"}
 

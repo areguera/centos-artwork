@@ -1,8 +1,11 @@
 #!/bin/bash
+######################################################################
 #
-# tuneup.sh -- This function standardizes maintainance tasks for files
-# inside the repository. Maintainance tasks are applied to files using
-# file extension as reference.
+#   tuneup.sh -- This module standardizes file maintainance inside the
+#   repository.
+#
+#   Written by:
+#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -20,72 +23,50 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
-# $Id$
-# ----------------------------------------------------------------------
+######################################################################
 
 function tuneup {
 
-    local ACTIONNAM=''
-    local ACTIONVAL=''
+    tuneup_getOptions "${@}"
 
-    # Initialize name of rendition format as an empty value. The name
-    # of rendition format is determined automatically based on
-    # template file extension, later, when files are processed.
-    local TUNEUP_FORMAT=''
+    eval set -- "${TCAR_ARGUMENTS}"
 
-    # Initialize absolute path to format's base directory, the place
-    # where format-specific directories are stored in.
-    local TUNEUP_BASEDIR="${CLI_FUNCDIR}/${CLI_FUNCDIRNAM}"
+    for ARGUMENT in ${@};do
 
-    # Initialize list of supported file extensions. This is, the file
-    # extensions we want to perform maintenance tasks for.
-    local TUNEUP_EXTENSIONS='svg xhtml sh'
-
-    # Interpret arguments and options passed through command-line.
-    tuneup_getOptions
-
-    # Redefine positional parameters using ARGUMENTS. At this point,
-    # option arguments have been removed from ARGUMENTS variable and
-    # only non-option arguments remain in it. 
-    eval set -- "$ARGUMENTS"
-
-    # Define action name. No matter what option be passed to
-    # centos-art, there is only one action to perform (i.e., build the
-    # list of files and interpretation of file extensions for further
-    # processing).
-    ACTIONNAM="tuneup_doBaseActions"
-
-    # Define action value. We use non-option arguments to define the
-    # action value (ACTIONVAL) variable.
-    for ACTIONVAL in "$@";do
-        
         # Sanitate non-option arguments to be sure they match the
         # directory conventions established by centos-art.sh script
         # against source directory locations in the working copy.
-        ACTIONVAL=$(cli_checkRepoDirSource ${ACTIONVAL})
+        local ARGUMENT=$(tcar_checkRepoDirSource ${ARGUMENT})
 
-        # Verify source location absolute path. It should point to
-        # existent directories under version control inside the
-        # working copy.  Otherwise, if it doesn't point to an existent
-        # file under version control, finish the script execution with
-        # an error message.
-        cli_checkFiles ${ACTIONVAL} -d --is-versioned
+        # Build list of files to process.
+        if [[ -f ${ARGUMENT} ]];then
+            local FILES=${ARGUMENT}
+        else
+            tcar_checkFiles -ed ${ARGUMENT}
+            local FILES=$(tcar_getFilesList ${ARGUMENT} \
+                --pattern=".+${FILE_EXTENSION_REGEX}" \
+                --type='f' | egrep ${TCAR_FLAG_FILTER})
+        fi
 
-        # Synchronize changes between repository and working copy. At
-        # this point, changes in the repository are merged in the
-        # working copy and changes in the working copy committed up to
-        # repository.
-        cli_synchronizeRepoChanges "${ACTIONVAL}"
+        # Process list of files.
+        for FILE in ${FILES};do
+            
+            # Print action message.
+            tcar_printMessage "${FILE}" --as-tuningup-line
 
-        # Execute action name.
-        ${ACTIONNAM}
+            # Retrieve module name to apply based on file extension .
+            local MODULE_NAME=$(echo ${FILE} \
+                | sed -r "s/.+${FILE_EXTENSION_REGEX}/\1/")
 
-        # Synchronize changes between repository and working copy. At
-        # this point, changes in the repository are merged in the
-        # working copy and changes in the working copy committed up to
-        # repository.
-        cli_synchronizeRepoChanges "${ACTIONVAL}"
+            # Set module aliases. 
+            if [[ ${MODULE_NAME} =~ '(shtml|html|htm)' ]];then
+                MODULE_NAME='xhtml'
+            fi
+
+            # Initiate module's environment for processing file.
+            tcar_setModuleEnvironment "${MODULE_NAME}" "${@}"
+
+        done
 
     done
 
