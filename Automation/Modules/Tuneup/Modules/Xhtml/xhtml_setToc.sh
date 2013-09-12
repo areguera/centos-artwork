@@ -91,12 +91,12 @@ function xhtml_setToc {
         fi
 
         # Define initial heading information.
-        FIRST[${COUNT}]=$(echo ${HEADING} | sed -r "s!\\\040! !g")
-        TITLE[${COUNT}]=$(echo ${FIRST[${COUNT}]} | sed -r "s!${PATTERN}!\4!")
-        MD5SM[${COUNT}]=$(echo "${FILE}${FIRST[${COUNT}]}" | md5sum | sed -r 's![[:space:]]+-$!!')
-        OPTNS[${COUNT}]=$(echo ${FIRST[${COUNT}]} | sed -r "s!${PATTERN}!\3!")
-        CLASS[${COUNT}]=$(echo ${FIRST[${COUNT}]} | sed -r "s!${PATTERN}!\2!")
-        LEVEL[${COUNT}]=$(echo ${FIRST[${COUNT}]} | sed -r "s!${PATTERN}!\1!")
+        FIRST[${COUNT}]=$(echo "${HEADING}" | sed -r "s!\\\040! !g")
+        TITLE[${COUNT}]=$(echo "${FIRST[${COUNT}]}" | sed -r "s!${PATTERN}!\4!")
+        MD5SM[${COUNT}]=$(echo "${TITLE[${COUNT}]}" | md5sum | sed -r 's![[:space:]]+-$!!')
+        OPTNS[${COUNT}]=$(echo "${FIRST[${COUNT}]}" | sed -r "s!${PATTERN}!\3!")
+        CLASS[${COUNT}]=$(echo "${FIRST[${COUNT}]}" | sed -r "s!${PATTERN}!\2!")
+        LEVEL[${COUNT}]=$(echo "${FIRST[${COUNT}]}" | sed -r "s!${PATTERN}!\1!")
         PARENT[${COUNT}]=${LEVEL[${PREVCOUNT}]}
 
         # Transform heading information using initial heading
