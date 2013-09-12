@@ -1,8 +1,8 @@
 #!/bin/bash
 ######################################################################
 #
-#   tuneup.sh -- This module standardizes file maintainance inside the
-#   repository.
+#   tuneup.sh -- This module standardizes source code file
+#   maintainance inside the repository.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013

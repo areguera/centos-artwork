@@ -4,7 +4,8 @@ tuneup(1)
 Name
 ----
 
-tuneup - Standardizes file maintainance tasks inside the repository.
+tuneup - Standardizes source code maintenance tasks inside the
+repository.
 
 Synopsis
 --------
@@ -16,30 +17,173 @@ Synopsis
     Print module's documentation for developers. Here, FILE.sh is the
     name of the file you want to read documentation from.
 
-*centos-art.sh tuneup DIRECTORY [--filter="REGEX"]*
+*centos-art.sh tuneup [FILE ...|DIRECTORY ...] [--filter="REGEX"]*::
+    Execute source code maintenance tasks.
 
 Description
 -----------
 
-...
+When you run the *tuneup* module it may enter into either file or
+directory processing, based on whether you provide a file or directory
+as argument for processing in the command-line.  When you provide a
+file as argument to *tuneup* module, it uses the file's extension as
+reference for applying maintenance tasks on that file as described in
+<<supported-file-extensions>>.  When you provide a directory as
+argument, *tuneup* looks for all files with supported extensions
+inside that directory and then process them, one by one.
+
+The *tuneup* module exists to automate frequent tasks related to code
+maintenance, inside the repository (see <<examples>>). It is advisable
+to run *tuneup* module over your files from time to time so they all
+have a common look and feel.
+
+[[supported-file-extensions]]
+Supported File Extensions
+-------------------------
+
+The *tuneup* module supports maintenance tasks for the following file
+extensions:
+
+.svgz, .svg
+~~~~~~~~~~~
+
+Provides maintenance tasks for Scalable Vector Graphics (SVG).
+
+When processing svg files, *tuneup* uses the inkscape's --vaccumm
+option to cleanup source code and applies few sed commands to modify
+inkscape's metadata using dynamic information like document title,
+date, copyright information, urls, and locale information retrieved
+from from centos-art.sh script and the file location inside the
+repository.
+
+Each time you create a new svg file or change one, it is advisable to
+run *tuneup* module over it.
+
+.xhtml, .html, .htm
+~~~~~~~~~~~~~~~~~~~
+
+Provides maintenance tasks for HyperText Markup Language (HTML).
+
+When processing html-like files, *tuneup* changes each file to create
+a table of contents for each heading constructions (see below) first
+and then transforms the (probably malformed) HTML markup into valid
+XHTML documents using xmllint(1) program.
+
+In order for *tuneup* to create the table of contents correctly, the
+heading construction inside the HTML document must comply the
+following restrictions:
+
+1. Headings must have one of the following forms:
++
+----------------------------------------------------------------------
+<h1><a name="">Title</a></h1>
+<h1><a href="">Title</a></h1>
+<h1><a name="" href="">Title</a></h1>
+----------------------------------------------------------------------
++
+In these constructions, the heading level may vary from h1 to h6 but
+the heading content (e.g., ``Title'') must not be empty.
+
+When producing table of contents through *tuneup* module, both `name'
+and `href' attributes in the anchor element of each heading will be
+reset dynamically using a md5 string.  The md5 string used in these
+cases is based on the heading content (i.e., the text shown as heading
+when the page is rendered in a browser) and won't change until you
+change the heading content and run *tuneup* module over it again.
+
+The final table of contents will be expanded wherever you set the
++<div class="toc"></div>+ HTML construction as a line of its own
+inside the file being processed.
+
+.sh
+~~~
+
+Provides maintenance tasks for Bash scripts. 
+
+When processing sh files, *tuneup* changes the file to update the
+written by section, copyright year and license information inside
+shell scripts' top comment. Later, it corrects variable name's
+references to be all written in upper-case between brackets (e.g.,
+``${VARNAME}'').
+
+In order for *tuneup* module to update the top comment of your shell
+scripts correctly, it is necessary that your top comments have one
++written by+ line followed by a line of 70 number-sign (\#)
+characters, as illustrated in <<top-comment>> This is the basic
+construction.  Everything between the +written by+ line and the last
+line of 70 number-sign characters will be replaced by *tuneup* module
+top-comment template which includes people names, copyright and
+license information. Everything else does remain untouched.
+
+[[top-comment]]
+.Top-comment convention used by tuneup module.
+======================================================================
+----------------------------------------------------------------------
+#!/bin/bash
+######################################################################
+#
+#   ${FILE}.sh -- ${DESCRIPTION}
+#
+#   Written by:
+#
+######################################################################
+----------------------------------------------------------------------
+======================================================================
+
+[[options]]
+Options
+-------
+
+*--filter="REGEX"*::
+    This option let you reduce the number of files you want to process
+    by applying a (POSIX-egrep) regular expression to the list of file
+    paths returned for processing. This option is specially useful
+    when you need to process files inside a directory structure based
+    on a specific name patterns.
+
+[[examples]]
+
+Examples
+--------
+
+*centos-art.sh tuneup Automation/Scripts*::
+    This command updates the top comment and variable name references
+    of all files inside the Automation/Scripts directory, recursively.
+
+*centos-art.sh tuneup Automation/Scripts/tcar_printVersion.sh*::
+    This commands updates the top comment and variable name references
+    inside the tcar_printVersion.sh file only.
+
+*centos-art.sh tuneup Automation/Scripts --filter="tcar_print.+\.sh$"*::
+    This command updates the top comment and variable name refrences
+    inside files which name only begins with ``tcar_print'' followed
+    by any character and ends with ``.sh''. All other files won't be
+    touched.
+
+[[author]]
 
 Author
 ------
 
-Written by mailto:al@centos.org.cu[Alain Reguera Delgado]
+The *tuneup* module has received contributions from the following
+people:
+
+    * mailto:al@centos.org.cu[Alain Reguera Delgado], =COPYRIGHT_YEAR_FIRST=-=COPYRIGHT_YEAR_LAST=
+
+[[copyright]]
 
 Copyright
 ---------
 
-Copyright (C) 2009-2013 The CentOS Project
+Copyright (C) =COPYRIGHT_YEAR_FIRST=-=COPYRIGHT_YEAR_LAST= =COPYRIGHT_HOLDER=
 
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or (at
-your option) any later version.
+The *tuneup* module is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 2 of the
+License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of
+Tue *tuneup* module is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 General Public License for more details.
 
@@ -47,9 +191,11 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
+[[see-also]]
+
 See Also
 --------
 
-centos-art.sh(1)
+centos-art.sh(1), xmllint(1)
 
 // vim: set syntax=asciidoc:
