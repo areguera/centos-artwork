@@ -27,12 +27,15 @@
 
 function xhtml_setCleanUp {
 
-    sed -i -r -f "${MODULE_DIR_CONFIGS}/cleanup-before.sed" "${FILE}"
-
-    /usr/bin/xmllint --html --xmlout --format --noblanks \
-        --nonet --nowarning \
-        --output ${FILE} ${FILE} 2&> /dev/null
-
-    sed -i -r -f "${MODULE_DIR_CONFIGS}/cleanup-after.sed" "${FILE}"
+    grep '\-//W3C//DTD XHTML 1.0 Strict//EN' ${FILE} > /dev/null
+    if [[ $? -eq 0 ]];then
+        /usr/bin/xmllint --xmlout --format --noblanks \
+            --nonet --nowarning \
+            --output ${FILE} ${FILE} 2&> /dev/null
+    else
+        /usr/bin/xmllint --html --xmlout --format --noblanks \
+            --nonet --nowarning \
+            --output ${FILE} ${FILE} 2&> /dev/null
+    fi
 
 }
