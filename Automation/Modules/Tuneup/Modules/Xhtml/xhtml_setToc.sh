@@ -60,10 +60,10 @@ function xhtml_setToc {
 
     # Define table of content configuration file, the file used to
     # produce the table of content XHTML output code.
-    local TOC_CONFIG=${TUNEUP_CONFIG_DIR}/toc.awk
+    local TOC_CONFIG=${MODULE_DIR_CONFIGS}/toc.awk
 
     # Verify table of content configuration file.
-    cli_checkFiles -e ${TOC_CONFIG}
+    tcar_checkFiles -ef ${TOC_CONFIG}
 
     # Define html heading regular expression pattern. Use parenthisis
     # to save html action name, action value, and heading title.

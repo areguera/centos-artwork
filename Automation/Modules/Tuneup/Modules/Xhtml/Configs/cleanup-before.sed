@@ -27,6 +27,11 @@
 #
 ######################################################################
 
+# Remove HTML preable, if any. It will be added later by xmllint,
+# based on its own interpretation of the document.
+/<?xml/d
+/<!DOCTYPE/,/>{1}/d
+
 # Convert Mailman-specific tags into comments. These tags are found in
 # Mailman's templates and should not be touched in any way because
 # they are used to display dynamic content at Mailman's run time.
