@@ -107,6 +107,13 @@ function tcar_checkFiles {
     local FILE=''
     local FILES=${@}
 
+    # Verify existence of files to prevent centos-art.sh script from
+    # using the current location in cases when it shouldn't (e.g.,
+    # here it is expecting a list of files to process.).
+    if [[ -z ${FILES} ]];then
+        tcar_printMessage "`gettext "No file for processing found."`" --as-error-line
+    fi
+
     for FILE in ${FILES};do
 
         until [[ ${COUNTER} -eq ${#CONDITION_PATTERN[*]} ]];do
@@ -116,14 +123,6 @@ function tcar_checkFiles {
                 "/usr/bin/test" | "/bin/rpm" )
                 ${CONDITION_COMMAND[${COUNTER}]} ${CONDITION_PATTERN[${COUNTER}]} ${FILE} \
                     || tcar_printMessage "${FILE} ${CONDITION_MESSAGE[${COUNTER}]}" --as-error-line
-                ;;
-
-                "centos-art" )
-                # Don't create another level for error messages here
-                # (that would duplicate them unnecessarily).  Instead,
-                # set error messages inside specific functionalities
-                # and use them directly from there.
-                tcar_setFnEnvironment ${CONDITION_PATTERN[${COUNTER}]} ${FILE}
                 ;;
 
                 "/usr/bin/file" )

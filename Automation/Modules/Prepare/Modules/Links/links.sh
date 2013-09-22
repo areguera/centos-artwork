@@ -1,17 +1,11 @@
 #!/bin/bash
 ######################################################################
 #
-#   prepare.sh -- This module standardizes repository configuration
-#   tasks.
-#
-#   When you download a fresh working copy of CentOS artwork
-#   repository, most of its content is in source format. You need to
-#   process source formats in order to produce final content and make
-#   the connections between components (e.g., render brand images so
-#   they can be applied to other images). This function takes care of
-#   those actions and should be the first module you run in your
-#   workstation after downloading a fresh working copy of CentOS
-#   artwork repository.
+#   links.sh -- This function renders configuration files inside
+#   automation scripts directory structure, using the render module.
+#   These configuration files are mainly used to connect content
+#   inside the repository with applications outside the repository,
+#   using symbolic links.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -34,21 +28,23 @@
 #
 ######################################################################
 
-function prepare {
+function links {
 
-    local SUBMODULE=''
-    local SUBMODULES=''
+    # Define base location where configuration files will be searched
+    # from. You can provide more than one location here.
+    local DIRS="/"
 
-    prepare_getOptions "${@}"
+    # Define the name of the option you want to look configuration
+    # files for.
+    local NAME='render-type'
 
-    eval set -- "${TCAR_ARGUMENTS}"
+    # Define the value of the option you want to look configuration
+    # files for.
+    local VALUE='symlink'
 
-    if [[ -z ${SUBMODULES} ]];then
-        SUBMODULES='packages locales images docs links'
-    fi
-
-    for SUBMODULE in ${SUBMODULES};do
-        tcar_setSubModuleEnvironment "${SUBMODULE}" "${@}"
-    done
+    # Render configuration files that match specified options and
+    # values in the search directories.
+    prepare_setRenderEnvironment -o "${NAME}" -v "${VALUE}" "${DIRS}" 
 
 }
+

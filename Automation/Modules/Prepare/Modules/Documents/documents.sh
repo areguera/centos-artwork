@@ -1,12 +1,10 @@
 #!/bin/bash
 ######################################################################
 #
-#   tcar_setFnEnvironment.sh -- This function standardizes the way
-#   centos-art.sh script is called to itself. The main purpose of this
-#   somehow own interface is to control the parent script flow based
-#   on specific function environments exit status.
+#   documents.sh -- This function renders all documentation files
+#   inside the repository using the render module.
 #
-#   Written by: 
+#   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
 #
 # Copyright (C) 2009-2013 The CentOS Project
@@ -27,17 +25,22 @@
 #
 ######################################################################
 
-function tcar_setFnEnvironment {
+function documents {
 
-    # Execute specific function environment.
-    ${MODULE_NAME} ${@}
+    # Define base location where configuration files will be searched
+    # from. You can provide more than one location here.
+    local DIRS='/'
 
-    # Retrieve exit status.
-    local STATUS=$?
+    # Define the name of the option you want to look configuration
+    # files for.
+    local NAME='render-type'
 
-    # Finish script execution based on exit status.
-    if [[ ${STATUS} -ne 0 ]];then
-        exit ${STATUS}
-    fi
+    # Define the value of the option you want to look configuration
+    # files for.
+    local VALUE='asciidoc'
+
+    # Render configuration files that match specified options and
+    # values in the search directories.
+    prepare_setRenderEnvironment -o "${NAME}" -v "${VALUE}" "${DIRS}" 
 
 }

@@ -30,15 +30,10 @@
 function prepare_getOptions {
 
     # Define short options we want to support.
-    local ARGSS="h,v,q,y"
+    local ARGSS="h::,v"
 
     # Define long options we want to support.
-    local ARGSL="help,version,quiet,yes,packages,repository"
-
-    # Define module arguments local to this function. This is very
-    # important in order to provide option parsing for different
-    # function environment levels.
-    local TCAR_ARGUMENTS=''
+    local ARGSL="help::,version,packages,locales,links,documents,images"
 
     # Redefine arguments using getopt(1) command parser.
     tcar_setArguments "${@}"
@@ -49,7 +44,7 @@ function prepare_getOptions {
 
     # Look for options passed through command-line.
     while true; do
-        case "$1" in
+        case "${1}" in
 
             -h | --help )
                 tcar_printHelp
@@ -59,41 +54,41 @@ function prepare_getOptions {
                 tcar_printVersion
                 ;;
 
-            -q | --quiet )
-                TCAR_FLAG_QUIET="true"
-                shift 1
-                ;;
-
-            -y | --yes )
-                TCAR_FLAG_YES="true"
-                shift 1
-                ;;
-
             --packages )
-                MODULE_ACTIONS="${MODULE_ACTIONS} prepare_setPackages"
+                SUBMODULES="${SUBMODULES} packages"
                 shift 1
                 ;;
 
-            --repository )
-                MODULE_ACTIONS="${MODULE_ACTIONS} prepare_setRepository"
+            --locales )
+                SUBMODULES="${SUBMODULES} locales"
+                shift 1
+                ;;
+
+            --links )
+                SUBMODULES="${SUBMODULES} links"
+                shift 1
+                ;;
+
+            --documents )
+                SUBMODULES="${SUBMODULES} documents"
+                shift 1
+                ;;
+
+            --images )
+                SUBMODULES="${SUBMODULES} images"
                 shift 1
                 ;;
 
             -- )
-                # Remove the `--' argument from the list of arguments
-                # in order for processing non-option arguments
-                # correctly. At this point all option arguments have
-                # been processed already but the `--' argument still
-                # remains to mark ending of option arguments and
-                # beginning of non-option arguments. The `--' argument
-                # needs to be removed here in order to avoid
-                # centos-art.sh script to process it as a path inside
-                # the repository, which obviously is not.
                 shift 1
                 break
                 ;;
 
         esac
     done
+
+    # Redefine arguments using current positional parameters. Only
+    # paths should remain as arguments, at this point.
+    TCAR_ARGUMENTS="${@}"
 
 }

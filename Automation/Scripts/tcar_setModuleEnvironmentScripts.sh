@@ -28,6 +28,10 @@
 
 function tcar_setModuleEnvironmentScripts {
 
+    local MODULE_DIR="${1}"
+    local MODULE_NAME="${2}"
+    local MODULE_INIT_FILE="${3}"
+
     # Define the pattern used to retrieve function names from function
     # files.
     local FUNCTION_PATTERN="^function[[:space:]]+${MODULE_NAME}(_[[:alnum:]]+)?[[:space:]]+{[[:space:]]*$"

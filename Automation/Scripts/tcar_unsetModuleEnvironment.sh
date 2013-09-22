@@ -30,10 +30,10 @@ function tcar_unsetModuleEnvironment {
     # Define export id used to retrieve function files. This is the
     # same export id used to export functions without the directory
     # part.
-    local FUNCTION_EXPORTID=$(basename "${1}")
+    local MODULE_NAME=$(basename "${1}")
 
     # Verify suffix value used to retrieve function files.
-    if [[ -z ${FUNCTION_EXPORTID} ]];then
+    if [[ -z ${MODULE_NAME} ]];then
         tcar_printMessage "`gettext "The export id was not provided."`" --as-error-line
     fi
 
@@ -42,7 +42,7 @@ function tcar_unsetModuleEnvironment {
     # `tcar_setModuleEnvironmentScripts'.  Be sure to limit the list to function
     # names that start with the suffix specified only.
     local FUNCTION_DEF=''
-    local FUNCTION_DEFS=$(declare -F | gawk '{ print $3 }' | egrep "^${FUNCTION_EXPORTID}")
+    local FUNCTION_DEFS=$(declare -F | gawk '{ print $3 }' | egrep "^${MODULE_NAME}")
 
     # Unset function names from current execution environment.
     for FUNCTION_DEF in ${FUNCTION_DEFS};do

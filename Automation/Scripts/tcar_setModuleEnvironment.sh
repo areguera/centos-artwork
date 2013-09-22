@@ -1,8 +1,9 @@
 #!/bin/bash
 ######################################################################
 #
-#   tcar_setModuleEnvironment.sh -- This function initiates module
-#   environments inside the centos-art.sh script.
+#   tcar_setModuleEnvironment.sh -- This function initiates
+#   first-level module (or simply, module) environments inside the
+#   centos-art.sh script. 
 #
 #   Written by: 
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -37,7 +38,7 @@ function tcar_setModuleEnvironment {
 
     # Check module's name possible values.
     if [[ ! ${MODULE_NAME} =~ "^(${MODULE_NAME_LIST})$" ]];then
-        tcar_printMessage "`gettext "The module provided isn't valid."`" --as-error-line
+        tcar_printMessage "`eval_gettext "The module (\\\$MODULE_NAME) isn't supported yet."`" --as-error-line
     fi
 
     # Define module's directory.
@@ -47,6 +48,10 @@ function tcar_setModuleEnvironment {
     local MODULE_DIR_MODULES=${MODULE_DIR}/Modules
     local MODULE_DIR_MANUALS=${MODULE_DIR}/Manuals
     local MODULE_DIR_CONFIGS=${MODULE_DIR}/Configs
+
+    # Define the sub-module's base directory where sub-module
+    # processing will start from.
+    local SUBMODULE_BASEDIR=${MODULE_DIR_MODULES}
 
     # Define module's initialization file.
     local MODULE_INIT_FILE=${MODULE_DIR}/${MODULE_NAME}.sh
@@ -59,23 +64,10 @@ function tcar_setModuleEnvironment {
     # start counting from second argument on, inclusively.
     shift 1
 
-    # Redefine module-specific configuration values.
-    if [[ -f ${MODULE_DIR}/${MODULE_NAME}.conf.sh ]];then
-        . ${MODULE_DIR}/${MODULE_NAME}.conf.sh
-    fi
-
-    # Verify the number of arguments passed to centos-art.sh script.
-    # By default, to all modules, when no argument is provided after
-    # the module name, use the current directory as default directory
-    # to look for configuration files.
-    if [[ $# -eq 0 ]];then
-        set -- ${PWD}
-    fi
-
     # Load module-specific (function) scripts into current execution
     # environment.  Keep the tcar_setModuleEnvironmentScripts function
     # call after all variables and arguments definitions.
-    tcar_setModuleEnvironmentScripts
+    tcar_setModuleEnvironmentScripts "${MODULE_DIR}" "${MODULE_NAME}" "${MODULE_INIT_FILE}"
 
     # Execute module-specific initialization script.
     ${MODULE_NAME} "${@}"

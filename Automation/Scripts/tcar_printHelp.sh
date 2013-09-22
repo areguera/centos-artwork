@@ -27,9 +27,9 @@
 
 function tcar_printHelp {
 
-    local MANPAGE="${MODULE_NAME}"
+    local MANPAGE="${TCAR_SCRIPT_NAME}-${MODULE_NAME}"
 
-    if [[ ! -z ${1} ]];then
+    if [[ -n ${1} ]];then
         MANPAGE=${1}
     fi
 

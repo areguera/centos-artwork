@@ -5,7 +5,7 @@
 #   construction of directories inside the working copy, using
 #   absolute paths. This function transforms relative paths passed as
 #   non-option arguments to centos-art.sh script command-line into
-#   absolute paths inside the working copy based on whether you are
+#   absolute paths inside the working copy, based on whether you are
 #   using Subversion or Git as version control system. Further
 #   verifications, (e.g., whether they really exist as directories
 #   inside the working copy or not) should be realized outside this
@@ -51,11 +51,11 @@ function tcar_checkRepoDirSource {
     # used as default location). However, it might be useful to use a
     # dot as argument when you want to include the current location in
     # a list of arguments to process. Don't forget that dot slash can
-    # be used to refere locations relatively.
-    LOCATION=$(echo "${LOCATION}" | sed -r "s,^\.(/[[:alnum:]_/-.]+)?$,$(pwd)\1,g")
+    # be used to refer locations relatively.
+    LOCATION=$(echo "${LOCATION}" | sed -r "s,^\.(/([[:alnum:]_/-.]+)?)?$,$(pwd)\1,g")
 
-    # Remove the working directory absolute path from location to
-    # avoid path duplications here.
+    # Remove the path to repository's base directory from location in
+    # order to avoid path duplications here.
     LOCATION=$(echo "${LOCATION}" | sed "s,${TCAR_BASEDIR}/,,g")
 
     # When we use Git as version control system, there isn't a need of
@@ -85,7 +85,11 @@ function tcar_checkRepoDirSource {
     # stored inside variables.).
     LOCATION=${TCAR_BASEDIR}/${LOCATION}
 
-    # Output the absolute path to location.
-    echo "${LOCATION}"
+    # Remove trailing slashes passed as argument. The single slash
+    # form is used to refer the repository's root directory. The
+    # single slash form passed as argument of centos-art.sh script is
+    # useful to execute commands over the
+    # entire repository tree.
+    echo "${LOCATION}" | sed -r -e 's,/+,/,g' -e 's,/+$,,g'
 
 }

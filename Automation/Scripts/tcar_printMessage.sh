@@ -77,7 +77,7 @@ function tcar_printMessage {
 
             # Build the error message.
             tcar_printMessage '-' --as-separator-line
-            tcar_printMessage "$(tcar_printCaller 1) ${MESSAGE}" --as-stdout-line
+            tcar_printMessage "$(tcar_printCaller 1) ${MESSAGE}" --as-stderr-line
             tcar_printMessage '-' --as-separator-line
 
             # Finish script execution with exit status 1 (SIGHUP) to
@@ -99,10 +99,10 @@ function tcar_printMessage {
             echo "${TCAR_SCRIPT_BASEDIR}/${TCAR_SCRIPT_NAME}" 1>&2
             while [[ ${COUNT} -gt 0  ]];do
                 if [[ ${COUNT} -eq $(( ${#FN[*]} - 2 )) ]];then
-                    echo ${SEPARATOR} ${FN[${COUNT}]}
+                    echo ${SEPARATOR} ${FN[${COUNT}]} 1>&2
                 else
                     echo ${FN[${COUNT}]} \
-                        | gawk '{ printf "%'${SPACES}'s%s %s\n", "", "'${SEPARATOR}'", $1 }'
+                        | gawk '{ printf "%'${SPACES}'s%s %s\n", "", "'${SEPARATOR}'", $1 }' 1>&2
                 fi
                 COUNT=$((${COUNT} - 1))
                 SPACES=$((${SPACES} + 4))
@@ -112,9 +112,9 @@ function tcar_printMessage {
         --as-suggestion-line )
 
             # Build the error message.
-            tcar_printMessage "${TCAR_SCRIPT_COMMAND} ($(tcar_printCaller 1)):" --as-stdout-line
-            tcar_printMessage "`gettext "The path provided cannot be processed the way you entered it."`" --as-stdout-line
-            tcar_printMessage "`gettext "Instead, try the following equivalence:"` ${MESSAGE}" --as-stdout-line
+            tcar_printMessage "${TCAR_SCRIPT_COMMAND} ($(tcar_printCaller 1)):" --as-stderr-line
+            tcar_printMessage "`gettext "The path provided cannot be processed the way you entered it."`" --as-stderr-line
+            tcar_printMessage "`gettext "Instead, try the following equivalence:"` ${MESSAGE}" --as-stderr-line
             tcar_printMessage "${MODULE_NAME}" --as-toknowmore-line
 
             # Finish script execution with exit status 1 (SIGHUP) to
@@ -125,7 +125,7 @@ function tcar_printMessage {
             ;;
 
         --as-toknowmore-line )
-            tcar_printMessage "`gettext "To know more, run"` ${TCAR_SCRIPT_COMMAND} ${MESSAGE} --help" --as-stdout-line
+            tcar_printMessage "`gettext "To know more, run"` ${TCAR_SCRIPT_COMMAND} ${MESSAGE} --help" --as-stderr-line
             ;;
 
         --as-yesornorequest-line )

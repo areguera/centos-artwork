@@ -1,13 +1,14 @@
 #!/bin/bash
 ######################################################################
 #
-#   prepare.conf.sh -- This file provides the configuration variables
-#   used by prepare module.
+#   locales.sh -- This module retrieves translatable strings from
+#   automation scripts and creates the related machine objects, so
+#   script messages can be rendered in different languages.
 #
 #   Written by:
-#   * Alain Reguera Delgado <al@centos.org.cu>, 2013
+#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
 #
-# Copyright (C) 2013 The CentOS Project
+# Copyright (C) 2009-2013 The CentOS Project
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -25,5 +26,8 @@
 #
 ######################################################################
 
-declare -xr MODULE_VERSION='0.1'
-declare -x  MODULE_ACTIONS=''
+function locales {
+
+    tcar_setModuleEnvironment locale "Automation/centos-art.sh" --update
+
+}
