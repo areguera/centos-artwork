@@ -28,10 +28,10 @@
 function locale_getOptions {
 
     # Define short options we want to support.
-    local ARGSS="h::,v"
+    local ARGSS="h,v"
 
     # Define long options we want to support.
-    local ARGSL="help::,version,filter:,update,edit,delete"
+    local ARGSL="help,version,filter:,update,edit,delete"
 
     # Redefine arguments using getopt(1) command parser.
     tcar_setArguments "${@}"
@@ -45,8 +45,7 @@ function locale_getOptions {
         case "${1}" in
 
             -h | --help )
-                tcar_printHelp "${2}"
-                shift 2
+                tcar_printHelp
                 ;;
 
             -v | --version )

@@ -10,13 +10,6 @@ repository.
 Synopsis
 --------
 
-*centos-art.sh tuneup --help*::
-    Print module's documentation for users.
-
-*centos-art.sh tuneup --help="FILE.sh"*::
-    Print module's documentation for developers. Here, FILE.sh is the
-    name of the file you want to read documentation from.
-
 *centos-art.sh tuneup [FILE ...|DIRECTORY ...] [--filter="REGEX"]*::
     Execute source code maintenance tasks.
 
@@ -134,6 +127,10 @@ license information. Everything else does remain untouched.
 Options
 -------
 
+*--help*::
+    Print module's documentation.
+*--version*::
+    Print module's version.
 *--filter="REGEX"*::
     This option let you reduce the number of files you want to process
     by applying a (POSIX-egrep) regular expression to the list of file

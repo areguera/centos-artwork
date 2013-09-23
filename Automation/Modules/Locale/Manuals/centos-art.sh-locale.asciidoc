@@ -63,7 +63,10 @@ Options
 
 The *locale* module accepts the following options:
 
-*-h, --help*::
+*--help*::
+    Print module's documentation.
+*--version*::
+    Print module's version.
 *--filter="REGEX"*::
     When ``DIRECTORY'' is passed as argument, this option reduces the
     number of section blocks inside configuration files the *locale*

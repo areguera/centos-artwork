@@ -49,18 +49,10 @@ Options
 The *prepare* module accepts the following options:
 
 *--help*::
-*--help="FILE.sh"*::
-    When no argument is provided to this option, it shows the module's
-    documentation for regular users. When a filename and its extension
-    is provided to this option, documentation for developers is
-    printed instead. Developers' documentation adds information about
-    the module's execution environment while user's documentation
-    doesn't.  In order to print developer documentation, the file name
-    you provide must be part of the module you request help to and
-    having a related manpage inside the module's Manuals directory.
+    Print module's documentation.
 
 *--version*::
-    This option shows the module's name and version.
+    Print module's version.
 
 *--packages*::
     This option verifies whether you have installed the required

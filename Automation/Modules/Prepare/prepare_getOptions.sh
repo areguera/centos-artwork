@@ -30,10 +30,10 @@
 function prepare_getOptions {
 
     # Define short options we want to support.
-    local ARGSS="h::,v"
+    local ARGSS="h,v"
 
     # Define long options we want to support.
-    local ARGSL="help::,version,packages,locales,links,documents,images"
+    local ARGSL="help,version,packages,locales,links,documents,images"
 
     # Redefine arguments using getopt(1) command parser.
     tcar_setArguments "${@}"
