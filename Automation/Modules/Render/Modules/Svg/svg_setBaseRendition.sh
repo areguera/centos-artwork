@@ -86,12 +86,12 @@ function svg_setBaseRendition {
     ${COMMAND} ${TARGET_INSTANCES[*]} ${TARGET}
 
     # Apply branding images to final PNG image.
-    if [[ ! -z ${BRANDS} ]];then
+    if [[ -n ${BRANDS} ]];then
         svg_setBrandInformation
     fi
 
     # Apply comment to final PNG image.
-    if [[ ! -z ${COMMENT} ]];then
+    if [[ -n ${COMMENT} ]];then
         /usr/bin/mogrify -comment "${COMMENT}" ${TARGET}
     fi
 

@@ -51,7 +51,7 @@ function render_setRenderType {
     local COUNTER=0
 
     while [[ ${COUNTER} -lt ${#SECTIONS[*]} ]];do
-
+        
         # Initialize array variables locally.
         local -a TRANSLATIONS
         local -a SOURCES
@@ -69,8 +69,14 @@ function render_setRenderType {
         fi
 
         RENDER_TYPE=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "render-type")
+        if [[ -z ${RENDER_TYPE} ]];then
+            tcar_printMessage "${CONFIGURATION} `gettext "hasn't render-type set in."`" --as-error-line
+        fi
 
         RENDER_FROM=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "render-from")
+        if [[ -z ${RENDER_TYPE} ]];then
+            tcar_printMessage "${CONFIGURATION} `gettext "hasn't render-from set in."`" --as-error-line
+        fi
 
         for SOURCE in ${RENDER_FROM};do
             if [[ ${SOURCE} =~ "^/" ]];then
@@ -122,10 +128,10 @@ function render_setRenderType {
         # Initialize render's modules.
         case ${RENDER_TYPE} in
             "svgz" | "svg" )
-                tcar_setModuleEnvironment "svg" "${@}"
+                tcar_setSubModuleEnvironment "svg" "${@}"
                 ;;
             * )
-                tcar_setModuleEnvironment "${RENDER_TYPE}" "${@}"
+                tcar_setSubModuleEnvironment "${RENDER_TYPE}" "${@}"
                 ;;
         esac
 

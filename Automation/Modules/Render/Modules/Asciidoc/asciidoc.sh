@@ -28,6 +28,10 @@
 
 function asciidoc {
 
+    local DOCBOOK_VER="1.69.1"
+    local DOCBOOK_XSL="${TCAR_BASEDIR}/Artworks/Webenv/Docbook/${DOCBOOK_VER}/Xsl"
+    local DOCBOOK_CSS="${TCAR_BASEDIR}/Artworks/Webenv/Docbook/${DOCBOOK_VER}/Css"
+
     RENDER_FLOW=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" 'render-flow')
     if [[ -z ${RENDER_FLOW} ]];then
         RENDER_FLOW="article"

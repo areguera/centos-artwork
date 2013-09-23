@@ -37,16 +37,20 @@ function render {
 
     # Define action value. We use non-option arguments to define the
     # action value (ACTIONVAL) variable.
-    for DIRECTORY in "$@";do
+    for ARGUMENT in "$@";do
 
         # Sanitate non-option arguments to be sure they match the
         # directory conventions established by centos-art.sh script
         # against source directory locations in the working copy.
-        DIRECTORY=$(tcar_checkRepoDirSource ${DIRECTORY})
+        ARGUMENT=$(tcar_checkRepoDirSource ${ARGUMENT})
 
         # Retrieve list of configuration files from directory.
-        CONFIGURATIONS=$(tcar_getFilesList ${DIRECTORY} \
-            --pattern=".+/.+\.conf$" --type="f")
+        if [[ -d ${ARGUMENT} ]];then
+            CONFIGURATIONS=$(tcar_getFilesList ${ARGUMENT} \
+                --pattern=".+/.+\.conf$" --type="f")
+        else
+            CONFIGURATIONS=${ARGUMENT} 
+        fi
 
         # Verify non-option arguments passed to centos-art.sh
         # command-line. The path provided as argument must exist in

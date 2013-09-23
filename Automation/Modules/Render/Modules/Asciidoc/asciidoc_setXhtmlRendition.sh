@@ -8,7 +8,7 @@ function asciidoc_setXhtmlRendition {
     if [[ -z ${RENDER_PAGES} ]];then
         RENDER_PAGES='single'
     fi
-    tcar_checkFiles -m '^(single|chunks)$' "${RENDER_PAGE}"
+    tcar_checkFiles -m '^(single|chunks)$' "${RENDER_PAGES}"
 
     IMAGES_FROM=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "images-from")
     if [[ -z ${IMAGES_FROM} ]];then
@@ -27,7 +27,7 @@ function asciidoc_setXhtmlRendition {
     # chunks from one unique asciidoc document.  So, to reuse image
     # files, produce both chunks and single XHTML output in the same
     # directory.
-    if [[ ${RENDER_PAGE} == 'chunks' ]];then
+    if [[ ${RENDER_PAGES} == 'chunks' ]];then
         TARGET="$(dirname ${TARGET})/"
     fi
 
