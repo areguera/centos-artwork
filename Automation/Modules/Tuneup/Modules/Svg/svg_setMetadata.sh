@@ -29,7 +29,7 @@
 function svg_setMetadata {
 
     # Define template file name.
-    local TEMPLATE="${MODULE_DIR_CONFIGS}/metadata.sed"
+    local TEMPLATE="${SUBMODULE_DIR_CONFIGS}/metadata.sed"
 
     # Check template file existence.
     tcar_checkFiles -ef ${TEMPLATE}

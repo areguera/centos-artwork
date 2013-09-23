@@ -27,6 +27,9 @@
 
 function tuneup {
 
+    # Define file extensions tuneup module will look for processing.
+    local FILE_EXTENSION_REGEX='\.(svgz|svg|shtml|xhtml|html|sh)$'
+
     tuneup_getOptions "${@}"
 
     eval set -- "${TCAR_ARGUMENTS}"
@@ -55,16 +58,16 @@ function tuneup {
             tcar_printMessage "${FILE}" --as-tuningup-line
 
             # Retrieve module name to apply based on file extension .
-            local MODULE_NAME=$(echo ${FILE} \
+            local SUBMODULE_NAME=$(echo ${FILE} \
                 | sed -r "s/.+${FILE_EXTENSION_REGEX}/\1/")
 
             # Set module aliases. 
-            if [[ ${MODULE_NAME} =~ '(shtml|html|htm)' ]];then
-                MODULE_NAME='xhtml'
+            if [[ ${SUBMODULE_NAME} =~ '(shtml|html|htm)' ]];then
+                SUBMODULE_NAME='xhtml'
             fi
 
             # Initiate module's environment for processing file.
-            tcar_setModuleEnvironment "${MODULE_NAME}" "${@}"
+            tcar_setSubModuleEnvironment "${SUBMODULE_NAME}" "${@}"
 
         done
 

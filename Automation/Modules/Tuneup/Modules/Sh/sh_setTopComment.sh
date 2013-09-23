@@ -25,7 +25,7 @@
 
 function sh_setTopComment {
 
-    local COMMENT_TEMPLATE="${MODULE_DIR_CONFIGS}/topcomment.sed"
+    local COMMENT_TEMPLATE="${SUBMODULE_DIR_CONFIGS}/topcomment.sed"
 
     tcar_checkFiles -ef ${COMMENT_TEMPLATE}
 
