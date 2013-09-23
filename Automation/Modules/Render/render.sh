@@ -49,7 +49,7 @@ function render {
             CONFIGURATIONS=$(tcar_getFilesList ${ARGUMENT} \
                 --pattern=".+/.+\.conf$" --type="f")
         else
-            CONFIGURATIONS=${ARGUMENT} 
+            CONFIGURATIONS=${ARGUMENT}
         fi
 
         # Verify non-option arguments passed to centos-art.sh

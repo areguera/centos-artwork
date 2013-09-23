@@ -51,7 +51,7 @@ function render_setRenderType {
     local COUNTER=0
 
     while [[ ${COUNTER} -lt ${#SECTIONS[*]} ]];do
-        
+
         # Initialize array variables locally.
         local -a TRANSLATIONS
         local -a SOURCES
