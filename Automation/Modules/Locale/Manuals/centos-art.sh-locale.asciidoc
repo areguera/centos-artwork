@@ -10,7 +10,17 @@ images, documents and automation scripts.
 Synopsis
 --------
 
-centos-art.sh locale [OPTIONS] [DIRECTORY ...|FILE ...]
+*centos-art.sh locale --help*::
+    Print module's documentation.
+
+*centos-art.sh locale --version*::
+    Print module's version.
+
+*centos-art.sh locale DIRECTORY [--update|--edit|--delete|--filter="REGEX"]*::
+    Perform directory localization.
+
+*centos-art.sh locale FILE [--update|--edit|--delete]*::
+    Perform file localization.
 
 Description
 -----------

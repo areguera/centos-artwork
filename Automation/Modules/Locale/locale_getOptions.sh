@@ -59,17 +59,17 @@ function locale_getOptions {
                 ;;
 
             --update )
-                ACTIONS="${ACTIONS} update"
+                SUBMODULES="${SUBMODULES} update"
                 shift 1
                 ;;
 
             --edit )
-                ACTIONS="${ACTIONS} edit"
+                SUBMODULES="${SUBMODULES} edit"
                 shift 1
                 ;;
 
             --delete )
-                ACTIONS="${ACTIONS} delete"
+                SUBMODULES="${SUBMODULES} delete"
                 shift 1
                 ;;
 
@@ -80,8 +80,8 @@ function locale_getOptions {
         esac
     done
 
-    if [[ -z ${ACTIONS} ]];then
-        ACTIONS='update'
+    if [[ -z ${SUBMODULES} ]];then
+        SUBMODULES='update'
     fi
 
     # Redefine arguments using current positional parameters. Only

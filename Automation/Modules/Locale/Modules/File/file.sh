@@ -71,6 +71,6 @@ function file {
     done
 
     # Process configuration variables through locale's actions module.
-    tcar_setModuleEnvironment "actions" "${@}"
+    tcar_setSubModuleEnvironment "actions" "${@}"
 
 }

@@ -91,7 +91,7 @@ function directory_getConfiguration {
         PO_FILE=${TRANSLATIONS[0]}
 
         # Initialize locale's actions module.
-        tcar_setModuleEnvironment "actions" "${@}"
+        tcar_setSubModuleEnvironment "actions" "${@}"
 
         # Increment section's counter.
         COUNTER=$(( ${COUNTER} + 1 ))

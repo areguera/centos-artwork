@@ -27,23 +27,39 @@
 
 function locale {
 
+    local SUBMODULES=''
+
+    # Interpret arguments and options passed through command-line.
     locale_getOptions "${@}"
 
+    # Redefine positional parameters using ARGUMENTS local variable.
+    # At this point, option arguments have been removed from
+    # TCAR_ARGUMENTS variable and only non-option arguments remain in
+    # it.
     eval set -- "${TCAR_ARGUMENTS}"
 
+    # Verify the current locale information to avoid English messages
+    # from being localized to themselves. The English language is used
+    # as reference to write translatable strings inside the source
+    # files.
     if [[ ${TCAR_SCRIPT_LANG_LC} =~ '^en' ]];then
         tcar_printMessage "`gettext "The English language cannot be localized to itself."`" --as-error-line
     fi
 
+    # Process arguments passed to locale module, based on whether they
+    # are files or directories.
     for ARGUMENT in ${@};do
-        ARGUMENT=$(tcar_checkRepoDirSource "${ARGUMENT}")
+
+        local ARGUMENT=$(tcar_checkRepoDirSource "${ARGUMENT}")
+
         if [[ -f ${ARGUMENT} ]];then
-            tcar_setModuleEnvironment "file" "${@}"
+            tcar_setSubModuleEnvironment "file" "${@}"
         elif [[ -d ${ARGUMENT} ]];then
-            tcar_setModuleEnvironment "directory" "${@}"
+            tcar_setSubModuleEnvironment "directory" "${@}"
         else
             tcar_printMessage "`gettext "The argument provided isn't valid."`" --as-error-line
         fi
+
     done
 
 }

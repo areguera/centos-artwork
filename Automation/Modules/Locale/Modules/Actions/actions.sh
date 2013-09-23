@@ -27,10 +27,8 @@
 
 function actions {
 
-    local ACTION=''
-
-    for ACTION in ${ACTIONS};do
-        tcar_setModuleEnvironment "${ACTION}" "${@}"
+    for SUBMODULE in ${SUBMODULES};do
+        tcar_setSubModuleEnvironment "${SUBMODULE}" "${@}"
     done
 
 }
