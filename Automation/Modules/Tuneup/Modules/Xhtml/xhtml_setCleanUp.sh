@@ -27,7 +27,8 @@
 
 function xhtml_setCleanUp {
 
-    grep '\-//W3C//DTD XHTML 1.0 Strict//EN' ${FILE} > /dev/null
+    grep '<?xml' ${FILE} > /dev/null \
+        || egrep '\-//W3C//DTD XHTML 1.0 (Strict|Transitional)//EN' ${FILE} > /dev/null
     if [[ $? -eq 0 ]];then
         /usr/bin/xmllint --xmlout --format --noblanks \
             --nonet --nowarning \
