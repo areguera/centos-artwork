@@ -8,12 +8,12 @@
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
 #
-# Copyright (C) 2009-2013 The CentOS Project
+# Copyright (C) 2009-2013 The CentOS Artwork SIG
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
+# the Free Software Foundation; either version 2 of the License, or (at
+# your option) any later version.
 #
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -28,8 +28,8 @@
 
 function svg_checkModelExportId {
 
-    local INSTANCE="$1"
-    local EXPORTID="$2"
+    local INSTANCE="${1}"
+    local EXPORTID="${2}"
 
     # Verify instance.
     tcar_checkFiles -ef ${INSTANCE}
@@ -40,7 +40,7 @@ function svg_checkModelExportId {
     # Check export id inside design templates.
     grep "id=\"${EXPORTID}\"" ${INSTANCE} > /dev/null
     if [[ $? -gt 0 ]];then
-        tcar_printMessage "`eval_gettext "There is not export id (\\\${EXPORTID}) inside \\\"\\\${TEMPLATE}\\\"."`" --as-error-line
+        tcar_printMessage "`eval_gettext "There is not export id (\\\$EXPORTID) inside \\\"\\\$TEMPLATE\\\"."`" --as-error-line
     fi
 
 }

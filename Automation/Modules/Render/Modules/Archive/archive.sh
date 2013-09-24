@@ -7,12 +7,12 @@
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
 #
-# Copyright (C) 2009-2013 The CentOS Project
+# Copyright (C) 2009-2013 The CentOS Artwork SIG
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
+# the Free Software Foundation; either version 2 of the License, or (at
+# your option) any later version.
 #
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -36,9 +36,9 @@ function archive {
 
     # Let file names to be changed before compressing them.
     for SOURCE in ${SOURCES[*]};do
-        FILE_LH=$(echo ${SOURCE} | gawk -F: '{ print $1}')
+        FILE_LH=$(echo ${SOURCE} | gawk -F: '{ print $1 }')
         tcar_checkFiles -ef ${FILE_LH}
-        FILE_RH=$(echo ${SOURCE} | gawk -F: '{ print $2}')
+        FILE_RH=$(echo ${SOURCE} | gawk -F: '{ print $2 }')
         cp ${FILE_LH} ${TCAR_SCRIPT_TEMPDIR}/${FILE_RH}
     done
 

@@ -40,7 +40,7 @@ function render_getOptions {
 
     # Look for options passed through command-line.
     while true; do
-        case "$1" in
+        case "${1}" in
 
             -h | --help )
                 tcar_printHelp
@@ -51,7 +51,7 @@ function render_getOptions {
                 ;;
 
             -f | --filter )
-                TCAR_FLAG_FILTER="$2"
+                TCAR_FLAG_FILTER="${2}"
                 shift 2
                 ;;
 
