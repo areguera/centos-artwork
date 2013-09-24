@@ -18,10 +18,10 @@
 #   very useful when you need to execute the centos-art.sh script as
 #   command (e.g., `centos-art') anywhere on your workstation.
 #
-#   Written by: 
+#   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
 #
-# Copyright (C) 2009-2013 The CentOS Project
+# Copyright (C) 2009-2013 The CentOS Artwork SIG
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -52,7 +52,7 @@ function tcar_checkRepoDirSource {
     # dot as argument when you want to include the current location in
     # a list of arguments to process. Don't forget that dot slash can
     # be used to refer locations relatively.
-    LOCATION=$(echo "${LOCATION}" | sed -r "s,^\.(/([[:alnum:]_/-.]+)?)?$,$(pwd)\1,g")
+    LOCATION=$(echo "${LOCATION}" | sed -r "s,^\.(/([[:alnum:]_/.-]+)?)?$,$(pwd)\1,g")
 
     # Remove the path to repository's base directory from location in
     # order to avoid path duplications here.

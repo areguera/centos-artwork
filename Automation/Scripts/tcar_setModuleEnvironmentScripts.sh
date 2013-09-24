@@ -5,10 +5,10 @@
 #   the way specific functionalities are exported to centos-art.sh
 #   script environment.
 #
-#   Written by: 
+#   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
 #
-# Copyright (C) 2009-2013 The CentOS Project
+# Copyright (C) 2009-2013 The CentOS Artwork SIG
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

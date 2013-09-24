@@ -9,10 +9,10 @@
 #   any point, an error message is output and centos-art.sh script
 #   finishes its execution. 
 #
-#   Written by: 
+#   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
 #
-# Copyright (C) 2009-2013 The CentOS Project
+# Copyright (C) 2009-2013 The CentOS Artwork SIG
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -79,7 +79,7 @@ function tcar_checkFiles {
                 local MIME=${OPTARG}
                 CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='/usr/bin/file'
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]='-bi'
-                CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`eval_gettext "isn't a \\\"\\\${MIME}\\\" file."`"
+                CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`eval_gettext "isn't a \\\"\\\$MIME\\\" file."`"
                 ;;
 
             m )

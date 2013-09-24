@@ -11,14 +11,15 @@
 #   terms the creator considers better.  At this moment I don't feel
 #   very confident about this legal affairs and their legal
 #   implications, but I need to decide what copyright information the
-#   centos-art.sh script will print out when it be requested about it.
-#   So, in that sake, I'll assume the same copyright information used
-#   by The CentOS Wiki (http://wiki.centos.org/) as reference.
+#   centos-art.sh script will print out when someone request
+#   information about it.  So, in that sake, I am using The CentOS
+#   Artwork SIG as copyright holder and the GNU Public License,
+#   version 2 or any later, for software distribution.
 #
-#   Written by: 
+#   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
 #
-# Copyright (C) 2009-2013 The CentOS Project
+# Copyright (C) 2009-2013 The CentOS Artwork SIG
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -96,8 +97,21 @@ function tcar_printCopyrightInfo {
     
         --holder )
             
-            # Print centos-art.sh script default copyright holder.
-            echo "The CentOS Project"
+            # Print centos-art.sh script default copyright holder. Be
+            # pragmatic about this information, please. The CentOS
+            # Project exists to produce The CentOS Distribution, not
+            # centos-art.sh script. Nevertheless, The CentOS Artwork
+            # SIG is an organizational unit of The CentOS Project
+            # which is focused on producing The CentOS Project
+            # corporate visual identity, by means of The CentOS
+            # Artwork Repository.  The centos-art.sh script automates
+            # frequent tasks inside The CentOS Artwork Repository so,
+            # based on these considerations, the copyright holder of
+            # the centos-art.sh script is "closer" to be The CentOS
+            # Artwork SIG than it would be The CentOS Project. These
+            # are the logical choosing ideas behind the copyright
+            # holder of centos-art.sh script.
+            echo "The CentOS Artwork SIG"
             ;;
 
         --holder-predicate )
