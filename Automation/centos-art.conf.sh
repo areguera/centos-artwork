@@ -7,7 +7,7 @@
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
 #
-# Copyright (C) 2013 The CentOS Project
+# Copyright (C) 2009-2013 The CentOS Artwork SIG
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -40,7 +40,7 @@ declare -x TCAR_SCRIPT_COMMAND="centos-art"
 # and the script. Both repository and script version must be the same.
 # This way we can say that specific functionalities inside the script
 # will work as expected when run over the repository directory structure.
-declare -x TCAR_SCRIPT_VERSION='0.4'
+declare -x TCAR_SCRIPT_VERSION='0.5'
 
 # Set the script modules directory.
 declare -x TCAR_SCRIPT_MODULES_BASEDIR=${TCAR_SCRIPT_BASEDIR}/Modules

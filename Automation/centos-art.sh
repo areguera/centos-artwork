@@ -1,12 +1,12 @@
 #!/bin/bash
-########################################################################
+######################################################################
 #
 #   centos-art.sh -- The CentOS artwork repository automation tool.
 #
-#   Written by: 
+#   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
 #
-# Copyright (C) 2009-2013 The CentOS Project
+# Copyright (C) 2009-2013 The CentOS Artwork SIG
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -22,15 +22,16 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-########################################################################
+######################################################################
 
 # Verify absolute path to the working directory. This information is
 # critical for centos-art.sh script to work.
 if [[ ! ${TCAR_BASEDIR} ]] || [[ -z ${TCAR_BASEDIR} ]] \
     || [[ ! -d ${TCAR_BASEDIR} ]];then
-    echo -n "Enter repository's absolute path: "
+    printf "Enter repository's absolute path: "
     read TCAR_BASEDIR
-    declare -xr TCAR_BASEDIR
+    declare -xr TCAR_BASEDIR=$(printf ${TCAR_BASEDIR} \
+        | sed -r -e 's,/+,/,g' -e 's,/+$,,')
 fi
 
 # Define automation scripts base directory. We need to define it here
@@ -63,7 +64,7 @@ case ${1} in
 
     --version )
         # Print script's name and version.
-        echo "`eval_gettext "Running \\\${TCAR_SCRIPT_NAME} (v\\\${TCAR_SCRIPT_VERSION})."`"
+        echo "${TCAR_SCRIPT_NAME} ${TCAR_SCRIPT_VERSION}"
         ;;
 
     * )

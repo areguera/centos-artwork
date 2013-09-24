@@ -4,23 +4,18 @@ centos-art.sh(1)
 Name
 ----
 
-centos-art.sh - The CentOS artwork repository automation tool
+centos-art.sh - The CentOS artwork repository automation tool.
 
 Synopsis
 --------
 
 *centos-art.sh* [*--help*|*--version*]::
-    This command provides information about the script itself.
+    Print information about *centos-art.sh* script itself.
 
 *centos-art.sh* *MODULE* [*--help|--version*]::
-    This command provides information about the specified module. See
-    the <<modules>> section below to see which modules are
-    available.
-
-*centos-art.sh* *MODULE* [*OPTIONS*]::
-    This command executes the specified module. Options here are
-    module-specific. See the <<modules>> section below to see which
-    modules are available.
+    Print information about the specified module. See <<modules>>
+    below to see which modules are available inside the
+    *centos-art.sh* script.
 
 Description
 -----------
@@ -46,12 +41,12 @@ at all, the *centos-art.sh* script exports common functions and
 executes the module specified as first argument, assuming the first
 argument is a valid module name of course.  Finally, the
 *centos-art.sh* script waits for the module environment to conclude
-their job and exits, as described in the <<exit>> section.
+their job and exits, as described in <<exit-status>>.
 
-
-[[exit]]
+[[exit-status]]
 Exit Status
 -----------
+
  * 0 -- Exit successfully without errors.
  * 1 -- Exit with errors.
 
@@ -231,27 +226,34 @@ Options
 -------
 
 *--help*::
-    Display program's help (this page).
+    Print script documentation.
 
 *--version*::
-    Display program's name and version.
+    Print script version.
 
 Bugs
 ----
-The module *pack* isn't implemented yet.
+
+The *pack* module isn't implemented yet.
 
 Reporting Bugs
 --------------
+
 Report bugs inside the *automation* category of *centos-artwork*
 project, at the https://centos.org.cu/bugs/[The CentOS Bugs] website.
 
 Author
 ------
-Written by mailto:al@centos.org.cu[Alain Reguera Delgado]
+
+The *centos-art.sh* script has received contribution from the
+following people:
+
+ * Alain Reguera Delgado <mailto:al@centos.org.cu[al@centos.org.cu]>, 2009-2013
 
 Copyright
 ---------
-Copyright (C) 2013 The CentOS Project
+
+Copyright (C) 2009-2013 The CentOS Project
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
