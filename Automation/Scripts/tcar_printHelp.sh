@@ -27,10 +27,17 @@
 
 function tcar_printHelp {
 
-    local MANPAGE="${TCAR_SCRIPT_NAME}-${MODULE_NAME}"
+    local TCAR_MANPAGE_FILE="${1}"
+    local TCAR_MANPAGE_NAME="${TCAR_MODULE_NAME}"
 
-    /usr/bin/man -M ${MODULE_DIR_MANUALS} "${MANPAGE}"
+    if [[ -n ${TCAR_MANPAGE_FILE} ]];then
+        TCAR_MANPAGE_NAME="${TCAR_MODULE_NAME}-${TCAR_MANPAGE_FILE}"
+    fi
 
+    # Print documentation for manpage name.
+    /usr/bin/man -M ${TCAR_MODULE_DIR_MANUALS} "${TCAR_MANPAGE_NAME}"
+
+    # Finish script execution successfully.
     exit 0
 
 }

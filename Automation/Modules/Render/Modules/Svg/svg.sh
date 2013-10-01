@@ -52,7 +52,7 @@ function svg {
     fi
 
     for RENDER_FLOW in ${RENDER_FLOWS} ;do
-        tcar_setSubModuleEnvironment "${RENDER_FLOW}" "${@}"
+        tcar_setModuleEnvironment -m "${RENDER_FLOW}" -t "sub-module"
     done
 
 }

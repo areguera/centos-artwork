@@ -30,11 +30,9 @@ function tuneup {
     # Define file extensions tuneup module will look for processing.
     local FILE_EXTENSION_REGEX='\.(svgz|svg|shtml|xhtml|html|sh)$'
 
-    tuneup_getOptions "${@}"
+    tuneup_getOptions
 
-    eval set -- "${TCAR_ARGUMENTS}"
-
-    for ARGUMENT in ${@};do
+    for ARGUMENT in ${TCAR_MODULE_ARGUMENT};do
 
         # Sanitate non-option arguments to be sure they match the
         # directory conventions established by centos-art.sh script
@@ -44,30 +42,31 @@ function tuneup {
         # Build list of files to process.
         if [[ -f ${ARGUMENT} ]];then
             local FILES=${ARGUMENT}
-        else
-            tcar_checkFiles -ed ${ARGUMENT}
+        elif [[ -d ${ARGUMENT} ]];then
             local FILES=$(tcar_getFilesList ${ARGUMENT} \
                 --pattern=".+${FILE_EXTENSION_REGEX}" \
                 --type='f' | egrep ${TCAR_FLAG_FILTER})
+        else
+            tcar_printMessage "`gettext "The argument provided isn't valid."`" --as-error-line
         fi
 
         # Process list of files.
         for FILE in ${FILES};do
-            
+
             # Print action message.
             tcar_printMessage "${FILE}" --as-tuningup-line
 
             # Retrieve module name to apply based on file extension .
-            local SUBMODULE_NAME=$(echo ${FILE} \
+            local FILE_EXTENSION=$(echo ${FILE} \
                 | sed -r "s/.+${FILE_EXTENSION_REGEX}/\1/")
 
             # Set module aliases. 
-            if [[ ${SUBMODULE_NAME} =~ '(shtml|html|htm)' ]];then
-                SUBMODULE_NAME='xhtml'
+            if [[ ${FILE_EXTENSION} =~ '(shtml|html|htm)' ]];then
+                FILE_EXTENSION='xhtml'
             fi
 
             # Initiate module's environment for processing file.
-            tcar_setSubModuleEnvironment "${SUBMODULE_NAME}" "${@}"
+            tcar_setModuleEnvironment -m "${FILE_EXTENSION}" -t "sub-module" "${FILE}"
 
         done
 

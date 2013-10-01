@@ -1,7 +1,11 @@
 #!/bin/bash
+######################################################################
 #
-# render_getOptions.sh -- This function interprets option parameters
-# passed to `render' functionality and calls actions accordingly.
+#   render_getOptions.sh -- This function interprets option arguments
+#   passed to `render' module and calls actions accordingly.
+#
+#   Written by:
+#   * Alain Reguera Delagdo <al@centos.org.cu>, 2009-2013
 #
 # Copyright (C) 2009-2013 The CentOS Project
 #
@@ -19,39 +23,37 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# ----------------------------------------------------------------------
-# ${Id}$
-# ----------------------------------------------------------------------
+######################################################################
 
 function render_getOptions {
 
     # Define short options we want to support.
-    local ARGSS="h,v,f:"
+    local ARGSS="h::,v,f:"
 
     # Define long options we want to support.
-    local ARGSL="help,version,filter:"
+    local ARGSL="help::,version,filter:"
 
     # Redefine arguments using getopt(1) command parser.
-    tcar_setArguments "${@}"
+    tcar_setModuleArguments
 
     # Reset positional parameters on this function, using output
     # produced from (getopt) arguments parser.
-    eval set -- "${TCAR_ARGUMENTS}"
+    eval set -- "${TCAR_MODULE_ARGUMENT}"
 
     # Look for options passed through command-line.
     while true; do
         case "${1}" in
 
             -h | --help )
-                tcar_printHelp
+                tcar_printHelp "${2}"
                 ;;
 
             -v | --version )
-                tcar_printVersion
+                tcar_printVersion "${TCAR_MODULE_NAME}"
                 ;;
 
             -f | --filter )
-                TCAR_FLAG_FILTER="${2}"
+                TCAR_FLAG_FILTER="${2:-${TCAR_FLAG_FILTER}}"
                 shift 2
                 ;;
 
@@ -73,6 +75,6 @@ function render_getOptions {
 
     # Redefine arguments using current positional parameters. Only
     # paths should remain as arguments, at this point.
-    TCAR_ARGUMENTS="${@}"
+    TCAR_MODULE_ARGUMENT="${@}"
 
 }

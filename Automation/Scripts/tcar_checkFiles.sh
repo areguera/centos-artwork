@@ -41,7 +41,7 @@ function tcar_checkFiles {
     local COUNTER=0
 
     OPTIND=1
-    while getopts "i:,r,m:,n,d,e,f,h,x" OPTION ${@}; do
+    while getopts "i:,r,m:,n,d,e,f,h,x" OPTION "${@}"; do
 
         case "${OPTION}" in
 
@@ -85,7 +85,7 @@ function tcar_checkFiles {
             m )
                 CONDITION_COMMAND[((++${#CONDITION_COMMAND[*]}))]='match'
                 CONDITION_PATTERN[((++${#CONDITION_PATTERN[*]}))]="${OPTARG}"
-                CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`eval_gettext "doesn't match its pattern."`"
+                CONDITION_MESSAGE[((++${#CONDITION_MESSAGE[*]}))]="`gettext "doesn't match its pattern."`"
                 ;;
 
             n )

@@ -46,7 +46,7 @@ function directory {
 
     # Process each configuration file.
     for CONFIGURATION in ${CONFIGURATIONS};do
-        directory_getConfiguration "${@}"
+        directory_getConfiguration "${CONFIGURATION}"
     done
 
 }

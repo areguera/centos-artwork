@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   tcar_setArguments.sh -- This function uses getopt to process
+#   tcar_setModuleArguments.sh -- This function uses getopt to process
 #   arguments passed to centos-art.sh script.
 #
 #   This function works with the following three variables:
@@ -12,7 +12,7 @@
 #       ARGSL
 #           Stores getopt long arguments definition.  
 #
-#       TCAR_ARGUMENTS
+#       TCAR_MODULE_ARGUMENT
 #           Stores arguments passed to functions or command-line
 #           interface depending the context it is defined.
 #
@@ -43,13 +43,13 @@
 #
 ######################################################################
 
-function tcar_setArguments {
+function tcar_setModuleArguments {
 
     local ARGUMENT=''
 
     # Fill up arguments global variable with current positional
     # parameter  information. To avoid interpretation problems, use
-    # single quotes to enclose each argument (TCAR_ARGUMENTS) from
+    # single quotes to enclose each argument (TCAR_MODULE_ARGUMENT) from
     # command-line individually.
     for ARGUMENT in "${@}"; do
 
@@ -60,16 +60,16 @@ function tcar_setArguments {
 
         # Concatenate arguments and enclose them to let getopt to
         # process them when they have spaces inside.
-        TCAR_ARGUMENTS="${TCAR_ARGUMENTS} '${ARGUMENT}'"
+        TCAR_MODULE_ARGUMENT="${TCAR_MODULE_ARGUMENT} '${ARGUMENT}'"
 
     done
 
     # Verify non-option arguments passed to command-line. If there
-    # isn't any or dot is provided, redefine the TCAR_ARGUMENTS
+    # isn't any or dot is provided, redefine the TCAR_MODULE_ARGUMENT
     # variable to use the current location the centos-art.sh script
     # was called from.
-    if [[ -z "${TCAR_ARGUMENTS}" ]];then
-        TCAR_ARGUMENTS=${PWD}
+    if [[ -z "${TCAR_MODULE_ARGUMENT}" ]];then
+        TCAR_MODULE_ARGUMENT=${PWD}
     fi
 
     # Verify presence of either short or long options in the
@@ -77,12 +77,12 @@ function tcar_setArguments {
     # getopt.
     if [[ ! -z ${ARGSS} ]] || [[ ! -z ${ARGSL} ]];then
 
-        # Redefine positional parameters using TCAR_ARGUMENTS variable.
-        eval set -- "${TCAR_ARGUMENTS}"
+        # Redefine positional parameters using TCAR_MODULE_ARGUMENT variable.
+        eval set -- "${TCAR_MODULE_ARGUMENT}"
 
         # Process positional parameters using getopt's option validation.
-        TCAR_ARGUMENTS=$(getopt -o "${ARGSS}" -l "${ARGSL}" \
-            -n "${TCAR_SCRIPT_COMMAND} (${MODULE_NAME})" -- "${@}")
+        TCAR_MODULE_ARGUMENT=$(getopt -o "${ARGSS}" -l "${ARGSL}" \
+            -n "${TCAR_SCRIPT_COMMAND} (${TCAR_MODULE_NAME})" -- "${@}")
 
         # Verify getopt's exit status and finish the script execution
         # with an error message, if it failed.

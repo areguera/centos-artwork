@@ -71,6 +71,6 @@ function file {
     done
 
     # Process configuration variables through locale's actions module.
-    tcar_setSubModuleEnvironment "actions" "${@}"
+    tcar_setModuleEnvironment -m "actions" -t "sib-module"
 
 }

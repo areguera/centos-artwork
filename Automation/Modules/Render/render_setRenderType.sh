@@ -27,7 +27,10 @@
 
 function render_setRenderType {
 
+    local CONFIGURATION="${1}"
+
     local -a SECTIONS
+    local SECTION=''
 
     # Define motif-specific environment variables, based on
     # configuration file path. These variables might save
@@ -35,9 +38,9 @@ function render_setRenderType {
     # information when they produce motif-specific content. These
     # variables will be empty if the configuration file isn't inside
     # a motif-specific directory structure.
-    MOTIF=$(tcar_getPathComponent ${CONFIGURATION} --motif)
-    MOTIF_NAME=$(tcar_getPathComponent ${CONFIGURATION} --motif-name)
-    MOTIF_VERSION=$(tcar_getPathComponent ${CONFIGURATION} --motif-version)
+    local MOTIF=$(tcar_getPathComponent ${CONFIGURATION} --motif)
+    local MOTIF_NAME=$(tcar_getPathComponent ${CONFIGURATION} --motif-name)
+    local MOTIF_VERSION=$(tcar_getPathComponent ${CONFIGURATION} --motif-version)
 
     # Use arrays to store section names. This make possible to make
     # use of post-rendition and last-rendition concepts. Otherwise it
@@ -45,7 +48,7 @@ function render_setRenderType {
     # deeper environments.
     for SECTION in $(tcar_getConfigSectionNames "${CONFIGURATION}" \
         | egrep ${TCAR_FLAG_FILTER});do
-        SECTIONS[((++${#SECTIONS[*]}))]="${SECTION}"
+        SECTIONS[++${#SECTIONS[*]}]="${SECTION}"
     done
 
     local COUNTER=0
@@ -128,10 +131,10 @@ function render_setRenderType {
         # Initialize render's modules.
         case ${RENDER_TYPE} in
             "svgz" | "svg" )
-                tcar_setSubModuleEnvironment "svg" "${@}"
+                tcar_setModuleEnvironment -m "svg" -t "sub-module"
                 ;;
             * )
-                tcar_setSubModuleEnvironment "${RENDER_TYPE}" "${@}"
+                tcar_setModuleEnvironment -m "${RENDER_TYPE}" -t "sub-module"
                 ;;
         esac
 

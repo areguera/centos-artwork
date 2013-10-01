@@ -63,7 +63,7 @@ function tcar_printMessage {
                         if ( $0 ~ /^-+$/ )
                             print $0
                         else
-                            printf "%-15s\t%s\n", $1, $2
+                            printf "%-25s\t%s\n", $1, $2
                     }
                     END {}'
             ;;
@@ -115,7 +115,7 @@ function tcar_printMessage {
             tcar_printMessage "${TCAR_SCRIPT_COMMAND} ($(tcar_printCaller 1)):" --as-stderr-line
             tcar_printMessage "`gettext "The path provided cannot be processed the way you entered it."`" --as-stderr-line
             tcar_printMessage "`gettext "Instead, try the following equivalence:"` ${MESSAGE}" --as-stderr-line
-            tcar_printMessage "${MODULE_NAME}" --as-toknowmore-line
+            tcar_printMessage "${TCAR_MODULE_NAME}" --as-toknowmore-line
 
             # Finish script execution with exit status 1 (SIGHUP) to
             # imply the script finished because an error.  We are
@@ -172,7 +172,7 @@ function tcar_printMessage {
             ;;
 
         --as-response-line )
-            tcar_printMessage "--> ${MESSAGE}" --as-stdout-line
+            tcar_printMessage "--> ${MESSAGE}" --as-stderr-line
             ;;
 
         --as-request-line )
@@ -212,6 +212,13 @@ function tcar_printMessage {
 
             # Draw the separator line.
             echo "${MESSAGE}" 1>&2
+            ;;
+
+        --as-debugger-line )
+            if [[ ${TCAR_FLAG_DEBUG} != 'true' ]];then
+                return
+            fi
+            tcar_printMessage "${MESSAGE}" --as-stdout-line
             ;;
 
         --as-banner-line )

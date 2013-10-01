@@ -1,0 +1,143 @@
+tcar_setModuleEnvironment.sh(1)
+===============================
+
+Name
+----
+
+tcar_setModuleEnvironment.sh - Initiate module environments.
+
+Synopsis
+--------
+
+tcar_setModuleEnvironment -m "MODULE_NAME" -t "MODULE_TYPE" "${@}"
+
+Description
+-----------
+
+Inside the centos-art.sh script, from version 0.5 on, all
+functionalities have been rewritten to fit a modular design. This
+modular design is conceived with the idea of loading and
+executing only the functions that are absolutely required for the
+current task.
+
+Inside the centos-art.sh script there are two kinds of functions,
+which are "global functions" and "module-specific functions." The
+global functions are loaded in the very beginning of centos-art.sh
+script and remain in memory for you to use whenever you need it,
+using a regular function call syntax. The module-specific
+functions, on the other hand, are only loaded when they are needed
+and they are removed from memory once the task they were created
+to perform is over.  To load module-specific functions inside the
+centos-art.sh script, you use the tcar_setModuleEnvironment
+function as described in the USAGE section, above. 
+
+Each time you execute the tcar_setModuleEnvironment function, you
+are creating a new module environment. Module environments are
+logical space where you can develop solutions for specific
+problems. These spaces are made available by creating a module
+directory structure inside the CentOS artwork repository,
+specifically under the Automation/Modules/ location. Inside this
+location, you can find the different types of modules we mentioned
+earlier (top-module, sub-module, and sib-module), based on the
+levels deep they are stored in the file system.
+
+The module directory structure, as interpreted by
+tcar_setModuleEnvironment has the following form:
+
+.Module's directory structure.
+======================================================================
+----------------------------------------------------------------------
+Automation/Modules/
+`-- $\{MODULE_NAME}
+|-- Modules/            <-- module's sub-module files.
+|-- Manuals/            <-- module's documentation files.
+|-- Locales/            <-- module's localization files.
+|-- Configs/            <-- module's configuration files.
+`-- $\{MODULE_NAME}.sh   <-- module's initialization file.
+----------------------------------------------------------------------
+======================================================================
+
+This structure, is common to all type of modules. You can nest
+modules by creating directory structures like this, inside the
+Modules/ directory of whatever module you want to extend its
+functionality.
+
+The tcar_setModuleEnvironment function falls into the group of
+global functions inside the centos-art.sh script. Its
+implementation uses global array variables to store information
+about the modules and local (non-array) variables to handle all
+the information related to modules. Each time the
+tcar_setModuleEnvironment function is called, it adds another
+entry to MODULE_ array variables and uses local variables to set
+the module's current information. 
+
+In case you want to see debugging information for array variables
+in tcar_setModuleEnvironment, you need to set the
+TCAR_FLAG_DEBUGGING environment variable to "true". Generally, we
+add the --debug option to modules, and set the variable there, so
+you can control whether to see debug information or not from the
+module's command-line.
+
+
+In the very beginning of tcar_setModuleEnvironment function we
+were using just local variables and it worked fine for top-module
+and sub-module loading, however when it was needed to load a
+sibling module, centos-art.sh failed. The failure was produced
+because a wrong variable assignment when tried to set the path of
+the next module to load. There was not a clean way to "remember"
+what was the base directory of the parent directory so we ended up
+using the last loaded module base directory which made impossible
+to load a sibling module. Using array variables to store
+information about loaded modules fixes the issue of remembering
+information from previous modules loaded.
+
+At this time the tcar_setModuleEnvironment function seems to work
+as expected without any issue.
+
+Options
+-------
+
+ * -m ::
+    The name of the module you want to load. The argument of this
+    option should be module's initialization file (without extension).
+ * -t::
+    The type of module you want to load. The argument of this option
+    should be one of the following values (only):
+    * top-module::
+        is used when you want to load first-level modules, such as
+        render, locale and tuneup.
+    * sub-module::
+        is used when you want to load next-level modules. This is,
+        modules that are one inside another.
+    * sib-module::
+        is used when you want to load siblings modules.  This is,
+        modules that are located at the same level.
+
+Author
+------
+
+The *centos-art.sh* script has received contribution from the
+following people:
+
+ * Alain Reguera Delgado <mailto:al@centos.org.cu[al@centos.org.cu]>, 2009-2013
+
+Copyright
+---------
+
+Copyright (C) 2009-2013 The CentOS Project
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or (at
+your option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+// vim: set syntax=asciidoc:

@@ -28,20 +28,16 @@
 
 function tcar_setModuleEnvironmentScripts {
 
-    local MODULE_DIR="${1}"
-    local MODULE_NAME="${2}"
-    local MODULE_INIT_FILE="${3}"
-
     # Define the pattern used to retrieve function names from function
     # files.
-    local FUNCTION_PATTERN="^function[[:space:]]+${MODULE_NAME}(_[[:alnum:]]+)?[[:space:]]+{[[:space:]]*$"
+    local FUNCTION_PATTERN="^function[[:space:]]+${TCAR_MODULE_NAME}(_[[:alnum:]]+)?[[:space:]]+{[[:space:]]*$"
 
     # Define the list of files.
-    local MODULE_SCRIPTS="${MODULE_INIT_FILE}"
-    if [[ -d ${MODULE_DIR} ]];then
+    local MODULE_SCRIPTS="${TCAR_MODULE_INIT_FILE}"
+    if [[ -d ${TCAR_MODULE_DIR} ]];then
         MODULE_SCRIPTS="${MODULE_SCRIPTS} 
-            $(tcar_getFilesList ${MODULE_DIR} \
-            --pattern="${MODULE_DIR}/${MODULE_NAME}_[[:alnum:]]+\.sh$" --type='f')"
+            $(tcar_getFilesList ${TCAR_MODULE_DIR} \
+            --pattern="${TCAR_MODULE_DIR}/${TCAR_MODULE_NAME}_[[:alnum:]]+\.sh$" --type='f')"
     fi
 
     # Verify the list of files. If no function file exists for the

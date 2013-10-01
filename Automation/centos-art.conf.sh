@@ -30,20 +30,24 @@
 ######################################################################
 
 # Set the script name.
-declare -x TCAR_SCRIPT_NAME="centos-art.sh"
-
-# Set the script command name.
-declare -x TCAR_SCRIPT_COMMAND="centos-art"
+declare -xr TCAR_SCRIPT_NAME="centos-art.sh"
 
 # Set the script version. You can use this number as pattern
 # to identify the relation between the centos-artwork repository
 # and the script. Both repository and script version must be the same.
 # This way we can say that specific functionalities inside the script
 # will work as expected when run over the repository directory structure.
-declare -x TCAR_SCRIPT_VERSION='0.5'
+declare -xr TCAR_SCRIPT_VERSION='0.5'
+
+# Set the script command name.
+declare -xr TCAR_SCRIPT_COMMAND="centos-art"
+
+######################################################################
+# Script's path configuration variables.
+######################################################################
 
 # Set the script modules directory.
-declare -x TCAR_SCRIPT_MODULES_BASEDIR=${TCAR_SCRIPT_BASEDIR}/Modules
+declare -xr TCAR_SCRIPT_MODULES_BASEDIR=${TCAR_SCRIPT_BASEDIR}/Modules
 
 # Set the script temporal directory.
 declare -xr TCAR_SCRIPT_TEMPDIR=$(mktemp -p /tmp -d ${TCAR_SCRIPT_NAME}-XXXXXX)
@@ -82,11 +86,6 @@ declare -xr TEXTDOMAINDIR=${TCAR_SCRIPT_BASEDIR}/Locales
 ######################################################################
 # Module-specific configuration variables.
 ######################################################################
-
-# This variable is used in different function environments to pass
-# positional parameters from one environment to another using local
-# definitions.
-declare -x TCAR_ARGUMENTS=''
 
 # Set absolute path to documentation search path. This is the location
 # where final documentation formats (e.g., man pages) will be saved
@@ -138,3 +137,9 @@ declare -x  TCAR_FLAG_QUIET='false'
 # centos-art.sh script does or does not pass confirmation request
 # points. By default, it doesn't.
 declare -x  TCAR_FLAG_YES='false'
+
+# Set debugger flag (-d|--debug). This flag controls whether
+# centos-art.sh script does or does not print debugging information.
+# The centos-art.sh script prints debug information to standard
+# output.
+declare -x  TCAR_FLAG_DEBUG='false'

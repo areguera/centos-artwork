@@ -28,32 +28,32 @@
 function tuneup_getOptions {
 
     # Define short options we want to support.
-    local ARGSS="h,v"
+    local ARGSS="h::,v,f:"
 
     # Define long options we want to support.
-    local ARGSL="help,version,filter:"
+    local ARGSL="help::,version,filter::"
 
     # Redefine arguments using getopt(1) command parser.
-    tcar_setArguments "${@}"
+    tcar_setModuleArguments
 
     # Reset positional parameters on this function, using output
     # produced from (getopt) arguments parser.
-    eval set -- "${TCAR_ARGUMENTS}"
+    eval set -- "${TCAR_MODULE_ARGUMENT}"
 
     # Look for options passed through command-line.
     while true; do
         case "${1}" in
 
             -h | --help )
-                tcar_printHelp
+                tcar_printHelp "${2}"
                 ;;
 
             -v | --version )
-                tcar_printVersion
+                tcar_printVersion "${TCAR_MODULE_NAME}"
                 ;;
 
-            --filter )
-                TCAR_FLAG_FILTER="${2}"
+            -f | --filter )
+                TCAR_FLAG_FILTER="${2:-${TCAR_FLAG_FILTER}}"
                 shift 2
                 ;;
 
@@ -66,6 +66,6 @@ function tuneup_getOptions {
 
     # Redefine arguments using current positional parameters. Only
     # paths should remain as arguments, at this point.
-    TCAR_ARGUMENTS="${@}"
+    TCAR_MODULE_ARGUMENT="${@}"
 
 }

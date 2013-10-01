@@ -30,52 +30,52 @@
 function prepare_getOptions {
 
     # Define short options we want to support.
-    local ARGSS="h,v"
+    local ARGSS="h::,v"
 
     # Define long options we want to support.
-    local ARGSL="help,version,packages,locales,links,documents,images"
+    local ARGSL="help::,version,packages,locales,links,documents,images"
 
     # Redefine arguments using getopt(1) command parser.
-    tcar_setArguments "${@}"
+    tcar_setModuleArguments
 
     # Reset positional parameters on this function, using output
     # produced from (getopt) arguments parser.
-    eval set -- "${TCAR_ARGUMENTS}"
+    eval set -- "${TCAR_MODULE_ARGUMENT}"
 
     # Look for options passed through command-line.
     while true; do
         case "${1}" in
 
             -h | --help )
-                tcar_printHelp
+                tcar_printHelp "${2}"
                 ;;
 
             -v | --version )
-                tcar_printVersion
+                tcar_printVersion "${TCAR_MODULE_NAME}"
                 ;;
 
             --packages )
-                SUBMODULES="${SUBMODULES} packages"
+                ACTIONS="${ACTIONS} packages"
                 shift 1
                 ;;
 
             --locales )
-                SUBMODULES="${SUBMODULES} locales"
+                ACTIONS="${ACTIONS} locales"
                 shift 1
                 ;;
 
             --links )
-                SUBMODULES="${SUBMODULES} links"
+                ACTIONS="${ACTIONS} links"
                 shift 1
                 ;;
 
             --documents )
-                SUBMODULES="${SUBMODULES} documents"
+                ACTIONS="${ACTIONS} documents"
                 shift 1
                 ;;
 
             --images )
-                SUBMODULES="${SUBMODULES} images"
+                ACTIONS="${ACTIONS} images"
                 shift 1
                 ;;
 
@@ -89,6 +89,6 @@ function prepare_getOptions {
 
     # Redefine arguments using current positional parameters. Only
     # paths should remain as arguments, at this point.
-    TCAR_ARGUMENTS="${@}"
+    TCAR_MODULE_ARGUMENT="${@}"
 
 }

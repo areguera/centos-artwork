@@ -39,15 +39,15 @@ function tcar_printMailingList {
     # Initialize arguments with an empty value and set it as local
     # variable to this function scope. Doing this is very important to
     # avoid any clash with higher execution environments.
-    local TCAR_ARGUMENTS=''
+    local TCAR_MODULE_ARGUMENT=''
 
     # Process all arguments currently available in this function
     # environment. If either ARGSS or ARGSL local variables have been
     # defined, argument processing goes through getopt for validation.
-    tcar_setArguments "${@}"
+    tcar_setModuleArguments "${@}"
 
-    # Redefine positional parameters using TCAR_ARGUMENTS variable.
-    eval set -- "${TCAR_ARGUMENTS}"
+    # Redefine positional parameters using TCAR_MODULE_ARGUMENT variable.
+    eval set -- "${TCAR_MODULE_ARGUMENT}"
 
     # Look for options passed through command-line.
     while true; do

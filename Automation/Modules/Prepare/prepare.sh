@@ -36,19 +36,17 @@
 
 function prepare {
 
-    local SUBMODULE=''
-    local SUBMODULES=''
+    local ACTION=''
+    local ACTIONS=''
 
-    prepare_getOptions "${@}"
+    prepare_getOptions
 
-    eval set -- "${TCAR_ARGUMENTS}"
-
-    if [[ -z ${SUBMODULES} ]];then
-        SUBMODULES='packages locales images docs links'
+    if [[ -z ${ACTIONS} ]];then
+        ACTIONS='packages locales images docs links'
     fi
 
-    for SUBMODULE in ${SUBMODULES};do
-        tcar_setSubModuleEnvironment "${SUBMODULE}" "${@}"
+    for ACTION in ${ACTIONS};do
+        tcar_setModuleEnvironment -m "${ACTION}" -t "sub-module"
     done
 
 }

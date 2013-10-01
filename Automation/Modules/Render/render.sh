@@ -28,28 +28,22 @@
 function render {
 
     # Interpret arguments and options passed through command-line.
-    render_getOptions "${@}"
-
-    # Redefine positional parameters using ARGUMENTS. At this point,
-    # option arguments have been removed from ARGUMENTS variable and
-    # only non-option arguments remain in it. 
-    eval set -- "${TCAR_ARGUMENTS}"
+    render_getOptions
 
     # Define action value. We use non-option arguments to define the
     # action value (ACTIONVAL) variable.
-    for ARGUMENT in "${@}";do
+    for ARGUMENT in ${TCAR_MODULE_ARGUMENT};do
 
         # Sanitate non-option arguments to be sure they match the
         # directory conventions established by centos-art.sh script
         # against source directory locations in the working copy.
-        ARGUMENT=$(tcar_checkRepoDirSource ${ARGUMENT})
+        local ARGUMENT=$(tcar_checkRepoDirSource ${ARGUMENT})
 
         # Retrieve list of configuration files from directory.
+        local CONFIGURATIONS=${ARGUMENT}
         if [[ -d ${ARGUMENT} ]];then
             CONFIGURATIONS=$(tcar_getFilesList ${ARGUMENT} \
                 --pattern=".+/.+\.conf$" --type="f")
-        else
-            CONFIGURATIONS=${ARGUMENT}
         fi
 
         # Verify non-option arguments passed to centos-art.sh
@@ -63,7 +57,7 @@ function render {
 
         # Process each configuration file.
         for CONFIGURATION in ${CONFIGURATIONS};do
-            render_setRenderType "${@}"
+            render_setRenderType "${CONFIGURATION}"
         done
 
     done

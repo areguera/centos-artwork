@@ -43,7 +43,7 @@
 function prepare_setRenderEnvironment {
 
     OPTIND=1
-    while getopts "o:,v:" OPTION ${@}; do
+    while getopts "o:,v:" OPTION "${@}"; do
 
         case "${OPTION}" in
 
@@ -81,7 +81,7 @@ function prepare_setRenderEnvironment {
     fi
 
     # Define array variable to store configuration file paths.
-    local -a CONFIGURATION
+    local -a CONFIGURATION_FILES
 
     # Define final filter regular expression. This regular expression
     # must match the option = "value" format we are using inside
@@ -102,13 +102,12 @@ function prepare_setRenderEnvironment {
         # will use as reference to produce documentation. At this
         # point it is very difficult that DIRECTORY doesn't exist or
         # be outside the repository directory structure.
-        CONFIGURATION[++((${#CONFIGURATION[*]}))]=$(tcar_getFilesList \
+        CONFIGURATION_FILES[++${#CONFIGURATION_FILES[*]}]=$(tcar_getFilesList \
             ${DIRECTORY} --pattern='.+\.conf$' --type='f' \
             | xargs egrep ${CONFIGURATION_PATTERN} | cut -d: -f1 | sort | uniq)
 
     done
 
     # Process the list of configuration files using the render module.
-    tcar_setModuleEnvironment render ${CONFIGURATION[*]}
-
+    tcar_setModuleEnvironment -m "render" -t "top-module" ${CONFIGURATION_FILES[*]}
 }

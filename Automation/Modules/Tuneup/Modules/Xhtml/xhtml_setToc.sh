@@ -60,7 +60,7 @@ function xhtml_setToc {
 
     # Define table of content configuration file, the file used to
     # produce the table of content XHTML output code.
-    local TOC_CONFIG=${SUBMODULE_DIR_CONFIGS}/toc.awk
+    local TOC_CONFIG=${TCAR_MODULE_DIR_CONFIGS}/toc.awk
 
     # Verify table of content configuration file.
     tcar_checkFiles -ef ${TOC_CONFIG}

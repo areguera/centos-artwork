@@ -1,9 +1,8 @@
 #!/bin/bash
 ######################################################################
 #
-#   tcar_setModuleEnvironment.sh -- This function initiates
-#   first-level module (or simply, module) environments inside the
-#   centos-art.sh script. 
+#   tcar_setModuleEnvironment.sh -- This function initiates module
+#   environments inside the centos-art.sh script.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -28,51 +27,136 @@
 
 function tcar_setModuleEnvironment {
 
-    # Define module's name (MODULE_NAME) using the first argument
-    # in the command-line.
-    local MODULE_NAME=$(tcar_getRepoName "${1}" "-f" | cut -d '-' -f1)
+    local ARG_MODULE_NAME=''
+    local ARG_MODULE_TYPE=''
+    local ARG_MODULE_ARGS=''
 
-    # Define regular expression to match available modules.
-    local MODULE_NAME_LIST=$(ls ${TCAR_SCRIPT_MODULES_BASEDIR} \
-        | tr '\n' '|' | sed -r 's/\|$//' | tr '[[:upper:]]' '[[:lower:]]')
+    # Retrieve module's name and module's type from arguments passed
+    # through this function positional parameters.
+    OPTIND=1
+    while getopts "m:,t:,g:" OPTION "${@}"; do
+        case "${OPTION}" in
+            m ) ARG_MODULE_NAME="${OPTARG}" ;;
+            t ) ARG_MODULE_TYPE="${OPTARG}" ;;
+            g ) ARG_MODULE_ARGS="${OPTARG} ${ARG_MODULE_ARGS}" ;;
+        esac
+    done
+
+    # Clean up positional parameters to reflect the fact that options
+    # have been processed already.
+    shift $(( ${OPTIND} - 1 ))
+
+    # Define default values for module name and type passed from
+    # arguments.
+    ARG_MODULE_NAME=${ARG_MODULE_NAME:-`gettext "Unknown"`}
+    ARG_MODULE_TYPE=${ARG_MODULE_TYPE:-'top-module'}
+    ARG_MODULE_ARGS=${ARG_MODULE_ARGS:-''}
+
+    # Initialize module's global counter.
+    TCAR_MODULE_COUNT=${TCAR_MODULE_COUNT:-0}
+
+    tcar_printMessage "FUNCNAME : ${FUNCNAME[1]} ( ${ARG_MODULE_NAME}, ${ARG_MODULE_TYPE} )" --as-debugger-line
+
+    # Define module's base directory. This is the directory where the
+    # initialization script is stored in.
+    local TCAR_MODULE_BASEDIR=${TCAR_SCRIPT_MODULES_BASEDIR}
+    if [[ ${#TCAR_MODULE_BASEDIRS[*]} -gt 0 ]];then
+        if [[ ${ARG_MODULE_TYPE} == "top-module" ]];then
+            TCAR_MODULE_BASEDIR=${TCAR_SCRIPT_MODULES_BASEDIR}
+        elif [[ ${ARG_MODULE_TYPE} == "sib-module" ]];then
+            TCAR_MODULE_BASEDIR=${TCAR_MODULE_BASEDIRS[((${TCAR_MODULE_COUNT}-1))]}
+        else
+            TCAR_MODULE_BASEDIR=${TCAR_MODULE_BASEDIRS[${TCAR_MODULE_COUNT}]}
+        fi
+    fi
+    tcar_printMessage "TCAR_MODULE_BASEDIR : ${TCAR_MODULE_BASEDIR}" --as-debugger-line
+
+    # Define module's name.
+    TCAR_MODULE_NAMES[${TCAR_MODULE_COUNT}]=$(tcar_getRepoName "${ARG_MODULE_NAME}" "-f" | cut -d '-' -f1)
+    local TCAR_MODULE_NAME=${TCAR_MODULE_NAMES[${TCAR_MODULE_COUNT}]}
+    tcar_printMessage "TCAR_MODULE_NAME : [${TCAR_MODULE_COUNT}]=${TCAR_MODULE_NAME} | ${#TCAR_MODULE_NAMES[*]}" --as-debugger-line
+
+    # Define module's arguments.  This variable is used in different
+    # module environments to pass positional parameters from one
+    # environment to another using local definitions.
+    TCAR_MODULE_ARGUMENTS[${TCAR_MODULE_COUNT}]="${ARG_MODULE_ARGS} ${@}"
+    local TCAR_MODULE_ARGUMENT=${TCAR_MODULE_ARGUMENTS[${TCAR_MODULE_COUNT}]}
+    tcar_printMessage "TCAR_MODULE_ARGUMENT : ${TCAR_MODULE_ARGUMENT}" --as-debugger-line
 
     # Check module's name possible values.
-    if [[ ! ${MODULE_NAME} =~ "^(${MODULE_NAME_LIST})$" ]];then
-        tcar_printMessage "`eval_gettext "The module (\\\$MODULE_NAME) isn't supported yet."`" --as-error-line
-    fi
+    tcar_checkModuleName
 
     # Define module's directory.
-    local MODULE_DIR=${TCAR_SCRIPT_MODULES_BASEDIR}/$(tcar_getRepoName "${MODULE_NAME}" "-d")
+    TCAR_MODULE_DIRS[${TCAR_MODULE_COUNT}]=${TCAR_MODULE_BASEDIR}/$(tcar_getRepoName "${TCAR_MODULE_NAME}" "-d")
+    local TCAR_MODULE_DIR=${TCAR_MODULE_DIRS[${TCAR_MODULE_COUNT}]}
+    tcar_printMessage "TCAR_MODULE_DIR : ${TCAR_MODULE_DIR}" --as-debugger-line
 
     # Define module's related directories.
-    local MODULE_DIR_MODULES=${MODULE_DIR}/Modules
-    local MODULE_DIR_MANUALS=${MODULE_DIR}/Manuals
-    local MODULE_DIR_CONFIGS=${MODULE_DIR}/Configs
+    TCAR_MODULE_DIRS_MODULES[${TCAR_MODULE_COUNT}]=${TCAR_MODULE_DIR}/Modules
+    local TCAR_MODULE_DIR_MODULES=${TCAR_MODULE_DIRS_MODULES[${TCAR_MODULE_COUNT}]}
+    tcar_printMessage "TCAR_MODULE_DIR_MODULES : ${TCAR_MODULE_DIR_MODULES}" --as-debugger-line
 
-    # Define the sub-module's base directory where sub-module
-    # processing will start from.
-    local SUBMODULE_BASEDIR=${MODULE_DIR_MODULES}
+    TCAR_MODULE_DIRS_MANUALS[${TCAR_MODULE_COUNT}]=${TCAR_MODULE_DIR}/Manuals
+    local TCAR_MODULE_DIR_MANUALS=${TCAR_MODULE_DIRS_MANUALS[${TCAR_MODULE_COUNT}]}
+    tcar_printMessage "TCAR_MODULE_DIR_MANUALS : ${TCAR_MODULE_DIR_MANUALS}" --as-debugger-line
+
+    TCAR_MODULE_DIRS_LOCALES[${TCAR_MODULE_COUNT}]=${TCAR_MODULE_DIR}/Locales
+    local TCAR_MODULE_DIR_LOCALES=${TCAR_MODULE_DIRS_LOCALES[${TCAR_MODULE_COUNT}]}
+    tcar_printMessage "TCAR_MODULE_DIR_LOCALES : ${TCAR_MODULE_DIR_LOCALES}" --as-debugger-line
+
+    TCAR_MODULE_DIRS_CONFIGS[${TCAR_MODULE_COUNT}]=${TCAR_MODULE_DIR}/Configs
+    local TCAR_MODULE_DIR_CONFIGS=${TCAR_MODULE_DIRS_CONFIGS[${TCAR_MODULE_COUNT}]}
+    tcar_printMessage "TCAR_MODULE_DIR_CONFIGS : ${TCAR_MODULE_DIR_CONFIGS}" --as-debugger-line
 
     # Define module's initialization file.
-    local MODULE_INIT_FILE=${MODULE_DIR}/${MODULE_NAME}.sh
+    TCAR_MODULE_INIT_FILES[${TCAR_MODULE_COUNT}]=${TCAR_MODULE_DIR}/${TCAR_MODULE_NAME}.sh
+    local TCAR_MODULE_INIT_FILE=${TCAR_MODULE_INIT_FILES[${TCAR_MODULE_COUNT}]}
+    tcar_printMessage "TCAR_MODULE_INIT_FILE : ${TCAR_MODULE_INIT_FILE}" --as-debugger-line
+
+    # Increment module's counter just before creating next module's
+    # base directory.
+    TCAR_MODULE_COUNT=$(( ${TCAR_MODULE_COUNT} + 1 ))
+    tcar_printMessage "TCAR_MODULE_COUNT: ${TCAR_MODULE_COUNT}" --as-debugger-line
+
+    # Define next module's base directory.
+    TCAR_MODULE_BASEDIRS[${TCAR_MODULE_COUNT}]=${TCAR_MODULE_DIR_MODULES}
 
     # Check function script execution rights.
-    tcar_checkFiles -ex ${MODULE_INIT_FILE}
-
-    # Remove the first argument passed to centos-art.sh command-line
-    # in order to build optional arguments inside functionalities. We
-    # start counting from second argument on, inclusively.
-    shift 1
+    tcar_checkFiles -ex ${TCAR_MODULE_INIT_FILE}
 
     # Load module-specific (function) scripts into current execution
     # environment.  Keep the tcar_setModuleEnvironmentScripts function
     # call after all variables and arguments definitions.
-    tcar_setModuleEnvironmentScripts "${MODULE_DIR}" "${MODULE_NAME}" "${MODULE_INIT_FILE}"
+    tcar_setModuleEnvironmentScripts
 
-    # Execute module-specific initialization script.
-    ${MODULE_NAME} "${@}"
+    # Execute module's initialization script.
+    tcar_printMessage "`gettext "Opening module"`: ${TCAR_MODULE_NAME} ${TCAR_MODULE_ARGUMENT}" --as-debugger-line
+    ${TCAR_MODULE_NAME} ${TCAR_MODULE_ARGUMENT}
 
-    # Unset the module environment.
-    tcar_unsetModuleEnvironment "${MODULE_NAME}"
+    # Unset module-specific environment.
+    tcar_printMessage "`gettext "Closing module"`: ${TCAR_MODULE_NAME}" --as-debugger-line
+    tcar_unsetModuleEnvironment
 
+    # Decrement module counter just after unset unused module
+    # environments.
+    TCAR_MODULE_COUNT=$(( ${TCAR_MODULE_COUNT} - 1 ))
+    tcar_printMessage "TCAR_MODULE_COUNT: ${TCAR_MODULE_COUNT}" --as-debugger-line
+
+    # Unset array and non-array variables used in this function.
+    if [[ ${TCAR_MODULE_COUNT} -eq 0 ]];then
+        tcar_printMessage "`gettext "Closing variables"`: " --as-debugger-line
+        unset TCAR_MODULE_NAMES
+        unset TCAR_MODULE_BASEDIRS
+        unset TCAR_MODULE_DIRS
+        unset TCAR_MODULE_DIRS_MODULES
+        unset TCAR_MODULE_DIRS_MANUALS
+        unset TCAR_MODULE_DIRS_LOCALES
+        unset TCAR_MODULE_DIRS_CONFIGS
+        unset TCAR_MODULE_NAME
+        unset TCAR_MODULE_DIR
+        unset TCAR_MODULE_DIR_MODULES
+        unset TCAR_MODULE_DIR_MANUALS
+        unset TCAR_MODULE_DIR_LOCALES
+        unset TCAR_MODULE_DIR_CONFIGS
+    fi
 }

@@ -1,8 +1,9 @@
 #!/bin/bash
 ######################################################################
 #
-#   update.sh -- This module standardizes update actions related to
-#   localization inside the repository.
+#   tcar_checkModuleName.sh -- This function uses the module's based
+#   directory to verify whether sub-modules and sib-modules exist or
+#   not.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -25,8 +26,13 @@
 #
 ######################################################################
 
-function update {
+function tcar_checkModuleName {
 
-    tcar_setModuleEnvironment -m "${RENDER_TYPE}" -t "sub-module"
+    local MODULE_NAME_LISTS=$(ls ${TCAR_MODULE_BASEDIR} | tr '\n' '|' \
+        | sed -r 's/\|$//' | tr '[[:upper:]]' '[[:lower:]]')
+
+    tcar_checkFiles -m "^(${MODULE_NAME_LISTS})$" "${TCAR_MODULE_NAME}"
+
+    tcar_printMessage "MODULE_NAME_LISTS : ${MODULE_NAME_LISTS}" --as-debugger-line
 
 }
