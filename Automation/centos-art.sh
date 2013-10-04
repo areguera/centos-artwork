@@ -107,58 +107,71 @@ while true; do
 
     case "${1}" in
 
-    -h | --he | --hel | --help )
-        # Print centos-art.sh script's help.
-        if [[ -z ${TCAR_MODULE_NAME} ]];then
-            ${TCAR_MANUAL_READER} ${TCAR_SCRIPT_NAME}
-            exit 0
-        else
+        --help* )
+
+            if [[ -z ${TCAR_MODULE_NAME} ]];then
+                # Print centos-art.sh script's help. Consider that the
+                # --help option can receive an argument by using the
+                # equal sign (e.g.,
+                # --help=tcar_setModuleEnvironment.sh).  However, it
+                # is not possible to use spaces instead of equal sign
+                # because that would confuse other options from being
+                # parsed.
+                tcar_printHelp "${1}"
+                exit 0
+            else
+                # Store the argument for further processing inside the
+                # module environment that will be executed later.
+                TCAR_MODULE_ARGUMENT="-g ${1} ${TCAR_MODULE_ARGUMENT}"
+                shift 1
+            fi
+            ;;
+
+        --version )
+
+            # Print centos-art.sh script's version.
+            if [[ -z ${TCAR_MODULE_NAME} ]];then
+                tcar_printVersion
+                exit 0
+            else
+                TCAR_MODULE_ARGUMENT="-g ${1} ${TCAR_MODULE_ARGUMENT}"
+                shift 1
+            fi
+            ;;
+
+        --quiet )
+
+            TCAR_FLAG_QUIET='true'
+            shift 1
+            ;;
+
+        --yes )
+
+            TCAR_FLAG_YES='true'
+            shift 1
+            ;;
+
+        --debug )
+
+            TCAR_FLAG_DEBUG='true'
+            shift 1
+            ;;
+
+        * ) 
+
+            # Store module-specific option arguments. This is, all
+            # arguments not considered part of centos-art.sh script
+            # itself. The module-specific option arguments are passed,
+            # later, to getopt for option processing, inside the
+            # module-specific environments.
             TCAR_MODULE_ARGUMENT="-g ${1} ${TCAR_MODULE_ARGUMENT}"
             shift 1
-        fi
-        ;;
-
-    -v | --ve | --ver | --vers | --versi | --versio | --version )
-        # Print centos-art.sh script's version.
-        if [[ -z ${TCAR_MODULE_NAME} ]];then
-            tcar_printVersion
-            exit 0
-        else
-            TCAR_MODULE_ARGUMENT="-g ${1} ${TCAR_MODULE_ARGUMENT}"
-            shift 1
-        fi
-        ;;
-
-    -q | --qu | --qui | --quie | --quiet )
-        TCAR_FLAG_QUIET='true'
-        shift 1
-        ;;
-
-    -y | --ye | --yes )
-        TCAR_FLAG_YES='true'
-        shift 1
-        ;;
-
-    -d | --de | --deb | --debu | --debug )
-        TCAR_FLAG_DEBUG='true'
-        shift 1
-        ;;
-
-    * ) 
-        # Store module-specific option arguments. This is, all
-        # arguments not considered part of centos-art.sh script
-        # itself. The module-specific option arguments are passed,
-        # later, to getopt for option processing, inside the
-        # module-specific environments.
-        TCAR_MODULE_ARGUMENT="-g ${1} ${TCAR_MODULE_ARGUMENT}"
-        shift 1
-        if [[ $# -gt 0 ]];then
-            continue
-        else
-            break
-        fi
-        ;;
-
+            if [[ $# -gt 0 ]];then
+                continue
+            else
+                break
+            fi
+            ;;
     esac
 done
 

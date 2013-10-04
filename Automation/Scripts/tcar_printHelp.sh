@@ -27,15 +27,28 @@
 
 function tcar_printHelp {
 
-    local TCAR_MANPAGE_FILE="${1}"
-    local TCAR_MANPAGE_NAME="${TCAR_MODULE_NAME}"
+    # Retrieve the man page name. This is the file name you want to retrieve
+    # documentation for. This value is optional. When it is not passed, the
+    # module name is used. 
+    local TCAR_MANPAGE_NAME="${1:-${TCAR_MODULE_NAME}}"
 
-    if [[ -n ${TCAR_MANPAGE_FILE} ]];then
-        TCAR_MANPAGE_NAME="${TCAR_MODULE_NAME}-${TCAR_MANPAGE_FILE}"
+    # When the tcar_printHelp function is called from centos-art.sh file, the
+    # module name is set to an empty value so we assume you are retrieving
+    # documentation for centos-art.sh script itself.
+    if [[ -z ${TCAR_MANPAGE_NAME} ]];then
+        TCAR_MANPAGE_NAME=${TCAR_SCRIPT_NAME}
     fi
 
-    # Print documentation for manpage name.
-    /usr/bin/man -M ${TCAR_MODULE_DIR_MANUALS} "${TCAR_MANPAGE_NAME}"
+    # When the tcar_printHelp function is called from centos-art.sh file and
+    # an argument is passed to tcar_printHelp function, the argument comes
+    # here without stripping out the option's value so need to remove it here
+    # in order to request the correct information (that after the equal sign).
+    if [[ ${TCAR_MANPAGE_NAME} =~ '^--help' ]];then
+        TCAR_MANPAGE_NAME=$(echo ${TCAR_MANPAGE_NAME} | cut -d'=' -f2)
+    fi
+
+    # Print requested documentation. 
+    /usr/bin/man -M ${TCAR_SCRIPT_DIR_MANUALS}:${TCAR_MODULE_DIR_MANUALS} "${TCAR_MANPAGE_NAME}"
 
     # Finish script execution successfully.
     exit 0

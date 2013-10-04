@@ -90,16 +90,7 @@ declare -xr TEXTDOMAINDIR=${TCAR_SCRIPT_BASEDIR}/Locales
 # Set absolute path to documentation search path. This is the location
 # where final documentation formats (e.g., man pages) will be saved
 # in.
-declare -x TCAR_MANUAL_SEARCHPATH=${TCAR_SCRIPT_BASEDIR}/Manuals
-
-# Set absolute path to documentation source format. This is the file
-# we'll use as input to `a2x' command to produce documentation in
-# different formats.
-declare -x TCAR_MANUAL_FILE=${TCAR_MANUAL_SEARCHPATH}/${TCAR_SCRIPT_NAME}.asciidoc
-
-# Set command used to read man pages. Include in this command the
-# sarch path where final man pages live in.
-declare -x TCAR_MANUAL_READER="/usr/bin/man -M ${TCAR_MANUAL_SEARCHPATH}"
+declare -x TCAR_SCRIPT_DIR_MANUALS=${TCAR_SCRIPT_BASEDIR}/Manuals
 
 ######################################################################
 # User-related configuration variables.
