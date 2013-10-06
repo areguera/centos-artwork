@@ -83,14 +83,19 @@ The *centos-art.sh* script supports the following options:
     Print script version.
 
 *--debug*::
-    Enable debugging messages.
+    Run the script in debugging mode. This option is very useful if
+    you want to get a closer look to the way modules are opened and
+    closed inside *centos-art.sh* script.
 
 *--quiet*::
-    Run the script quietly. Only error messages are printed out.
+    Run the script quietly. This option reduces the amount of
+    information the *centos-art.sh* script prints out when processing
+    source files.
 
 *--yes*::
-    Answer ``yes'' to all ``yes or no'' questions. This option is
-    useful when you run *centos-art.sh* with the *--quiet* option.
+    Run the script in affirmative mode. This is answering ``yes'' to
+    all ``yes or no'' questions. This option is useful when you run
+    *centos-art.sh* with the *--quiet* option.
 
 [[exit-status]]
 Exit Status
