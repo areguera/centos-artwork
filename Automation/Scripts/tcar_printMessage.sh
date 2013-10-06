@@ -87,6 +87,14 @@ function tcar_printMessage {
             exit 1
             ;;
 
+        --as-debugger-line )
+            if [[ ${TCAR_FLAG_DEBUG} == 'true' ]];then
+                tcar_printMessage "${MESSAGE}" --as-stdout-line
+            else
+                return
+            fi
+            ;;
+
         --as-tree-line )
             local NAME
             local -a FN
@@ -107,21 +115,6 @@ function tcar_printMessage {
                 COUNT=$((${COUNT} - 1))
                 SPACES=$((${SPACES} + 4))
             done
-            ;;
-
-        --as-suggestion-line )
-
-            # Build the error message.
-            tcar_printMessage "${TCAR_SCRIPT_COMMAND} ($(tcar_printCaller 1)):" --as-stderr-line
-            tcar_printMessage "`gettext "The path provided cannot be processed the way you entered it."`" --as-stderr-line
-            tcar_printMessage "`gettext "Instead, try the following equivalence:"` ${MESSAGE}" --as-stderr-line
-            tcar_printMessage "${TCAR_MODULE_NAME}" --as-toknowmore-line
-
-            # Finish script execution with exit status 1 (SIGHUP) to
-            # imply the script finished because an error.  We are
-            # using this as convention to finish the script execution.
-            # So, don't remove the following line, please.
-            exit 1
             ;;
 
         --as-toknowmore-line )
@@ -191,8 +184,8 @@ function tcar_printMessage {
 
     esac
 
-    # Verify verbose option. The verbose option controls whether
-    # messages are printed or not.
+    # Verify quiet option. The quiet option controls whether messages
+    # are printed or not.
     if [[ "${TCAR_FLAG_QUIET}" == 'true' ]];then
         return
     fi
@@ -212,13 +205,6 @@ function tcar_printMessage {
 
             # Draw the separator line.
             echo "${MESSAGE}" 1>&2
-            ;;
-
-        --as-debugger-line )
-            if [[ ${TCAR_FLAG_DEBUG} != 'true' ]];then
-                return
-            fi
-            tcar_printMessage "${MESSAGE}" --as-stdout-line
             ;;
 
         --as-banner-line )
@@ -301,10 +287,6 @@ function tcar_printMessage {
 
         --as-palette-line )
             tcar_printMessage "`gettext "Palette"`: ${MESSAGE}" --as-stdout-line
-            ;;
-
-        --as-inkscape-line )
-            tcar_printMessage "${MESSAGE}" --as-stdout-line
             ;;
 
     esac
