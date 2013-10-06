@@ -1,0 +1,86 @@
+hello(1)
+========
+
+Name
+----
+
+hello - Print out greetings and exit successfully.
+
+Synopsis
+--------
+
+*centos-art hello [--help|--version|--debug|--greeting=TEXT|--lowercase|--uppercase]*
+
+Description
+-----------
+
+The *hello* module is very simple. Its main purpose is to print out
+the ``Hello, World!'' greeting to standard output and exit
+successfully.  You can use options to change the greeting message and
+the way it is printed out. The *hello* module provides a very simple
+example you can use as base to understand how modules work inside
+*centos-art.sh* script and use that knowledge to start writing your
+own modules for *centos-art.sh* script.
+
+Options
+-------
+
+The *hello* module accepts the following options:
+
+*--help*::
+    Print out module's documentation.
+
+*--version*::
+    Print out module's version and legal status.
+
+*--debug*::
+    Run the script in debugging mode. This option is very useful if
+    you want to get a closer look to the way modules are opened and
+    closed inside *centos-art.sh* script.
+
+*--greeting=TEXT*::
+    Set a different greeting to be printed out.
+
+*--lowercase*::
+    Print out the greeting in lowercase.
+
+*--uppercase*::
+    Print out the greeting in uppercase.
+
+Exit Status
+-----------
+
+The *hello* module ends its execution with one of the following exit
+status:
+
+* 0 -- Exit successfully without errors.
+* 1 -- Exit with errors.
+
+Authors
+-------
+
+The *hello* module has received contribution from the following
+people:
+
+* Alain Reguera Delgado <mailto:al@centos.org.cu[al@centos.org.cu]>, 2013
+
+Copyright
+---------
+
+Copyright (C) 2009-2013 The CentOS Artwork SIG
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or (at
+your option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+// vim: set syntax=asciidoc:
