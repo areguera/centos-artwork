@@ -1,0 +1,414 @@
+Understanding Modules
+=====================
+Alain Reguera Delgado <al@centos.org.cu>
+v1.0, Oct 2013
+
+Introduction
+------------
+
+From version 0.5 of The CentOS Artwork Repository on, the
+*centos-art.sh* script was redesigned to introduce the idea of modules
+to its base design. Modules are a collection of functions written in
+Bash that can call one another to create individual execution
+environments. They may be nested efficiently to achieve high levels of
+maintainability and extensibility. This make possible for modules
+writers to divide complicated tasks into smaller tasks that can be
+easier to debug, maintain and share with other modules efficiently
+(e.g., instead of loading modules all at once, they are only loaded at
+demand and unset once they conclude their execution).
+
+Inside the *centos-art.sh* script there are two kinds of functions,
+which are: "global functions" and "module-specific functions." The
+global functions are defined in the very beginning of *centos-art.sh*
+script and remain in memory for you to call whenever you need it using
+a regular function call syntax. The module-specific functions, on the
+other hand, are defined at demand for specific tasks and removed from
+memory once the task they were created for is over.  The collection of
+all module-specific functions related to the same task is what we call
+a module environment.  Module environments can be either top-module,
+sub-module or sib-module and all are executed through the
+*tcar_setModuleEnvironment* global function.
+
+This article describes the modular design of *centos-art.sh* script.
+It is a good place to start if you are planning to contribute new
+module environments to *centos-art.sh* script. The next section
+delves into what a module environment is, the tree module types you
+can find and the correct way of execute them.
+
+The Module Environment
+----------------------
+
+The module environment provides an array of strings (called the
+environment). You can use this environment to deploy solutions for
+specific problems.  Inside the *centos-art.sh* script, module
+environments are made of small functions that create small
+environments to solve small problems. Then they are combined in a
+specific order to solve bigger problems.  The process of initiating a
+module environment inside *centos-art.sh* script starts at the end of
+the *centos-art.sh* file itself, with the invocation of the
+*tcar_setModuleEnvironment* function. This function, at this point,
+executes the module environment for the module name you specified in
+the first argument of the command-line.  The modules you specified in
+the command-line are also known as top-modules.
+
+Top-modules initiate the higher module environment inside
+*centos-art.sh* script. This means that variables and functions
+defined inside it will be available as long as its execution-time
+last.  Top-modules are stored directly inside the +Modules/+ directory
+of *centos-art.sh* script, as described in <<directory-structure>>.
+Top-modules use to be small and have well defined goals. Top-modules
+exist to define global variables for task-specific actions, interpret
+module-specific options passed through the command-line and execute
+the appropriate actions based on them. These actions can be involve
+calling other top-modules or sub-modules.
+
+Sub-modules are also module environments. They are executed by the
+*tcar_setModuleEnvironment* function when the *-t sub-module* option
+is passed to it. Sub-modules have the characteristic of being nested
+modules. They are generally executed one inside another to create a
+chain of module environments. A chain of module environments is very
+useful in situations where you want to divide one large task into
+smaller tasks and also control which of those smaller tasks are loaded
+based on specific conditions (e.g., you want to render both images and
+documentation).  In a chain of modules, module environments at a lower
+level in the chain (those started last) have access to higher module
+environments (those started first), but not the opposite. When
+processing information this way, module environments aren't destroyed
+until the last module environment loaded is done. At that point,
+module environments are destroyed in the reverse order they were
+loaded (e.g., if the chain of module was executed as
+``render->images->svg'', then, when ``svg'' module environment is
+done, the chain of modules will be destroy ``images'' and finally
+``render'').
+
+Module environments can also share one common module environment on
+top of them to create sibling processing (sib-module). Sibling
+processing is very useful in situations where you start processing
+information in a way and then need to jump to another related but
+different kind of processing (e.g., when you are rendering
+documentation you first start rendering it as html and then jump into
+manpage). In this situation, you open a module environment that
+contains information useful for two or more different but related kind
+of processing and jump from one to another without destroying the
+common information.  However, when one of the specific ways of
+processing information is done, it is destroyed. This, before opening
+a new way of processing (e.g., once html processing is done, the html
+module is destroyed and, then, the manpage module is loaded).  So,
+only the required modules are active while processing information.
+
+When we say that a module environment is destroyed it means that all
+the related variables and functions which make that module environment
+useful are removed from *centos-art.sh* script execution environment,
+which make the module environment inoperable to all effects, indeed.
+However, it is worth to know that all global array variables the
+*tcar_setModuleEnvironment* function uses to store module-specific
+information remain active until the last module environment is
+destroyed (i.e., the top-module executed from the command-line).  This
+make possible for *centos-art.sh* script to ``remember'' information
+about all different but related module environments loaded to perform
+specific tasks. Such remembering feature is what make possible to
+implement sib-modules as described above.
+
+[[module-implementation]]
+Module Implementation
+---------------------
+
+The implementation of module environments take place in two locations.
+The first location is the module directory structure and the second
+location *tcar_setModuleEnvironment* function. The module directory
+structure contains a standard distribution of files and directories
+that the *tcar_setModuleEnvironment* function recognizes and uses for
+executing functions inside it.  Each module environment you want to
+execute needs a module directory in the *centos-art.sh* script tree.
+In this directory you organize the functions that make your module
+environment useful. The directory structure of your module directory
+is important because *tcar_setModuleEnvironment* makes use of it to
+know module-specific information.
+
+The *tcar_setModuleEnvironment* function is stored in the +Scripts/+
+directory. It uses global array variables to store information about
+the modules and (non-array) local variables to handle the information
+stored about modules in each call of the function. Each time you call
+the *tcar_setModuleEnvironment* function, it increments the array
+variables counter, stores module-specific information in the array
+variables, reset (non-array) local variables using the current
+module's information stored in the array variables and executes the
+module's initialization script from (non-array) local variables.  When
+the module's environment finishes its execution, the array counter
+decrements and the module's environment is destroyed, to free the
+memory it was using.  This process repeats continually, each time you
+call the *tcar_setModuleEnvironment* function.
+
+[TIP]
+======================================================================
+In case you want to see how modules are created and destroyed inside,
+pass the *--debug* option to *centos-art.sh* script. It will activate
+the script internal debugger for you to see the whole process.
+======================================================================
+
+To illustrate how modules need to be implemented inside
+*centos-art.sh* script in order for *tcar_setModuleEnvironment* to
+execute them correctly, we'll use a module named ``hello'' as example
+in the next sections to describe the steps you need to follow for
+creating new modules from scratch.  The purpose of *hello* module is
+to print out greetings to standard output and exit successfully. See
+*hello(1)*, for more information about it.
+
+Planning New Module
+-------------------
+
+Planning is probably the first thing you need to do in order to create
+a new module to *centos-art.sh* script. It would be very helpful if
+you read documentation and bugs related to modules and function in
+order to find out possible tasks you might take as motivation for your
+contributions. Such investigation always help.
+
+The motivation behind the *hello* module came with the need of having
+a simple module that could be used as reference to describe how to
+create and execute new modules inside *centos-art.sh* script. The top
+modules we have by now aren't suitable for a simple description about
+how to create new modules from scratch.  Instead, I thought that
+creating a simple module for that purpose would be better. Suddenly, I
+recalled the GNU's hello package which describes their standards about
+well written GNU packages and found motivation enough to create a
+*hello* module under the same idea but this time focused on
+*centos-art.sh* script, instead.
+
+The motivation for planning your own modules might vary. No matter
+what it would be, use it with confidence, plan your module, set the
+final spot where you want to get to and then, read the next section.
+It describes the steps you need to follow in order to write a
+functional module inside *centos-art.sh* script.
+
+Creating New Module
+-------------------
+
+The <<directory-structure>>, shows a basic module structure. In this
+example, we see that module directories are written capitalized while
+module initialization file and related functions are all written in
+lower-case. Note also how the module directory and files inside it use
+the module's name in their file names to get identified. This is a
+convention that should be followed in order for *centos-art.sh* script
+to execute modules. Another convention you should follow, when
+creating related functions, is using underscore (``_'') to separate
+the module's name from the function's descriptive name. In these
+cases, the function's descriptive name is always written in camel-case
+followed by the +.sh+ extension.
+
+[[directory-structure]]
+.The directory structure
+======================================================================
+----------------------------------------------------------------------
+.
+|-- COPYING                     <-- Contains the GPL license.
+|-- Locales/                    <-- localization of all sh files.
+|-- Manuals/                    <-- manuals for main and global functions.
+|-- Modules/                    <-- top-modules are stored here.
+|   `-- Hello/                  <-- top-module directory.
+|       `-- hello.sh            <-- top-module initialization file.
+|-- Scripts/                    <-- global functions are stored here.
+|-- centos-art.conf.sh          <-- main configuration file.
+`-- centos-art.sh               <-- main initialization file.
+----------------------------------------------------------------------
+======================================================================
+
+[[directory-structure-extended]]
+.The directory structure with extended functionality
+======================================================================
+----------------------------------------------------------------------
+.
+|-- COPYING
+|-- Locales/
+|-- Manuals/
+|-- Modules/
+|   `-- Hello/
+|       |-- Modules/            <-- Hello sub-modules are stored here.
+|       |   |-- Actions/        <-- Sub-module of Hello but sib-module of Lowercase and Uppercase
+|       |   |   `-- actions.sh  <-- sub-module initialization file.
+|       |   |-- Lowercase/      <-- Sub-module of Hello but sib-module of Actions and Uppercase.
+|       |   |   `-- lowercase.sh
+|       |   `-- Uppercase/      <-- Sub-module of Hello but sib-module of Actions and Lowercase.
+|       |       `-- uppercase.sh
+|       `-- hello.sh
+|-- Scripts/
+|-- centos-art.conf.sh
+`-- centos-art.sh
+----------------------------------------------------------------------
+======================================================================
+
+The module's initialization file contains the main function definition
+of your module. It is a good place to define variables that must be
+always available inside the module. There is also a top-comment that
+collects information about the function files you are writing (e.g., a
+small description, a written by section, the copyright note and the
+legal status of the file). Even using a top comment like this is not
+required for *centos-art.sh* script to execute modules properly, it is
+very useful as matter of consistency and style inside it (and the
+copyright and legal notice might be required for legal protection of
+your code as set by GPL).  Finally, there is the function definition
+named +hello+ just as the directory that holds it but all in lowercase.
+Inside this function definition is where we write what we want the
+*hello* module does for us. This way, following with the *hello* example,
+we create an array variable inside it holding all the suggestions we
+would like to print, as described in <<initialization-file>>.
+
+[[initialization-file]]
+.The initialization file of hello module
+======================================================================
+----------------------------------------------------------------------
+#!/bin/bash
+######################################################################
+#
+#   hello.sh -- Print out greetings to standard output and exit
+#   successfully.
+#
+#   Written by:
+#   * Alain Reguera Delgado <al@centos.org.cu>, 2013
+#
+# Copyright (C) 2009-2013 The CentOS Artwork SIG
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or (at
+# your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#
+######################################################################
+
+function hello {
+
+    tcar_printMessage "Hello, World!"
+
+}
+----------------------------------------------------------------------
+======================================================================
+
+You can nest modules by creating directory structures like this,
+inside the Modules/ directory of the higher module you want to extend
+its functionality.
+
+Inside the repository, modules related to *centos-art.sh* script are
+stored in the directory +Automation/Modules/${MODULE_NAME}/+.
+
+*Modules/*::
+    This directory contains module's modules.
+*Manuals/*::
+    This directory contains module's documentation produced by *help*
+    module.  The structure of this directory looks as follow:
++
+----------------------------------------------------------------------
+Manuals/
+|-- ${LANG}/
+|   |-- man${SECTION_NUMBER}
+|   `-- ${MODULE_NAME}.${SECTION_NUMBER}
+`-- man${SECTION_NUMBER}
+    `-- ${MODULE_NAME}.${SECTION_NUMBER}
+----------------------------------------------------------------------
+
+*Locales/*::
+    This directory contains module's translations produced by *locale*
+    module. The structure of this directory looks as follow:
++
+----------------------------------------------------------------------
+Locales/
+`-- ${LANG}/
+    |-- LC_MESSAGES
+    |   |-- ${MODULE_NAME}.sh.mo
+    |   `-- ${MODULE_NAME}.docbook.mo
+    |-- ${MODULE_NAME}.sh.po
+    |-- ${MODULE_NAME}.sh.pot
+    |-- ${MODULE_NAME}.docbook.po
+    `-- ${MODULE_NAME}.docbook.pot
+----------------------------------------------------------------------
+
+*Scripts/*::
+    This directory contains function scripts written by module's
+    writers. Here is where all the tasks the module is useful for are
+    written and stored in.  As convention the following structure is
+    used:
++
+----------------------------------------------------------------------
+Scripts/
+`-- ${MODULE_NAME}_${FUNCTION_NAME}.sh
+----------------------------------------------------------------------
++
+{asccidoc-br}
++
+Inside each function script, there is a top comment where you should
+put the name of the function script, a brief description about what it
+does, as well as author and copying information. After the top comment
+and separated by one white line, you should define the function
+sentence using the long format.
++
+----------------------------------------------------------------------
+#!/bin/bash
+######################################################################
+#
+#   ${MODULE_NAME}_${FUNCTION_NAME}.sh -- ${FUNCTION_DESCRIPTION}
+#
+#   Written by:
+#   * ${AUTHOR_NAME} <${AUTHOR_EMAIL}>, ${YEARS}
+#
+# Copyright (C) ${YEAR} The CentOS Artwork SIG
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#
+######################################################################
+
+function ${MODULE_NAME}_${FUNCTION_NAME} {
+    ...
+}
+----------------------------------------------------------------------
++
+[NOTE]
+If your are planning to contribute a new module to *centos-art.sh*
+script, please, consider using the layout described above for all your
+function scripts, consistently.
+
+*$\{MODULE_NAME}.asciidoc*::
+    This file contains the module's documentation source. From this
+    file it is possible to produce the same documentation in other
+    formats including manpage, html and pdf. Whenever you need to
+    improve the module's documentation, edit this file.
+*$\{MODULE_NAME}.conf*::
+    This file contains the module's configuration variables. These
+    variables are exported to the environment and remain there as long
+    as the script execution environment is alive. Some variables are
+    read-only others not.
++
+The configuration file provides explanation about each environment
+variable it exports. If you want to know more about what these
+variables are, open this file and read the comments near each
+variable.
+
+*$\{MODULE_NAME}.sh*::
+    This is the module's initialization script. The first file
+    executed when the module called from the command-line. This file
+    provides access to argument parsing and controls how
+    module-specific function scripts are called. This is the starting
+    point for writing modules. You can write a complete module using
+    this file only but, frequently, it is convenient as the module
+    complexity grows to divide it in smaller pieces (function scripts)
+    to improve maintainability and error findings.
+
+// vim: set syntax=asciidoc:
