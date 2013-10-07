@@ -27,6 +27,11 @@
 
 function tcar_printVersion {
 
+    # Define gettext-specific variables locally, to provide
+    # per-function localization.
+    local TEXTDOMAIN="${FUNCNAME}.sh"
+    local TEXTDOMAINDIR="${TCAR_SCRIPT_BASEDIR}/Scripts/Locales"
+
     local PROGRAM_NAME=${1:-${TCAR_SCRIPT_NAME}}
     local YEAR=$(tcar_printCopyrightInfo --year)
     local HOLDER=$(tcar_printCopyrightInfo --holder)

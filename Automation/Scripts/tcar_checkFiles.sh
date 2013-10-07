@@ -32,6 +32,11 @@
 
 function tcar_checkFiles {
 
+    # Define gettext-specific variables locally, to provide
+    # per-function localization.
+    local TEXTDOMAIN="${FUNCNAME}.sh"
+    local TEXTDOMAINDIR="${TCAR_SCRIPT_BASEDIR}/Scripts/Locales"
+
     # Initialize local array variables.
     local -a CONDITION_COMMAND
     local -a CONDITION_PATTERN

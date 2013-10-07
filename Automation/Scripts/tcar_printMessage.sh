@@ -27,6 +27,11 @@
 
 function tcar_printMessage {
 
+    # Define gettext-specific variables locally, to provide
+    # per-function localization.
+    local TEXTDOMAIN="${FUNCNAME}.sh"
+    local TEXTDOMAINDIR="${TCAR_SCRIPT_BASEDIR}/Scripts/Locales"
+
     local MESSAGE="${1}"
     local FORMAT="${2}"
 

@@ -29,6 +29,11 @@
 
 function tcar_getTemporalFile {
 
+    # Define gettext-specific variables locally, to provide
+    # per-function localization.
+    local TEXTDOMAIN="${FUNCNAME}.sh"
+    local TEXTDOMAINDIR="${TCAR_SCRIPT_BASEDIR}/Scripts/Locales"
+
     # Define base name for temporal file. This is required when svg
     # instances are created previous to be parsed by inkscape in order
     # to be exported as png. In such cases .svg file extension is

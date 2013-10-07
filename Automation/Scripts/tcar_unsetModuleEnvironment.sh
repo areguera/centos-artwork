@@ -27,6 +27,11 @@
 
 function tcar_unsetModuleEnvironment {
 
+    # Define gettext-specific variables locally, to provide
+    # per-function localization.
+    local TEXTDOMAIN="${FUNCNAME}.sh"
+    local TEXTDOMAINDIR="${TCAR_SCRIPT_BASEDIR}/Scripts/Locales"
+
     # Verify suffix value used to retrieve function files.
     if [[ -z ${TCAR_MODULE_NAME} ]];then
         tcar_printMessage "`gettext "The export id was not provided."`" --as-error-line

@@ -45,6 +45,11 @@
 
 function tcar_setModuleArguments {
 
+    # Define gettext-specific variables locally, to provide
+    # per-function localization.
+    local TEXTDOMAIN="${FUNCNAME}.sh"
+    local TEXTDOMAINDIR="${TCAR_SCRIPT_BASEDIR}/Scripts/Locales"
+
     local ARGUMENT=''
 
     # Fill up arguments global variable with current positional

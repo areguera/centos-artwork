@@ -28,6 +28,11 @@
 
 function tcar_setModuleEnvironmentScripts {
 
+    # Define gettext-specific variables locally, to provide
+    # per-function localization.
+    local TEXTDOMAIN="${FUNCNAME}.sh"
+    local TEXTDOMAINDIR="${TCAR_SCRIPT_BASEDIR}/Scripts/Locales"
+
     # Define the pattern used to retrieve function names from function
     # files.
     local FUNCTION_PATTERN="^function[[:space:]]+${TCAR_MODULE_NAME}(_[[:alnum:]]+)?[[:space:]]+{[[:space:]]*$"

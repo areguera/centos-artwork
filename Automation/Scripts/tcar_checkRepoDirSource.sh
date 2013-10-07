@@ -41,6 +41,11 @@
 
 function tcar_checkRepoDirSource {
 
+    # Define gettext-specific variables locally, to provide
+    # per-function localization.
+    local TEXTDOMAIN="${FUNCNAME}.sh"
+    local TEXTDOMAINDIR="${TCAR_SCRIPT_BASEDIR}/Scripts/Locales"
+
     local LOCATION=${1}
 
     # Remove any dot from arguments passed to centos-art.sh script.

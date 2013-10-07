@@ -48,7 +48,7 @@ function tcar_setModuleEnvironment {
 
     # Define default values for module name and type passed from
     # arguments.
-    ARG_MODULE_NAME=${ARG_MODULE_NAME:-`gettext "Unknown"`}
+    ARG_MODULE_NAME=${ARG_MODULE_NAME:-'unknown'}
     ARG_MODULE_TYPE=${ARG_MODULE_TYPE:-'top-module'}
     ARG_MODULE_ARGS=${ARG_MODULE_ARGS:-''}
 
@@ -113,6 +113,14 @@ function tcar_setModuleEnvironment {
     local TCAR_MODULE_INIT_FILE=${TCAR_MODULE_INIT_FILES[${TCAR_MODULE_COUNT}]}
     tcar_printMessage "TCAR_MODULE_INIT_FILE : ${TCAR_MODULE_INIT_FILE}" --as-debugger-line
 
+    # Define module's connection with their localization files. It is
+    # required that gettext-specific variables be defined locally, in
+    # order to implement per-module localization.
+    local TEXTDOMAIN=$(basename ${TCAR_MODULE_INIT_FILE})
+    tcar_printMessage "TEXTDOMAIN: ${TEXTDOMAIN}" --as-debugger-line
+    local TEXTDOMAINDIR=${TCAR_MODULE_DIR_LOCALES}
+    tcar_printMessage "TEXTDOMAINDIR: ${TEXTDOMAINDIR}" --as-debugger-line
+
     # Increment module's counter just before creating next module's
     # base directory.
     TCAR_MODULE_COUNT=$(( ${TCAR_MODULE_COUNT} + 1 ))
@@ -130,11 +138,11 @@ function tcar_setModuleEnvironment {
     tcar_setModuleEnvironmentScripts
 
     # Execute module's initialization script.
-    tcar_printMessage "`gettext "Opening module"`: ${TCAR_MODULE_NAME} ${TCAR_MODULE_ARGUMENT}" --as-debugger-line
+    tcar_printMessage "=========================>: ${TCAR_MODULE_NAME} ${TCAR_MODULE_ARGUMENT}" --as-debugger-line
     ${TCAR_MODULE_NAME} ${TCAR_MODULE_ARGUMENT}
 
     # Unset module-specific environment.
-    tcar_printMessage "`gettext "Closing module"`: ${TCAR_MODULE_NAME}" --as-debugger-line
+    tcar_printMessage "<=========================: ${TCAR_MODULE_NAME}" --as-debugger-line
     tcar_unsetModuleEnvironment
 
     # Decrement module counter just after unset unused module
@@ -144,7 +152,6 @@ function tcar_setModuleEnvironment {
 
     # Unset array and non-array variables used in this function.
     if [[ ${TCAR_MODULE_COUNT} -eq 0 ]];then
-        tcar_printMessage "`gettext "Closing variables"`: " --as-debugger-line
         unset TCAR_MODULE_NAMES
         unset TCAR_MODULE_BASEDIRS
         unset TCAR_MODULE_DIRS
