@@ -75,13 +75,13 @@ declare -xr TCAR_SCRIPT_LANG_CC=$(echo ${TCAR_SCRIPT_LANG_LC} | cut -d'_' -f2)
 # system to retrieve translated strings from machine object (MO) files
 # with this name. This variable is reset each time a new module is
 # loaded, so the correct files can be used.
-declare -xr TEXTDOMAIN="${TCAR_SCRIPT_NAME}"
+declare -x TEXTDOMAIN="${TCAR_SCRIPT_NAME}"
 
 # Set the script text domain directory. This information is used by
 # gettext system to know where the machine objects are stored in. This
 # variable is reset each time a new module is loaded, so the correct
 # files can be used.
-declare -xr TEXTDOMAINDIR=${TCAR_SCRIPT_BASEDIR}/Locales
+declare -x TEXTDOMAINDIR=${TCAR_SCRIPT_BASEDIR}/Locales
 
 ######################################################################
 # Module-specific configuration variables.
