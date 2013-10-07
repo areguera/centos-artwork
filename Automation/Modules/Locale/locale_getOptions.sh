@@ -28,10 +28,10 @@
 function locale_getOptions {
 
     # Define short options we want to support.
-    local ARGSS="h::,v,f:"
+    local ARGSS="h::,v,f:,t:"
 
     # Define long options we want to support.
-    local ARGSL="help::,version,filter:,update,edit,delete"
+    local ARGSL="help::,version,filter:,update,edit,delete,type:"
 
     # Redefine arguments using getopt(1) command parser.
     tcar_setModuleArguments
@@ -71,6 +71,13 @@ function locale_getOptions {
                 ACTIONS="${ACTIONS} delete"
                 shift 1
                 ;;
+
+            -t | --type )
+                LOCALE_FLAG_TYPE="${2:-self}"
+                tcar_checkFiles -m '^(self|siblings|all)$' "${LOCALE_FLAG_TYPE}"
+                shift 2
+                ;;
+
 
             -- )
                 shift 1

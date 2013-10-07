@@ -49,7 +49,7 @@ function update_setPoMetadata {
     SRC[3]="\"PO-Revision-Date: (.+)?"
 
     # Define replacement lines for pattern line.
-    DST[0]="\"Project-Id-Version: ${TCAR_SCRIPT_NAME} ${TCAR_SCRIPT_VERSION}\\\n\""
+    DST[0]="\"Project-Id-Version: ${PACKAGE_NAME} ${PACKAGE_VERSION}\\\n\""
     DST[1]="\"Last-Translator: Localization SIG <centos-l10n-${TCAR_SCRIPT_LANG_LL}@centos.org.cu>\\\n\""
     DST[2]="\"Language-Team: $(update_getLanguageName)\\\n\""
     DST[3]="\"PO-Revision-Date: $(date "+%F %H:%M%z")\\\n\""
@@ -61,7 +61,9 @@ function update_setPoMetadata {
     done
 
     # Replace package information using gettext domain information.
-    sed -i -r "s/PACKAGE/${TCAR_SCRIPT_NAME}-${TCAR_SCRIPT_VERSION}/g" ${PO_FILE}
+    # Don't include version here to prevent old version to be shown in
+    # the comment area when new versions of the package are created.
+    sed -i -r "s/PACKAGE/${PACKAGE_NAME}/g" ${PO_FILE}
 
     # Remove absolute path to the working copy so it doesn't appear on
     # comments related to locations. Remember that people can download

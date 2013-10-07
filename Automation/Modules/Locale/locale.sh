@@ -29,6 +29,12 @@ function locale {
 
     local ACTIONS=''
 
+    # Define the type of file processing the locale module will do.
+    # The locale module can perform process just one file (self), all
+    # the siblings files in the current location (siblings) only, or
+    # all files in the current location recursively (all).
+    local LOCALE_FLAG_TYPE='self'
+
     # Interpret arguments and options passed through command-line.
     locale_getOptions
 
@@ -36,8 +42,8 @@ function locale {
     # from being localized to themselves. The English language is used
     # as reference to write translatable strings inside the source
     # files.
-    if [[ ${TCAR_SCRIPT_LANG_LC} =~ '^en' ]];then
-        tcar_printMessage "`gettext "The English language cannot be localized to itself."`" --as-error-line
+    if [[ ${TCAR_SCRIPT_LANG_LC} =~ '^C$' ]];then
+        tcar_printMessage "`gettext "The C locale cannot be localized to itself."`" --as-error-line
     fi
 
     # Process arguments passed to locale module, based on whether they

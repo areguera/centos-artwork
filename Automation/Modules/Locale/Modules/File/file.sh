@@ -44,12 +44,14 @@ function file {
     local DIRECTORY=$(dirname ${FILE})
 
     # Define list of files to process.
-    local RENDER_FROM=$(tcar_getFilesList ${DIRECTORY} \
-        --pattern="^.+/.+\.${FILE_EXTENSION}$" --type="f")
+    local RENDER_FROM=$(locale_getFilesList)
 
     # Define absolute path to directory holding language-specific
     # content.
     local LOCALE_FROM=${DIRECTORY}/Locales
+    if [[ ! -d ${LOCALE_FROM} ]];then
+        mkdir ${LOCALE_FROM}
+    fi
 
     # Define absolute path to portable and machine objects.
     local POT_FILE=${LOCALE_FROM}/${FILE_NAME}.pot
