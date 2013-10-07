@@ -91,14 +91,15 @@ function directory_getConfiguration {
 
         local PO_FILE=${TRANSLATIONS[0]}
 
-        # Define package name. This is the name of the initialization
-        # file you provided as argument to the command line to provide
-        # localization for.
-        local PACKAGE_NAME=$(basename ${RENDER_FROM})
+        # Define package name written in POT and PO files. This is the
+        # name of the initialization file you provided as argument to
+        # the command line to provide localization for.
+        local PACKAGE_NAME=$(basename ${SOURCES[0]})
 
-        # Define package version. The script version is used here.
-        # Modules doesn't have a version by now. They share the same
-        # version of the centos-art.sh script.
+        # Define package version written in POT and PO files. The
+        # script version is used here.  Modules doesn't have a version
+        # by now. They share the same version of the centos-art.sh
+        # script.
         local PACKAGE_VERSION=${TCAR_SCRIPT_VERSION}
 
         # Initialize locale's actions module.

@@ -72,6 +72,16 @@ function file {
         SOURCES[((++${#SOURCES[*]}))]=${SOURCE}
     done
 
+    # Define package name written in POT and PO files. This is the
+    # name of the initialization file you provided as argument to the
+    # command line to provide localization for.
+    local PACKAGE_NAME=$(basename ${FILE_NAME})
+
+    # Define package version written in POT and PO files. The script
+    # version is used here.  Modules doesn't have a version by now.
+    # They share the same version of the centos-art.sh script.
+    local PACKAGE_VERSION=${TCAR_SCRIPT_VERSION}
+
     # Process configuration variables through locale's actions module.
     tcar_setModuleEnvironment -m "actions" -t "sib-module"
 
