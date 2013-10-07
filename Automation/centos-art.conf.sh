@@ -37,7 +37,7 @@ declare -xr TCAR_SCRIPT_NAME="centos-art.sh"
 # and the script. Both repository and script version must be the same.
 # This way we can say that specific functionalities inside the script
 # will work as expected when run over the repository directory structure.
-declare -xr TCAR_SCRIPT_VERSION='0.5'
+declare -xr TCAR_SCRIPT_VERSION='0.6'
 
 # Set the script command name.
 declare -xr TCAR_SCRIPT_COMMAND="centos-art"
@@ -106,7 +106,7 @@ declare -x  TCAR_USER_EDITOR=/usr/bin/vim
 # User-specific configuration files let you customize the way
 # centos-art.sh behaves in a multi-user environment. This variable
 # must be read-only.
-declare -xr TCAR_USER_CONFIG=${HOME}/.centos-art.conf.sh
+declare -xr TCAR_USER_CONFIG=${HOME}/.${TCAR_SCRIPT_COMMAND}.conf.sh
 
 ######################################################################
 # Flag-related configuration variables.
