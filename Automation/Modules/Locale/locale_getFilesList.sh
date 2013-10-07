@@ -31,26 +31,24 @@
 
 function locale_getFilesList {
 
-    case ${LOCALE_FLAG_TYPE} in 
+    if [[ ${LOCALE_FLAG_SIBLINGS} == 'true' ]];then
 
-        'all' )
-            # Process all files in the current location recursively.
-            tcar_getFilesList ${DIRECTORY} --type="f" \
-                --pattern="^.+/.+\.${FILE_EXTENSION}$"
-            ;;
+        # Process all files in the current location only.
+        tcar_getFilesList ${DIRECTORY} --maxdepth=1 --mindepth=1 \
+            --type="f" --pattern="^.+/.+\.${FILE_EXTENSION}$"
 
-        'siblings' )
-            # Process all files in the current location only.
-            tcar_getFilesList ${DIRECTORY} --maxdepth=1 --mindepth=1 \
-                --type="f" --pattern="^.+/.+\.${FILE_EXTENSION}$"
-            ;;
+    elif [[ ${LOCALE_FLAG_ALL} == 'true' ]];then
 
-        'self' | * )
-            # Process the file provided only.
-            tcar_getFilesList ${DIRECTORY} --maxdepth=1 --mindepth=1 \
-                --type="f" --pattern="^.+/${FILE_NAME}$"
-            ;;
+        # Process all files in the current location recursively.
+        tcar_getFilesList ${DIRECTORY} --type="f" --pattern="^.+/.+\.${FILE_EXTENSION}$"
 
-    esac
+
+    else
+
+        # Process the file provided only.
+        tcar_getFilesList ${DIRECTORY} --maxdepth=1 --mindepth=1 \
+            --type="f" --pattern="^.+/${FILE_NAME}$"
+
+    fi
 
 }

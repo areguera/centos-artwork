@@ -29,11 +29,16 @@ function locale {
 
     local ACTIONS=''
 
-    # Define the type of file processing the locale module will do.
-    # The locale module can perform process just one file (self), all
-    # the siblings files in the current location (siblings) only, or
-    # all files in the current location recursively (all).
-    local LOCALE_FLAG_TYPE='self'
+    # Define flags controlling locale module's file processing. There
+    # are three possible values here. Produce localization files for
+    # the file you provided in the command-line only (default
+    # behavior). --siblings, to produce localization files for all the
+    # siblings of the files you provided in the command-line,
+    # inclusively. --all, this option makes a recursive inside the
+    # directory of the file you provided as argument to the
+    # command-line and produces localization files for all files found.
+    LOCALE_FLAG_SIBLINGS="false"
+    LOCALE_FLAG_ALL="false"
 
     # Interpret arguments and options passed through command-line.
     locale_getOptions
