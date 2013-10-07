@@ -40,6 +40,9 @@ function locale {
     LOCALE_FLAG_SIBLINGS="false"
     LOCALE_FLAG_ALL="false"
 
+    # Define flags controlling locale module's processing reports.
+    LOCALE_FLAG_REPORT='false'
+
     # Interpret arguments and options passed through command-line.
     locale_getOptions
 

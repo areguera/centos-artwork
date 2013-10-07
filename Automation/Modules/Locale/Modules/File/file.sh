@@ -85,4 +85,12 @@ function file {
     # Process configuration variables through locale's actions module.
     tcar_setModuleEnvironment -m "actions" -t "sib-module"
 
+    # Print report about how many files were processed.
+    if [[ ${LOCALE_FLAG_REPORT} == 'true' ]];then
+        local TOTAL_FILES_PROCESSED=${#SOURCES[*]}
+        tcar_printMessage "`eval_ngettext "Translatable strings were extracted from \\\$TOTAL_FILES_PROCESSED file." \
+                                          "Translatable strings were extracted from \\\$TOTAL_FILES_PROCESSED files." \
+                                          ${TOTAL_FILES_PROCESSED}`" --as-banner-line
+    fi
+
 }

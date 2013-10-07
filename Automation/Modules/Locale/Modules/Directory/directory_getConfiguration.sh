@@ -115,6 +115,14 @@ function directory_getConfiguration {
 
     done
 
+    # Print report about how many files were processed.
+    if [[ ${LOCALE_FLAG_REPORT} == 'true' ]];then
+        local TOTAL_FILES_PROCESSED=${#SECTIONS[*]}
+        tcar_printMessage "`eval_ngettext "Translatable strings were extracted from \\\$TOTAL_FILES_PROCESSED file." \
+                                          "Translatable strings were extracted from \\\$TOTAL_FILES_PROCESSED files." \
+                                          ${TOTAL_FILES_PROCESSED}`" --as-banner-line
+    fi
+
     # Reset array variables and their counters to avoid undesired
     # concatenations between configuration files.
     unset COUNTER
