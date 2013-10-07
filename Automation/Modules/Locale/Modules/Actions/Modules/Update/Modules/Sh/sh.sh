@@ -30,16 +30,6 @@ function sh {
     # Print action message.
     tcar_printMessage "${POT_FILE}" --as-updating-line
 
-    # Define package name. This is the name of the initialization file
-    # you provided as argument to the command line to provide
-    # localization for.
-    local PACKAGE_NAME=${FILE_NAME}
-
-    # Define package version. The script version is used here. Modules
-    # doesn't have a version by now. They share the same version of
-    # the centos-art.sh script.
-    local PACKAGE_VERSION=${TCAR_SCRIPT_VERSION}
-
     # Retrieve translatable strings from shell script files and create
     # the portable object template (.pot) from them.
     xgettext --output=${POT_FILE} --width=70 \
