@@ -52,7 +52,12 @@ function tcar_printMessage {
     # the TCAR_FLAG_QUIET variable has.
     case "${FORMAT}" in
 
-        --as-stdout-line )
+        --as-stdout-line* )
+
+            local MARGIN_LEFT=15
+            if [[ ${FORMAT} =~ '--as-stdout-line=[[:digit:]]+' ]];then
+                MARGIN_LEFT=$(echo ${FORMAT} | cut -d'=' -f2)
+            fi
 
             # Default printing format. This is the format used when no
             # other specification is passed to this function. As
@@ -68,7 +73,7 @@ function tcar_printMessage {
                         if ( $0 ~ /^-+$/ )
                             print $0
                         else
-                            printf "%-25s\t%s\n", $1, $2
+                            printf "%-'${MARGIN_LEFT}'s\t%s\n", $1, $2
                     }
                     END {}'
             ;;
@@ -94,7 +99,7 @@ function tcar_printMessage {
 
         --as-debugger-line )
             if [[ ${TCAR_FLAG_DEBUG} == 'true' ]];then
-                tcar_printMessage "${MESSAGE}" --as-stdout-line
+                tcar_printMessage "$(date +"%c") ${MESSAGE}" --as-stdout-line=60
             else
                 return
             fi
