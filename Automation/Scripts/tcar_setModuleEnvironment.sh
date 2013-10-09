@@ -46,16 +46,10 @@ function tcar_setModuleEnvironment {
     # have been processed already.
     shift $(( ${OPTIND} - 1 ))
 
-    # Define default values for module name and type passed from
-    # arguments.
-    ARG_MODULE_NAME=${ARG_MODULE_NAME:-'unknown'}
-    ARG_MODULE_TYPE=${ARG_MODULE_TYPE:-'top-module'}
-    ARG_MODULE_ARGS=${ARG_MODULE_ARGS:-''}
-
     # Initialize module's global counter.
     TCAR_MODULE_COUNT=${TCAR_MODULE_COUNT:-0}
 
-    tcar_printMessage "FUNCNAME : ${FUNCNAME[1]} ( ${ARG_MODULE_NAME}, ${ARG_MODULE_TYPE} )" --as-debugger-line
+    tcar_printMessage "FUNCNAME : ${FUNCNAME[1]}" --as-debugger-line
 
     # Define module's base directory. This is the directory where the
     # initialization script is stored in.
@@ -64,7 +58,11 @@ function tcar_setModuleEnvironment {
         if [[ ${ARG_MODULE_TYPE} == "top-module" ]];then
             TCAR_MODULE_BASEDIR=${TCAR_SCRIPT_MODULES_BASEDIR}
         elif [[ ${ARG_MODULE_TYPE} == "sib-module" ]];then
-            TCAR_MODULE_BASEDIR=${TCAR_MODULE_BASEDIRS[((${TCAR_MODULE_COUNT}-1))]}
+            if [[ ${TCAR_MODULE_TYPES[((${TCAR_MODULE_COUNT} - 1 ))]} == 'sib-module' ]];then
+                TCAR_MODULE_BASEDIR=${TCAR_MODULE_BASEDIRS[((${TCAR_MODULE_COUNT}-2))]}
+            else
+                TCAR_MODULE_BASEDIR=${TCAR_MODULE_BASEDIRS[((${TCAR_MODULE_COUNT}-1))]}
+            fi
         else
             TCAR_MODULE_BASEDIR=${TCAR_MODULE_BASEDIRS[${TCAR_MODULE_COUNT}]}
         fi
@@ -72,14 +70,19 @@ function tcar_setModuleEnvironment {
     tcar_printMessage "TCAR_MODULE_BASEDIR : ${TCAR_MODULE_BASEDIR}" --as-debugger-line
 
     # Define module's name.
-    TCAR_MODULE_NAMES[${TCAR_MODULE_COUNT}]=$(tcar_getRepoName "${ARG_MODULE_NAME}" "-f" | cut -d '-' -f1)
+    TCAR_MODULE_NAMES[${TCAR_MODULE_COUNT}]=$(tcar_getRepoName "${ARG_MODULE_NAME:-unknown}" "-f" | cut -d '-' -f1)
     local TCAR_MODULE_NAME=${TCAR_MODULE_NAMES[${TCAR_MODULE_COUNT}]}
     tcar_printMessage "TCAR_MODULE_NAME : [${TCAR_MODULE_COUNT}]=${TCAR_MODULE_NAME} | ${#TCAR_MODULE_NAMES[*]}" --as-debugger-line
+
+    # Define module's type.
+    TCAR_MODULE_TYPES[${TCAR_MODULE_COUNT}]="${ARG_MODULE_TYPE:-top-module}"
+    local TCAR_MODULE_TYPE=${TCAR_MODULE_TYPES[${TCAR_MODULE_COUNT}]}
+    tcar_printMessage "TCAR_MODULE_TYPE : ${TCAR_MODULE_TYPE}" --as-debugger-line
 
     # Define module's arguments.  This variable is used in different
     # module environments to pass positional parameters from one
     # environment to another using local definitions.
-    TCAR_MODULE_ARGUMENTS[${TCAR_MODULE_COUNT}]="${ARG_MODULE_ARGS} ${@}"
+    TCAR_MODULE_ARGUMENTS[${TCAR_MODULE_COUNT}]="${ARG_MODULE_ARGS:-''} ${@}"
     local TCAR_MODULE_ARGUMENT=${TCAR_MODULE_ARGUMENTS[${TCAR_MODULE_COUNT}]}
     tcar_printMessage "TCAR_MODULE_ARGUMENT : ${TCAR_MODULE_ARGUMENT}" --as-debugger-line
 
