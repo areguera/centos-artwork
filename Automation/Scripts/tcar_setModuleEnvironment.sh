@@ -55,10 +55,10 @@ function tcar_setModuleEnvironment {
     # initialization script is stored in.
     local TCAR_MODULE_BASEDIR=${TCAR_SCRIPT_MODULES_BASEDIR}
     if [[ ${#TCAR_MODULE_BASEDIRS[*]} -gt 0 ]];then
-        if [[ ${ARG_MODULE_TYPE} == "top-module" ]];then
+        if [[ ${ARG_MODULE_TYPE} == "parent" ]];then
             TCAR_MODULE_BASEDIR=${TCAR_SCRIPT_MODULES_BASEDIR}
-        elif [[ ${ARG_MODULE_TYPE} == "sib-module" ]];then
-            if [[ ${TCAR_MODULE_TYPES[((${TCAR_MODULE_COUNT} - 1 ))]} == 'sib-module' ]];then
+        elif [[ ${ARG_MODULE_TYPE} == "sibling" ]];then
+            if [[ ${TCAR_MODULE_TYPES[((${TCAR_MODULE_COUNT} - 1 ))]} == 'sibling' ]];then
                 TCAR_MODULE_BASEDIR=${TCAR_MODULE_BASEDIRS[((${TCAR_MODULE_COUNT}-2))]}
             else
                 TCAR_MODULE_BASEDIR=${TCAR_MODULE_BASEDIRS[((${TCAR_MODULE_COUNT}-1))]}
@@ -75,7 +75,7 @@ function tcar_setModuleEnvironment {
     tcar_printMessage "TCAR_MODULE_NAME : [${TCAR_MODULE_COUNT}]=${TCAR_MODULE_NAME} | ${#TCAR_MODULE_NAMES[*]}" --as-debugger-line
 
     # Define module's type.
-    TCAR_MODULE_TYPES[${TCAR_MODULE_COUNT}]="${ARG_MODULE_TYPE:-top-module}"
+    TCAR_MODULE_TYPES[${TCAR_MODULE_COUNT}]="${ARG_MODULE_TYPE:-parent}"
     local TCAR_MODULE_TYPE=${TCAR_MODULE_TYPES[${TCAR_MODULE_COUNT}]}
     tcar_printMessage "TCAR_MODULE_TYPE : ${TCAR_MODULE_TYPE}" --as-debugger-line
 

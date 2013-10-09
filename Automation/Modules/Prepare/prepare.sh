@@ -46,7 +46,7 @@ function prepare {
     fi
 
     for ACTION in ${ACTIONS};do
-        tcar_setModuleEnvironment -m "${ACTION}" -t "sub-module"
+        tcar_setModuleEnvironment -m "${ACTION}" -t "child"
     done
 
 }

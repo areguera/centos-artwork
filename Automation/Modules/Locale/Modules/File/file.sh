@@ -83,7 +83,7 @@ function file {
     local PACKAGE_VERSION=${TCAR_SCRIPT_VERSION}
 
     # Process configuration variables through locale's actions module.
-    tcar_setModuleEnvironment -m "actions" -t "sib-module"
+    tcar_setModuleEnvironment -m "actions" -t "sibling"
 
     # Print report about how many files were processed.
     if [[ ${LOCALE_FLAG_REPORT} == 'true' ]];then

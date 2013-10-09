@@ -27,6 +27,6 @@
 
 function update {
 
-    tcar_setModuleEnvironment -m "${RENDER_TYPE}" -t "sub-module"
+    tcar_setModuleEnvironment -m "${RENDER_TYPE}" -t "child"
 
 }

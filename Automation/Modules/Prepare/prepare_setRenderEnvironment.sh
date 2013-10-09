@@ -109,5 +109,5 @@ function prepare_setRenderEnvironment {
     done
 
     # Process the list of configuration files using the render module.
-    tcar_setModuleEnvironment -m "render" -t "top-module" ${CONFIGURATION_FILES[*]}
+    tcar_setModuleEnvironment -m "render" -t "parent" ${CONFIGURATION_FILES[*]}
 }

@@ -69,7 +69,7 @@ function asciidoc_setBaseRendition {
     # Initiate format-specific transformations for current render
     # flow.
     for DOCBOOK_FILE in ${TARGET_INSTANCES[*]};do
-        tcar_setModuleEnvironment -m "${RENDER_FLOW}" -t "sub-module"
+        tcar_setModuleEnvironment -m "${RENDER_FLOW}" -t "child"
     done
 
 }

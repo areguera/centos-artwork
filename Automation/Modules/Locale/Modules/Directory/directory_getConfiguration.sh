@@ -103,7 +103,7 @@ function directory_getConfiguration {
         local PACKAGE_VERSION=${TCAR_SCRIPT_VERSION}
 
         # Initialize locale's actions module.
-        tcar_setModuleEnvironment -m "actions" -t "sib-module"
+        tcar_setModuleEnvironment -m "actions" -t "sibling"
 
         # Increment section's counter.
         COUNTER=$(( ${COUNTER} + 1 ))

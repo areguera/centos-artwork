@@ -66,7 +66,7 @@ function tuneup {
             fi
 
             # Initiate module's environment for processing file.
-            tcar_setModuleEnvironment -m "${FILE_EXTENSION}" -t "sub-module" "${FILE}"
+            tcar_setModuleEnvironment -m "${FILE_EXTENSION}" -t "child" "${FILE}"
 
         done
 

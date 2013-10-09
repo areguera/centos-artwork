@@ -61,9 +61,9 @@ function locale {
         local ARGUMENT=$(tcar_checkRepoDirSource "${ARGUMENT}")
 
         if [[ -f ${ARGUMENT} ]];then
-            tcar_setModuleEnvironment -m "file" -t "sub-module" "${ARGUMENT}"
+            tcar_setModuleEnvironment -m "file" -t "child" "${ARGUMENT}"
         elif [[ -d ${ARGUMENT} ]];then
-            tcar_setModuleEnvironment -m "directory" -t "sub-module" "${ARGUMENT}"
+            tcar_setModuleEnvironment -m "directory" -t "child" "${ARGUMENT}"
         else
             tcar_printMessage "`gettext "The argument provided isn't valid."`" --as-error-line
         fi

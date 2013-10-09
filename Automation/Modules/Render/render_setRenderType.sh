@@ -131,10 +131,10 @@ function render_setRenderType {
         # Initialize render's modules.
         case ${RENDER_TYPE} in
             "svgz" | "svg" )
-                tcar_setModuleEnvironment -m "svg" -t "sub-module"
+                tcar_setModuleEnvironment -m "svg" -t "child"
                 ;;
             * )
-                tcar_setModuleEnvironment -m "${RENDER_TYPE}" -t "sub-module"
+                tcar_setModuleEnvironment -m "${RENDER_TYPE}" -t "child"
                 ;;
         esac
 
