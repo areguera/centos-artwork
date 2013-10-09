@@ -2,7 +2,7 @@
 ######################################################################
 #
 #   tcar_checkModuleName.sh -- This function uses the module's based
-#   directory to verify whether sub-modules and sib-modules exist or
+#   directory to verify whether child and sibling modules do exist or
 #   not.
 #
 #   Written by:
@@ -28,11 +28,11 @@
 
 function tcar_checkModuleName {
 
-    local MODULE_NAME_LISTS=$(ls ${TCAR_MODULE_BASEDIR} | tr '\n' '|' \
+    local TCAR_MODULE_LIST=$(ls ${TCAR_MODULE_BASEDIR} | tr '\n' '|' \
         | sed -r 's/\|$//' | tr '[[:upper:]]' '[[:lower:]]')
 
-    tcar_checkFiles -m "^(${MODULE_NAME_LISTS})$" "${TCAR_MODULE_NAME}"
+    tcar_checkFiles -m "^(${TCAR_MODULE_LIST})$" "${TCAR_MODULE_NAME}"
 
-    tcar_printMessage "MODULE_NAME_LISTS : ${MODULE_NAME_LISTS}" --as-debugger-line
+    tcar_printMessage "TCAR_MODULE_LIST : ${TCAR_MODULE_LIST}" --as-debugger-line
 
 }
