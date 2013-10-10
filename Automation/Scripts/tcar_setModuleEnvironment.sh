@@ -72,7 +72,7 @@ function tcar_setModuleEnvironment {
     # Define module's name.
     TCAR_MODULE_NAMES[${TCAR_MODULE_COUNT}]=$(tcar_getRepoName "${ARG_MODULE_NAME:-unknown}" "-f" | cut -d '-' -f1)
     local TCAR_MODULE_NAME=${TCAR_MODULE_NAMES[${TCAR_MODULE_COUNT}]}
-    tcar_printMessage "TCAR_MODULE_NAME : [${TCAR_MODULE_COUNT}]=${TCAR_MODULE_NAME} | ${#TCAR_MODULE_NAMES[*]}" --as-debugger-line
+    tcar_printMessage "TCAR_MODULE_NAME : [${TCAR_MODULE_COUNT}]=${TCAR_MODULE_NAME}" --as-debugger-line
 
     # Define module's type.
     TCAR_MODULE_TYPES[${TCAR_MODULE_COUNT}]="${ARG_MODULE_TYPE:-parent}"
@@ -124,10 +124,11 @@ function tcar_setModuleEnvironment {
     local TEXTDOMAINDIR=${TCAR_MODULE_DIR_LOCALES}
     tcar_printMessage "TEXTDOMAINDIR: ${TEXTDOMAINDIR}" --as-debugger-line
 
+    tcar_printMessage "=========================>: [${TCAR_MODULE_COUNT}]=${TCAR_MODULE_NAME} ${TCAR_MODULE_ARGUMENT}" --as-debugger-line
+
     # Increment module's counter just before creating next module's
     # base directory.
     TCAR_MODULE_COUNT=$(( ${TCAR_MODULE_COUNT} + 1 ))
-    tcar_printMessage "TCAR_MODULE_COUNT: ${TCAR_MODULE_COUNT}" --as-debugger-line
 
     # Define next module's base directory.
     TCAR_MODULE_BASEDIRS[${TCAR_MODULE_COUNT}]=${TCAR_MODULE_DIR_MODULES}
@@ -140,18 +141,17 @@ function tcar_setModuleEnvironment {
     # call after all variables and arguments definitions.
     tcar_setModuleEnvironmentScripts
 
-    # Execute module's initialization script.
-    tcar_printMessage "=========================>: ${TCAR_MODULE_NAME} ${TCAR_MODULE_ARGUMENT}" --as-debugger-line
+    # Execute module's initialization script with its arguments.
     ${TCAR_MODULE_NAME} ${TCAR_MODULE_ARGUMENT}
 
     # Unset module-specific environment.
-    tcar_printMessage "<=========================: ${TCAR_MODULE_NAME}" --as-debugger-line
     tcar_unsetModuleEnvironment
 
     # Decrement module counter just after unset unused module
     # environments.
     TCAR_MODULE_COUNT=$(( ${TCAR_MODULE_COUNT} - 1 ))
-    tcar_printMessage "TCAR_MODULE_COUNT: ${TCAR_MODULE_COUNT}" --as-debugger-line
+
+    tcar_printMessage "<=========================: [${TCAR_MODULE_COUNT}]=${TCAR_MODULE_NAME} ${TCAR_MODULE_ARGUMENT}" --as-debugger-line
 
     # Unset array and non-array variables used in this function.
     if [[ ${TCAR_MODULE_COUNT} -eq 0 ]];then
