@@ -41,12 +41,13 @@ function tcar_unsetModuleEnvironment {
     # of function definitions previously exported by
     # `tcar_setModuleEnvironmentScripts'.  Be sure to limit the list
     # to function names that start with the suffix specified only.
-    local FUNCTION_DEF=''
-    local FUNCTION_DEFS=$(declare -F | gawk '{ print $3 }' | egrep "^${TCAR_MODULE_NAME}")
+    local TCAR_MODULE_SCRIPT_FN=''
+    local TCAR_MODULE_SCRIPT_FNS=$(declare -F | gawk '{ print $3 }' | egrep "^${TCAR_MODULE_NAME}")
 
     # Unset function names from current execution environment.
-    for FUNCTION_DEF in ${FUNCTION_DEFS};do
-        unset -f ${FUNCTION_DEF}
+    for TCAR_MODULE_SCRIPT_FN in ${TCAR_MODULE_SCRIPT_FNS};do
+        unset -f ${TCAR_MODULE_SCRIPT_FN}
+        tcar_printMessage "unset -f : ${TCAR_MODULE_SCRIPT_FN}" --as-debugger-line
     done
 
 }

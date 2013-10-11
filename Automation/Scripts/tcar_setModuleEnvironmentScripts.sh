@@ -38,9 +38,10 @@ function tcar_setModuleEnvironmentScripts {
     local FUNCTION_PATTERN="^function[[:space:]]+${TCAR_MODULE_NAME}(_[[:alnum:]]+)?[[:space:]]+{[[:space:]]*$"
 
     # Define the list of files.
-    local MODULE_SCRIPTS="${TCAR_MODULE_INIT_FILE}"
+    local TCAR_MODULE_SCRIPT=''
+    local TCAR_MODULE_SCRIPTS="${TCAR_MODULE_INIT_FILE}"
     if [[ -d ${TCAR_MODULE_DIR} ]];then
-        MODULE_SCRIPTS="${MODULE_SCRIPTS} 
+        TCAR_MODULE_SCRIPTS="${TCAR_MODULE_SCRIPTS}
             $(tcar_getFilesList ${TCAR_MODULE_DIR} \
             --pattern="${TCAR_MODULE_DIR}/${TCAR_MODULE_NAME}_[[:alnum:]]+\.sh$" --type='f')"
     fi
@@ -49,30 +50,36 @@ function tcar_setModuleEnvironmentScripts {
     # location specified stop the script execution. Otherwise the
     # script will surely try to execute a function that haven't been
     # exported yet and report an error about it.
-    if [[ -z ${MODULE_SCRIPTS} ]];then
+    if [[ -z ${TCAR_MODULE_SCRIPTS} ]];then
         tcar_printMessage "${FUNCNAME}: `gettext "No function file was found."`" --as-error-line
     fi
 
     # Process the list of files.
-    for MODULE_SCRIPT in ${MODULE_SCRIPTS};do
+    for TCAR_MODULE_SCRIPT in ${TCAR_MODULE_SCRIPTS};do
 
         # Verify the execution rights for function file.
-        tcar_checkFiles -ex ${MODULE_SCRIPT}
+        tcar_checkFiles -ex ${TCAR_MODULE_SCRIPT}
 
         # Verify that function files have not been already exported.
         # If they have been already exported don't export them again.
         # Instead, continue with the next function file in the list.
-        declare -F | gawk '{ print $3 }' | egrep "^${MODULE_SCRIPT}$" > /dev/null
+        declare -F | gawk '{ print $3 }' | egrep "^${TCAR_MODULE_SCRIPT}$" > /dev/null
         if [[ $? -eq 0 ]];then
             continue
         fi
 
         # Initialize the function file.
-        . ${MODULE_SCRIPT}
+        . ${TCAR_MODULE_SCRIPT}
+
+        # Retrieve the function's name from function's file.
+        local TCAR_MODULE_SCRIPT_FN=$(egrep "${FUNCTION_PATTERN}" ${TCAR_MODULE_SCRIPT} \
+            | gawk '{ print $2 }')
 
         # Export the function names inside the file to current shell
         # script environment.
-        export -f $(egrep "${FUNCTION_PATTERN}" ${MODULE_SCRIPT} | gawk '{ print $2 }')
+        export -f ${TCAR_MODULE_SCRIPT_FN}
+
+        tcar_printMessage "export -f : ${TCAR_MODULE_SCRIPT_FN}" --as-debugger-line
 
     done
 

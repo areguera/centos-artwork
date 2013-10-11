@@ -49,7 +49,23 @@ function tcar_setModuleEnvironment {
     # Initialize module's global counter.
     TCAR_MODULE_COUNT=${TCAR_MODULE_COUNT:-0}
 
-    tcar_printMessage "FUNCNAME : ${FUNCNAME[1]}" --as-debugger-line
+    # When the last module in the chain of executed modules is the
+    # same module being currently executed, don't create a new
+    # position for it in the chain of modules. Instead, use the
+    # information it already has from its previous execution. In order
+    # for this to work, the current module must be executed as sibling
+    # module of other module or itself.
+    if [[ ${TCAR_MODULE_COUNT} -gt 0 ]];then
+        if [[ ${TCAR_MODULE_NAMES[((${TCAR_MODULE_COUNT} - 1))]} == ${ARG_MODULE_NAME} ]];then
+            if [[ ${ARG_MODULE_TYPE} == 'sibling' ]];then
+                tcar_printMessage '~~~~~~~~~~~~~~~~~~~~~~~~~> : '"${TCAR_MODULE_NAME} ${TCAR_MODULE_ARGUMENT}" --as-debugger-line
+                ${ARG_MODULE_NAME} ${ARG_MODULE_ARGS} ${@}
+                return
+            fi
+        fi
+    fi
+
+    tcar_printMessage '=========================>: ['${TCAR_MODULE_COUNT}'] | '${FUNCNAME[1]} --as-debugger-line
 
     # Define module's base directory. This is the directory where the
     # initialization script is stored in.
@@ -82,7 +98,7 @@ function tcar_setModuleEnvironment {
     # Define module's arguments.  This variable is used in different
     # module environments to pass positional parameters from one
     # environment to another using local definitions.
-    TCAR_MODULE_ARGUMENTS[${TCAR_MODULE_COUNT}]="${ARG_MODULE_ARGS:-''} ${@}"
+    TCAR_MODULE_ARGUMENTS[${TCAR_MODULE_COUNT}]="${ARG_MODULE_ARGS:-} ${@}"
     local TCAR_MODULE_ARGUMENT=${TCAR_MODULE_ARGUMENTS[${TCAR_MODULE_COUNT}]}
     tcar_printMessage "TCAR_MODULE_ARGUMENT : ${TCAR_MODULE_ARGUMENT}" --as-debugger-line
 
@@ -124,8 +140,6 @@ function tcar_setModuleEnvironment {
     local TEXTDOMAINDIR=${TCAR_MODULE_DIR_LOCALES}
     tcar_printMessage "TEXTDOMAINDIR: ${TEXTDOMAINDIR}" --as-debugger-line
 
-    tcar_printMessage "=========================>: [${TCAR_MODULE_COUNT}]=${TCAR_MODULE_NAME} ${TCAR_MODULE_ARGUMENT}" --as-debugger-line
-
     # Increment module's counter just before creating next module's
     # base directory.
     TCAR_MODULE_COUNT=$(( ${TCAR_MODULE_COUNT} + 1 ))
@@ -142,16 +156,16 @@ function tcar_setModuleEnvironment {
     tcar_setModuleEnvironmentScripts
 
     # Execute module's initialization script with its arguments.
+    tcar_printMessage '-------------------------> : '"${TCAR_MODULE_NAME} ${TCAR_MODULE_ARGUMENT}" --as-debugger-line
     ${TCAR_MODULE_NAME} ${TCAR_MODULE_ARGUMENT}
 
     # Unset module-specific environment.
+    tcar_printMessage '<------------------------- : '"${TCAR_MODULE_NAME} ${TCAR_MODULE_ARGUMENT}" --as-debugger-line
     tcar_unsetModuleEnvironment
 
     # Decrement module counter just after unset unused module
     # environments.
     TCAR_MODULE_COUNT=$(( ${TCAR_MODULE_COUNT} - 1 ))
-
-    tcar_printMessage "<=========================: [${TCAR_MODULE_COUNT}]=${TCAR_MODULE_NAME} ${TCAR_MODULE_ARGUMENT}" --as-debugger-line
 
     # Unset array and non-array variables used in this function.
     if [[ ${TCAR_MODULE_COUNT} -eq 0 ]];then
@@ -169,4 +183,7 @@ function tcar_setModuleEnvironment {
         unset TCAR_MODULE_DIR_LOCALES
         unset TCAR_MODULE_DIR_CONFIGS
     fi
+
+    tcar_printMessage '<=========================: ['${TCAR_MODULE_COUNT}'] | '${FUNCNAME[1]} --as-debugger-line
+
 }
