@@ -1,7 +1,8 @@
 #!/bin/bash
 ######################################################################
 #
-#   lowercase.sh -- Print greetings in lowercase.
+#   upper.sh -- Print greeting message in uppercase. The final output
+#   is printed out all in one line.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2013
@@ -24,10 +25,9 @@
 #
 ######################################################################
 
-function lowercase {
+function upper {
 
-    HELLO_GREETING=$(echo ${HELLO_GREETING} | tr '[[:upper:]]' '[[:lower:]]')
-
-    tcar_setModuleEnvironment -m 'default' -t 'sib-module'
+    local GREETING=$(echo ${HELLO_WORLD} | tr '[[:lower:]]' '[[:upper:]]')
+    tcar_printMessage "${GREETING}" --as-stdout-line
 
 }

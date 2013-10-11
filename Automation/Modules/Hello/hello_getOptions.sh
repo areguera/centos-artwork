@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   hello_getOptions.sh -- Interpret hello module's specific options.
+#   hello_getOptions.sh -- Interpret module-specific options for hello.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2013
@@ -27,10 +27,10 @@
 function hello_getOptions {
 
     # Define short options we want to support.
-    local ARGSS=""
+    local ARGSS="h::,v,g:,l,u,c,r"
 
     # Define long options we want to support.
-    local ARGSL="help::,version,greeting:,lowercase,uppercase"
+    local ARGSL="help::,version,greeting:,lower,upper,camel,random"
 
     # Redefine arguments using getopt(1) command parser.
     tcar_setModuleArguments
@@ -43,26 +43,36 @@ function hello_getOptions {
     while true; do
         case "${1}" in
 
-            --help )
+            -h | --help )
                 tcar_printHelp "${2}"
                 ;;
 
-            --version )
+            -v | --version )
                 tcar_printVersion "${TCAR_MODULE_NAME}"
                 ;;
 
-            --greeting )
-                HELLO_GREETING="${2:-${HELLO_GREETING}}"
+            -g | --greeting )
+                HELLO_WORLD="${2:-${HELLO_WORLD}}"
                 shift 2
                 ;;
 
-            --lowercase )
-                HELLO_ACTIONS="lowercase ${HELLO_ACTIONS}"
+            -l | --lower )
+                ACTIONS="lower ${ACTIONS}"
                 shift 1
                 ;;
 
-            --uppercase )
-                HELLO_ACTIONS="uppercase ${HELLO_ACTIONS}"
+            -u | --upper )
+                ACTIONS="upper ${ACTIONS}"
+                shift 1
+                ;;
+
+            -c | --camel )
+                ACTIONS="camel ${ACTIONS}"
+                shift 1
+                ;;
+
+            -r | --random )
+                ACTIONS="random ${ACTIONS}"
                 shift 1
                 ;;
 
@@ -72,9 +82,6 @@ function hello_getOptions {
                 ;;
         esac
     done
-
-    # Define actions default value.
-    HELLO_ACTIONS=${HELLO_ACTIONS:-default}
 
     # Redefine arguments using current positional parameters. Only
     # paths should remain as arguments, at this point.

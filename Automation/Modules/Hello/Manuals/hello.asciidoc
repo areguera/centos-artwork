@@ -9,7 +9,7 @@ hello - Print out greetings and exit successfully.
 Synopsis
 --------
 
-*centos-art hello [--help|--version|--debug|--greeting=TEXT|--lowercase|--uppercase]*
+*centos-art hello [OPTIONS]*
 
 Description
 -----------
@@ -19,33 +19,53 @@ the ``Hello, World!'' greeting to standard output and exit
 successfully.  You can use options to change the greeting message and
 the way it is printed out. The *hello* module provides a very simple
 example you can use as base to understand how modules work inside
-*centos-art.sh* script and use that knowledge to start writing your
-own modules for *centos-art.sh* script.
+*centos-art.sh* script. You can this understanding to start writing
+your own modules for *centos-art.sh* script.
 
 Options
 -------
 
 The *hello* module accepts the following options:
 
-*--help*::
+*-h | --help*::
     Print out module's documentation.
 
-*--version*::
+*-v | --version*::
     Print out module's version and legal status.
 
-*--debug*::
+*-d | --debug*::
     Run the script in debugging mode. This option is very useful if
-    you want to get a closer look to the way modules are opened and
-    closed inside *centos-art.sh* script.
+    you want to get a closer look to module environments being
+    executed and destroyed at run-time.
 
-*--greeting=TEXT*::
-    Set a different greeting to be printed out.
+*-g "TEXT" | --greeting="TEXT"*::
+    Set a different greeting message to be printed out. This option
+    accepts a value as argument. The text you provide must not have
+    empty spaces on it. By default, when you don't provide this
+    option, *hello* module prints out ``Hello, World'' as greeting. If
+    translations of this message are available for your locale, they
+    will be printed instead.
 
-*--lowercase*::
-    Print out the greeting in lowercase.
+*-l | --lower*::
+    Print greeting message in lowercase. The final output is printed
+    out all in one line.
 
-*--uppercase*::
-    Print out the greeting in uppercase.
+*-u | --upper*::
+    Print greeting message in uppercase. The final output is printed
+    out all in one line.
+
+*-c | --camel*::
+    Print greeting messages in camel-case (e.g., "HeLlO, WoRlD!").
+    The output is printed out one character per line. This might not
+    have sense but it helps to describe how execution of sibling
+    modules work. Notice that, when printing final output, punctuation
+    marks doesn't count for formating.
+
+*-r | --random*::
+    Print letters of a greeting message in a random order (e.g.,
+    rdodldrl!,,!).  The final output is printed out one character per
+    line. This might not have sense but it helps to describe how
+    recursive execution of sibling modules work.
 
 Exit Status
 -----------

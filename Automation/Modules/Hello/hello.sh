@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#   hello.sh -- Print greetings and exit successfully.
+#   hello.sh -- Print greeting messages and exit successfully.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2013
@@ -26,19 +26,23 @@
 
 function hello {
 
-    # Define default message we want to print.
-    local HELLO_GREETING="`gettext "Hello, World!"`"
+    # Define default greeting message.
+    local HELLO_WORLD="`gettext "Hello, World!"`"
 
     # Define actions variable. Here is where actions related to
-    # module-specific options are stored in.
-    local HELLO_ACTIONS=''
+    # module-specific options are stored in for further processing.
+    local ACTIONS=''
 
     # Interpret module-specific options and store related actions.
     hello_getOptions
 
-    # Initiate actions sub-module.
-    if [[ -n ${HELLO_ACTIONS} ]];then
-        tcar_setModuleEnvironment -m 'output' -t 'sub-module'
+    # Print greeting message
+    if [[ -z ${ACTIONS} ]];then
+        # Using parent module.
+        tcar_printMessage "${HELLO_WORLD}" --as-stdout-line
+    else
+        # Using child module.
+        tcar_setModuleEnvironment -m 'output' -t 'child'
     fi
 
 }

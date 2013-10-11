@@ -1,8 +1,10 @@
 #!/bin/bash
 ######################################################################
 #
-#   default.sh -- Print greetings as they come, without any
-#   modification.
+#   random.sh -- Print letters of a greeting message in a random order
+#   (e.g., rdodldrl!,,!).  The final output is printed out one
+#   character per line. This might not have sense but it helps to
+#   describe how recursive execution of sibling modules work.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2013
@@ -25,8 +27,19 @@
 #
 ######################################################################
 
-function default {
+function random {
 
-    tcar_printMessage "${HELLO_GREETING}" --as-stdout-line
+    local MESSAGE=${HELLO_WORLD}
+    local MAXCHAR=${#MESSAGE}
+    local COUNT=${1:-0}
+    local OFFSET=${RANDOM}; let "OFFSET %= ${MAXCHAR}"
+
+    tcar_printMessage "${MESSAGE:${OFFSET}:1}" --as-stdout-line
+
+    COUNT=$(( ${COUNT} + 1))
+
+    if [[ ${COUNT} -lt ${MAXCHAR} ]];then
+        tcar_setModuleEnvironment -m random -t sibling -g "${COUNT}"
+    fi
 
 }

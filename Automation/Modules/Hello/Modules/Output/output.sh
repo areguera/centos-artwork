@@ -1,7 +1,8 @@
 #!/bin/bash
 ######################################################################
 #
-#   output.sh -- Defines the way greetings are printed out.
+#   output.sh -- Selects how to output the greeting message, based on
+#   the options you provided in the command-line.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2013
@@ -26,10 +27,10 @@
 
 function output {
 
-    local HELLO_ACTION=''
+    local ACTION=''
 
-    for HELLO_ACTION in ${HELLO_ACTIONS};do
-        tcar_setModuleEnvironment -m ${HELLO_ACTION} -t 'sub-module'
+    for ACTION in ${ACTIONS};do
+        tcar_setModuleEnvironment -m "${ACTION}" -t 'child'
     done
 
 }
