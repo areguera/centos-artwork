@@ -30,15 +30,16 @@ Module Environment
 When you execute the *centos-art.sh* script you create an execution
 environment in which variables and functions are defined. The
 execution environment is the higher environment inside *centos-art.sh*
-script it is considered to have a ``global'' scope, so variables and
+script. It is considered to have a ``global'' scope, so variables and
 functions defined in it are always available for any function
-execution made from it. You can control this execution environment
-through the files +centos-art.sh+ and +centos-art.conf.sh+. These
-files don't provide too much functionality so module environments are
-executed inside it to extend its functionality.
+execution made from it. You can control the execution environment of
+*centos-art.sh* script through files +centos-art.sh+ and
++centos-art.conf.sh+. These files don't provide too much functionality
+so module environments are executed from +centos-art.sh+, to extend
+its functionality.
 
 Module environments are made of small functions that perform small
-tasks and can be further executed in a specific order to create the
+tasks and can be further executed in a specific order to produce the
 desired result.  Module environments are executed and destroyed at
 demand.  Inside *centos-art.sh*, module environments can be either
 ``parent modules,'' ``child modules,'' or ``sibling modules.''
@@ -109,8 +110,8 @@ your module. Otherwise they may be loaded and never be used, which
 make the script to waste memory unnecessarily. In these cases, when
 you need to divide the logic of a module in smaller pieces where these
 pieces may or may not be executed based on specific conditions, all
-taking place in the same interaction, then using ``_child modules_''
-is a more suitable approach.
+taking place in the same iteration, then using ``_child modules_'' is
+a more suitable approach.
 
 [[child-modules]]
 Child Modules
@@ -122,12 +123,12 @@ it.  Child modules have the characteristic of being nested modules.
 They cannot be executed from the command-line. Normally, child modules
 are executed from parent modules but they can be executed from other
 child modules, too.  When several child modules are executed in one
-single interaction of *centos-art.sh*, they create a chain of modules.
+single iteration of *centos-art.sh*, they create a chain of modules.
 A chain of modules is very useful in situations where you want to
 divide one large task into smaller tasks and also control which of
 these smaller tasks is executed based on specific conditions (e.g.,
 you may want to render images or documentation, but not both, in one
-single interaction of *centos-art.sh* script).  In a chain of modules,
+single iteration of *centos-art.sh* script).  In a chain of modules,
 lower modules in the chain (those started last) have access to
 information set by modules higher in the chain (those started first),
 but not the opposite. When processing information this way, modules
@@ -367,18 +368,17 @@ Thu 10 Oct 2013 11:51:44 PM CDT <=========================      [0] | main
 ----------------------------------------------------------------------
 ======================================================================
 
-<<debug-sibling-modules>> shows a single interaction of
-*centos-art.sh* script executing different types of modules. Normally,
-one module is executed at some point and destroyed at the same point
-when it has finished its work, however, what if the next immediate
-module you are about to execute is the same module you are about to
-destroyed? This is, you need to execute the last module in the chain
-of executed modules again, but, this time, from itself.  In cases like
-this, the *centos-art.sh* script doesn't destroy the last module.  It
-cannot, because you are certainly executing a new module from itself,
-so it has to wait for this new call to finish in order to be
-destroyed. This kind of processing is known as _processing modules
-recursively._
+<<debug-sibling-modules>> shows a single iteration of *centos-art.sh*
+script executing different types of modules. Normally, one module is
+executed at some point and destroyed at the same point when it has
+finished its work, however, what if the next immediate module you are
+about to execute is the same module you are about to destroyed? This
+is, you need to execute the last module in the chain of executed
+modules again, but, this time, from itself.  In cases like this, the
+*centos-art.sh* script doesn't destroy the last module.  It cannot,
+because you are certainly executing a new module from itself, so it
+has to wait for this new call to finish in order to be destroyed. This
+kind of processing is known as _processing modules recursively._
 
 Recursive Modules
 ~~~~~~~~~~~~~~~~~
@@ -502,59 +502,100 @@ next section takes these concepts and focuses on the implementation of
 them. Once you finish it, you should be able of writing your own
 module environments from scratch inside *centos-art.sh* script.
 
+[[module-implementation]]
 Module Implementation
 ---------------------
 
-Parent Modules
-~~~~~~~~~~~~~~
+The *centos-art.sh* script implements module environments inside the
+``+Modules+'' directory. Inside this directory, each module
+environment has its own directory.  Inside each module directory there
+is one initialization file and, optionally, module-related stuff like
+functions, locales, documentation, configuration and dependent
+modules.  Inside the +Modules+ directory, module directories are
+written capitalized while initialization files, inside them, are
+written in lower case.  Even though module directories and
+initialization files are written differently, they both make a single
+module because they use the same single name.
 
-The <<hello-simplest-directory-structure>>, shows a basic module
-structure. In this example, we see that module directories are written
-capitalized while module initialization file and related functions are
-all written in lower-case. Note also how the module directory and
-files inside it use the module's name in their file names to get
-identified. This is a convention that should be followed in order for
-*centos-art.sh* script to execute modules. Another convention you
-should follow, when creating related functions, is using underscore
-(``_'') to separate the module's name from the function's descriptive
-name. In these cases, the function's descriptive name is always
-written in camel-case followed by the +.sh+ extension.
+For example, consider the creation of a module named *hello*. The
+purpose of this module is to print a greeting message to standard
+output and then exit successfully. To create such a module, we need to
+create a directory named ``Hello'' inside the ``Modules'' directory
+and put an initialization file named ``hello.sh'' inside it.  Because
+we want to execute the *hello* module from *centos-art.sh* script
+command-line, we put it in the first level of directories of +Modules+
+directory. See <<parent-module-layout>>.
 
-[[hello-simplest-directory-structure]]
-.Simplest directory structure of hello module.
+[[parent-module-layout]]
+.Directory layout used by parent modules
 ======================================================================
 ----------------------------------------------------------------------
 .
-|-- COPYING                     <-- Contains the GPL license.
-|-- Locales/                    <-- localization of all sh files.
-|-- Manuals/                    <-- manuals for main and global functions.
-|-- Modules/                    <-- top-modules are stored here.
-|   `-- Hello/
-|       `-- hello.sh
-|-- Scripts/                    <-- global functions are stored here.
-|-- centos-art.conf.sh          <-- main configuration file.
-`-- centos-art.sh               <-- main initialization file.
+|-- COPYING                 <1>
+|-- Locales/                <2>
+|-- Manuals/                <3>
+|-- Modules/                <4>
+|   `-- Hello/              <5>
+|       `-- hello.sh        <6>
+|-- Scripts/                <7>
+|-- centos-art.conf.sh      <8>
+`-- centos-art.sh           <9>
 ----------------------------------------------------------------------
+
+<1> Script's copying conditions.
+<2> Script's localization files.
+<3> Script's documentation files.
+<4> Script's modules. Here is where you store parent modules.
+<5> Parent directory of module named hello.
+<6> Initialization file of module named hello.
+<7> Script's global functions.
+<8> Script's configuration file.
+<9> Script's initialization file.
 ======================================================================
 
-The module's initialization file contains the main function definition
-of your module. It is a good place to define variables that must be
-always available inside the module. There is also a top-comment that
-collects information about the function files you are writing (e.g., a
-small description, a written by section, the copyright note and the
-legal status of the file). Even using a top comment like this is not
-required for *centos-art.sh* script to execute modules properly, it is
-very useful as matter of consistency and style inside it (and the
-copyright and legal notice might be required for legal protection of
-your code as set by GPL).  Finally, there is the function definition
-named +hello+ just as the directory that holds it but all in lower.
-Inside this function definition is where we write what we want the
-*hello* module does for us. This way, following with the *hello* example,
-we create an array variable inside it holding all the suggestions we
-would like to print, as described in <<initialization-file>>.
+<<parent-module-layout>> presents a complete module layout you can use
+as reference to create your own module implementations. However, it is
+not complete yet.  At this point, when you execute *centos-art.sh*, it
+is able to find out *hello* module's initialization file and execute
+it but that prints an error message because the initialization file
+doesn't have a function definition inside. It is completely empty.  In
+order for *centos-art.sh* script to do something useful, you need to
+write a function definition inside the initialization file, as
+described in <<module-init-file>>.
+
+[[module-init-file]]
+The Initialization File
+~~~~~~~~~~~~~~~~~~~~~~~
+
+The module's initialization file contains the module's main function
+definition and a comment describing what it does on top of it.  This
+comment includes a small description about what the function does, a
+written by section, the copyright note and the legal status of the
+file. The function definition is set later and must be written using
+the long definition format (i.e., it must begin with the word
+``+function+,'' then the function name, and finally the ``+{+''
+character).  The name of the function is exactly the same of the
+initialization file but without the +.sh+ extension. These conditions
+are required in order for *centos-art.sh* script to execute the
+function definition and destroy it when it is no longer used.  See
+<<initialization-file>>.
+
+The function definition is where you write all the commands you want
+the module runs, once executed.  The function definition can be as
+simple as just one single line of code or as complex as you can
+imagine. It is the place where you express your solutions. However,
+when writing initialization files, it is considered a good practice to
+avoid any sort of complexity.  Instead, try to write small and simple
+initialization files.  In case you notice the initialization file is
+growing up inevitably, you can reduce its code by refactoring it.  To
+do this, you can use resources like module related functions and child
+modules. These resources are described in
+<<extended-module-implementation>>, and they help you to keep the
+initialization file in a clean state, easy to understand, maintain and
+debug.
 
 [[initialization-file]]
-.The initialization file of hello module
+.Initialization file used by hello module
 ======================================================================
 ----------------------------------------------------------------------
 #!/bin/bash
@@ -586,7 +627,297 @@ would like to print, as described in <<initialization-file>>.
 
 function hello {
 
-    tcar_printMessage "Hello, World!"
+    tcar_printMessage "`gettext "Hello, World!"`" --as-stdout-line
+
+}
+----------------------------------------------------------------------
+======================================================================
+
+The function definition described in <<initialization-file>> uses the
+*tcar_printMessage* global function to print localized versions of the
+string ``Hello, World!'' to standard output. Because there isn't no
+other command in the function definition, when the greeting message is
+printed out, *centos-art.sh* destroys the *hello* module and exit
+successfully. This process is more visible when also pass the
+*--debug* option. See <<debug-parent-modules>>.
+
+Summary
+~~~~~~~
+
+Congratulations! You've implemented a module environment inside
+*centos-art.sh* script. With the information you have so far, you are
+able to create your own module environment implementations. The next
+section delves into available resources you can use to optimize module
+environments when the initialization file starts growing inevitably
+and complexity daemons begin hammering your head.
+
+[[module-directory-structure]]
+Module Directory Structure
+--------------------------
+
+Child modules and sibling modules are nested modules. They are stored
+inside other modules. Frequently we first write parent modules and
+extend them through child modules. This, when function related files
+cannot fix the problem efficiently.  Module related function files are
+stored at the same level of initialization file inside the module's
+directory.
+
+[[child-module-layout]]
+.The directory structure of child and sibling modules
+======================================================================
+----------------------------------------------------------------------
+.
+|-- COPYING
+|-- Locales/
+|-- Manuals/
+|-- Modules/
+|   `-- Hello/
+|       |-- Modules/
+|       |   `-- Output/             <1>
+|       |       |-- Lower/          <2>
+|       |       |   `-- lower.sh    <3>
+|       |       |-- Upper/          <4>
+|       |       |   `-- upper.sh    <5>
+|       |       `-- output.sh       <6>
+|       |-- hello.sh
+|       `-- hello_getOptions.sh
+|-- Scripts/
+|-- centos-art.conf.sh
+`-- centos-art.sh
+----------------------------------------------------------------------
+
+<1> Child module of hello module.
+<2> Child module of output module and sibling module of upper module.
+<3> Initialization file of lower module.
+<4> Child module of output module and sibling module of lower module.
+<5> Initialization file of upper module.
+<6> Initialization file of output module.
+======================================================================
+
+The +Modules+ Directory
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Inside the +Modules+ directory, regardless its level, there is one
+directory for each module environment. Inside each module's directory
+there is one initialization file and, optionally, one or more
+module-related function files. and any of the following
+sub-directories:
+
++Modules/+::
+    Organizes child modules for the current module. This directory
+    share the same structural restrictions of its parent (e.g., each
+    module stored here needs to have a module directory and a
+    initialization file inside it to be functional). To know more
+    about this directory, see <<extended-module-implementation>>.
+
++Locales/+::
+    Organizes localization files for the current module. This
+    directory contains POT, PO and MO files, the *centos-art.sh*
+    script needs to print localized messages. Must of these files are
+    automatically created by *locale* module.  To know more about this
+    directory, see <<module-locales-directory>>.
+
++Manuals/+::
+    Organizes documentation files for the current module. This
+    directory contains asciidoc files used to produce documentation in
+    html and manpage format. The manpage format is used by
+    centos-art.sh script to print module's documentation when the
+    *--help* option is passed to the command-line. To know more about
+    this directory, see <<module-manuals-directory>>.
+
++Configs/+::
+    Organizes configuration files for the current module. This
+    directory contains non-sh files the current module depends on to
+    complete the task it was created for (e.g., sed scripts, gawk
+    scripts, etc.). To know more about this directory, see
+    <<module-configs-directory>>.
+
+Module directories and module initialization files must have the same
+name.  Module directories are written capitalized and initialization
+files in lowercase. Module related functions are written in camel-case
+and use the module name as suffix. More about module-related functions
+and child modules, later, in <<extended-module-implementation>>.
+
+... describes the root location of *centos-art.sh*
+script and <<parent-module-layout>> how it looks like after adding the
+*hello* module to it.  In this last example, the directory named
+``Hello'' contains the files related to *hello* module environment
+(e.g., the initialization file). Other components like module related
+functions were intentionally omitted for simplicity sake. They are
+covered later, in <<extended-module-implementation>>.
+
+[[module-locales-directory]]
+The +Locales+ Directory
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Module localization ...
+
+[[module-manuals-directory]]
+The +Manuals+ Directory
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Module documentation ...
+
+[[module-configs-directory]]
+Module +Configs+ Directory
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Module configuration ...
+
+Summary
+~~~~~~~
+
+This section described how you can create a functional module
+environment from scratch. However, it doesn't explain how you can
+extend the module environment using related functions or child
+modules.  The next section introduces the concept of module functions
+and explain how you can use them to extend the functionality of an
+existing module environment.
+
+[[extended-module-implementation]]
+Extended Module Implementation
+------------------------------
+
+Module-specific functions are stored in the same location you store
+module's initialization file. Definitions of module-specific functions
+are made available in the execution environment before executing the
+module's initialization file. This way, module-specific functions are
+always available inside the module's initialization file.
+Module-specific functions are very useful when you are refactoring the
+module's initialization file.
+
+For example, consider extending the *hello* module, to vary the
+``Hello, World!'' greeting message to something else based on a
+*--greeting* option passed through the command-line. For this, we can
+write everything in the module's initialization file or create a
+module-specific function to take care of all related actions and then
+execute it from module's initialization file. Because we want to keep
+the module's initialization file small and clean, we decided to create
+a module-specific function named *hello_getOptions*. This function is
+stored in a file named +hello_getOptions.sh+, at the same location of
++hello.sh+ module's initialization file. See <<script-main-layout-2>>.
+
+[[script-main-layout-2]]
+.The module directory structure with related function
+======================================================================
+----------------------------------------------------------------------
+.
+|-- COPYING
+|-- Locales/
+|-- Manuals/
+|-- Modules/
+|   `-- Hello/
+|       |-- hello.sh
+|       `-- hello_getOptions.sh     <-- module-related function.
+|-- Scripts/
+|-- centos-art.conf.sh
+`-- centos-art.sh
+----------------------------------------------------------------------
+======================================================================
+
+As name convention, module-specific functions must be written using
+the module's name as suffix, then an underscore, then a descriptive
+name to identify the function. This convention is important in order
+for *centos-art.sh* script to execute and destroy modules as expected.
+If you create module-specific functions with a different pattern they
+will not be executed nor available inside your module's initialization
+file.
+
+The name of the module-specific function +hello_getOptions+ is result
+of another name convention we are using inside *centos-art.sh* script.
+This is, when you need to provide argument parsing for a parent
+module, create a module-specific function with +_getOptions+ as prefix
+on its file name, then put all the code related to argument parsing
+inside it. Using a different function name here doesn't affect the
+execution of your module (as long as you retain the module's name as
+suffix). However, using this name convention, helps to keep a
+consistent directory structure inside the script.
+
+The content of the module-specific function named +hello_getOptions+
+is also considered even another convention, a procedural convention at
+this time.  It provides the standard construction you should use
+whenever you want to make parent modules able to process arguments
+passed through the command-line. Through this construction, you can
+define which are the short and long options the module you are writing
+accepts and the possible values assigned to them, when passed.
+Basically, this construction transform the option arguments passed in
+the command-line in a way they can be parsed predictably, then parses
+them leaving non-option arguments, only.footnote:[To know more about
+option parsing inside *centos-art.sh* script, read the article named
+``_Understanding Option Parsing._''] See <<processing-args-from-cmd>>.
+
+[[processing-args-from-cmd]]
+.Processing arguments from the command-line
+======================================================================
+----------------------------------------------------------------------
+#!/bin/bash
+######################################################################
+#
+#   hello_getOptions.sh -- Interpret module-specific options for hello.
+#
+#   Written by:
+#   * Alain Reguera Delgado <al@centos.org.cu>, 2013
+#
+# Copyright (C) 2009-2013 The CentOS Artwork SIG
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or (at
+# your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#
+######################################################################
+
+function hello_getOptions {
+
+    # Define short options we want to support.
+    local ARGSS="h::,v,g:"
+
+    # Define long options we want to support.
+    local ARGSL="help::,version,greeting:"
+
+    # Redefine arguments using getopt(1) command parser.
+    tcar_setModuleArguments
+
+    # Reset positional parameters on this function, using output
+    # produced from (getopt) arguments parser.
+    eval set -- "${TCAR_MODULE_ARGUMENT}"
+
+    # Look for options passed through command-line.
+    while true; do
+        case "${1}" in
+
+            -h | --help )
+                tcar_printHelp "${2}"
+                ;;
+
+            -v | --version )
+                tcar_printVersion "${TCAR_MODULE_NAME}"
+                ;;
+
+            -g | --greeting )
+                HELLO_WORLD="${2:-${HELLO_WORLD}}"
+                shift 2
+                ;;
+
+            -- )
+                shift 1
+                break
+                ;;
+        esac
+    done
+
+    # Redefine arguments using current positional parameters. Only
+    # paths should remain as arguments, at this point.
+    TCAR_MODULE_ARGUMENT="${@}"
 
 }
 ----------------------------------------------------------------------
@@ -603,12 +934,67 @@ Sibling Modules
 
 Recursive Modules
 ~~~~~~~~~~~~~~~~~
-
 ...
 
 Summary
 ~~~~~~~
 
-...
+This section has covered ...
+
+Conventions
+-----------
+
+When you write modules to *centos-art.sh* script, consider the
+following common conventions:
+
+* Module directories are written capitalized (e.g., `Hello') while
+  module initialization file (e.g., `hello.sh') are written in
+  lower-case.
+
+* When you write related functions, use underscore (``_'') to separate
+  the module's name from the function's descriptive name. In these
+  cases, the function's descriptive name is always written in
+  camel-case (e.g., `hello_getOptions.sh').
+
+* Module directories and files inside them use the module's name as
+  suffix in their file names to get identified. This is convention
+  should be followed in order for *centos-art.sh* script to execute
+  and destroy modules as expected.
+
+* The directory structure of a module is made of an initialization
+  file, module-specific functions and module-specific directories.
+  From all these components, only the initialization file is required
+  in order to have a functional module. The module-specific functions
+  are useful for refactoring the initialization file. The
+  module-specific directories are optional but, if use, must have the
+  following names and meaning:
++
++Modules/+::
+  This directory contains module-specific child modules. The purpose
+  of Modules/ directory is extending the functionality of higher
+  module environments.
++Manuals/+::
+  This directory contains module-specific documentation. Documentation
+  in this directory are written in asciidoc format and produced
+  through the *render* functionality of *centos-art.sh* script.
++Configs/+::
+  This directory contains module-specific configuration. Some modules
+  (e.g., ``tuneup'') need to store auxiliary files required to achieve
+  its main goal (e.g., the ``tuneup'' module uses sed files to
+  transform the top-comment of scripts each time it is executed, the
+  sed file itself is stored in this directory). Whenever you need to
+  make reference to a file inside this directory, use the
+  ``TCAR_MODULE_DIR_CONFIGS'' variable. This variable provides the
+  absolute path of module-related configuration file.
++Locales/+::
+  This directory contains module-specific localization files. The
+  content of this directory is automatically generated by *locale*
+  module of *centos-art.sh* script, when you execute it using the
+  initialization file as source and the *--update --sibling* options.
+  Once the localization files have been created, you need to edit PO
+  files to translate the strings from English to your preferred
+  language.  If the translatable strings inside the module's source
+  files change, you need to run the *locale* module again to update
+  the PO files and repeat the localization process all over again.
 
 // vim: set syntax=asciidoc:
