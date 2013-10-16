@@ -60,6 +60,15 @@ function tcar_setModuleEnvironmentScripts {
         # Verify the execution rights for function file.
         tcar_checkFiles -ex ${TCAR_MODULE_SCRIPT}
 
+        # Retrieve the function's name from function's file.
+        local TCAR_MODULE_SCRIPT_FN=$(egrep "${FUNCTION_PATTERN}" ${TCAR_MODULE_SCRIPT} \
+            | gawk '{ print $2 }')
+
+        # Verify function's name. It cannot be an empty value.
+        if [[ -z "${TCAR_MODULE_SCRIPT_FN}" ]];then
+            tcar_printMessage "`gettext "No function definition found."`" --as-error-line
+        fi
+
         # Verify that function files have not been already exported.
         # If they have been already exported don't export them again.
         # Instead, continue with the next function file in the list.
@@ -70,10 +79,6 @@ function tcar_setModuleEnvironmentScripts {
 
         # Initialize the function file.
         . ${TCAR_MODULE_SCRIPT}
-
-        # Retrieve the function's name from function's file.
-        local TCAR_MODULE_SCRIPT_FN=$(egrep "${FUNCTION_PATTERN}" ${TCAR_MODULE_SCRIPT} \
-            | gawk '{ print $2 }')
 
         # Export the function names inside the file to current shell
         # script environment.
