@@ -43,7 +43,7 @@ function render {
         local CONFIGURATIONS=${ARGUMENT}
         if [[ -d ${ARGUMENT} ]];then
             CONFIGURATIONS=$(tcar_getFilesList ${ARGUMENT} \
-                --pattern=".+/.+\.conf$" --type="f")
+                --pattern=".+/.+\.conf$")
         fi
 
         # Verify non-option arguments passed to centos-art.sh
@@ -53,7 +53,7 @@ function render {
         # meaning. In order to be sure all required directories are
         # available in the repository it is necessary use the prepare
         # functionality.
-        tcar_checkFiles -ef ${CONFIGURATIONS}
+        tcar_checkFiles -e ${CONFIGURATIONS}
 
         # Process each configuration file.
         for CONFIGURATION in ${CONFIGURATIONS};do
