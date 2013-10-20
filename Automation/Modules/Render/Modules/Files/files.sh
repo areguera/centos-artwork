@@ -1,8 +1,9 @@
 #!/bin/bash
 ######################################################################
 #
-#   render_setRenderType.sh -- This file evaluates a configuration
-#   file and determines what kind of rendition to do.
+#   files.sh -- This module initializes processing of configuration
+#   files when the argument passed in the command-line points to a
+#   regular file or symbolic link.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -25,7 +26,7 @@
 #
 ######################################################################
 
-function render_setRenderType {
+function files {
 
     local CONFIGURATION="${1}"
 
@@ -50,6 +51,11 @@ function render_setRenderType {
         | egrep ${TCAR_FLAG_FILTER});do
         SECTIONS[++${#SECTIONS[*]}]="${SECTION}"
     done
+
+    # Verify the configuration file has one section entry at least.
+    if [[ ${#SECTIONS[*]} -eq 0 ]];then
+        tcar_printMessage "`eval_gettext "No section definition was found in \\\$CONFIGURATION."`" --as-error-line
+    fi
 
     local COUNTER=0
 
@@ -129,14 +135,7 @@ function render_setRenderType {
         fi
 
         # Initialize render's modules.
-        case ${RENDER_TYPE} in
-            "svgz" | "svg" )
-                tcar_setModuleEnvironment -m "svg" -t "child"
-                ;;
-            * )
-                tcar_setModuleEnvironment -m "${RENDER_TYPE}" -t "child"
-                ;;
-        esac
+        tcar_setModuleEnvironment -m "${RENDER_TYPE}" -t "child"
 
         # Increment section's counter.
         COUNTER=$(( ${COUNTER} + 1 ))

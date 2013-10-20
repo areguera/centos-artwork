@@ -39,26 +39,13 @@ function render {
         # against source directory locations in the working copy.
         local ARGUMENT=$(tcar_checkRepoDirSource ${ARGUMENT})
 
-        # Retrieve list of configuration files from directory.
-        local CONFIGURATIONS=${ARGUMENT}
         if [[ -d ${ARGUMENT} ]];then
-            CONFIGURATIONS=$(tcar_getFilesList ${ARGUMENT} \
-                --pattern=".+/.+\.conf$")
+            tcar_setModuleEnvironment -m 'directories' -t 'child' -g ${ARGUMENT}
+        elif [[ -f ${ARGUMENT} ]] && [[ ${ARGUMENT} =~ '\.conf$' ]];then
+            tcar_setModuleEnvironment -m 'files' -t 'child' -g ${ARGUMENT}
+        else
+            tcar_printMessage "${ARGUMENT} `gettext "isn't supported."`" --as-error-line
         fi
-
-        # Verify non-option arguments passed to centos-art.sh
-        # command-line. The path provided as argument must exist in
-        # the repository.  Otherwise, it would be possible to create
-        # arbitrary directories inside the repository without any
-        # meaning. In order to be sure all required directories are
-        # available in the repository it is necessary use the prepare
-        # functionality.
-        tcar_checkFiles -e ${CONFIGURATIONS}
-
-        # Process each configuration file.
-        for CONFIGURATION in ${CONFIGURATIONS};do
-            render_setRenderType "${CONFIGURATION}"
-        done
 
     done
 
