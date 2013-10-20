@@ -60,7 +60,10 @@ function file {
 
     # Define the rendition type you want to perform.
     local RENDER_TYPE=${FILE_EXTENSION}
-
+    if [[ ${RENDER_TYPE} == 'svgz' ]];then
+        RENDER_TYPE='svg'
+    fi
+    
     # Define the translation file you want to use.
     local -a TRANSLATIONS
     TRANSLATIONS[0]=${PO_FILE}
