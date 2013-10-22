@@ -22,7 +22,7 @@ brand           = "${TCAR_BASEDIR}/Artworks/Brands/Types/Numbers/Images/ffffff/f
 brand           = "${TCAR_BASEDIR}/Artworks/Brands/Symbols/Default/Images/ffffff/ffffff-0/48/centos.png:x48+10+10"
 
 [Preview.png]
-render-type     = "direct"
+render-type     = "images"
 render-from     = "splash_top.png"
 render-from     = "splash_active_bar.png"
 render-from     = "splash_bottom.png"
