@@ -55,7 +55,7 @@ function tcar_printUrl {
         case "${1}" in
 
             --domain )
-                URL="${TCAR_BRAND}.org"
+                URL="centos.org"
                 shift 1
                 ;;
 
