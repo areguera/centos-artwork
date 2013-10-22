@@ -4,11 +4,11 @@ render-flow     = "base"
 render-from     = "${TCAR_BASEDIR}/Artworks/Themes/Models/Distro/5/Grub/splash.svgz"
 
 [splash.xpm]
-render-from     = "splash.png"
 render-type     = "palette"
+render-from     = "splash.png"
 palette-gpl     = "colors.gpl"
 
 [splash.xpm.gz]
-render-from     = "splash.xpm"
 render-type     = "compress"
-command         = "/bin/gzip"
+render-from     = "splash.xpm"
+command         = "/bin/gzip -f"
