@@ -37,6 +37,7 @@ function palette {
     # taken to set the max number of colors the final image will be
     # produced for.
     local PALETTE_GPL=$(dirname ${CONFIGURATION})/$(tcar_getConfigValue ${CONFIGURATION} ${SECTION} 'palette-gpl')
+    tcar_checkFiles -ef ${PALETTE_GPL}
 
     local PALETTE_GPL_COLORS=$(palette_getColors "${PALETTE_GPL}")
 
@@ -54,7 +55,7 @@ function palette {
     # base-rendition output. The PNM image is an intermediate format
     # used to manipulate images through Netpbm tools.
     pngtopnm -verbose \
-        < ${SOURCE[0]} 2>${LOGS} > ${FILENAME}.pnm
+        < ${SOURCES[0]} 2>${LOGS} > ${FILENAME}.pnm
 
     # Create PPM palette using GPL palette.
     palette_convertGplToPpm
