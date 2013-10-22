@@ -29,9 +29,9 @@ function packages {
 
     # Define required packages used by centos-art.sh script inside
     # CentOS base repository.
-    local BASE_PACKAGES="ImageMagick netpbm netpbm-progs syslinux gimp
-        coreutils texinfo texinfo-tex info tetex-latex tetex-fonts
-        tetex-xdvi tetex-dvips gettext texi2html libxml2
+    local BASE_PACKAGES="ImageMagick netpbm netpbm-progs syslinux-perl
+        gimp coreutils texinfo texinfo-tex info tetex-latex
+        tetex-fonts tetex-xdvi tetex-dvips gettext texi2html libxml2
         gnome-doc-utils elinks docbook-style-xsl docbook-utils
         docbook-dtds docbook-style-dsssl docbook-simple
         docbook-utils-pdf docbook-slides firefox sudo yum rpm ctags
