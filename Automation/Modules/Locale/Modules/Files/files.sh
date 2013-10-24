@@ -39,6 +39,11 @@ function files {
     # command-line.
     local RENDER_TYPE=$(echo ${RENDER_FROM} | sed -r 's/.+\.([[:alnum:]]+)$/\1/')
 
+    # Define location where final content will be stored. This is
+    # required for producing docbook document that contain relative
+    # paths inside (e.g., relative calls to image files) correctly.
+    RENDER_TARGET=$(dirname ${RENDER_FROM})/Final/${TCAR_SCRIPT_LANG_LC}
+
     # Define absolute path of directory holding localization files.
     local LOCALE_FROM=$(dirname ${RENDER_FROM})/Locales
     if [[ ! -d ${LOCALE_FROM} ]];then

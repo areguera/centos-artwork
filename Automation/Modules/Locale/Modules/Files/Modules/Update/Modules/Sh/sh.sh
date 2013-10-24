@@ -60,7 +60,6 @@ function sh {
         --package-name=${PACKAGE_NAME} \
         --package-version=${PACKAGE_VERSION} \
         --msgid-bugs-address="centos-l10n-${TCAR_SCRIPT_LANG_LL}@centos.org.cu" \
-        --copyright-holder="$(tcar_printCopyrightInfo --holder)" \
         --sort-by-file ${FILES}
 
     # When there is not any translatable string to retrieve from file,

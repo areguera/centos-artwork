@@ -30,7 +30,13 @@ function update_convertXmlToPot {
     local XML_FILE=${1}
     local POT_FILE=${2}
 
-    xml2po -a -l ${TCAR_SCRIPT_LANG_LC} ${XML_FILE} \
+    # Move to final location before processing source file in order
+    # for relative calls (e.g., image files) inside the source files
+    # can be found by xml2po and no warning be printed from it.
+    pushd ${RENDER_TARGET} > /dev/null
+
+    cat ${XML_FILE} | xml2po -a -l ${TCAR_SCRIPT_LANG_LC} - \
         | msgcat --output-file=${POT_FILE} --width=70 --no-location -
 
+    popd > /dev/null
 }
