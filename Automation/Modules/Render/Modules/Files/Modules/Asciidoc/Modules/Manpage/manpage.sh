@@ -13,12 +13,12 @@ function manpage {
         case ${FORMAT} in 
 
             'xhtml' )
-                local HTML_TARGET="$(dirname ${TARGET})/htmlman${MANSECT}/$(basename ${TARGET}).${MANSECT}.html"
+                local HTML_TARGET="$(dirname ${RENDER_TARGET})/htmlman${MANSECT}/$(basename ${RENDER_TARGET}).${MANSECT}.html"
                 asciidoc_setXhtmlRendition "${HTML_TARGET}"
                 ;;
 
             'manpage' )
-                local MAN_TARGET="$(dirname ${TARGET})/man${MANSECT}/$(basename ${TARGET}).${MANSECT}"
+                local MAN_TARGET="$(dirname ${RENDER_TARGET})/man${MANSECT}/$(basename ${RENDER_TARGET}).${MANSECT}"
                 if [[ ! -d $(dirname ${MAN_TARGET}) ]];then
                     mkdir -p $(dirname ${MAN_TARGET})
                 fi

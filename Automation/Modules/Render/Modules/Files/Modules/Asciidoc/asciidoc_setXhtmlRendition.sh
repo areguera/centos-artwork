@@ -2,7 +2,7 @@
 
 function asciidoc_setXhtmlRendition {
 
-    local TARGET="${1}"
+    local LOCATION=$(tcar_checkRepoDirSource "${1}")
 
     RENDER_PAGES=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "render-page")
     if [[ -z ${RENDER_PAGES} ]];then
@@ -28,20 +28,20 @@ function asciidoc_setXhtmlRendition {
     # files, produce both chunks and single XHTML output in the same
     # directory.
     if [[ ${RENDER_PAGES} == 'chunks' ]];then
-        TARGET="$(dirname ${TARGET})/"
+        LOCATION="$(dirname ${LOCATION})/"
     fi
 
-    if [[ ! -d $(dirname ${TARGET}) ]];then
-        mkdir -p $(dirname ${TARGET})
+    if [[ ! -d $(dirname ${LOCATION}) ]];then
+        mkdir -p $(dirname ${LOCATION})
     fi
 
-    ln -sfn ${IMAGES_FROM} $(dirname ${TARGET})/Images
-    ln -sfn ${STYLES_FROM} $(dirname ${TARGET})/Css
+    ln -sfn ${IMAGES_FROM} $(dirname ${LOCATION})/Images
+    ln -sfn ${STYLES_FROM} $(dirname ${LOCATION})/Css
 
-    tcar_printMessage "${TARGET}" --as-creating-line
+    tcar_printMessage "${LOCATION}" --as-creating-line
 
     for RENDER_PAGE in ${RENDER_PAGES};do
-        /usr/bin/xsltproc -o ${TARGET} --nonet \
+        /usr/bin/xsltproc -o ${LOCATION} --nonet \
             ${DOCBOOK_XSL}/docbook2xhtml-${RENDER_PAGE}.xsl ${DOCBOOK_FILE}
     done
 

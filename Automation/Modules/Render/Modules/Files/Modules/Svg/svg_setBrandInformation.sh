@@ -35,7 +35,7 @@ function svg_setBrandInformation {
 
         tcar_checkFiles -ef ${FILENAME}
 
-        /usr/bin/composite -geometry ${GEOMETRY} ${FILENAME} ${TARGET} ${TARGET}
+        /usr/bin/composite -geometry ${GEOMETRY} ${FILENAME} ${RENDER_TARGET} ${RENDER_TARGET}
 
     done
 

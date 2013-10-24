@@ -41,27 +41,30 @@ function render_setLocalizedXml {
     # content. This is required because template files might be found
     # as compressed files inside the repository.
     local COMMAND="/bin/cat"
-    if [[ $(file -b -i ${SOURCES}) =~ '^application/x-gzip$' ]];then
+    if [[ $(/usr/bin/file -b -i ${SOURCE}) =~ '^application/x-gzip$' ]];then
         COMMAND="/bin/zcat"
     fi
 
-    if [[ -f ${TRANSLATIONS[0]} ]];then
+    local TRANSLATION=$(tcar_getTemporalFile "messages.po")
 
-        # Define name of temporal file used as translation instance. 
-        local TRANSLATION_INSTANCE=${TCAR_SCRIPT_TEMPDIR}/messages.po
+    if [[ ${#TRANSLATIONS[*]} -gt 0 ]];then
 
-        # Combine translations into the translation instance.
-        msgcat -u -o ${TRANSLATION_INSTANCE} ${TRANSLATIONS[*]}
+        # Verify existence of translation files.
+        tcar_checkFiles -efi 'text/x-po' ${TRANSLATIONS[*]}
 
-        # Move to translation's directory before processing source
-        # file in order for relative calls (e.g., image files) inside
-        # the source files can be found by xml2po and no warning be
+        # Combine available translations file into one translation
+        # instance.
+        msgcat -u -o ${TRANSLATION} ${TRANSLATIONS[*]}
+
+        # Move to final location before processing source file in
+        # order for relative calls (e.g., image files) inside the
+        # source files can be found by xml2po and no warning be
         # printed from it.
-        pushd $(dirname ${TRANSLATIONS[0]}) > /dev/null
+        pushd $(dirname ${RENDER_TARGET}) > /dev/null
 
         # Create the translated instance of design model.
         ${COMMAND} ${SOURCE} | xml2po -a -l ${TCAR_SCRIPT_LANG_LC} \
-            -p ${TRANSLATION_INSTANCE} -o ${TARGET} -
+            -p ${TRANSLATION} -o ${TARGET} -
 
         # Remove .xml2po.mo temporal file.
         if [[ -f ./.xml2po.mo ]];then
@@ -73,8 +76,8 @@ function render_setLocalizedXml {
 
         # Remove instance created to store both licenses and template
         # translations.
-        if [[ -f ${TRANSLATION_INSTANCE} ]];then
-            rm ${TRANSLATION_INSTANCE}
+        if [[ -f ${TRANSLATION} ]];then
+            rm ${TRANSLATION}
         fi
 
         # xml2po bug? For some reason, xml2po is not adding the lang
@@ -87,7 +90,9 @@ function render_setLocalizedXml {
         fi
 
     else
+
         ${COMMAND} ${SOURCE} > ${TARGET}
+
     fi
 
 }

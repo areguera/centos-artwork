@@ -30,6 +30,7 @@ function asciidoc_setBaseRenditionCommand {
 
     tcar_checkFiles -m '^(article|book|manpage)$' ${RENDER_TYPE}
 
-    asciidoc --backend docbook --doctype ${RENDER_TYPE} -o ${TARGET}
+    asciidoc --backend='docbook' --doctype="${RENDER_TYPE}" \
+        --out-file="${RENDER_TARGET}"
 
 }

@@ -38,12 +38,12 @@ function images {
         COMMAND="/usr/bin/images -append"
     fi
 
-    if [[ ! -d $(dirname ${TARGET}) ]];then
-        mkdir -p $(dirname ${TARGET})
+    if [[ ! -d $(dirname ${RENDER_TARGET}) ]];then
+        mkdir -p $(dirname ${RENDER_TARGET})
     fi
  
-    tcar_printMessage "${TARGET}" --as-creating-line
+    tcar_printMessage "${RENDER_TARGET}" --as-creating-line
 
-    eval ${COMMAND} ${SOURCES[*]} ${TARGET}
+    eval ${COMMAND} ${SOURCES[*]} ${RENDER_TARGET}
 
 }

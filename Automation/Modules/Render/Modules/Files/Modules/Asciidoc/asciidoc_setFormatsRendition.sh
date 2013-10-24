@@ -6,7 +6,7 @@ function asciidoc_setFormatsRendition {
 
         case ${FORMAT} in 
             'xhtml' )
-                asciidoc_setXhtmlRendition "${TARGET}"
+                asciidoc_setXhtmlRendition "${RENDER_TARGET}"
                 ;;
         esac
 

@@ -28,6 +28,8 @@
 
 function asciidoc_setBaseRendition {
 
+    local -a SOURCE_INSTANCES
+    local -a TARGET_INSTANCES
     local COUNTER=0
 
     while [[ ${COUNTER} -lt ${#SOURCES[*]} ]];do
@@ -71,5 +73,8 @@ function asciidoc_setBaseRendition {
     for DOCBOOK_FILE in ${TARGET_INSTANCES[*]};do
         tcar_setModuleEnvironment -m "${RENDER_FLOW}" -t "child"
     done
+
+    unset SOURCE_INSTANCES
+    unset TARGET_INSTANCES
 
 }

@@ -43,12 +43,6 @@ function asciidoc {
         FORMATS='xhtml'
     fi
 
-    local -a SOURCE_INSTANCES
-    local -a TARGET_INSTANCES
-
     asciidoc_setBaseRendition
-
-    unset SOURCE_INSTANCES
-    unset TARGET_INSTANCES
 
 }

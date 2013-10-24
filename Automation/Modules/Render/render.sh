@@ -27,6 +27,10 @@
 
 function render {
 
+    # Define flag to control whether final content is produced inside
+    # locale directories or not.
+    RENDER_NO_LOCALE_DIR='false'
+
     # Interpret arguments and options passed through command-line.
     render_getOptions
 

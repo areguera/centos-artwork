@@ -32,8 +32,6 @@ function svg_setBaseRendition {
 
     local -a SOURCE_INSTANCES
     local -a TARGET_INSTANCES
-    local -a TARGET_COMMANDS
-    local -a INKSCAPE_OPTIONS
 
     while [[ ${COUNTER} -lt ${#SOURCES[*]} ]];do
 
@@ -75,15 +73,15 @@ function svg_setBaseRendition {
     done
     
     # Verify existence of output directory.
-    if [[ ! -d $(dirname ${TARGET}) ]];then
-        mkdir -p $(dirname ${TARGET})
+    if [[ ! -d $(dirname ${RENDER_TARGET}) ]];then
+        mkdir -p $(dirname ${RENDER_TARGET})
     fi
 
-    tcar_printMessage "${TARGET}" --as-creating-line
+    tcar_printMessage "${RENDER_TARGET}" --as-creating-line
 
     # Apply command to PNG images produced from design models to
     # construct the final PNG image.
-    ${COMMAND} ${TARGET_INSTANCES[*]} ${TARGET}
+    ${COMMAND} ${TARGET_INSTANCES[*]} ${RENDER_TARGET}
 
     # Apply branding images to final PNG image.
     if [[ -n ${BRANDS} ]];then
@@ -92,7 +90,7 @@ function svg_setBaseRendition {
 
     # Apply comment to final PNG image.
     if [[ -n ${COMMENT} ]];then
-        /usr/bin/mogrify -comment "${COMMENT}" ${TARGET}
+        /usr/bin/mogrify -comment "${COMMENT}" ${RENDER_TARGET}
     fi
 
     # Remove instances to save disk space. There is no need to have
@@ -107,8 +105,6 @@ function svg_setBaseRendition {
     # concatenations.
     unset SOURCE_INSTANCES
     unset TARGET_INSTANCES
-    unset TARGET_COMMANDS
-    unset INKSCAPE_OPTIONS
     unset COUNTER
 
 }

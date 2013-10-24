@@ -28,7 +28,7 @@
 
 function files {
 
-    local CONFIGURATION="${1}"
+    local CONFIGURATION=$(tcar_checkRepoDirSource "${1}")
 
     local -a SECTIONS
     local SECTION=''
@@ -68,12 +68,12 @@ function files {
         SECTION=${SECTIONS[${COUNTER}]}
 
         if [[ ${SECTION} =~ "^/" ]];then
-            TARGET=${SECTION}
+            RENDER_TARGET=${SECTION}
         else
-            if [[ ${TCAR_SCRIPT_LANG_LC} =~ '^en' ]];then
-                TARGET=$(dirname ${CONFIGURATION})/${SECTION}
+            if [[ ${RENDER_NO_LOCALE_DIR} == 'true' ]];then
+                RENDER_TARGET=$(dirname ${CONFIGURATION})/Final/${SECTION}
             else
-                TARGET=$(dirname ${CONFIGURATION})/${TCAR_SCRIPT_LANG_LC}/${SECTION}
+                RENDER_TARGET=$(dirname ${CONFIGURATION})/Final/${TCAR_SCRIPT_LANG_LC}/${SECTION}
             fi
         fi
 
@@ -101,40 +101,15 @@ function files {
 
         LOCALE_FROM=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "locale-from")
 
-        # When the current locale information is not English, don't
-        # process section blocks unless they have any related
-        # translation file. There is no need to have untranslated
-        # content inside language-specific directories.
-        if [[ ! ${TCAR_SCRIPT_LANG_LC} =~ '^en' ]];then
-
-            if [[ -z ${LOCALE_FROM}  ]];then
-
-                # Increment array counter.
-                COUNTER=$(( ${COUNTER} + 1 ))
-
-                # Reset array variable to avoid undesired
-                # concatenations between sections blocks.
-                unset TRANSLATIONS
-                unset SOURCES
-
-                # Move to next section block.
-                continue
-
+        for TRANSLATION in ${LOCALE_FROM};do
+            if [[ ${TRANSLATION} =~ "^/" ]];then
+                TRANSLATIONS[((++${#TRANSLATIONS[*]}))]=${TRANSLATION}
+            else
+                TRANSLATIONS[((++${#TRANSLATIONS[*]}))]=$(dirname ${CONFIGURATION})/${TRANSLATION}
             fi
+        done
 
-            for TRANSLATION in ${LOCALE_FROM};do
-                if [[ ${TRANSLATION} =~ "^/" ]];then
-                    TRANSLATIONS[((++${#TRANSLATIONS[*]}))]=${TRANSLATION}
-                else
-                    TRANSLATIONS[((++${#TRANSLATIONS[*]}))]=$(dirname ${CONFIGURATION})/${TRANSLATION}
-                fi
-            done
-
-            tcar_checkFiles -ef ${TRANSLATIONS[*]}
-
-        fi
-
-        # Initialize render's modules.
+        # Execute module for processing type-specific files.
         tcar_setModuleEnvironment -m "${RENDER_TYPE}" -t "child"
 
         # Increment section's counter.

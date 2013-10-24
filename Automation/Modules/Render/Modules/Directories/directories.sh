@@ -28,7 +28,7 @@
 
 function directories {
 
-    local DIRECTORY="${1}"
+    local DIRECTORY=$(tcar_checkRepoDirSource "${1}")
 
     local CONFIGURATION_FILES=$(tcar_getFilesList ${DIRECTORY} \
         --pattern=".+/.+\.conf$" --type='f')
@@ -43,7 +43,7 @@ function directories {
     # when no file is found).
     tcar_checkFiles -e "${CONFIGURATIONS}"
 
-    # Process each configuration file.
+    # Process configuration file, one by one.
     for CONFIGURATION in ${CONFIGURATIONS};do
         tcar_setModuleEnvironment -m 'files' -t 'sibling' -g "${CONFIGURATION}"
     done

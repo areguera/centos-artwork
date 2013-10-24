@@ -31,7 +31,7 @@ function palette {
     local FILENAME=$(tcar_getTemporalFile "$(echo ${SOURCES[0]} \
         | sed -r 's/\.[[:alpha:]]+$//')")
 
-    local LOGS=${TARGET}.log
+    local LOGS=${RENDER_TARGET}.log
 
     # Define absolute path to GPL palette. This file is the reference
     # taken to set the max number of colors the final image will be
@@ -67,9 +67,9 @@ function palette {
         < ${FILENAME}.pnm 2>>${LOGS} > ${FILENAME}.ppm
 
     # Print action message.
-    tcar_printMessage "${TARGET}" --as-creating-line
+    tcar_printMessage "${RENDER_TARGET}" --as-creating-line
 
-    if [[ ${TARGET} =~ '\.lss$' ]];then
+    if [[ ${RENDER_TARGET} =~ '\.lss$' ]];then
 
         # Define the HEX palette. The HEX palette is built from source
         # palette (PALETTE_GPL) and provides the color information in
@@ -85,19 +85,19 @@ function palette {
 
         # Create LSS16 image. 
         ppmtolss16 $(cat ${PALETTE_HEX}) \
-            < ${FILENAME}.ppm 2>>${LOGS} > ${TARGET}
+            < ${FILENAME}.ppm 2>>${LOGS} > ${RENDER_TARGET}
      
         # Create PPM image indexed to 16 colors. Also the colormap
         # used in the LSS16 image is saved on ${FILE}.log; this is
         # useful to verify the correct order of colors in the image
         # index.
         lss16toppm -map \
-            < ${TARGET} 2>>${LOGS} > ${TARGET}.ppm
+            < ${RENDER_TARGET} 2>>${LOGS} > ${RENDER_TARGET}.ppm
 
     else
 
         # Create final file.
-        /usr/bin/convert ${FILENAME}.ppm ${TARGET}
+        /usr/bin/convert ${FILENAME}.ppm ${RENDER_TARGET}
 
     fi
 

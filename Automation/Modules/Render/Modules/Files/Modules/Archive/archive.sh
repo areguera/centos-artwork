@@ -27,7 +27,7 @@
 
 function archive {
 
-    tcar_printMessage "${TARGET}" --as-creating-line
+    tcar_printMessage "${RENDER_TARGET}" --as-creating-line
 
     COMMAND=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "command")
     if [[ -z ${COMMAND} ]];then
@@ -44,7 +44,7 @@ function archive {
 
     pushd ${TCAR_SCRIPT_TEMPDIR} > /dev/null
 
-    ${COMMAND} ${TARGET} *
+    ${COMMAND} ${RENDER_TARGET} *
 
     popd > /dev/null
 
