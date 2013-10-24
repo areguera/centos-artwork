@@ -90,7 +90,7 @@ declare -x TEXTDOMAINDIR=${TCAR_SCRIPT_BASEDIR}/Locales
 # Set absolute path to documentation search path. This is the location
 # where final documentation formats (e.g., man pages) will be saved
 # in.
-declare -x TCAR_SCRIPT_DIR_MANUALS=${TCAR_SCRIPT_BASEDIR}/Manuals
+declare -x TCAR_SCRIPT_DIR_MANUALS=${TCAR_SCRIPT_BASEDIR}/Manuals/Final
 
 ######################################################################
 # User-related configuration variables.

@@ -47,7 +47,7 @@ function tcar_printHelp {
     fi
 
     # Print requested documentation. 
-    /usr/bin/man -M ${TCAR_SCRIPT_DIR_MANUALS}:${TCAR_MODULE_DIR_MANUALS} "${TCAR_MANPAGE_NAME}"
+    /usr/bin/man -M ${TCAR_SCRIPT_DIR_MANUALS}:${TCAR_MODULE_DIR_MANUALS}/Final "${TCAR_MANPAGE_NAME}"
 
     # Finish script execution successfully.
     exit 0
