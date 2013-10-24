@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: locale.sh 0.6\n"
 "Report-Msgid-Bugs-To: centos-l10n-es@centos.org.cu\n"
-"POT-Creation-Date: 2013-10-07 14:33-0400\n"
-"PO-Revision-Date: 2013-10-07 14:33-0400\n"
+"POT-Creation-Date: 2013-10-23 15:31-0400\n"
+"PO-Revision-Date: 2013-10-23 15:31-0400\n"
 "Last-Translator: Localization SIG <centos-l10n-es@centos.org.cu>\n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -17,10 +17,1721 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: Automation/Modules/Locale/locale.sh:46
-msgid "The C locale cannot be localized to itself."
-msgstr "La escena C no puede ser localizada a si misma."
+#: Automation/Modules/Locale/Modules/Files/Modules/Update/Modules/Conf/conf.sh:46
+#, sh-format
+msgid "No section definition was found in $CONFIGURATION."
+msgstr "Ninguna sección de configuración fue encontrarada en $CONFIGURATION."
 
-#: Automation/Modules/Locale/locale.sh:60
-msgid "The argument provided isn't valid."
-msgstr "El argumento suministrado no es válido."
+#: Automation/Modules/Locale/Modules/Files/Modules/Update/Modules/Conf/conf.sh:57
+msgid "hasn't render-type set in."
+msgstr "no tiene el ajuste render-type."
+
+#: Automation/Modules/Locale/Modules/Files/Modules/Update/Modules/Conf/conf.sh:62
+msgid "hasn't render-from set in."
+msgstr "no tiene el ajuste render-from."
+
+#: Automation/Modules/Locale/Modules/Files/Modules/Update/Modules/Conf/conf.sh:70
+msgid "hasn't render-flow set in."
+msgstr "no tiene el ajuste render-flow."
+
+#: Automation/Modules/Locale/Modules/Files/Modules/Update/Modules/Conf/conf.sh:75
+msgid "hasn't locale-from set in."
+msgstr "no tiene el ajuste locale-from."
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:30
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:30
+msgid "Unknown"
+msgstr "Desconocido"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:35
+msgid "Andorra"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:38
+msgid "United Arab Emirates"
+msgstr "Emirates Árabes Unidos"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:41
+msgid "Afghanistan"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:44
+msgid "Antigua and Barbuda"
+msgstr "Antigua y Barbuda"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:47
+msgid "Anguilla"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:50
+msgid "Albania"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:53
+msgid "Armenia"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:56
+msgid "Netherlands Antilles"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:59
+msgid "Angola"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:62
+msgid "Antarctica"
+msgstr "Antárctica"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:65
+msgid "Argentina"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:68
+msgid "Samoa (American)"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:71
+msgid "Austria"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:74
+msgid "Australia"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:77
+msgid "Aruba"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:80
+msgid "Azerbaijan"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:83
+msgid "Bosnia and Herzegovina"
+msgstr "Bosnia y Herzegovina"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:86
+msgid "Barbados"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:89
+msgid "Bangladesh"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:92
+msgid "Belgium"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:95
+msgid "Burkina Faso"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:98
+msgid "Bulgaria"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:101
+msgid "Bahrain"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:104
+msgid "Burundi"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:107
+msgid "Benin"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:110
+msgid "Bermuda"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:113
+msgid "Brunei"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:116
+msgid "Bolivia"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:119
+msgid "Brazil"
+msgstr "Brasil"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:122
+msgid "Bahamas"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:125
+msgid "Bhutan"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:128
+msgid "Bouvet Island"
+msgstr "Isla de Bouvet"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:131
+msgid "Botswana"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:134
+msgid "Belarus"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:137
+msgid "Belize"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:140
+msgid "Canada"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:143
+msgid "Cocos (Keeling) Islands"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:146
+msgid "Congo (Dem. Rep.)"
+msgstr "República Democrática del Congo"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:149
+msgid "Central African Rep."
+msgstr "Repúbliva Central Africana"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:152
+msgid "Congo (Rep.)"
+msgstr "República del Congo"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:155
+msgid "Switzerland"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:158
+msgid "Co^te d'Ivoire"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:161
+msgid "Cook Islands"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:164
+msgid "Chile"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:167
+msgid "Cameroon"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:170
+msgid "China"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:173
+msgid "Colombia"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:176
+msgid "Costa Rica"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:179
+msgid "Serbia and Montenegro"
+msgstr "Serbia y Montenegro"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:182
+msgid "Cuba"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:185
+msgid "Cape Verde"
+msgstr "Cabo Verde"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:188
+msgid "Christmas Island"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:191
+msgid "Cyprus"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:194
+msgid "Czech Republic"
+msgstr "República Checa"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:197
+msgid "Germany"
+msgstr "Alemania"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:200
+msgid "Djibouti"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:203
+msgid "Denmark"
+msgstr "Dinamarca"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:206
+msgid "Dominica"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:209
+msgid "Dominican Republic"
+msgstr "República Dominicana"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:212
+msgid "Algeria"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:215
+msgid "Ecuador"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:218
+msgid "Estonia"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:221
+msgid "Egypt"
+msgstr "Egipto"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:224
+msgid "Western Sahara"
+msgstr "Shara Occidental"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:227
+msgid "Eritrea"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:230
+msgid "Spain"
+msgstr "España"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:233
+msgid "Ethiopia"
+msgstr "Etiopía"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:236
+msgid "Finland"
+msgstr "Finlandia"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:239
+msgid "Fiji"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:242
+msgid "Falkland Islands"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:245
+msgid "Micronesia"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:248
+msgid "Faeroe Islands"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:251
+msgid "France"
+msgstr "Francia"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:254
+msgid "Gabon"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:257
+msgid "Britain (UK)"
+msgstr "Bretaña (UK)"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:260
+msgid "Grenada"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:263
+msgid "Georgia"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:266
+msgid "French Guiana"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:269
+msgid "Ghana"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:272
+msgid "Gibraltar"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:275
+msgid "Greenland"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:278
+msgid "Gambia"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:281
+msgid "Guinea"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:284
+msgid "Guadeloupe"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:287
+msgid "Equatorial Guinea"
+msgstr "Guinea Ecuatorial"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:290
+msgid "Greece"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:293
+msgid "South Georgia and the South Sandwich Islands"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:296
+msgid "Guatemala"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:299
+msgid "Guam"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:302
+msgid "Guinea-Bissau"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:305
+msgid "Guyana"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:308
+msgid "Hong Kong"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:311
+msgid "Heard Island and McDonald Islands"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:314
+msgid "Honduras"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:317
+msgid "Croatia"
+msgstr "Croasia"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:320
+msgid "Haiti"
+msgstr "Haití"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:323
+msgid "Hungary"
+msgstr "Hungría"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:326
+msgid "Indonesia"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:329
+msgid "Ireland"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:332
+msgid "Israel"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:335
+msgid "India"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:338
+msgid "British Indian Ocean Territory"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:341
+msgid "Iraq"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:344
+msgid "Iran"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:347
+msgid "Iceland"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:350
+msgid "Italy"
+msgstr "Italia"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:353
+msgid "Jamaica"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:356
+msgid "Jordan"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:359
+msgid "Japan"
+msgstr "Japón"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:362
+msgid "Kenya"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:365
+msgid "Kyrgyzstan"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:368
+msgid "Cambodia"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:371
+msgid "Kiribati"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:374
+msgid "Comoros"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:377
+msgid "St Kitts and Nevis"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:380
+msgid "Korea (North)"
+msgstr "Korea (Norte)"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:383
+msgid "Korea (South)"
+msgstr "Korea (Sur)"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:386
+msgid "Kuwait"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:389
+msgid "Cayman Islands"
+msgstr "Islas Caimán"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:392
+msgid "Kazakhstan"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:395
+msgid "Laos"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:398
+msgid "Lebanon"
+msgstr "Líbano"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:401
+msgid "St Lucia"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:404
+msgid "Liechtenstein"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:407
+msgid "Sri Lanka"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:410
+msgid "Liberia"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:413
+msgid "Lesotho"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:416
+msgid "Lithuania"
+msgstr "Lituania"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:419
+msgid "Luxembourg"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:422
+msgid "Latvia"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:425
+msgid "Libya"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:428
+msgid "Morocco"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:431
+msgid "Monaco"
+msgstr "Mónaco"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:434
+msgid "Moldova"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:437
+msgid "Madagascar"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:440
+msgid "Marshall Islands"
+msgstr "Islas Marshall"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:443
+msgid "Macedonia"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:446
+msgid "Mali"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:449
+msgid "Myanmar (Burma)"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:452
+msgid "Mongolia"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:455
+msgid "Macao"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:458
+msgid "Northern Mariana Islands"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:461
+msgid "Martinique"
+msgstr "Martinica"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:464
+msgid "Mauritania"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:467
+msgid "Montserrat"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:470
+msgid "Malta"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:473
+msgid "Mauritius"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:476
+msgid "Maldives"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:479
+msgid "Malawi"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:482
+msgid "Mexico"
+msgstr "México"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:485
+msgid "Malaysia"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:488
+msgid "Mozambique"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:491
+msgid "Namibia"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:494
+msgid "New Caledonia"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:497
+msgid "Niger"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:500
+msgid "Norfolk Island"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:503
+msgid "Nigeria"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:506
+msgid "Nicaragua"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:509
+msgid "Netherlands"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:512
+msgid "Norway"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:515
+msgid "Nepal"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:518
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:478
+msgid "Nauru"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:521
+msgid "Niue"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:524
+msgid "New Zealand"
+msgstr "Nueva Zelanda"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:527
+msgid "Oman"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:530
+msgid "Panama"
+msgstr "Panamá"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:533
+msgid "Peru"
+msgstr "Perú"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:536
+msgid "French Polynesia"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:539
+msgid "Papua New Guinea"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:542
+msgid "Philippines"
+msgstr "Filipinas"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:545
+msgid "Pakistan"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:548
+msgid "Poland"
+msgstr "Polonia"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:551
+msgid "St Pierre and Miquelon"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:554
+msgid "Pitcairn"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:557
+msgid "Puerto Rico"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:560
+msgid "Palestine"
+msgstr "Palestina"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:563
+msgid "Portugal"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:566
+msgid "Palau"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:569
+msgid "Paraguay"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:572
+msgid "Qatar"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:575
+msgid "Reunion"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:578
+msgid "Romania"
+msgstr "Rumania"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:581
+msgid "Russia"
+msgstr "Rusia"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:584
+msgid "Rwanda"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:587
+msgid "Saudi Arabia"
+msgstr "Arabia Saudita"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:590
+msgid "Solomon Islands"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:593
+msgid "Seychelles"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:596
+msgid "Sudan"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:599
+msgid "Sweden"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:602
+msgid "Singapore"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:605
+msgid "St Helena"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:608
+msgid "Slovenia"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:611
+msgid "Svalbard and Jan Mayen"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:614
+msgid "Slovakia"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:617
+msgid "Sierra Leone"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:620
+msgid "San Marino"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:623
+msgid "Senegal"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:626
+msgid "Somalia"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:629
+msgid "Suriname"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:632
+msgid "Sao Tome and Principe"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:635
+msgid "El Salvador"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:638
+msgid "Syria"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:641
+msgid "Swaziland"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:644
+msgid "Turks and Caicos Islands"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:647
+msgid "Chad"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:650
+msgid "French Southern and Antarctic Lands"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:653
+msgid "Togo"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:656
+msgid "Thailand"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:659
+msgid "Tajikistan"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:662
+msgid "Tokelau"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:665
+msgid "Timor-Leste"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:668
+msgid "Turkmenistan"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:671
+msgid "Tunisia"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:674
+msgid "Tonga"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:677
+msgid "Turkey"
+msgstr "Turquía"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:680
+msgid "Trinidad and Tobago"
+msgstr "Trinidad y Tobago"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:683
+msgid "Tuvalu"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:686
+msgid "Taiwan"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:689
+msgid "Tanzania"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:692
+msgid "Ukraine"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:695
+msgid "Uganda"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:698
+msgid "US minor outlying islands"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:701
+msgid "United States"
+msgstr "Estados Unidos"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:704
+msgid "Uruguay"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:707
+msgid "Uzbekistan"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:710
+msgid "Vatican City"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:713
+msgid "St Vincent"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:716
+msgid "Venezuela"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:719
+msgid "Virgin Islands (UK)"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:722
+msgid "Virgin Islands (US)"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:725
+msgid "Vietnam"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:728
+msgid "Vanuatu"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:731
+msgid "Wallis and Futuna"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:734
+msgid "Samoa (Western)"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:737
+msgid "Yemen"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:740
+msgid "Mayotte"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:743
+msgid "South Africa"
+msgstr "Sur África"
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:746
+msgid "Zambia"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getCountryName.sh:749
+msgid "Zimbabwe"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:35
+msgid "Afar"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:39
+msgid "Abkhazian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:43
+msgid "Avestan"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:47
+msgid "Afrikaans"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:51
+msgid "Akan"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:55
+msgid "Amharic"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:59
+msgid "Aragonese"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:63
+msgid "Arabic"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:67
+msgid "Assamese"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:71
+msgid "Avaric"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:75
+msgid "Aymara"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:79
+msgid "Azerbaijani"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:83
+msgid "Bashkir"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:87
+msgid "Byelorussian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:91
+msgid "Bulgarian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:95
+msgid "Bihari"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:99
+msgid "Bislama"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:103
+msgid "Bambara"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:107
+msgid "Bengali"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:111
+msgid "Tibetan"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:115
+msgid "Breton"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:119
+msgid "Bosnian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:123
+msgid "Catalan"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:127
+msgid "Chechen"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:131
+msgid "Chamorro"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:135
+msgid "Corsican"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:139
+msgid "Cree"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:143
+msgid "Czech"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:147
+msgid "Church Slavic"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:151
+msgid "Chuvash"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:155
+msgid "Welsh"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:159
+msgid "Danish"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:163
+msgid "German"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:167
+msgid "Divehi"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:171
+msgid "Dzongkha"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:175
+msgid "E'we"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:179
+msgid "Greek"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:183
+msgid "English"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:187
+msgid "Esperanto"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:191
+msgid "Spanish"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:195
+msgid "Estonian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:199
+msgid "Basque"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:202
+msgid "Persian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:206
+msgid "Fulah"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:210
+msgid "Finnish"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:214
+msgid "Fijian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:218
+msgid "Faroese"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:222
+msgid "French"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:226
+msgid "Frisian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:230
+msgid "Irish"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:234
+msgid "Scots"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:238
+msgid "Gallegan"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:242
+msgid "Guarani"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:246
+msgid "Gujarati"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:250
+msgid "Manx"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:254
+msgid "Hausa"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:258
+msgid "Hebrew"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:262
+msgid "Hindi"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:266
+msgid "Hiri Motu"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:270
+msgid "Croatian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:274
+msgid "Haitian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:278
+msgid "Hungarian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:282
+msgid "Armenian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:286
+msgid "Herero"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:290
+msgid "Interlingua"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:294
+msgid "Indonesian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:298
+msgid "Interlingue"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:302
+msgid "Igbo"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:306
+msgid "Sichuan Yi"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:310
+msgid "Inupiak"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:314
+msgid "Ido"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:318
+msgid "Icelandic"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:322
+msgid "Italian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:326
+msgid "Inuktitut"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:330
+msgid "Japanese"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:334
+msgid "Javanese"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:338
+msgid "Georgian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:342
+msgid "Kongo"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:346
+msgid "Kikuyu"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:350
+msgid "Kuanyama"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:354
+msgid "Kazakh"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:358
+msgid "Kalaallisut"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:362
+msgid "Khmer"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:366
+msgid "Kannada"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:370
+msgid "Korean"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:374
+msgid "Kanuri"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:378
+msgid "Kashmiri"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:382
+msgid "Kurdish"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:386
+msgid "Komi"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:390
+msgid "Cornish"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:394
+msgid "Kirghiz"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:398
+msgid "Latin"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:402
+msgid "Letzeburgesch"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:406
+msgid "Ganda"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:410
+msgid "Limburgish"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:414
+msgid "Lingala"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:418
+msgid "Lao"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:422
+msgid "Lithuanian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:426
+msgid "Luba-Katanga"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:430
+msgid "Latvian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:434
+msgid "Malagasy"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:438
+msgid "Marshall"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:442
+msgid "Maori"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:446
+msgid "Macedonian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:450
+msgid "Malayalam"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:454
+msgid "Mongolian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:458
+msgid "Moldavian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:462
+msgid "Marathi"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:466
+msgid "Malay"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:470
+msgid "Maltese"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:474
+msgid "Burmese"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:482
+msgid "Norwegian Bokmaal"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:486
+msgid "Ndebele, North"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:490
+msgid "Nepali"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:494
+msgid "Ndonga"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:498
+msgid "Dutch"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:502
+msgid "Norwegian Nynorsk"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:506
+msgid "Norwegian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:510
+msgid "Ndebele, South"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:514
+msgid "Navajo"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:518
+msgid "Chichewa"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:522
+msgid "Occitan"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:526
+msgid "Ojibwa"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:530
+msgid "(Afan) Oromo"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:534
+msgid "Oriya"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:538
+msgid "Ossetian; Ossetic"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:542
+msgid "Panjabi; Punjabi"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:546
+msgid "Pali"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:550
+msgid "Polish"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:554
+msgid "Pashto, Pushto"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:558
+msgid "Portuguese"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:562
+msgid "Quechua"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:566
+msgid "Rhaeto-Romance"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:570
+msgid "Rundi"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:574
+msgid "Romanian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:578
+msgid "Russian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:582
+msgid "Kinyarwanda"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:586
+msgid "Sanskrit"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:590
+msgid "Sardinian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:594
+msgid "Sindhi"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:598
+msgid "Northern Sami"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:602
+msgid "Sango; Sangro"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:606
+msgid "Sinhalese"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:610
+msgid "Slovak"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:614
+msgid "Slovenian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:618
+msgid "Samoan"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:622
+msgid "Shona"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:626
+msgid "Somali"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:630
+msgid "Albanian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:634
+msgid "Serbian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:638
+msgid "Swati; Siswati"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:642
+msgid "Sesotho; Sotho, Southern"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:646
+msgid "Sundanese"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:650
+msgid "Swedish"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:654
+msgid "Swahili"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:658
+msgid "Tamil"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:662
+msgid "Telugu"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:666
+msgid "Tajik"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:670
+msgid "Thai"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:674
+msgid "Tigrinya"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:678
+msgid "Turkmen"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:682
+msgid "Tagalog"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:686
+msgid "Tswana; Setswana"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:690
+msgid "Tonga (?)"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:694
+msgid "Turkish"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:698
+msgid "Tsonga"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:703
+msgid "Tatar"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:707
+msgid "Twi"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:711
+msgid "Tahitian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:715
+msgid "Uighur"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:719
+msgid "Ukrainian"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:723
+msgid "Urdu"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:727
+msgid "Uzbek"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:731
+msgid "Venda"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:735
+msgid "Vietnamese"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:739
+msgid "Volapuk; Volapuk"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:743
+msgid "Walloon"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:747
+msgid "Wolof"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:751
+msgid "Xhosa"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:755
+msgid "Yiddish (formerly ji)"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:759
+msgid "Yoruba"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:763
+msgid "Zhuang"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:767
+msgid "Chinese"
+msgstr ""
+
+#: Automation/Modules/Locale/Modules/Actions/Modules/Update/update_getLanguageName.sh:771
+msgid "Zulu"
+msgstr ""

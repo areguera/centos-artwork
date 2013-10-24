@@ -28,10 +28,10 @@
 function locale_getOptions {
 
     # Define short options we want to support.
-    local ARGSS="h::,v,f:,u,e,d,s,a,p"
+    local ARGSS="h::,v,f:,u,e,d,r"
 
     # Define long options we want to support.
-    local ARGSL="help::,version,filter:,update,edit,delete,siblings,all,report"
+    local ARGSL="help::,version,filter:,update,edit,delete,recursive"
 
     # Redefine arguments using getopt(1) command parser.
     tcar_setModuleArguments
@@ -72,23 +72,10 @@ function locale_getOptions {
                 shift 1
                 ;;
 
-            -s | --siblings )
-                LOCALE_FLAG_SIBLINGS="true"
-                LOCALE_FLAG_ALL="false"
+            -r | --recursive )
+                LOCALE_FLAG_RECURSIVE="true"
                 shift 1
                 ;;
-
-            -a | --all )
-                LOCALE_FLAG_SIBLINGS="false"
-                LOCALE_FLAG_ALL="true"
-                shift 1
-                ;;
-
-            -p | --report )
-                LOCALE_FLAG_REPORT="true"
-                shift 1
-                ;;
-
 
             -- )
                 shift 1

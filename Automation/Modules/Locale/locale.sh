@@ -2,7 +2,20 @@
 ######################################################################
 #
 #   locale.sh -- This module standardizes localization inside the
-#   repository.
+#   repository.  The locale module provides three ways of producing
+#   localization files:
+#
+#       1. Produce localization for one file only (when a regular file
+#       is provided as argument in the command-line),
+#
+#       2. Produce localization files for all files in the current
+#       directory you provided in the command-line (when a directory
+#       is provided as argument), and
+#
+#       3. Produce localization files for all files in the current
+#       directory recursively (when a directory is provided as
+#       argument in the command-line and the --recursive option is
+#       also provided).
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -27,23 +40,15 @@
 
 function locale {
 
+    # Define flags controlling they way locale module produce
+    # localization files.
+    local LOCALE_FLAG_RECURSIVE="false"
+
+    # Initialize module's actions.
     local ACTIONS=''
 
-    # Define flags controlling locale module's file processing. There
-    # are three possible values here. Produce localization files for
-    # the file you provided in the command-line only (default
-    # behavior). --siblings, to produce localization files for all the
-    # siblings of the files you provided in the command-line,
-    # inclusively. --all, this option makes a recursive inside the
-    # directory of the file you provided as argument to the
-    # command-line and produces localization files for all files found.
-    LOCALE_FLAG_SIBLINGS="false"
-    LOCALE_FLAG_ALL="false"
-
-    # Define flags controlling locale module's processing reports.
-    LOCALE_FLAG_REPORT='false'
-
-    # Interpret arguments and options passed through command-line.
+    # Redefine module's actions based on arguments passed through
+    # command-line.
     locale_getOptions
 
     # Verify the current locale information to avoid English messages
@@ -61,9 +66,9 @@ function locale {
         local ARGUMENT=$(tcar_checkRepoDirSource "${ARGUMENT}")
 
         if [[ -f ${ARGUMENT} ]];then
-            tcar_setModuleEnvironment -m "file" -t "child" "${ARGUMENT}"
+            tcar_setModuleEnvironment -m "files" -t "child" -g "${ARGUMENT}"
         elif [[ -d ${ARGUMENT} ]];then
-            tcar_setModuleEnvironment -m "directory" -t "child" "${ARGUMENT}"
+            tcar_setModuleEnvironment -m "directories" -t "child" -g "${ARGUMENT}"
         else
             tcar_printMessage "`gettext "The argument provided isn't valid."`" --as-error-line
         fi
