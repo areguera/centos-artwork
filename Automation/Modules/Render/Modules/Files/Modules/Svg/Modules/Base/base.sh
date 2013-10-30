@@ -1,9 +1,9 @@
 #!/bin/bash
 ######################################################################
 #
-#   Modules/Render/Modules/Svg/Modules/Simple/base.sh -- This function
-#   standardizes base rendition of PNG files.  Base rendition consists
-#   on producing one PNG image for each SVG file provided as source.
+#   base.sh -- This function standardizes base rendition of PNG files.
+#   Base rendition consists on producing one PNG image for each SVG
+#   file provided as source.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013

@@ -110,22 +110,25 @@ function tcar_setModuleEnvironment {
     local TCAR_MODULE_DIR=${TCAR_MODULE_DIRS[${TCAR_MODULE_COUNT}]}
     tcar_printMessage "TCAR_MODULE_DIR : ${TCAR_MODULE_DIR}" --as-debugger-line
 
-    # Define module's related directories.
+    # Define module's directories not reused from module's parent
+    # directory structure.
     TCAR_MODULE_DIRS_MODULES[${TCAR_MODULE_COUNT}]=${TCAR_MODULE_DIR}/Modules
     local TCAR_MODULE_DIR_MODULES=${TCAR_MODULE_DIRS_MODULES[${TCAR_MODULE_COUNT}]}
     tcar_printMessage "TCAR_MODULE_DIR_MODULES : ${TCAR_MODULE_DIR_MODULES}" --as-debugger-line
 
-    TCAR_MODULE_DIRS_MANUALS[${TCAR_MODULE_COUNT}]=${TCAR_MODULE_DIR}/Manuals
-    local TCAR_MODULE_DIR_MANUALS=${TCAR_MODULE_DIRS_MANUALS[${TCAR_MODULE_COUNT}]}
-    tcar_printMessage "TCAR_MODULE_DIR_MANUALS : ${TCAR_MODULE_DIR_MANUALS}" --as-debugger-line
-
-    TCAR_MODULE_DIRS_LOCALES[${TCAR_MODULE_COUNT}]=${TCAR_MODULE_DIR}/Locales
-    local TCAR_MODULE_DIR_LOCALES=${TCAR_MODULE_DIRS_LOCALES[${TCAR_MODULE_COUNT}]}
-    tcar_printMessage "TCAR_MODULE_DIR_LOCALES : ${TCAR_MODULE_DIR_LOCALES}" --as-debugger-line
-
     TCAR_MODULE_DIRS_CONFIGS[${TCAR_MODULE_COUNT}]=${TCAR_MODULE_DIR}/Configs
     local TCAR_MODULE_DIR_CONFIGS=${TCAR_MODULE_DIRS_CONFIGS[${TCAR_MODULE_COUNT}]}
     tcar_printMessage "TCAR_MODULE_DIR_CONFIGS : ${TCAR_MODULE_DIR_CONFIGS}" --as-debugger-line
+
+    # Define module's directories reused from module's parent
+    # directory structure.
+    TCAR_MODULE_DIRS_MANUALS[${TCAR_MODULE_COUNT}]=${TCAR_MODULE_DIRS[0]}/Manuals
+    local TCAR_MODULE_DIR_MANUALS=${TCAR_MODULE_DIRS_MANUALS[${TCAR_MODULE_COUNT}]}
+    tcar_printMessage "TCAR_MODULE_DIR_MANUALS : ${TCAR_MODULE_DIR_MANUALS}" --as-debugger-line
+
+    TCAR_MODULE_DIRS_LOCALES[${TCAR_MODULE_COUNT}]=${TCAR_MODULE_DIRS[0]}/Locales
+    local TCAR_MODULE_DIR_LOCALES=${TCAR_MODULE_DIRS_LOCALES[${TCAR_MODULE_COUNT}]}
+    tcar_printMessage "TCAR_MODULE_DIR_LOCALES : ${TCAR_MODULE_DIR_LOCALES}" --as-debugger-line
 
     # Define module's initialization file.
     TCAR_MODULE_INIT_FILES[${TCAR_MODULE_COUNT}]=${TCAR_MODULE_DIR}/${TCAR_MODULE_NAME}.sh

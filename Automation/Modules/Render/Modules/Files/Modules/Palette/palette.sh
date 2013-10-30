@@ -36,7 +36,7 @@ function palette {
     # Define absolute path to GPL palette. This file is the reference
     # taken to set the max number of colors the final image will be
     # produced for.
-    local PALETTE_GPL=$(dirname ${CONFIGURATION})/$(tcar_getConfigValue ${CONFIGURATION} ${SECTION} 'palette-gpl')
+    local PALETTE_GPL=$(tcar_getConfigValue ${CONFIGURATION} ${SECTION} 'palette-gpl')
     tcar_checkFiles -ef ${PALETTE_GPL}
 
     local PALETTE_GPL_COLORS=$(palette_getColors "${PALETTE_GPL}")

@@ -1,11 +1,10 @@
 #!/bin/bash
 ######################################################################
 #
-#   Modules/Render/Modules/Svg/Modules/Extended/extended.sh -- This
-#   function standardize extended production of PNG files from SVG
-#   files. The extended production consists on producing PNG images in
-#   in different formats, heights, foreground colors and background
-#   colors.
+#   extended.sh -- This function standardize extended production of
+#   PNG files from SVG files. The extended production consists on
+#   producing PNG images in in different formats, heights, foreground
+#   colors and background colors.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013

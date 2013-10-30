@@ -70,11 +70,7 @@ function files {
         if [[ ${SECTION} =~ "^/" ]];then
             RENDER_TARGET=${SECTION}
         else
-            if [[ ${RENDER_NO_LOCALE_DIR} == 'true' ]];then
-                RENDER_TARGET=$(dirname ${CONFIGURATION})/Final/${SECTION}
-            else
-                RENDER_TARGET=$(dirname ${CONFIGURATION})/Final/${TCAR_SCRIPT_LANG_LC}/${SECTION}
-            fi
+            RENDER_TARGET=$(dirname ${CONFIGURATION})/Final/${TCAR_SCRIPT_LANG_LC}/${SECTION}
         fi
 
         RENDER_TYPE=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "render-type")
@@ -89,9 +85,9 @@ function files {
 
         for SOURCE in ${RENDER_FROM};do
             if [[ ${SOURCE} =~ "^/" ]];then
-                SOURCES[((++${#SOURCES[*]}))]=${SOURCE}
+                SOURCES[++${#SOURCES[*]}]=${SOURCE}
             else
-                SOURCES[((++${#SOURCES[*]}))]=$(dirname ${CONFIGURATION})/${SOURCE}
+                SOURCES[++${#SOURCES[*]}]=$(dirname ${CONFIGURATION})/${SOURCE}
             fi
         done
 
@@ -100,14 +96,18 @@ function files {
         fi
 
         LOCALE_FROM=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "locale-from")
-
-        for TRANSLATION in ${LOCALE_FROM};do
-            if [[ ${TRANSLATION} =~ "^/" ]];then
-                TRANSLATIONS[((++${#TRANSLATIONS[*]}))]=${TRANSLATION}
-            else
-                TRANSLATIONS[((++${#TRANSLATIONS[*]}))]=$(dirname ${CONFIGURATION})/${TRANSLATION}
-            fi
-        done
+        if [[ -z ${LOCALE_FROM} ]] || [[ ${LOCALE_FROM} == 'no-locale' ]] ;then
+            RENDER_FLAG_NO_LOCALE='true'
+            RENDER_TARGET=$(echo ${RENDER_TARGET} | sed "s,${TCAR_SCRIPT_LANG_LC}/,,")
+        else
+            for TRANSLATION in ${LOCALE_FROM};do
+                if [[ ${TRANSLATION} =~ "^/" ]];then
+                    TRANSLATIONS[++${#TRANSLATIONS[*]}]=${TRANSLATION}
+                else
+                    TRANSLATIONS[++${#TRANSLATIONS[*]}]=$(dirname ${CONFIGURATION})/${TRANSLATION}
+                fi
+            done
+        fi
 
         # Execute module for processing type-specific files.
         tcar_setModuleEnvironment -m "${RENDER_TYPE}" -t "child"

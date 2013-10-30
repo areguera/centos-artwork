@@ -31,7 +31,7 @@ function render_getOptions {
     local ARGSS="h::,v,f:"
 
     # Define long options we want to support.
-    local ARGSL="help::,version,filter:,no-locale-dir"
+    local ARGSL="help::,version,filter:,no-locale"
 
     # Redefine arguments using getopt(1) command parser.
     tcar_setModuleArguments
@@ -55,11 +55,6 @@ function render_getOptions {
             -f | --filter )
                 TCAR_FLAG_FILTER="${2:-${TCAR_FLAG_FILTER}}"
                 shift 2
-                ;;
-
-            --no-locale-dir )
-                RENDER_NO_LOCALE_DIR='true'
-                shift 1
                 ;;
 
             -- )

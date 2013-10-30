@@ -1,10 +1,9 @@
 #!/bin/bash
 ######################################################################
 #
-#   Modules/Render/Modules/Alter/Modules/Color/Scripts/palette_getColors.sh
-#   -- This function takes one palette produced by Gimp (e.g.,
-#   syslinux.gpl) as input and outputs a list of colors in #rrggbb
-#   format set in the fourth column of it. 
+#   palette_getColors.sh -- This function takes one palette produced
+#   by Gimp (e.g., syslinux.gpl) as input and outputs a list of colors
+#   in #rrggbb format set in the fourth column of it. 
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013

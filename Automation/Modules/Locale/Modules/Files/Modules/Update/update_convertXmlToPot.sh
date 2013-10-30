@@ -33,10 +33,14 @@ function update_convertXmlToPot {
     # Move to final location before processing source file in order
     # for relative calls (e.g., image files) inside the source files
     # can be found by xml2po and no warning be printed from it.
-    pushd ${RENDER_TARGET} > /dev/null
+    if [[ -d ${RENDER_TARGET} ]];then
+        pushd ${RENDER_TARGET} > /dev/null
+    fi
 
     cat ${XML_FILE} | xml2po -a -l ${TCAR_SCRIPT_LANG_LC} - \
         | msgcat --output-file=${POT_FILE} --width=70 --no-location -
 
-    popd > /dev/null
+    if [[ -d ${RENDER_TARGET} ]];then
+        popd > /dev/null
+    fi
 }

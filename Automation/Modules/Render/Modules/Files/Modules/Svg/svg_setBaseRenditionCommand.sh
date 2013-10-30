@@ -1,9 +1,8 @@
 #!/bin/bash
 ######################################################################
 #
-#   Modules/Render/Modules/Svg/Scripts/svg_setBaseRenditionCommand.sh
-#   -- This function standardizes the way SVG files are produced
-#   inside the centos-art.sh script.
+#   svg_setBaseRenditionCommand.sh -- This function standardizes the
+#   way SVG files are produced inside the centos-art.sh script.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013

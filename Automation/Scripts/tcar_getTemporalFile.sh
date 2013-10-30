@@ -38,7 +38,7 @@ function tcar_getTemporalFile {
     # instances are created previous to be parsed by inkscape in order
     # to be exported as png. In such cases .svg file extension is
     # required in order to avoid complains from inkscape.
-    local FILENAME="$(tcar_getRepoName ${1} -f)"
+    local FILENAME="${RANDOM}-$(tcar_getRepoName ${1} -f)"
 
     # Check default base name for temporal file, it can't be an empty
     # value.

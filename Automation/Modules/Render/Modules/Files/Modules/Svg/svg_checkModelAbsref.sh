@@ -1,18 +1,17 @@
 #!/bin/bash
 ######################################################################
 #
-#   Modules/Render/Modules/Svg/Scripts/svg_checkModelAbsref.sh -- This
-#   function retrieves absolute pahts from source files and checks
-#   their existence. 
+#   svg_checkModelAbsref.sh -- This function retrieves absolute pahts
+#   from source files and checks their existence.
 #
 #   In order for design templates to point different artistic motifs,
 #   design templates make use of external files which point to
 #   specific artistic motif background images. If such external files
 #   don't exist, try to create the background image required by
-#   cropping a higher background image (e.g., 2048x1536-final.png).
-#   If this isn't possible either, then create the background image
-#   using a plain color and crop from it then.  We can't go on without
-#   the required background information.
+#   cropping a higher background image (e.g., 2048x1536.png).  If this
+#   isn't possible either, then create the background image using a
+#   plain color and crop from it then.  We can't go on without the
+#   required background information.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -78,12 +77,12 @@ function svg_checkModelAbsref {
             # crop when no specific background information be
             # available for using. Generally, this is the most
             # reusable background file inside the artistic motifs
-            # (e.g,.  the `2048x1536-final.png' file).  We can use
-            # this image file to create almost all artworks inside The
+            # (e.g,.  the `2048x1536.png' file).  We can use this
+            # image file to create almost all artworks inside The
             # CentOS Distribution visual manifestation when
             # resolution-specific backgrounds don't exist. 
             BG_SRC_FILE=$(echo ${BG_DST_FILE} \
-                | sed -r "s!(.+)/[[:digit:]]+x[[:digit:]]+(-final\.png)!\1/2048x1536\2!")
+                | sed -r "s!(.+)/[[:digit:]]+x[[:digit:]]+!\1/2048x1536!")
 
             # Verify existence of source background file. If the file
             # doesn't exist create it using The CentOS Project default
@@ -92,20 +91,17 @@ function svg_checkModelAbsref {
             if [[ ! -f ${BG_SRC_FILE} ]];then
 
                 # Define plain color that will be used as background.
-                BG_SRC_FILE_COLOR=$(svg_getColors)
-
-                # Verify format of color value.
-                svg_checkColorFormats ${BG_SRC_FILE_COLOR} --format='rrggbb'
+                BG_SRC_FILE_COLOR='#204C8D'
 
                 # Define width for the source background file the
                 # required background information is cropped from.
                 BG_SRC_FILE_WIDTH=$(echo ${BG_SRC_FILE} \
-                    | sed -r 's!.+/([[:digit:]]+)x[[:digit:]]+-final\.png!\1!')
+                    | sed -r 's!.+/([[:digit:]]+)x[[:digit:]]+\.png!\1!')
 
                 # Define height for the source background file the
                 # required background information is cropped from.
                 BG_SRC_FILE_HEIGHT=$(echo ${BG_SRC_FILE} \
-                    | sed -r 's!.+/[[:digit:]]+x([[:digit:]]+)-final\.png!\1!')
+                    | sed -r 's!.+/[[:digit:]]+x([[:digit:]]+)\.png!\1!')
 
                 # Print action message.
                 tcar_printMessage "${BG_SRC_FILE} (${BG_SRC_FILE_COLOR})" --as-creating-line
@@ -117,18 +113,18 @@ function svg_checkModelAbsref {
 
             fi
 
-            # Print action message.
-            tcar_printMessage "${BG_SRC_FILE}" --as-cropping-line
-
             # Define the width of the required background information.
             BG_DST_FILE_WIDTH=$(echo ${BG_DST_FILE} \
-                | sed -r 's!.+/([[:digit:]]+)x[[:digit:]]+-final\.png!\1!')
+                | sed -r 's!.+/([[:digit:]]+)x[[:digit:]]+\.png!\1!')
 
             # Define the height of the required background information.
             BG_DST_FILE_HEIGHT=$(echo ${BG_DST_FILE} \
-                | sed -r 's!.+/[[:digit:]]+x([[:digit:]]+)-final\.png!\1!')
+                | sed -r 's!.+/[[:digit:]]+x([[:digit:]]+)\.png!\1!')
+
+            # Print action message.
+            tcar_printMessage "${BG_SRC_FILE} (${BG_DST_FILE_WIDTH}x${BG_DST_FILE_HEIGHT})" --as-cropping-line
  
-            # Create required backgrounnd information.
+            # Create required background information.
             convert -quiet \
                 -crop ${BG_DST_FILE_WIDTH}x${BG_DST_FILE_HEIGHT}+0+0 \
                 ${BG_SRC_FILE} ${BG_DST_FILE}

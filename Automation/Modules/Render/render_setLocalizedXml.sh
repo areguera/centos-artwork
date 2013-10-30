@@ -1,15 +1,15 @@
 #!/bin/bash
 ######################################################################
 #
-#   Modules/Render/Modules/Svg/Scripts/render_setLocalization.sh --
-#   This function standardizes the way (.po) translation files are
-#   applied to XML files (e.g., .docbook, .svg) in order to produce
-#   their related translated instances, used to expand translation
-#   markers and produce the final file format in different languages.
-#   Assuming no translation file exists, an untranslated instance is
-#   taken from the design model and created (i.e., just a copy) from
-#   it.  Using a design model instance (translated or not) is required
-#   in order to expand translation markers safely.
+#   render_setLocalizedXml.sh -- This function standardizes the way
+#   (.po) translation files are applied to XML files (e.g., .docbook,
+#   .svg) in order to produce their related translated instances, used
+#   to expand translation markers and produce the final file format in
+#   different languages.  Assuming no translation file exists, an
+#   untranslated instance is taken from the design model and created
+#   (i.e., just a copy) from it.  Using a design model instance
+#   (translated or not) is required in order to expand translation
+#   markers safely.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -37,61 +37,76 @@ function render_setLocalizedXml {
     local SOURCE=${1}
     local TARGET=${2}
 
-    # Define which command will be used to output the template
-    # content. This is required because template files might be found
-    # as compressed files inside the repository.
-    local COMMAND="/bin/cat"
-    if [[ $(/usr/bin/file -b -i ${SOURCE}) =~ '^application/x-gzip$' ]];then
-        COMMAND="/bin/zcat"
-    fi
-
     local TRANSLATION=$(tcar_getTemporalFile "messages.po")
 
-    if [[ ${#TRANSLATIONS[*]} -gt 0 ]];then
+    # By default source instances are created inside /tmp directory
+    # and are localized before reaching base rendition.  In case a
+    # source instance is being used as source here, don't duplicate
+    # it.  Try to reuse it, instead.
 
-        # Verify existence of translation files.
-        tcar_checkFiles -efi 'text/x-po' ${TRANSLATIONS[*]}
+    if [[ ! ${SOURCE} =~ '^/tmp' ]];then
 
-        # Combine available translations file into one translation
-        # instance.
-        msgcat -u -o ${TRANSLATION} ${TRANSLATIONS[*]}
+        if [[ ${RENDER_FLAG_NO_LOCALE} != 'true' ]];then
 
-        # Move to final location before processing source file in
-        # order for relative calls (e.g., image files) inside the
-        # source files can be found by xml2po and no warning be
-        # printed from it.
-        pushd $(dirname ${RENDER_TARGET}) > /dev/null
+            # Verify existence of translation files.
+            tcar_checkFiles -efi 'text/x-po' ${TRANSLATIONS[*]}
 
-        # Create the translated instance of design model.
-        ${COMMAND} ${SOURCE} | xml2po -a -l ${TCAR_SCRIPT_LANG_LC} \
-            -p ${TRANSLATION} -o ${TARGET} -
+            # Combine available translations file into one translation
+            # instance.
+            msgcat -u -o ${TRANSLATION} ${TRANSLATIONS[*]}
 
-        # Remove .xml2po.mo temporal file.
-        if [[ -f ./.xml2po.mo ]];then
-            rm ./.xml2po.mo
+            # Move to final location before processing source file in
+            # order for relative calls (e.g., image files) inside the
+            # source files can be found by xml2po and no warning be
+            # printed from it.
+            pushd $(dirname ${RENDER_TARGET}) > /dev/null
+
+            # Create the translated instance of design model.
+            tcar_printFile ${SOURCE} | xml2po -a -l ${TCAR_SCRIPT_LANG_LC} \
+                -p ${TRANSLATION} -o ${TARGET} -
+
+            # Remove .xml2po.mo temporal file.
+            if [[ -f ./.xml2po.mo ]];then
+                rm ./.xml2po.mo
+            fi
+
+            # Return to previous location.
+            popd > /dev/null
+
+            # Remove instance created to store both licenses and template
+            # translations.
+            if [[ -f ${TRANSLATION} ]];then
+                rm ${TRANSLATION}
+            fi
+
+            # xml2po (gnome-doc-utils-0.8.0-2.fc6) bug? For some
+            # reason, xml2po is not adding the lang attribute to
+            # refentry tag, when producing manpages document types.
+            # This make intrinsic docbook construction for manpages
+            # like Name and Synopsis to be not localized.  This
+            # doesn't happens with article and
+            # book document types.
+            if [[ ${RENDER_FLOW} == 'manpage' ]];then
+                sed -i -r "s/<refentry>/<refentry lang=\"${TCAR_SCRIPT_LANG_LC}\">/" ${TARGET}
+            fi
+
+        else
+
+            tcar_printFile ${SOURCE} > ${TARGET}
+
         fi
 
-        # Return to previous location.
-        popd > /dev/null
-
-        # Remove instance created to store both licenses and template
-        # translations.
-        if [[ -f ${TRANSLATION} ]];then
-            rm ${TRANSLATION}
-        fi
-
-        # xml2po bug? For some reason, xml2po is not adding the lang
-        # attribute to refentry tag, when producing manpages document
-        # types.  This make intrinsic docbook construction for
-        # manpages like Name and Synopsis to be not localized.  This
-        # doesn't happens with article and book document types.
-        if [[ ${RENDER_FLOW} == 'manpage' ]];then
-            sed -i -r "s/<refentry>/<refentry lang=\"${TCAR_SCRIPT_LANG_LC}\">/" ${TARGET}
-        fi
+        # Make your best to be sure the file you've created is a valid
+        # XML file.
+        tcar_checkFiles -efi 'text/xml' ${TARGET}
 
     else
 
-        ${COMMAND} ${SOURCE} > ${TARGET}
+        /bin/ln -s ${SOURCE} ${TARGET} 
+
+        # Make your best to be sure the file you've linked is a valid
+        # XML file.
+        tcar_checkFiles -efi 'text/xml' ${SOURCE}
 
     fi
 

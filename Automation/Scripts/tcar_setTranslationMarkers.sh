@@ -63,23 +63,11 @@ function tcar_setTranslationMarkers {
 
     # Define theme translation markers.
     SRC[((++${#SRC[*]}))]='=THEME='
-    DST[((++${#DST[*]}))]="$(tcar_getPathComponent ${TARGET} --motif)"
+    DST[((++${#DST[*]}))]="$(tcar_getPathComponent ${RENDER_TARGET} --motif)"
     SRC[((++${#SRC[*]}))]='=THEMENAME='
-    DST[((++${#DST[*]}))]="$(tcar_getPathComponent ${TARGET} --motif-name)"
+    DST[((++${#DST[*]}))]="$(tcar_getPathComponent ${RENDER_TARGET} --motif-name)"
     SRC[((++${#SRC[*]}))]='=THEMERELEASE='
-    DST[((++${#DST[*]}))]="$(tcar_getPathComponent ${TARGET} --motif-version)"
-
-    # Define release-specific translation markers.
-    SRC[((++${#SRC[*]}))]='=RELEASE='
-    DST[((++${#DST[*]}))]="${FLAG_RELEASEVER}"
-    SRC[((++${#SRC[*]}))]='=MAJOR_RELEASE='
-    DST[((++${#DST[*]}))]="$(echo ${FLAG_RELEASEVER} | cut -d'.' -f1)"
-    SRC[((++${#SRC[*]}))]='=MINOR_RELEASE='
-    DST[((++${#DST[*]}))]="$(echo ${FLAG_RELEASEVER} | cut -d'.' -f2)"
-
-    # Define architectures translation markers.
-    SRC[((++${#SRC[*]}))]='=ARCH='
-    DST[((++${#DST[*]}))]="$(tcar_getPathComponent ${FLAG_BASEARCH} --architecture)"
+    DST[((++${#DST[*]}))]="$(tcar_getPathComponent ${RENDER_TARGET} --motif-version)"
 
     # Define url translation markers.
     SRC[((++${#SRC[*]}))]='=URL='

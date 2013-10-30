@@ -1,9 +1,8 @@
 #!/bin/bash
 ######################################################################
 #
-#   Modules/Render/Modules/Svg/Scripts/svg_setBaseRendition.sh -- This
-#   function standardizes the base rendition tasks needed to produce
-#   PNG files from SVG files.
+#   svg_setBaseRendition.sh -- This function standardizes the base
+#   rendition tasks needed to produce PNG files from SVG files.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -32,32 +31,28 @@ function svg_setBaseRendition {
 
     local -a SOURCE_INSTANCES
     local -a TARGET_INSTANCES
+    local -a INKSCAPE_OPTIONS
 
     while [[ ${COUNTER} -lt ${#SOURCES[*]} ]];do
 
         # Verify existence and extension of design models.
-        tcar_checkFiles -ef -m '\.(svgz|svg)$' ${SOURCES[${COUNTER}]} 
+        tcar_checkFiles -ef -m '\.(svgz|svg)$' ${SOURCES[${COUNTER}]}
 
         # Define file name for design model instances. We need to use
         # a random string in from of it to prevent duplication.
         # Remember that different files can have the same name in
         # different locations. Use the correct file information.
-        SOURCE_INSTANCES[${COUNTER}]=${TCAR_SCRIPT_TEMPDIR}/${RANDOM}-$(basename ${SOURCES[${COUNTER}]})
+        SOURCE_INSTANCES[${COUNTER}]=$(tcar_getTemporalFile $(basename ${SOURCES[${COUNTER}]}))
 
         # Define file name for image instances. We need to use a
         # random string in from of it to prevent duplication.
         # Remember that different files can have the same name in
         # different locations. Use the correct file information.
-        TARGET_INSTANCES[${COUNTER}]=${TCAR_SCRIPT_TEMPDIR}/${RANDOM}-$(basename ${SOURCES[${COUNTER}]} \
-            | sed -r 's/\.(svgz|svg)$/.png/')
+        TARGET_INSTANCES[${COUNTER}]=$(tcar_getTemporalFile $(basename ${SOURCES[${COUNTER}]} \
+            | sed -r 's/\.(svgz|svg)$/.png/'))
 
-        # Create source instance considering whether or not it has
-        # translation files related.Apply translation files to source instance, if any.
+        # Create source instance considering translation files.
         render_setLocalizedXml "${SOURCES[${COUNTER}]}" "${SOURCE_INSTANCES[${COUNTER}]}"
-
-        # Make your best to be sure the source instance you are
-        # processing is a valid Scalable Vector Graphic (SVG) file.
-        tcar_checkFiles -i 'text/xml' ${SOURCE_INSTANCES[${COUNTER}]}
 
         # Expand any translation file that might exist.
         tcar_setTranslationMarkers ${SOURCE_INSTANCES[${COUNTER}]}
@@ -81,7 +76,9 @@ function svg_setBaseRendition {
 
     # Apply command to PNG images produced from design models to
     # construct the final PNG image.
-    ${COMMAND} ${TARGET_INSTANCES[*]} ${RENDER_TARGET}
+    if [[ -n ${COMMAND} ]];then
+        ${COMMAND} ${TARGET_INSTANCES[*]} ${RENDER_TARGET}
+    fi
 
     # Apply branding images to final PNG image.
     if [[ -n ${BRANDS} ]];then
@@ -105,6 +102,7 @@ function svg_setBaseRendition {
     # concatenations.
     unset SOURCE_INSTANCES
     unset TARGET_INSTANCES
+    unset INKSCAPE_OPTIONS
     unset COUNTER
 
 }

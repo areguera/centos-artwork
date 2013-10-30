@@ -29,6 +29,7 @@
 
 function svg {
 
+    # Define command used to create final images from instance images.
     COMMAND=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "command")
     if [[ -z ${COMMAND} ]];then
         if [[ ${#SOURCES[*]} -gt 1 ]];then
