@@ -28,11 +28,13 @@
 
 function extended_setBaseRendition {
 
+    local RENDER_TARGET=$(dirname ${RENDER_TARGET})/${FGCOLOR}/${BGCOLOR}/${HEIGHT}/$(basename ${RENDER_TARGET})
+
     svg_setBaseRendition
 
     # Create path for different image formats creation using PNG image
     # extension as reference.
-    local RENDER_TARGET=$(echo ${RENDER_TARGET} | sed -r "s/\.png$//")
+    RENDER_TARGET=$(echo ${RENDER_TARGET} | sed -r "s/\.png$//")
 
     # Convert images from PNG to those formats specified in the
     # configuration file.
