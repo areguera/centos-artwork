@@ -713,9 +713,10 @@ a.nonexistent:hover { color: gray; }
 
 /* Special decoration for some links' classes */
 
+a.external:before,
 a.www:before,
 a.http:before,
-a.https:before, {
+a.https:before {
     white-space:nowrap;
     content: url(../img/moin-www.png);
     margin: 0 0.2em;
