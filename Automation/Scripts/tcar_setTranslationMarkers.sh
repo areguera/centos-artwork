@@ -93,6 +93,12 @@ function tcar_setTranslationMarkers {
     SRC[((++${#SRC[*]}))]='=URL_PLANET='
     DST[((++${#DST[*]}))]=$(tcar_printUrl '--planet' '--with-locale')
 
+    # Define release translation markers.
+    SRC[((++${#SRC[*]}))]='=RELEASE='
+    DST[((++${#DST[*]}))]=${RELEASE}
+    SRC[((++${#SRC[*]}))]='=MAJOR_RELEASE='
+    DST[((++${#DST[*]}))]=${MAJOR_RELEASE}
+
     # Define emails translation markers.
     SRC[((++${#SRC[*]}))]='=MAIL_DOCS='
     DST[((++${#DST[*]}))]="$(tcar_printMailingList --docs)"
