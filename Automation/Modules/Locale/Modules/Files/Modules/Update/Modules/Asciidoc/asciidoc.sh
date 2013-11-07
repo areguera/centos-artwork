@@ -27,7 +27,7 @@
 
 function asciidoc {
 
-    tcar_checkFiles -efi "text/plain" "${RENDER_FROM}"
+    tcar_checkFiles -efm "\.asciidoc$" "${RENDER_FROM}"
 
     local DOCBOOK=$(tcar_getTemporalFile $(basename ${RENDER_FROM})).docbook
 
