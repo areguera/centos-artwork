@@ -6,20 +6,20 @@ v0.1, Oct 2013
 Overview
 --------
 
-From version 0.5, the *centos-art.sh* script introduces the idea of
+From version 0.5, *centos-art.sh* script implements the idea of
 modules to its base design. Modules are a collection of functions
-written in Bash that can call one another to create individual
-execution environments. They may be nested to achieve high levels of
-maintainability and extensibility. This make possible for modules
-writers to divide complicated tasks into smaller tasks that can be
-easier to debug, maintain and share with other modules efficiently
-(e.g., instead of loading modules all at once, they are only loaded at
-demand and unset once they conclude their execution).
+written in Bash that can call themselves one another to create
+individual execution environments. They may be nested to achieve high
+levels of maintainability and extensibility. This make possible for
+modules writers to divide complicated tasks into smaller tasks that
+can be easier to debug, maintain and share with other modules
+efficiently (e.g., instead of loading modules all at once, they are
+only loaded at demand and unset once they conclude their execution).
 
 This article describes the modular design of *centos-art.sh* script.
 It is a good place for you to start if you are planning to contribute
 new module environments to *centos-art.sh* script or want to know more
-about how it works. The next section delves into what a module
+about how they work. The next section delves into what a module
 environment is, the three module types you can find in it and the
 correct way of execute each one of them.
 
@@ -28,18 +28,18 @@ Module Environment
 ------------------
 
 When you execute the *centos-art.sh* script you create an execution
-environment in which variables and functions are defined. The
+environment in which variables and functions are defined. This
 execution environment is the higher environment inside *centos-art.sh*
 script. It is considered to have a ``global'' scope, so variables and
-functions defined in it are always available for any function
+functions defined inside it are always available for any function
 execution made from it. You can control the execution environment of
-*centos-art.sh* script through files +centos-art.sh+ and
-+centos-art.conf.sh+. These files don't provide too much functionality
-so module environments are executed from +centos-art.sh+, to extend
-its functionality.
+*centos-art.sh* script through +centos-art.sh+ and
++centos-art.conf.sh+ files. These files don't provide too much
+functionality so specific module environments are executed from
++centos-art.sh+ at demand, to extend its functionality.
 
 Module environments are made of small functions that perform small
-tasks and can be further executed in a specific order to produce the
+tasks and can be further executed in a specific order to produce a
 desired result.  Module environments are executed and destroyed at
 demand.  Inside *centos-art.sh*, module environments can be either
 ``parent modules,'' ``child modules,'' or ``sibling modules.''
