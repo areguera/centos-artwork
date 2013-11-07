@@ -1,9 +1,9 @@
 #!/bin/bash
 ######################################################################
 #
-#   Modules/Render/Modules/Palette/palette.sh -- This function
-#   standardizes the way palette of colors are applied to image files
-#   in order to produce images with specific number of colors.
+#   palette.sh -- This function standardizes the way palette of colors
+#   are applied to image files in order to produce images with
+#   specific number of colors.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013

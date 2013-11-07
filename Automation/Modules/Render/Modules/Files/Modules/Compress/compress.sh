@@ -1,8 +1,8 @@
 #!/bin/bash
 ######################################################################
 #
-#   Modules/Render/Modules/Compress/compress.sh -- This file
-#   standardize file compression inside the centos-art.sh script.
+#   compress.sh -- This file standardize file compression inside the
+#   centos-art.sh script.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013

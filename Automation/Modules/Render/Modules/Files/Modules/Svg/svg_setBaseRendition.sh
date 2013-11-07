@@ -35,26 +35,10 @@ function svg_setBaseRendition {
 
     while [[ ${COUNTER} -lt ${#SOURCES[*]} ]];do
 
-        # Verify existence and extension of design models.
-        tcar_checkFiles -ef -m '\.(svgz|svg)$' ${SOURCES[${COUNTER}]}
+        render_setInstances "${SOURCES[${COUNTER}]}" '(svgz|svg)' 'png'
 
-        # Define file name for design model instances. We need to use
-        # a random string in from of it to prevent duplication.
-        # Remember that different files can have the same name in
-        # different locations. Use the correct file information.
-        SOURCE_INSTANCES[${COUNTER}]=$(tcar_getTemporalFile $(basename ${SOURCES[${COUNTER}]}))
-
-        # Define file name for image instances. We need to use a
-        # random string in from of it to prevent duplication.
-        # Remember that different files can have the same name in
-        # different locations. Use the correct file information.
-        TARGET_INSTANCES[${COUNTER}]=$(tcar_getTemporalFile $(basename ${SOURCES[${COUNTER}]} \
-            | sed -r 's/\.(svgz|svg)$/.png/'))
-
-        # Create source instance considering translation files.
         render_setLocalizedXml "${SOURCES[${COUNTER}]}" "${SOURCE_INSTANCES[${COUNTER}]}"
 
-        # Expand any translation file that might exist.
         tcar_setTranslationMarkers ${SOURCE_INSTANCES[${COUNTER}]}
 
         svg_checkModelAbsref "${SOURCE_INSTANCES[${COUNTER}]}"

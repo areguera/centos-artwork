@@ -34,80 +34,63 @@
 
 function render_setLocalizedXml {
 
-    local SOURCE=${1}
-    local TARGET=${2}
+    # Define absolute path to source instance.
+    local SOURCE="${1}"
 
+    # Define absolute path to target instance.
+    local TARGET="${2}"
+
+    # Verify source instance and the no-locale flag. When source
+    # instance already exists, don't create a new file for it.
+    # Instead, link it using a symbolic link.
+    if [[ -f ${SOURCE} ]];then
+        tcar_checkFiles -i 'text/xml' ${SOURCE}
+        if [[ ${SOURCE} =~ "^${TCAR_SCRIPT_TEMPDIR}" ]];then
+            /bin/ln -s ${SOURCE} ${TARGET}
+            return
+        elif [[ ${RENDER_FLAG_NO_LOCALE} == 'true' ]];then
+            tcar_printFile ${SOURCE} > ${TARGET}
+            tcar_checkFiles -i 'text/xml' ${TARGET}
+            return
+        fi
+    fi
+
+    # Verify existence of translation files.
+    tcar_checkFiles -efi 'text/x-po' ${TRANSLATIONS[*]}
+
+    # Define absolute path to translation instance.
     local TRANSLATION=$(tcar_getTemporalFile "messages.po")
 
-    # By default source instances are created inside /tmp directory
-    # and are localized before reaching base rendition.  In case a
-    # source instance is being used as source here, don't duplicate
-    # it.  Try to reuse it, instead.
+    # Combine available translations file into one translation
+    # instance.
+    msgcat -u -o ${TRANSLATION} ${TRANSLATIONS[*]}
 
-    if [[ ! ${SOURCE} =~ '^/tmp' ]];then
+    # Verify existence of final location. In case it doesn't exist,
+    # create it.
+    if [[ $(dirname ${RENDER_TARGET}) ]];then
+        mkdir -p $(dirname ${RENDER_TARGET})
+    fi
 
-        if [[ ${RENDER_FLAG_NO_LOCALE} != 'true' ]];then
+    # Move to final location before processing source file in order
+    # for relative calls (e.g., image files) inside the source files
+    # can be found by xml2po and no warning be printed from it.
+    pushd $(dirname ${RENDER_TARGET}) > /dev/null
 
-            # Verify existence of translation files.
-            tcar_checkFiles -efi 'text/x-po' ${TRANSLATIONS[*]}
+    # Create the localized instance from design model.
+    tcar_printFile ${SOURCE} | xml2po -a -l ${TCAR_SCRIPT_LANG_LC} \
+        -p ${TRANSLATION} -o ${TARGET} -
 
-            # Combine available translations file into one translation
-            # instance.
-            msgcat -u -o ${TRANSLATION} ${TRANSLATIONS[*]}
+    # Remove .xml2po.mo temporal file.
+    if [[ -f ./.xml2po.mo ]];then
+        rm ./.xml2po.mo
+    fi
 
-            # Move to final location before processing source file in
-            # order for relative calls (e.g., image files) inside the
-            # source files can be found by xml2po and no warning be
-            # printed from it.
-            pushd $(dirname ${RENDER_TARGET}) > /dev/null
+    # Return to previous location.
+    popd > /dev/null
 
-            # Create the translated instance of design model.
-            tcar_printFile ${SOURCE} | xml2po -a -l ${TCAR_SCRIPT_LANG_LC} \
-                -p ${TRANSLATION} -o ${TARGET} -
-
-            # Remove .xml2po.mo temporal file.
-            if [[ -f ./.xml2po.mo ]];then
-                rm ./.xml2po.mo
-            fi
-
-            # Return to previous location.
-            popd > /dev/null
-
-            # Remove instance created to store both licenses and template
-            # translations.
-            if [[ -f ${TRANSLATION} ]];then
-                rm ${TRANSLATION}
-            fi
-
-            # xml2po (gnome-doc-utils-0.8.0-2.fc6) bug? For some
-            # reason, xml2po is not adding the lang attribute to
-            # refentry tag, when producing manpages document types.
-            # This make intrinsic docbook construction for manpages
-            # like Name and Synopsis to be not localized.  This
-            # doesn't happens with article and
-            # book document types.
-            if [[ ${RENDER_FLOW} == 'manpage' ]];then
-                sed -i -r "s/<refentry>/<refentry lang=\"${TCAR_SCRIPT_LANG_LC}\">/" ${TARGET}
-            fi
-
-        else
-
-            tcar_printFile ${SOURCE} > ${TARGET}
-
-        fi
-
-        # Make your best to be sure the file you've created is a valid
-        # XML file.
-        tcar_checkFiles -efi 'text/xml' ${TARGET}
-
-    else
-
-        /bin/ln -s ${SOURCE} ${TARGET} 
-
-        # Make your best to be sure the file you've linked is a valid
-        # XML file.
-        tcar_checkFiles -efi 'text/xml' ${SOURCE}
-
+    # Remove instance created to store template translations.
+    if [[ -f ${TRANSLATION} ]];then
+        rm ${TRANSLATION}
     fi
 
 }

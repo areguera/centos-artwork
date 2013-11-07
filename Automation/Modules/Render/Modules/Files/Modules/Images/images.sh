@@ -1,12 +1,12 @@
 #!/bin/bash
 ######################################################################
 #
-#   Modules/Render/Modules/Direct/images.sh -- This module
-#   standardizes production of image files from other image files.
-#   There is no intermediate process here.  The image or images
-#   provided as value to render-from variable are used to create the
-#   image specified in the section line using the command specified in
-#   the command variable, without any intermediate process.
+#   images.sh -- This module standardizes production of image files
+#   from other image files.  There is no intermediate process here.
+#   The image or images provided as value to render-from variable are
+#   used to create the image specified in the section line using the
+#   command specified in the command variable, without any
+#   intermediate process.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013

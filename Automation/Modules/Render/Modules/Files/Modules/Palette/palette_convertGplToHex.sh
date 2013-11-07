@@ -1,11 +1,11 @@
 #!/bin/bash
 ######################################################################
 #
-#   Modules/Render/Modules/Alter/Modules/Color/Scripts/palette_convertGplToHex.sh
-#   -- This function takes one palette produced by GIMP (e.g.,
-#   syslinux.gpl) as input and outputs the list of hexadecimal colors
-#   and their respective index position the `pnmtolss16' program needs
-#   (e.g., #RRGGBB=0 #RRGGBB=1 ... [all values in the same line]).
+#   palette_convertGplToHex.sh -- This function takes one palette
+#   produced by GIMP (e.g., syslinux.gpl) as input and outputs the
+#   list of hexadecimal colors and their respective index position the
+#   `pnmtolss16' program needs (e.g., #RRGGBB=0 #RRGGBB=1 ... [all
+#   values in the same line]).
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013

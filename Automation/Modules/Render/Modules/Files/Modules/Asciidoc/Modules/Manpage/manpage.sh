@@ -1,10 +1,43 @@
 #!/bin/bash
+######################################################################
+#
+#  manpage.sh -- This module produces docbook documents using manpage
+#  document type.
+#
+#   Written by:
+#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
+#
+# Copyright (C) 2009-2013 The CentOS Artwork SIG
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or (at
+# your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#
+######################################################################
 
 function manpage {
 
     local MANSECT=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "mansect")
 
     tcar_checkFiles -m '[1-9]' "${MANSECT}"
+
+    # xml2po (gnome-doc-utils-0.8.0-2.fc6) bug? For some reason xml2po
+    # is not adding the lang attribute to refentry tag when it
+    # produces manpage document types.  This make intrinsic docbook
+    # construction like Name and Synopsis to be rendered without
+    # localization. This doesn't happens with article and book
+    # document types.
+    sed -i -r "s/<refentry>/<refentry lang=\"${TCAR_SCRIPT_LANG_LC}\">/" ${TARGET_INSTANCES[${COUNTER}]}
 
     for FORMAT in ${FORMATS};do
 
@@ -24,7 +57,7 @@ function manpage {
                 fi
                 tcar_printMessage "${MAN_TARGET}" --as-creating-line
                 /usr/bin/xsltproc -o ${MAN_TARGET} --nonet \
-                    ${DOCBOOK_XSL}/docbook2manpage.xsl ${DOCBOOK_FILE}
+                    ${DOCBOOK_XSL}/docbook2manpage.xsl ${TARGET_INSTANCES[${COUNTER}]}
                 ;;
         esac
 

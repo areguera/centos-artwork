@@ -1,9 +1,8 @@
 #!/bin/bash
 ######################################################################
 #
-#   Modules/Render/Modules/Asciidoc/Scripts/asciidoc_setBaseRendition.sh
-#   -- This function standardizes transformation of asciidoc files
-#   into docbook files.
+#   asciidoc_setBaseRendition.sh -- This function standardizes
+#   transformation of asciidoc files into docbook files.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -28,53 +27,29 @@
 
 function asciidoc_setBaseRendition {
 
+    local COUNTER=0
+
     local -a SOURCE_INSTANCES
     local -a TARGET_INSTANCES
-    local COUNTER=0
 
     while [[ ${COUNTER} -lt ${#SOURCES[*]} ]];do
 
-        tcar_checkFiles -ef -m '\.asciidoc$' "${SOURCES[${COUNTER}]}"
-
-        # Define file name for design model instances. We need to use
-        # a random string in from of it to prevent duplication.
-        # Remember that different files can have the same name in
-        # different locations. Use the correct file information.
-        SOURCE_INSTANCES[${COUNTER}]=$(tcar_getTemporalFile "${RANDOM}-$(basename ${SOURCES[${COUNTER}]})")
-
-        # Define file name for image instances. We need to use a
-        # random string in from of it to prevent duplication.
-        # Remember that different files can have the same name in
-        # different locations. Use the correct file information.
-        TARGET_INSTANCES[${COUNTER}]=$(tcar_getTemporalFile "${RANDOM}-$(basename ${SOURCES[${COUNTER}]} \
-            | sed -r 's/\.asciidoc$/.docbook/')")
+        render_setInstances "${SOURCES[${COUNTER}]}" 'asciidoc' 'docbook'
 
         /usr/bin/asciidoc --backend="docbook" --doctype="${RENDER_FLOW}" \
             --out-file="${SOURCE_INSTANCES[${COUNTER}]}" ${SOURCES[${COUNTER}]}
 
-        # Create source instance considering whether or not it has
-        # translation files related.Apply translation files to source
-        # instance, if any.
         render_setLocalizedXml "${SOURCE_INSTANCES[${COUNTER}]}" "${TARGET_INSTANCES[${COUNTER}]}"
 
-        # Make your best to be sure the source instance you are
-        # processing is a valid DocBook file.
-        tcar_checkFiles -i 'text/xml' ${TARGET_INSTANCES[${COUNTER}]}
-
-        # Expand any translation file that might exist.
         tcar_setTranslationMarkers ${TARGET_INSTANCES[${COUNTER}]}
+
+        tcar_setModuleEnvironment -m "${RENDER_FLOW}" -t "child"
 
         COUNTER=$(( ${COUNTER} + 1 ))
 
     done
 
-    # Initiate format-specific transformations for current render
-    # flow.
-    for DOCBOOK_FILE in ${TARGET_INSTANCES[*]};do
-        tcar_setModuleEnvironment -m "${RENDER_FLOW}" -t "child"
-    done
-
-    unset SOURCE_INSTANCES
     unset TARGET_INSTANCES
+    unset SOURCE_INSTANCES
 
 }

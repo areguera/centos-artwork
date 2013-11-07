@@ -1,9 +1,9 @@
 #!/bin/bash
 ######################################################################
 #
-#   Modules/Render/Modules/Svg/Scripts/asciidoc_setBaseRenditionCommand.sh
-#   -- This function standardizes the way Asciidoc files are rendered
-#   inside the centos-art.sh script.
+#   asciidoc_setBaseRenditionCommand.sh -- This function standardizes
+#   the way Asciidoc files are rendered inside the centos-art.sh
+#   script.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013

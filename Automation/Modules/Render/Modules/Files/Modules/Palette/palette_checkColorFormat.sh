@@ -1,9 +1,8 @@
 #!/bin/bash
 ######################################################################
 #
-#   Modules/Render/Modules/Alter/Modules/Color/Scripts/palette_checkColorFormats.sh
-#   -- This function verifies formats of colors (i.e., the way color
-#   information is specified).
+#   palette_checkColorFormats.sh -- This function verifies formats of
+#   colors (i.e., the way color information is specified).
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013

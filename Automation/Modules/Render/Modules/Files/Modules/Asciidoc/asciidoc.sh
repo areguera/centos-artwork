@@ -1,9 +1,8 @@
 #!/bin/bash
 ######################################################################
 #
-#   Modules/Render/Modules/Asciidoc/asciidoc.sh -- This function
-#   standardizes rendition of asciidoc files inside the centos-art.sh
-#   script.
+#   asciidoc.sh -- This function standardizes rendition of asciidoc
+#   files inside the centos-art.sh script.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -42,6 +41,12 @@ function asciidoc {
     if [[ -z ${FORMATS} ]];then
         FORMATS='xhtml'
     fi
+
+    RELEASE=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" 'release')
+    if [[ -z ${RELEASE} ]];then
+        RELEASE=$(cut -f3 -d' ' /etc/redhat-release)
+    fi
+    MAJOR_RELEASE=$(echo ${RELEASE} | cut -d. -f1)
 
     asciidoc_setBaseRendition
 

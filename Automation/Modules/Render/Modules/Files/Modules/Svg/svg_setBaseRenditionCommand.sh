@@ -27,6 +27,6 @@
 
 function svg_setBaseRenditionCommand {
 
-    inkscape ${SOURCE_INSTANCES[${COUNTER}]} ${INKSCAPE_OPTIONS[${COUNTER}]} > /dev/null
+    /usr/bin/inkscape ${SOURCE_INSTANCES[${COUNTER}]} ${INKSCAPE_OPTIONS[${COUNTER}]} > /dev/null
 
 }

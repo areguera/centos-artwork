@@ -1,10 +1,9 @@
 #!/bin/bash
 ######################################################################
 #
-#   Modules/Render/Modules/Svg/svg.sh -- This file initializes the svg
-#   module. The svg module takes SVG fies as input and produces
-#   different kind of images based on either simple or advanced
-#   rendition flow.
+#   svg.sh -- This file initializes the svg module. The svg module
+#   takes SVG fies as input and produces different kind of images
+#   based on either simple or advanced rendition flow.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -45,12 +44,16 @@ function svg {
     fi
 
     BRANDS=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "brand")
+
     COMMENT=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "comment")
 
-    local EXPORTID=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "export-id")
-    if [[ -z ${EXPORTID} ]];then
-        EXPORTID="CENTOSARTWORK"
+    EXPORTID=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "export-id")
+
+    RELEASE=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" 'release')
+    if [[ -z ${RELEASE} ]];then
+        RELEASE=$(cut -f3 -d' ' /etc/redhat-release)
     fi
+    MAJOR_RELEASE=$(echo ${RELEASE} | cut -d. -f1)
 
     for RENDER_FLOW in ${RENDER_FLOWS} ;do
         tcar_setModuleEnvironment -m "${RENDER_FLOW}" -t "child"

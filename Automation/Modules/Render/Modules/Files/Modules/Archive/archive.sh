@@ -1,8 +1,8 @@
 #!/bin/bash
 ######################################################################
 #
-#   Modules/Render/Modules/Archive/archive.sh -- This file
-#   standardizes file archiving inside the centos-art.sh script.
+#   archive.sh -- This file standardizes file archiving inside the
+#   centos-art.sh script.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013

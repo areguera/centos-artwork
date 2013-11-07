@@ -1,9 +1,8 @@
 #!/bin/bash
 ######################################################################
 #
-#   palette_convertGplToPpm.sh -- This function takes one palette
-#   produced by Gimp (e.g., syslinux.gpl) as input and outputs one PPM
-#   file based on it (e.g., syslinux.ppm).
+#   render_setInstances.sh -- This function standardizes definition of
+#   file instances inside the render module.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -26,27 +25,23 @@
 #
 ######################################################################
 
-function palette_convertGplToPpm {
+function render_setInstances {
 
-    local -a FILES
-    local COUNT=0
+    local FILE=${1}
+    local FILE_EXTENSION_PATTERN=${2:-asciidoc}
+    local FILE_EXTENSION_REPLACE=${3:-docbook}
 
-    # Create temporal images (of 1x1 pixel each) to store each color
-    # retrieved from Gimp's palette.
-    for COLOR in ${PALETTE_GPL_COLORS};do
-        FILES[${COUNT}]=$(tcar_getTemporalFile ${COUNT}.ppm)
-        ppmmake ${COLOR} 1 1 > ${FILES[${COUNT}]}
-        COUNT=$((${COUNT} + 1))
-    done
+    # Verify existence and extension of design model.
+    tcar_checkFiles -ef -m "\.${FILE_EXTENSION_PATTERN}$" "${FILE}"
 
-    # Concatenate each temporal image from left to right to create the
-    # PPM file.
-    pnmcat -lr ${FILES[*]} > ${PALETTE_PPM}
+    # Define file base name.
+    local FILE_BASENAME=$(basename ${FILE})
 
-    # Remove temporal images used to build the PPM palette file.
-    rm ${FILES[*]}
+    # Define absolute path  to source instance.
+    SOURCE_INSTANCES[${COUNTER}]=$(tcar_getTemporalFile ${FILE_BASENAME})
 
-    # Verify PPM palette existence.
-    tcar_checkFiles -ef "${PALETTE_PPM}"
+    # Define absolute path to target instance.
+    TARGET_INSTANCES[${COUNTER}]=$(tcar_getTemporalFile ${FILE_BASENAME} \
+        | sed -r "s/\.${FILE_EXTENSION_PATTERN}$/.${FILE_EXTENSION_REPLACE}/")
 
 }

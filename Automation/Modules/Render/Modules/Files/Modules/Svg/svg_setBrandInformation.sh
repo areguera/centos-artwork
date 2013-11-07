@@ -1,9 +1,9 @@
 #!/bin/bash
 ######################################################################
 #
-#   Modules/Render/Modules/Svg/Scripts/svg_setBrandInformation.sh --
-#   This function takes brand information from configuration files,
-#   processes it, and apply it on final PNG image file.
+#   svg_setBrandInformation.sh -- This function takes brand
+#   information from configuration files, processes it, and apply it
+#   on final PNG image file.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013

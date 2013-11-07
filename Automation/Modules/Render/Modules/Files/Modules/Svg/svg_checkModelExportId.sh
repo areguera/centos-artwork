@@ -1,9 +1,8 @@
 #!/bin/bash
 ######################################################################
 #
-#   Modules/Render/Modules/Svg/Scripts/svg_checkModelExportId.sh --
-#   This function standardizes the export id used inside svg files and
-#   the way of verify them.
+#   svg_checkModelExportId.sh -- This function standardizes the export
+#   id used inside svg files and the way of verify them.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -40,7 +39,7 @@ function svg_checkModelExportId {
     # Check export id inside design templates.
     grep "id=\"${EXPORTID}\"" ${INSTANCE} > /dev/null
     if [[ $? -gt 0 ]];then
-        tcar_printMessage "`eval_gettext "There is not export id (\\\$EXPORTID) inside \\\"\\\$TEMPLATE\\\"."`" --as-error-line
+        tcar_printMessage "`gettext "The design model doesn't contain the export-id you specified."`" --as-error-line
     fi
 
 }

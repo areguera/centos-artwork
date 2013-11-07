@@ -46,7 +46,8 @@ function media {
     while [[ ${MEDIA_NUMBER_CURRENT} -le ${MEDIA_NUMBER} ]];do
 
         local COUNTER=0
-        local -a SOURCES_INSTANCES
+        local -a SOURCE_INSTANCES
+        local -a TARGET_INSTANCES
 
         for RELEASE in ${MEDIA_RELEASE};do
 
@@ -54,29 +55,24 @@ function media {
 
                 for MEDIA_SOURCE in ${MEDIA_SOURCES};do
 
-                    SOURCES_INSTANCES[${COUNTER}]=$(tcar_getTemporalFile ${MEDIA_SOURCE})
+                    render_setInstances "${MEDIA_SOURCE}" '(svgz|svg)' 'svg'
 
-                    # Create source instance considering whether or
-                    # not it has translation files related. Apply
-                    # translation files to source instance, if any.
-                    render_setLocalizedXml "${MEDIA_SOURCE}" "${SOURCES_INSTANCES[${COUNTER}]}"
+                    render_setLocalizedXml "${MEDIA_SOURCE}" "${TARGET_INSTANCES[${COUNTER}]}"
 
-                    # Expand translation markers specific to
-                    # installation media.
                     sed -i -r -e "s/=MEDIUM=/${MEDIA_TYPE}/g" \
                               -e "s/=CURRENT=/${MEDIA_NUMBER_CURRENT}/g" \
                               -e "s/=RELEASE=/${RELEASE}/g" \
                               -e "s/=ARCH=/${ARCH}/g" \
                               -e "s/=LAST=/${MEDIA_NUMBER}/g" \
-                              ${SOURCES_INSTANCES[${COUNTER}]}
+                              ${TARGET_INSTANCES[${COUNTER}]}
 
                     RENDER_TARGET="$(dirname ${RENDER_TARGET})/${SECTION}-${RELEASE}-${ARCH}-${MEDIA_NUMBER_CURRENT}of${MEDIA_NUMBER}.png"
 
-                    SOURCES[${COUNTER}]=${SOURCES_INSTANCES[${COUNTER}]}
+                    SOURCES[${COUNTER}]=${TARGET_INSTANCES[${COUNTER}]}
 
                     svg_setBaseRendition
 
-                    rm ${SOURCES[${COUNTER}]}
+                    rm ${TARGET_INSTANCES[${COUNTER}]}
 
                     if [[ ${MEDIA_SOURCES_MAX} -gt 1 ]];then
                         COUNTER=$(( ${COUNTER} + 1 ))

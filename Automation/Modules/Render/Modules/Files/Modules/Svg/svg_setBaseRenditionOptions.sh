@@ -1,9 +1,8 @@
 #!/bin/bash
 ######################################################################
 #
-#   Modules/Render/Modules/Svg/Scripts/svg_setBaseRenditionOptions.sh
-#   -- This function standardizes the way base rendition options are
-#   set.
+#   svg_setBaseRenditionOptions.sh -- This function standardizes the
+#   way base rendition options are set.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -37,7 +36,7 @@ function svg_setBaseRenditionOptions {
     if [[ -z ${EXPORTID} ]];then
         INKSCAPE_OPTIONS[${COUNTER}]="${INKSCAPE_OPTIONS[${COUNTER}]} --export-area-drawing "
     else
-        svg_checkModelExportId "${SOURCE_INSTANCES[${COUNTER}]}" "${EXPORTID}" 
+        svg_checkModelExportId "${SOURCE_INSTANCES[${COUNTER}]}" "${EXPORTID}"
         INKSCAPE_OPTIONS[${COUNTER}]="${INKSCAPE_OPTIONS[${COUNTER}]} --export-id=${EXPORTID} "
     fi
 
