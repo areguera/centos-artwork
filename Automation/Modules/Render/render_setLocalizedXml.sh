@@ -44,8 +44,8 @@ function render_setLocalizedXml {
     # instance already exists, don't create a new file for it.
     # Instead, link it using a symbolic link.
     if [[ -f ${SOURCE} ]];then
-        tcar_checkFiles -i 'text/xml' ${SOURCE}
         if [[ ${SOURCE} =~ "^${TCAR_SCRIPT_TEMPDIR}" ]];then
+            tcar_checkFiles -i 'text/xml' ${SOURCE}
             /bin/ln -s ${SOURCE} ${TARGET}
             return
         elif [[ ${RENDER_FLAG_NO_LOCALE} == 'true' ]];then
