@@ -33,11 +33,11 @@ function asciidoc_setXhtmlRendition {
     if [[ -z ${RENDER_PAGES} ]];then
         RENDER_PAGES='single'
     fi
-    tcar_checkFiles -m '^(single|chunks)$' "${RENDER_PAGES}"
+    tcar_checkFiles -m '^(single-notoc|single|chunks)$' "${RENDER_PAGES}"
 
     IMAGES_FROM=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "images-from")
     if [[ -z ${IMAGES_FROM} ]];then
-        IMAGES_FROM="${TCAR_BASEDIR}/Artworks/Icons/Webenv"
+        IMAGES_FROM="${TCAR_BASEDIR}/Artworks/Icons/Webenv/Final"
     fi
 
     STYLES_FROM=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "styles-from")

@@ -15,7 +15,7 @@
     <xsl:param name="section.label.includes.component.label" select="1"></xsl:param>
     <xsl:param name="admon.graphics" select="1"></xsl:param>
     <xsl:param name="admon.graphics.path">Images/</xsl:param>
-    <xsl:param name="callout.graphics.path" select="'Images/Callouts/'"></xsl:param>
+    <xsl:param name="callout.graphics.path" select="'Images/'"></xsl:param>
 
     <!-- 
     Don't print toc inside reference pages.
