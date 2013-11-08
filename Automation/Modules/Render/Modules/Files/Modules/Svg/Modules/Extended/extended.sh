@@ -42,7 +42,7 @@ function extended {
     # `16', `24', `32', etc.
     local HEIGHTS=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "heights")
     if [[ -z ${HEIGHTS} ]];then
-        HEIGHTS="16 20 22 24 32 36 38 40 48 64 72 78 96 112 124 128 148 164 196 200 512"
+        HEIGHTS="16 20 22 24 26 32 36 38 40 48 52 64 72 78 96 112 124 128 148 164 196 200 512"
     fi
 
     # Retrieve foreground colors you want to produce the image for.
@@ -64,15 +64,15 @@ function extended {
         BGCOLORS="ffffff-0 ffffff-1"
     fi
 
-    for FGCOLOR in ${FGCOLORS};do
+    for BGCOLOR in ${BGCOLORS};do
 
-        # Verify value passed as foreground color.
-        tcar_checkFiles -m '^[a-fA-F0-9]{3,6}$' ${FGCOLOR}
+        # Verify value passed as background color.
+        tcar_checkFiles -m '^[a-fA-F0-9]{6}-(0|1)$' ${BGCOLOR}
 
-        for BGCOLOR in ${BGCOLORS};do
+        for FGCOLOR in ${FGCOLORS};do
 
-            # Verify value passed as background color.
-            tcar_checkFiles -m '^[a-fA-F0-9]{6}-(0|1)$' ${BGCOLOR}
+            # Verify value passed as foreground color.
+            tcar_checkFiles -m '^[a-fA-F0-9]{3,6}$' ${FGCOLOR}
 
             for HEIGHT in ${HEIGHTS};do
 

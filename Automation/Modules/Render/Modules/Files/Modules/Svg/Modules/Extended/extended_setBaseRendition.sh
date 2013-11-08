@@ -28,7 +28,7 @@
 
 function extended_setBaseRendition {
 
-    local RENDER_TARGET=$(dirname ${RENDER_TARGET})/${FGCOLOR}/${BGCOLOR}/${HEIGHT}/$(basename ${RENDER_TARGET})
+    local RENDER_TARGET=$(dirname ${RENDER_TARGET})/${BGCOLOR}/${FGCOLOR}/${HEIGHT}/$(basename ${RENDER_TARGET})
 
     svg_setBaseRendition
 
