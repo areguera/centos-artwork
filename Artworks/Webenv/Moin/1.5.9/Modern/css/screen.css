@@ -34,7 +34,7 @@ div#footer {
 /* Header */
 
 div#header {
-	background: #204C8D url("../img/moin-header-background.png") 0 0 repeat;
+	background: #204C8D url("/webenv/images/header.png") 0 0 repeat;
 	min-height: 46px;
 	}
 
@@ -83,7 +83,7 @@ h1 {
     color: #FFF;
     border: none;
     background-color: #204C8D;
-    background-image: url("../img/moin-h1-background.png");
+    background-image: url("/webenv/images/h1.png");
     -moz-border-radius: 3px;
     }
 
@@ -94,7 +94,7 @@ h2 {
     margin-top: 1.6em;
     margin-bottom: 0.8em;
     padding-left: 20px; /* Should be the same for h{1-4}*/
-    background-image: url("../img/moin-h2-background.png");
+    background-image: url("/webenv/images/h2.png");
     border: none;
     color: #072B61;
     -moz-border-radius: 3px;
@@ -146,7 +146,7 @@ h6 {
 #editor-help {
     padding: 1em;
 	border: 1px solid;
-    background-image: url("../img/moin-msg-bg-blue.png");
+    background-image: url("/webenv/images/msg-bg-blue.png");
 	border-color: #D2E0F6;
 	background-color: #ECF4FF;
     }
@@ -201,7 +201,7 @@ table.recentchanges {
     }
 
 .recentchanges tr.rcdaybreak {
-    background-image: url("../img/moin-h2-background.png");
+    background-image: url("/webenv/images/h2.png");
     }
 
 p.diff-header {
@@ -259,10 +259,13 @@ div#page p#pageinfo {
 
 /* Logo */
 
+div#header div#logo {
+    padding-left: 10px;
+}
+
 div#header div#logo img {
     border: none;
     float: left;
-    margin-left: 10px;
     }
 
 /* Google advertisement (468x60px) */
@@ -462,7 +465,7 @@ div#body div.usertrail span.last:after {
 #footer {
     clear: both;
     padding-bottom: 1em;
-	background: #204C8D url("../img/moin-header-background.png") 0 0 repeat;
+	background: #204C8D url("/webenv/images/header.png") 0 0 repeat;
 	}
 
 #footer div.credits {
@@ -496,7 +499,7 @@ div#body div.usertrail span.last:after {
 
 #footer .navibar li {
     background-color: #FFF;
-    background-image: url("../img/moin-navibarbottom-bg.png");
+    background-image: url("/webenv/images/navibar-bottom.png");
     background-position: left bottom;
     background-repeat: repeat-x;
     -moz-border-radius: 0 0 3px 3px;
@@ -504,7 +507,7 @@ div#body div.usertrail span.last:after {
 
 #footer .navibar li:hover {
     background-color: #628ECA;
-    background-image: url("../img/moin-navibarbottom-hover-bg.png");
+    background-image: url("/webenv/images/navibar-bottom-hover.png");
     background-position: left bottom;
     background-repeat: repeat-x;
     }
@@ -515,7 +518,7 @@ div#body div.usertrail span.last:after {
 #footer .navibar li.current:active a {
     color: #FFFFFF;
     background-color: #628ECA;
-    background-image: url("../img/moin-navibarbottom-hover-bg.png"); 
+    background-image: url("/webenv/images/navibar-bottom-hover.png");
     background-position: left top;
     background-repeat: repeat-x;
     }
@@ -718,61 +721,61 @@ a.www:before,
 a.http:before,
 a.https:before {
     white-space:nowrap;
-    content: url(../img/moin-www.png);
+    content: url(/webenv/images/www.png);
     margin: 0 0.2em;
     }
 
 a.ftp:before {
     white-space:nowrap;
-    content: url(../img/moin-ftp.png);
+    content: url(/webenv/images/ftp.png);
     margin: 0 0.2em;
     }
 
 a.nntp:before {
     white-space:nowrap;
-    content: url(../img/moin-nntp.png);
+    content: url(/webenv/images/nntp.png);
     margin: 0 0.2em;
     }
 
 a.news:before {
     white-space:nowrap;
-    content: url(../img/moin-news.png);
+    content: url(/webenv/images/news.png);
     margin: 0 0.2em;
     }
 
 a.telnet:before {
     white-space:nowrap;
-    content: url(../img/moin-telnet.png);
+    content: url(/webenv/images/telnet.png);
     margin: 0 0.2em;
     }
 
 a.irc:before {
     white-space:nowrap;
-    content: url(../img/moin-irc.png);
+    content: url(/webenv/images/irc.png);
     margin: 0 0.2em;
     }
 
 a.file:before {
     white-space:nowrap;
-    content: url(../img/moin-file.png);
+    content: url(/webenv/images/file.png);
     margin: 0 0.2em;
     }
 
 a.mailto:before {
     white-space:nowrap;
-    content: url(../img/moin-email.png);
+    content: url(/webenv/images/email.png);
     margin: 0 0.2em;
     }
 
 a.attachment:before {
     white-space:nowrap;
-    content: url(../img/moin-attach.png);
+    content: url(/webenv/images/attach.png);
     margin: 0 0.2em;
     }
 
 a.interwiki:before {
     white-space:nowrap;
-    content: url(../img/moin-inter.png);
+    content: url(/webenv/images/inter.png);
     margin: 0 0.2em;
     }
 
@@ -791,7 +794,7 @@ div#header #last-releases a {
  */
 
 ul { 
-    list-style: url("../img/moin-ul.png") circle; 
+    list-style: url("/webenv/images/ul.png") circle;
     } 
 
 div#rightbar ul {
@@ -816,7 +819,7 @@ div.table-of-contents {
 	text-align:left;
     margin-bottom: 2em;
 	border: 1px solid #DDD;
-    background-image: url("../img/moin-msg-bg-gray.png");
+    background-image: url("/webenv/images/msg-bg-gray.png");
 	background-color: #FFF;
     -moz-border-radius: 3px;
     margin-left: 1.5em;
@@ -831,7 +834,7 @@ div.table-of-contents p.table-of-contents-heading {
     line-height: 1.8em;
     margin: 0;
     padding-left: 1em; /* Should be the same for h{1-4}*/
-    background-image: url("../img/moin-h2-background.png");
+    background-image: url("/webenv/images/h2.png");
     color: #072B61;
     font-weight: bold;
     border-bottom: 1px solid #DDD;
@@ -858,7 +861,7 @@ div.searchresults dl {
 	border: none;
 	border-top: 4px solid;
 	border-bottom: 4px solid;
-    background-image: url("../img/moin-msg-bg-blue.png");
+    background-image: url("/webenv/images/msg-bg-blue.png");
 	border-color: #D2E0F6; 
 	background-color: #ECF4FF;
     }
@@ -888,7 +891,7 @@ table.message td {
     }
 
 table.message.blue {
-    background-image: url("../img/moin-msg-bg-blue.png");
+    background-image: url("/webenv/images/msg-bg-blue.png");
 	background-color: #ECF4FF;
     }
 
@@ -920,7 +923,7 @@ table.message.blue td.content {
 table.message.orange {
     border-color: #F6E7D2; 
     background-color: #FFF8EC;
-    background-image: url("../img/moin-msg-bg-orange.png");
+    background-image: url("/webenv/images/msg-bg-orange.png");
     }
 
 table.message.orange td:first-child {
@@ -951,66 +954,6 @@ table.message.orange td.content {
 table.message img {
     margin-left: 10px !important;
     }
-
-/* 
- * Webenv -> Tabs (Style 2: Two Rounded Borders)
- * ---------------------------------------------
- */
-
-div#header div.tabs {
-	margin-left: 10px;
-    margin-right: 10px;
-    }
-
-div#header div.tabs a {
-	color: #FFF;
-	float: left;
-	font-weight: bold;
-	margin-right: 3px;
-	padding: 0px 8px 0 0px;
-	text-decoration: none;
-	}
-
-div#header div.tabs span.current a,
-div#header div.tabs span.current a:hover, 
-div#header div.tabs span.current a span,
-div#header div.tabs span.current a:hover span {
-	color: #204A87;
-	text-decoration: none;
-	}
-
-div#header div.tabs a span {
-	float: left;
-	padding: 5px 0px 3px 8px;
-	}
-
-/* */
-
-div#header div.tabs a {
-	background: none;
-	}
-
-div#header div.tabs a span {
-	background: none;
-	}
-
-div#header div.tabs span.current a,
-div#header div.tabs span.current a:hover {
-	background: url("../img/tabs-bg-1.png") 100% -50px no-repeat;
-	}
-
-div#header div.tabs span.current a span,
-div#header div.tabs span.current a:hover span {
-	background: url("../img/tabs-bg-2.png") 0 -50px no-repeat;
-	}
-
-div#header div.tabs span:hover a {
-	background: url("../img/tabs-bg-1.png") 100% 0 no-repeat;
-	}
-
-div#header div.tabs span:hover a span {
-	background: url("../img/tabs-bg-2.png") 0 0;
-	}
 
 /* Application level navigation bar. */
 
@@ -1076,7 +1019,7 @@ div#header div.tabs span:hover a span {
     border-style: solid;
     border-color: #628ECA;
     background-color: #FFF;
-    background-image: url("../img/moin-navibartop-bg.png");
+    background-image: url("/webenv/images/navibar-top.png");
     background-position: left top;
     background-repeat: repeat-x;
     -moz-border-radius: 3px 3px 0 0;
@@ -1124,7 +1067,7 @@ div#header div.tabs span:hover a span {
 
 .navibar li:hover {
     background-color: #628ECA;
-    background-image: url("../img/moin-navibartop-hover-bg.png");
+    background-image: url("/webenv/images/navibar-top-hover.png");
     background-position: left top;
     background-repeat: repeat-x;
     }
@@ -1143,7 +1086,7 @@ div#header div.tabs span:hover a span {
 .navibar li.current:active a {
     color: #FFFFFF;
     background-color: #628ECA;
-    background-image: url("../img/moin-navibartop-hover-bg.png"); 
+    background-image: url("/webenv/images/navibar-top-hover.png");
     background-position: left top;
     background-repeat: repeat-x;
     }
