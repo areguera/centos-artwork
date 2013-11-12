@@ -1,12 +1,12 @@
 Customization
 =============
 
-The mantis' customization provided here is part of the monolithic
-visual style The CentOS Project is attached to. Once you install the
-mantis' customization provided here, the visual transition between the
-mantis website and other CentOS web sites already customized will be
-nice and easy to recognize because of the common visual patterns
-(e.g., background, header, logo, favicon and footer).
+This customization modifies Mantis default visual style to use The
+CentOS Project visual style. Once you install the customization
+provided here, the visual transition between your mantis website and
+other web sites customized the same way will be easy to recognize
+because the implementation of common visual patterns (e.g.,
+background, header, logo, favicon and footer).
 
 How To Install 
 --------------
@@ -32,10 +32,6 @@ SOURCE            | TARGET
 bottom.html       | /usr/share/mantis/themes/centos/bottom.html
 top.html          | /usr/share/mantis/themes/centos/top.html
 stylesheet.css    | /usr/share/mantis/themes/centos/stylesheet.css
-images/logo.png   | /usr/share/mantis/themes/centos/images/logo.png
-images/favicon.ico| /usr/share/mantis/themes/centos/images/favicon.png
-images/h2.png     | /usr/share/mantis/themes/centos/images/h2.png
-images/header.png | /usr/share/mantis/themes/centosimages/header.png
 ------------------+-----------------------------------------------
 
 This theme also provides a customized version of mantis_offline.php
@@ -55,7 +51,7 @@ information:
 	$g_top_include_page 	= "themes/centos/top.html";
 	$g_bottom_include_page 	= "themes/centos/bottom.html";
 	$g_css_include_file 	= "themes/centos/stylesheet.css";
-	$g_favicon_image 	    = "themes/centos/images/favicon.ico";
+	$g_favicon_image 	    = "/webenv/images/favicon.ico";
 
 6. Point your browser to mantisBT install and reload it to see the
 changes.
@@ -68,11 +64,21 @@ inside the mantis package needs to be modified (except the
 configuration file, of course.). This way you can update the mantis
 package without loosing the visual style you already set for it.
 
-The only problem is the $g_favicon_image variable, it doesn't work.
-So, if you want to have a favicon different to Mantis's default, you
-need to overwrite the images/favicon.ico file with the one you want to
-use. This is something you need to do the next time you update the
-matnis package (unless the $g_favicon_image variable gets alive).
+The only problem I've found is the $g_favicon_image variable, which
+doesn't work.  So, if you want to have a favicon different from
+Mantis's default, you need to overwrite Mantis' images/favicon.ico
+file with the one you want to use. This is something you need to do
+the next time you update the matnis package (unless the
+$g_favicon_image variable gets alive).
+
+Images affecting Mantis visual style were moved from images directory
+inside the Mantis directory structure to /var/www/webenv/images
+directory outside Mantis directory structure and made accessible
+through /webenv http alias. Using images this way let us to re-use
+them with other web applications that share the same visual style.
+When a visual style update is required, we only need to change images
+in a single place to propagate the new visual style to all
+applications.
 
 Feedback
 --------

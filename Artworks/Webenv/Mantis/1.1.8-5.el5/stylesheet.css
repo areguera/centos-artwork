@@ -31,7 +31,7 @@
 ----------------------------------------------*/
 
 html {
-    background-image:url(images/html.png);
+    background-image:url(/webenv/images/html.png);
     background-color: #FFF;
     font-family: "DejaVu Sans", "Liberation Sans", sans-serif;
     font-size: 0.85em;
@@ -60,7 +60,7 @@ a:visited:hover { text-decoration: underline; color: green; }
 
 #header {
    background-color: #1865A6;
-   background-image: url("images/header.png");
+   background-image: url("/webenv/images/header.png");
    margin-bottom: 5px;
    }
 
@@ -70,9 +70,10 @@ a:visited:hover { text-decoration: underline; color: green; }
     font-size: 1.4em;
     font-weight: bold;
     }
-
+#logo {
+    padding-left: 10px;
+    }
 #logo img {
-    margin-left: 10px;
     vertical-align: middle;
 	border: 0;
     }
@@ -93,7 +94,7 @@ a:visited:hover { text-decoration: underline; color: green; }
     }
 
 .pageline.blue {
-    background: #5FA1D8;
+    background: #628ECA;
     }
 
 /* Information about Login
@@ -291,7 +292,7 @@ td.form-title {
     font-weight: bold;
     text-align: left;
     background-color: #FFFFFF;
-    background-image: url(images/h2.png);
+    background-image: url(/webenv/images/h2.png);
     }
 
 td.nopad {
@@ -333,7 +334,7 @@ tr {}
 
 tr.title {
     background-color: #FFF; 
-    background-image: url("images/h2.png");
+    background-image: url("/webenv/images/h2.png");
     }
     
 tr.row-1 {
@@ -459,14 +460,14 @@ td.menu a {
     }
 
 td.news-heading-public {
-    background-image: url(images/h2.png);
+    background-image: url(/webenv/images/h2.png);
     color: #000; 
     text-align: left; 
     border-bottom: 1px solid #ccc; 
     padding: 5px; }
 
 td.news-heading-private {
-    background-image: url(images/h2.png);
+    background-image: url(/webenv/images/h2.png);
     color: #000;
     text-align: left;
     border-bottom: 1px solid #ccc;
@@ -654,7 +655,7 @@ div#box p { line-height: 1.5em; padding-top: 0.5em; padding-bottom: 1em;}
 
 #footer {
     clear: both;
-    background: #204C8D url("images/header.png") 0 0 repeat;
+    background: #204C8D url("/webenv/images/header.png") 0 0 repeat;
     margin-top: 1em;
     }
 
