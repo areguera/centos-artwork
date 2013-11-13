@@ -35,7 +35,7 @@ function packages {
         gnome-doc-utils elinks docbook-style-xsl docbook-utils
         docbook-dtds docbook-style-dsssl docbook-simple
         docbook-utils-pdf docbook-slides firefox sudo yum rpm ctags
-        vim-enhanced"
+        vim-enhanced tidy"
 
     # Define required packages used by centos-art.sh script inside
     # EPEL repository. Start verifying the package that contains
