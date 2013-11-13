@@ -68,7 +68,8 @@ function asciidoc_setXhtmlRendition {
     for RENDER_PAGE in ${RENDER_PAGES};do
         /usr/bin/xsltproc -o ${LOCATION} --nonet \
             ${DOCBOOK_XSL}/docbook2xhtml-${RENDER_PAGE}.xsl ${TARGET_INSTANCES[${COUNTER}]}
-        /usr/bin/tidy -asxhtml -utf8 -q -i -o ${LOCATION} ${LOCATION}
     done
 
+    # Tuneup markup of final html files.
+    tcar_setModuleEnvironment -m tuneup -t parent -g $(dirname ${RENDER_TARGET})
 }
