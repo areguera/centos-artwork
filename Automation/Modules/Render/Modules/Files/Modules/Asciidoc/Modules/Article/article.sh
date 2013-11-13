@@ -1,7 +1,7 @@
 #!/bin/bash
 ######################################################################
 #
-#  manpage.sh -- This module produces docbook documents using article
+#  article.sh -- This module produces docbook documents using article
 #  document type.
 #
 #   Written by:

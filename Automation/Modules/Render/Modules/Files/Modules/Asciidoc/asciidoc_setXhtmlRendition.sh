@@ -70,6 +70,4 @@ function asciidoc_setXhtmlRendition {
             ${DOCBOOK_XSL}/docbook2xhtml-${RENDER_PAGE}.xsl ${TARGET_INSTANCES[${COUNTER}]}
     done
 
-    # Tuneup markup of final html files.
-    tcar_setModuleEnvironment -m tuneup -t parent -g $(dirname ${RENDER_TARGET})
 }

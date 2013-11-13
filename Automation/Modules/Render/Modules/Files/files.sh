@@ -127,4 +127,7 @@ function files {
     unset COUNTER
     unset SECTIONS
 
+    # Tuneup final files.
+    tcar_setModuleEnvironment -m 'tuneup' -t 'parent' -g $(dirname ${RENDER_TARGET})
+
 }

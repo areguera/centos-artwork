@@ -42,12 +42,17 @@ function render_setLocalizedXml {
 
     # Verify source instance and the no-locale flag. When source
     # instance already exists, don't create a new file for it.
-    # Instead, link it using a symbolic link.
+    # Instead, link it using a symbolic link. Be careful, such
+    # behavior only applies when the source file has no locale.
+    # Otherwise, the source file needs to go through the translation
+    # process inevitably.
     if [[ -f ${SOURCE} ]];then
         if [[ ${SOURCE} =~ "^${TCAR_SCRIPT_TEMPDIR}" ]];then
-            tcar_checkFiles -i 'text/xml' ${SOURCE}
-            /bin/ln -s ${SOURCE} ${TARGET}
-            return
+            if [[ ${RENDER_FLAG_NO_LOCALE} == 'true'  ]];then
+                tcar_checkFiles -i 'text/xml' ${SOURCE}
+                /bin/ln -s ${SOURCE} ${TARGET}
+                return
+            fi
         elif [[ ${RENDER_FLAG_NO_LOCALE} == 'true' ]];then
             tcar_printFile ${SOURCE} > ${TARGET}
             tcar_checkFiles -i 'text/xml' ${TARGET}
