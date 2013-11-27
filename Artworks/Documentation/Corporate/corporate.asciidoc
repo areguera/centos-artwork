@@ -17,7 +17,7 @@ organization, its business, and its characteristics.
 The CentOS Project Corporate Identity provides visibility,
 recognizability, reputation, structure and identification to The
 CentOS Project organization by means of Corporate Design, Corporate
-Communication, and Corporate Behaviour.
+Communication, and Corporate Behavior.
 
 [[corporate_identity]]
 .The CentOS Project Corporate Identity
@@ -54,62 +54,177 @@ http://www.centos.org/modules/smartfaq/[FAQ].
 Corporate Graphic Design
 ------------------------
 
-The corporate design is focused on the effective presentation of
-corporate messages. As corporate messages we understand all the
-information emitted from the organization; and when we say _all_ we
-mean everything that can be perceived through the human senses. The
-corporate design takes care of defining what this information is and
-controlling the way it goes out the organization producing it.
+Corporate graphic design is focused on the presentation of corporate
+messages with efficiency and efficacy. Corporate graphic design is a
+cornerstone of corporate visual identity.  When the organization
+doesn't take control over the corporate messages it produces, the
+organization is letting that area of its identity to the unknown and
+the result might be good or not so good, it is hard to know.  Even the
+organization doesn't take control over its corporate messages they are
+always talking about the organization.  Taking control of corporate
+messages presentation is a decision the organization needs to take by
+itself, based on its need of better describe what it is.  To work out
+the corporate graphic design of an organization it is required to
+identify which are the visual manifestations the organization reflects
+its existence on.
 
-When the organization doesn't take control over the corporate messages
-it produces, the organization is letting that area of its identity to
-the unknown and the results might be good or not so good, it is hard
-to know.  The issue to see here is that even the organization doesn't
-take control over its corporate messages, they are always talking
-about the organization.  Taking control of corporate messages is a
-decision the organization needs to take by itself, based on its need
-of better describe what it is.
+The CentOS Artwork SIG has identified the following visual
+manifestations for The CentOS Project organization:
 
-In the very specific case of The CentOS Project, we'll concentrate our
-attention on corporate messages that reach us through the visual
-sense. This is, all the visual manifestations The CentOS Project is
-made of. As visual manifestations we understand all the visible media
-The CentOS Project uses to manifest its existence on.  At this point
-it is necessary to consider what The CentOS Project is, what its
-mission is and what it is producing. This, in order to identify which
-visual manifestations the organization is demanding attention of
-corporate design for.
+* GNU/Linux Distribution -- to control the operating system appearance.
+* Web environment -- to control the web applications appearance.
+* Promotion -- to control the industrial media appearance.
 
-Inside The CentOS Project we identify and apply corporate design to the following
-visual manifestations:
+[[centos-brand]]
+Corporate Brand
+~~~~~~~~~~~~~~~
 
-- *The CentOS Distribution:*  This visual manifestation exists to
-  cover all actions related to artwork production and re-branding,
-  required by The CentOS Distribution in order to comply with
-  upstream's redistribution guidelines.
+The corporate brand is the graphical identification of an
+organization.  The CentOS Artwork SIG uses The CentOS Brand to connect
+all the visual manifestations The CentOS Project is made of (e.g.,
+GNU/Linux Distributions, Websites, Stationery, etc.) and, this way, it
+provides visual recognition among similar projects available on the
+Internet.
 
-- *The CentOS Web:* This visual manifestation exists to cover all
-  actions related to artwork production required by The CentOS Project
-  to manifest its existence in the World Wide Web medium.
+The CentOS Brand is composed of a graphical component known as The
+CentOS Symbol and a typographical component known as The CentOS Type.
+When The CentOS Symbol and The CentOS Type are put together, they
+create what we know as The CentOS Logo.  All the components that make
+The CentOS Brand can be used together or separately, considering that,
+in hierarchy order, The CentOS Logo is rather preferred than The
+CentOS Symbol, as well as The CentOS Symbol is rather preferred than
+The CentOS Type alone.
 
-- *The CentOS Showroom:* This visual manifestation exists to cover all
-  actions related to artwork production required by The CentOS Project
-  to manifest its existence through media produced industrially (e.g.,
-  stationery, clothes, CDs, DVDs, etc.).
+image:corporate-logo-howto.png[corporate-logo-howto.png]
 
-The visual manifestations identified above seem to cover most media
-required by The CentOS Project, as organization, to show its
-existence.  However, other visual manifestations could be added in the
-future, as long as they be needed, to cover different areas like
-stands, buildings, offices, road transportation or whatever visual
-manifestation The CentOS Project touches to show its existence.
+The CentOS Brand must be exactly the same every time it is printed
+out, no matter what the medium is.  A route to reproduce The CentOS
+Brand this way must be used so as to avoid reproduction mistakes of
+any kind when final images are branded with it. To prevent such
+mistakes, The CentOS Artwork SIG uses configuration files and the
+*render* module of *centos-art.sh* script to produce PNG brand images
+of different sizes and colors that can be combined later with other
+images instead of manipulating The CentOS Brand in SVG format inside
+each different design model that requires it.  This also grants a
+single point of change for all brands already applied on final images.
+In this environment, if you make a change to brands SVG files, they
+will be propagated to all final images the next time you render them.
 
-Once all visual manifestations have been identified and defined
-through design models, it is time to visually remark their connection
-with The CentOS Project.  This kind of connection is realized by
-applying The CentOS Brand to design models inside visual
-manifestations supported through corporate design.
+The CentOS Symbol is the graphical part of The CentOS Logo. As The
+CentOS Logo, The CentOS Symbol is used to ``brand'' images produced by
+The CentOS Project and provide visual connection between images so
+they can be monolithically recognized as part of The CentOS Project.
+The CentOS Symbol must be exactly the same every time it is printed
+out and a route to reproduce it in such a way must be available so as
+to avoid reproduction mistakes when images are branded with it.
 
+The CentOS Type is the typographical part of The CentOS Logo.  The
+CentOS Type is used to ``brand'' images produce by The CentOS Project
+and provide visual connection between images so they can be
+monolithically recognized as part of The CentOS Project.  The CentOS
+Type alone provides less recognition than The CentOS Logo and The
+CentOS Symbol. Frequently, The CentOS Type is used to advert the major
+release of CentOS Distribution on the first images shown as part of
+Distribution installation process.  The CentOS Symbol and any release
+information printed out with it must have exactly the same proportions
+every time they are printed out.
+
+Corporate Fonts
+~~~~~~~~~~~~~~~
+
+The CentOS Artwork SIG uses the following font files in their
+corporate graphic designs:
+
+image:corporate-fonts.png[corporate-fonts.png]
+
+Corporate Colors
+~~~~~~~~~~~~~~~~
+
+In addition to colors used in The CentOS Symbol (9ccd2aff, 932279ff,
+262577ff, efa724ff) and The CentOS Default Background Color
+(204c8dff), The CentOS Artwork SIG uses the following colors in their
+corporate graphic designs:
+
+image:../corporate-colors.png[corporate-colors.png]
+
+Artistic motifs have not any limitation in the number of colors used.
+If you are a graphic designer creating artistic motifs for The CentOS
+Project, feel free to take your creativeness at its limit by creating
+color-full artistic motifs. For final bootup images which require a
+reduced number of colors, create palette of colors for them with the
+appropriate number of colors and let the *render* module of
+*centos-art.sh* script to do the rest.
+
+[[centos-clothes]]
+Corporate Clothes
+~~~~~~~~~~~~~~~~~
+
+The CentOS clothes identify the The CentOS Project representative
+people at public presentations.
+
+image:../corporate-clothes-head.png[corporate-clothes-cap.png]
+
+image:../corporate-clothes-torso.png[corporate-clothes-shirt.png]
+
+[[corporate-themes]]
+Corporate Themes
+~~~~~~~~~~~~~~~~
+
+The CentOS themes organize visual styles for all the visual
+manifestation The CentOS Project is made of. In order to automate the
+process of rendering images based on customizable patterns, themes
+have been divided into ``design models'', ``localization files,'' and
+``artistic motifs.''
+
+image:corporate-themes.png[corporate-themes.png]
+
+[[corporate-themes-models]]
+Design Models
+^^^^^^^^^^^^^
+
+Design models are compressed SVG files created with Inkscape. They
+describe the image files used to implement the CentOS project visual
+manifestations.  For example, in the specific case of CentOS
+distribution, each final image you want to re-brand has a design model
+associated used to set the final image dimensions, whether or not it
+has round borders, and what background to use on it.  Design models
+are created once and rarely modified through time. They are only
+modified if the visual manifestation they refer to changes or needs to
+be tuned up.
+
+[[corporate-themes-l10n]]
+Localization Files
+^^^^^^^^^^^^^^^^^^
+
+Localization files provide localization for messages inside design
+models. For example, if you decide to use slide images in CentOS
+installer, you need to create one design model for each slide image
+you want to produce in English language. Then, using *locale* module,
+you create PO files for each design model you have. PO files are
+created using the current language information of your terminal (e.g.,
+see value of +LANG+ variable). Then you use the *locale* module again
+to edit the PO files and provide string translations from English to
+your preferred language.  Once translations are on the PO files, you
+use the *render* module to produce images for your preferred language,
+based on the artistic motif you initiate rendition for and the related
+design models set in the rendition configuration file.
+
+[[corporate-themes-motifs]]
+Artistic Motifs
+^^^^^^^^^^^^^^^
+
+Artistic motifs are PNG images holding the look and feel of each
+design model available.  One important characteristic of artistic
+motifs is preserving one unique visual style for all the PNG images
+they are made of.  Artistic motifs aren't limited in number. It is
+possible to have several artistic motifs and produce final images for
+all of them using one single set of design models. Artistic motifs
+give plenty of room for graphic designers' creativeness.  As
+convention, artistic motifs are conceived without any specific brand
+information on them. The brand information is set using brand images
+later, when final images are produced.
+
+[[corporate-communication]]
 Corporate Communication
 -----------------------
 
@@ -133,7 +248,7 @@ images in a remarkable way, specially those holding the upstream brand
 (e.g., _anaconda_, _grub_, _syslinux_, _gdm_, _kdebase_).
 
 - The Community Enterprise Operating System itself (communicates the
-  essense of The CentOS Project existence.).
+  essence of The CentOS Project existence.).
 
 - Release Schema (Lifetime) and all the stuff related (e.g., Release
   Notes, Documentation, Erratas, etc.).
@@ -172,19 +287,20 @@ donations may do.
 
 - Stationery (e.g., Posters, Stickers, CD Lables and Sleeves).
 - Clothes (e.g., Shirts, T-shirts, Pullovers, Caps).
-- Installation media (e.g., CDs, DVD, Pendrives).
+- Installation media (e.g., CDs, DVD, Pen-drives).
 
-Corporate Behaviour
+Corporate Behavior
 -------------------
-The CentOS Project corporate behaviour is focused on the effective
+
+The CentOS Project corporate behavior is focused on the effective
 interaction of each member involved in the organization (e.g., core
 developers, community members, etc.).  It is related to ethics and
 politics used to do the things inside the organization. It is related
-to the sense of direction chosen by the organization and they way the
+to the sense of direction chosen by the organization and the way the
 organization projects itself to achieve it.
 
-The CentOS Project corporate behaviour takes place through The CentOS
-Project corporate communication, as described above.
+The CentOS Project corporate behavior is based on a meritocracy (the
+more you do the more you are allowed to do).
 
 Corporate Structure
 -------------------
@@ -209,19 +325,19 @@ it. To apply it correctly, we need to know what The CentOS Project is
 made of.
 
 The CentOS Project, as organization, is mainly made of (but not
-limited to) three visual manifestions: The CentOS Distribution, The
+limited to) three visual manifestations: The CentOS Distribution, The
 CentOS Web and The CentOS Showroom.  Inside The CentOS Distribution
 visual manifestations, The CentOS Project maintains near to four
-different major releases of The CentOS Distribution, parallely in
-time.  However, inside The CentOS Web visual manifestations, the
-content is produced for no specific release information (e.g., there
-is no a complete web site for each major release of The CentOS
-Distribution individually, but one web site to cover them all).
-Likewise, the content produced in The CentOS Showroom is industrially
-created for no specific release, but The CentOS Project in general.
+different major releases of The CentOS Distribution, in parallel.
+However, inside The CentOS Web visual manifestations, the content is
+produced for no specific release information (e.g., there is no a
+complete web site for each major release of The CentOS Distribution
+individually, but one web site to cover them all).  Likewise, the
+content produced in The CentOS Showroom is industrially created for no
+specific release, but The CentOS Project in general.
 
 In order to produce the The CentOS Project Monolithic Corporate Visual
-Identity Structure correctly, we need to concider all the visual
+Identity Structure correctly, we need to consider all the visual
 manifestations The CentOS Project is made of, not just one of them.
 If one different visual style is implemented for each major release of
 The CentOS Distribution, which one of those different visual styles
@@ -231,32 +347,24 @@ Project is made of (e.g., The CentOS Web and The CentOS Showroom)?
 Probably you are thinking: yes, I see your point, but The CentOS Brand
 connects them all already, why would we need to join them up into the
 same visual style too, isn't it more work to do, and harder to
-maintain?
+maintain?  It is true that The CentOS Brand does connect all the
+visual manifestations it is present on, but that connection is even
+stronger if one unique visual style backups it.  In fact, whatever
+thing you do to strength the visual connection among The CentOS
+Project visual manifestations would be very good in favor of The
+CentOS Project recognition.
 
-Harder to maintain, more work to do, probably. Specially when you
-consider that The CentOS Project has proven stability and consistency
-through time and, that, certainly, didn't come through swinging
-magical wands or something but hardly working out to automate tasks
-and providing maintenance through time.  With that in mind, I consider
-The CentOS Project Corporate Visual Identity Structure must be
-consequent with such stability and consistency tradition.  It is true
-that The CentOS Brand does connect all the visual manifestations it is
-present on, but that connection is strengthened if one unique visual
-style backups it.  In fact, whatever thing you do to strength the
-visual connection among The CentOS Project visual manifestations would
-be very good in favor of The CentOS Project recognition.
-
-Obviously, having just one visual style in all visual manifestations
-for eternity would be a very boring thing and would give the idea of a
-visually outdated project. So, there is no problem on creating new
-visual styles for each new major release of The CentOS Distribution,
-in order to refresh The CentOS Distribution visual style; the problem
-itself is in not propagating the new visual style created for the new
-release of The CentOS Distribution to all other visual manifestations
-The CentOS Project is made of, in a way The CentOS Project could be
-recognized no matter what visual manifestation be in front of us. Such
-lack of uniformity is what introduces the visual contradiction we
-would be precisely trying to solve by mean of themes production in The
-CentOS Artwork Repository.
+Having just one visual style in all visual manifestations for eternity
+would be a very boring thing and would give the idea of a visually
+out-of-date project. So, there is no problem on creating new visual
+styles for each new major release of The CentOS Distribution, in order
+to refresh The CentOS Distribution visual style; the problem itself is
+in not propagating the new visual style created for the new release of
+The CentOS Distribution to all other visual manifestations The CentOS
+Project is made of, in a way The CentOS Project could be recognized no
+matter what visual manifestation be in front of us. Such lack of
+uniformity is what introduces the visual contradiction The CentOS
+Artwork SIG is precisely trying to solve by mean of automating the
+production of corporate themes inside The CentOS Artwork Repository.
 
 // vim: set syntax=asciidoc:
