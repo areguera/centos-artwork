@@ -1,395 +1,171 @@
 [[repository]]
 The CentOS Artwork Repository
-=============================
+============================
 
 [[repository-mission]]
-== Repository Mission
+== The Repository Mission
 
-The CentOS Artwork Repository is a community effort to organize The
-CentOS Project visual identity and automate its production, based on
-the concepts described in <<identity>>.
+The CentOS Artwork Repository exists to produce The CentOS Project
+monolithic visual identity (see <<identity>>).
+
+The CentOS Artwork Repository is a community effort developed by The
+CentOS Artwork Special Interest Group (SIG) and supported by The
+CentOS Community.
 
 [[repository-infrastructure]]
-== Repository Infrastructure
+== The Repository Infrastructure
 
-The CentOS Artwork Repository is made of one ``central repository''
-and many ``working copies'' of that central repository.  The working
-copies are independent one another, can be distributed all around the
-world and provide a local place for designers, documenters,
-translators and programmers to perform their work in a decentralized
-way.  The central repository, on the other hand, provides a common
-place for all independent working copies to exchange data in the
-community.
+The CentOS Artwork Repository is supported by Git version tracker and
+conceived to provide a centralized work flow. In this configuration
+there is one ``central repository'' and many ``working copies'' of
+that central repository.  The working copies are independent one
+another, can be distributed all around the world and provide a local
+place for designers, documenters, translators and programmers to
+perform their work in a decentralized way.  The central repository, on
+the other hand, provides a common place for all independent working
+copies to exchange data in the community. The exchange of data between
+the working copies and the central repository takes place over SSH and
+controlled by means of SSH public keys.
 
-image:repository-infra.png[repository-infra.png]
+== The Repository Branches
 
-=== Subversion
+The CentOS Artwork Repository uses branches to organize individual
+work lines.  There is one long-running branch for each major component
+affecting The CentOS Project visual identity and one or more topic
+branches to handle issues.  Once issues have been fixed, topic
+branches are merged into long-running branches and removed from the
+repository.
 
-The current infrastructure that holds The CentOS Artwork Repository on
-the Internet, is made of the following components:
+The first time you clone a copy of CentOS Artwork Repository into your
+workstation (see <<repository-install-git>>), it presents the last
+snapshot of *tcar* branch.  To see the entire list of branches
+available in the repository, you need to use the *git-branch(1)*
+command. Then, to change from *tcar* branch to another branch you need
+to use the *git-checkout(1)* command.
 
- * http://subversion.tigris.org/[Subversion] -- Modern Version Control System designed to replace CVS.
- * http://trac.edgewall.org/[Trac] -- Enhanced wiki and issue tracking system.
- * Httpd+WebDav as data exchanging route between the workstations and
-   the central repository, through the Internet.  Httpd was configured
-   to provide service through SSL, so all traffic between the
-   workstations and the server be protected while it travels across
-   the Internet.  The access rights are controlled by using a
-   combination of both Subversion's authorization files and Httpd's
-   password files.  These files can be managed consistently through
-   Trac's WebAdmin plug-in.
+The CentOS Artwork Repository provides long-running branches for
+graphic design and automation scripts work lines, mainly. Other
+long-running branches in the repository include palettes, brushes,
+patterns, fonts and customization of web applications. Inside these
+branches, you might find directories holding documentation and locale
+information for the component the branch refers to.
 
-In this infrastructure, the first level of directories in the
-repository provides the Subversion's standard trunk-branches-tags
-layout.  The second level of directories provides organization for
-different work lines, as described in <<repo-convs-worklines>>.  All
-other subsequent directory levels from second level on exist to
-organize specific concepts related to the work line they belong to.
-
-=== Git
-
-In addition to current Subversion infrastructure, we are working on a
-Git infrastructure with the intention of migrating the current
-Subversion infrastructure up to it, progressively. The Git
-infrastructure we are working on is made of the following components: 
-
-* Git -- Fast version control system.
-* Gitolite -- Highly flexible server for git directory version
-  tracker.
-* Gitweb -- Simple web interface to git repositories.
-* MantisBT -- Web-based issue tracking system.
-* The data exchanging route between the working copies and the central
-  repository takes place through SSH. The access rights are controlled
-  by using a combination of SSH public keys and Gitolite's repository
-  configuration file.
-
-In this infrastructure, the first level of directories in the
-repository provides organization for different work lines, as
-described in <<repo-convs-worklines>>.  All other subsequent directory
-levels from second level on exist to organize specific concepts
-related to the work line they belong to.
-
-[[repo-convs-worklines]]
-== Repository Work Lines
-
-The content production inside The CentOS Artwork Repository has been
-divided into individual work lines that relate one another based on
-the idea of doing one thing well. In this model, the content produced
-individually by each work line is combined one another later to
-achieve higher purposes (e.g., corporate identity for The CentOS
-Project). The repository work lines, as conceived here, provide a
-reliable environment for people to work synchronized and
-decentralized.
-
-The action of combining work lines inside The CentOS Artwork
-Repository is also known as the ``Production Cycle'' of CentOS
-corporate visual identity.  The rest of this section describes the
-work lines available in the repository and how they integrate one
-another.
-
-[[repo-convs-worklines-artworks]]
 === Graphic Design
 
-Graphic Design is the first component The CentOS Artwork SIG works out
-in order to produce The CentOS Project corporate visual identity.
-Through this work line, graphic designers create ``design models'' and
-``artistic motifs'' for all the visual manifestation The CentOS
-Project is made of.  Once design models and artistic motifs are set in
-place, graphic designers use the *render* module of *centos-art.sh*
-script to combine them all into final images.
+Branches controlling graphic design contain ``design models'' (see
+<<centos-themes-models>>) but no ``artistic motifs'' (see
+<<centos-themes-motifs>>). Artistic motifs are organized in the
+https://centos.org.cu/wiki/ArtWork[ArtWork wiki]. This separation of
+contents is required in order to allow arbitrary combinations among
+design models and artistic motifs.  Using a wiki application for this
+separation purpose is very convenient for graphic designers whose need
+to have quick visual access to new sketches, the related source files
+and a log of changes.
 
-The mission of Artworks work line is define all the visual
-manifestations the The CentOS Project is made of and provide design
-models and artistic motifs for them in order to produce the final
-image files required to transmit the visual style that identifies The
-CentOS Project as unique organization.
+When graphic designers need to produce final images, they download
+artistic motif images from the wiki, and store them in the
++Final/Backgrounds+ directory. Then, checkout to the branch holding
+the design models they want to produce final images for. At this
+point, graphic designers use automation scripts to initiate the
+rendition process.  As result of rendition process, final images are
+produced and stored inside the +Final/<branch-name>/+ directory.
 
-The graphic design process takes place in the +Artworks/+ directory
-stored at the first level of the repository directory structure. This
-directory organizes themes (design models and artistic models),
-palettes, brushes, icons, brands and customizations for the web
-environment.
+==== Design Models
 
-To know more about The CentOS Project corporate visual identity, read
-the article named
-``_link:../../../Corporate/Final/en_US/index.html[The CentOS Project
-Corporate Visual Identity]._''
+Branches containing design models begin their names with the
++tcar-models-+ string. Each of these branches contain design models
+required to build specific components of one visual manifestation.
+Design models in these branches are produced with Inkscape and saved
+as compressed Scalable Vector Graphics (svgz) files.  Images in PNG
+(or other) format produced from these design models are never stored
+in this kind of branches.
 
-[[repo-convs-worklines-l10n]]
+Branches containing design models are created for a specific release
+of The CentOS Distribution or no specific release The CentOS
+Distribution at all.  When a branch name includes the
++-el<MAJOR_RELEASE>+ string, its content is intended for the
++<MAJOR_RELEASE>+ of The CentOS Distribution, only. When the
++-el<MAJOR_RELEASE>+ string isn't present in the branch name, the
+content of the branch is intended for all major release of The CentOS
+Distribution or not major release at all.
 
 === Localization
 
-Localization is the second component that must be worked out in the
-production cycle of CentOS corporate visual identity.  Through this
-work line translators localize source files (e.g., SVG, DocBook, Shell
-scripts) which are later used to produce localized images, localized
-documentation and localized automation scripts.  To localize source
-files, translators use the *locale* module of *centos-art.sh* script
-which takes care of retrieving translatable strings from source files
-and provide a consistent localization interface based on GNU *gettext*
-multi-lingual message production tool set and *xml2po* command.
+Branches requiring localization for their source files include a
+directory named +Locales+ in the branch's root directory. This
+directory is controlled by *locale* command of *centos-art.sh* script
+and used by *render* command at time of producing final content.
 
-The mission of Localization work line is extending the visual identity
-(produced in English language) to as many native languages as
-possible, in order for people which doesn't understand English
-language to feel more comfortable with The CentOS Project in their own
-native languages.
-
-The localization process takes place inside the +Locales/+ directory
-of each component that requires localization.  This directory contains
-the component related PO files organized in language-specific
-directories.  To know more about the specific localization process
-read the *locale* module documentation.
-
-[[repo-convs-worlines-manuals]]
+The +Locales+ directory contains PO files organized in locale-specific
+directories. Translators use PO files to localize strings retrieved
+from source files.  All PO files inside the +Locales+ directory are
+tracked inside the repository.
 
 === Documentation
 
-Documentation is the third component that must be worked out in the
-production cycle of corporate visual identity.  Through this work line
-documenters settle down the conceptual and practical uses around The
-CentOS Artwork Repository and all the content produced inside it.  To
-write documentation, documenters use Asciidoc as source documentation
-format and the *render* module of *centos-art.sh* script to transform
-Asciidoc source documentation format into final output formats,
-including man pages and html.
+Branches requiring documentation for their source files include a
+directory named +Documentation+ in the branch's root directory. This
+directory contains documentation source files written in Asciidoc
+format and one or more configuration files describing how
+documentation is rendered.  Optionally, along with documentation
+source files, you might also find design models in SVGZ format to
+produce illustrations used inside documentation.
 
-The mission of Documentation work line is describe the standard
-procedures The CentOS Artwork Repository relies on, as well as
-conceive a place to help you understand what The CentOS Artwork
-Repository is and what can you do with it.
+The +Documentation+ directory is read by *render* command of
+*centos-art.sh* script to produce documentation final files in
+different formats (e.g., man pages and html). All files inside
++Documentation+ are tracked inside the repository, but final files
+produced from them in the +Documentation/Final+ directory are not.
 
-The Documentation work line takes place inside the +Documentation/+
-directory inside major components stored in the first directory level
-of the repository (e.g., Artworks, Automation and Packages).
-
-[[repo-convs-worlines-packages]]
 === Packages
 
-The packages work line is the fourth component that must be worked out
-in the corporate identity production cycle. Through this work line
-packager gather final images, final translations and final
-documentation related to artworks and put them all together inside RPM
-packages. For this purpose, packagers use the *package* module of
-*centos-art.sh* script which provides a consistent interface for
-building packages inside the repository.
+==== tar.bz2
 
-The mission of Packages work line is package the information The
-CentOS Project requires to re-brand The CentOS Distribution according
-Red Hat redistribution guidelines. It is also the mission of this work
-line to make The CentOS Artwork Repository easy to install, configure
-and use by most graphic designers, documenters, programmers and
-translators.
+Branches holding source files used to produce +tar.bz2+ packages
+include one +makefile+ file describing how the +tar.bz2+ file is built
+(i.e., what are the files and directories the package is made of).
 
-The packages work line takes place in the +Packages/+ directory stored
-at the first level of the repository directory structure. This
-directory organizes both SOURCES and SPECS files used to build RPMS
-and SRPMS files. In this directory, SOURCES and SPECS files are under
-version control but RPMS and SRPMS produced from them are not.
+==== rpm
 
-[[repo-convs-worklines-scripts]]
+Branches holding source files used to produce +rpm+ and +srpm+
+packages include one +spec+ file describing how +rpm+ and +srpm+ are
+built and installed (i.e., what +tar.bz2+ file is used, and the way
+files inside it are installed in the system).
+
+In this kind of branches, both +makefile+ and +spec+ files are tracked
+in the repository, but files produced from them aren't.
+
 === Automation
 
-The automation work line is the fifth and last component that must be
-worked out in the corporate identity production cycle.  This work line
-closes the production cycle and provides the production standards
-graphic designers, documenters, translators and packagers need to make
-their work consistent and reusable.  For this purpose, programmers
-develop the *centos-art.sh* script.
+Branches holding source files related to automation scripts begin with
+the *tcar-scripts* string in the branch name. Automations scripts are
+mainly written in Bash and provide the production standards that
+graphic designers, documenters, translators and packagers need in
+order to make their work consistent and reusable through branches.
 
-The mission of Automation work line is standardize the interaction of
-work lines in a reliable way.
+=== Gathering Information Through Branches
 
-The Automation work line takes place in the +Automation/+ directory
-stored at the first level of the repository directory structure.
-Presently, most of the automation work is done in Bash.
+Branches play a significant role at time of producing and gathering
+final contents.
 
-== Preparing Your Workstation
+In normal operation, you work in branch and render content from it
+using automation scripts which, in turn, save the final result in a
+directory named +Final+ in the same directory where the configuration
+file used to initiate the rendition process is found.  The +Final+
+directory is never tracked by Git (e.g., you set it in your
++./git/info/exclude+ file) so it is able to ``transcend'' checkouts
+from one branch to another.
 
-Once your workstation has been installed, it is time for you to
-configure it. The configuration of your workstation consists on
-defining your workplace, download a working copy from The CentOS Artwork Repository and
-finally, run the *prepare* functionality of
-*centos-art.sh* script to install/update the software
-needed, render images, create links, and anything else needed.
-
-=== Define Your Workplace
-
-Once you've installed the workstation and it is up and running, you
-need to register the user name you'll use for working. In this task
-you need to use the commands *useradd* and *passwd* to create the user
-name and set a password for it, respectively.  These commands require
-administrative privileges to be executed, so you need to login as
-``root'' superuser for doing so.
-
-[CAUTION]
-Do not use the ``root'' username for regular tasks inside your working
-copy of The CentOS Artwork Repository.  This is dangerous and might
-provoke irreversible damages to your workstation.
-
-When you've registered your user name in the workstation, it provides
-an identifier for you to open a user's session in the workstation and
-a place to store the information you produce, as well. This place is
-known as your home directory and is unique for each user registered in
-the workstation. For example, if you register the user name john in
-your workstation, your home directory would be located at
-+/home/john/+.
-
-At this point it is important to define where to download the working
-copy of The CentOS Artwork Repository inside your home directory.
-This decision deserves special attention and should be implemented
-carefully in order to grant a standard environment that could be
-distributed. Let's see some alternatives.
-
-==== Different absolute paths
-
-Consider that you store your working copy under
-+/home/john/Projects/artwork/+ and I store mine under
-+/home/al/Projects/artwork/+, we'll end up refering the same files
-inside our working copies through different absolute paths.  This
-alternative generates a contradiction when files which hold path
-information inside are committed up to the central repository from
-different working copies. The contradiction comes from the question:
-which is the correct absolute path to use inside such files, yours or
-mine? (None of them is, of course.)
-
-==== One unique absolute path
-
-Another case would be that where you and I ourselves use one unique
-home directory (e.g., +/home/centos/Projects/artwork/+) to store the
-working copy of The CentOS Artwork Repository in our own workstations,
-but configure the subversion client to use different user names to
-commit changes up from the working copy to the central repository.
-This alternative might be not so good in situations where you and I
-have to share the same workstation.  In such cases, it would be
-required that we both share the password information of the same
-system user (the ``centos'' user in our example) which, in addition,
-gives access to that user's subversion client configuration and this
-way provokes the whole sense of using different subversion credentials
-for committing changes to be lost.
-
-==== Different absolute paths, dynamic expansion, symbolic links, relative links, and environment variables
-
-With this solution it is possible to store working copies of The
-CentOS Artwork Repository on different locations inside the same
-workstation without lose relation between files. Here we use the
-TCAR_WORKDIR environment variable to set the location of the working
-copy inside the workstation. Later the centos-art.sh scripts uses this
-value as reference to determine where the working copy is. This value
-is also the one used for dynamic expansion inside design models and
-other similar files. In the case of web projects where different
-components are required to produce the final content, we create
-symbolic links between them and use relative paths so it is possible
-to reuse them and retain the relation between them in different
-contexts.
-
-For example, lets consider the organization of XHTML manuals rendered
-from DocBook source files. When you render a DocBook manual inside The
-CentOS Artwork Repository it creates XHTML files.  This XHTML files
-use images and common style sheets for better presentation.  Both of
-these images and styles components live outside the XHTML structure
-so, in order to make them available relatively to the XHTML structure,
-we created symbolic links from the XHTML structure to the outside
-location where they are in.  The creation of symbolic links takes
-place automatically when each DockBook manual is rendered through
-*centos-art.sh*, which uses the value of TCAR_WORKDIR environment
-variable as reference to determine the absolute path of the working
-copy.  
-
-Because absolute paths are no longer stored inside permanent files and
-*centos-art.sh* script uses the TCAR_WORKDIR environment variable to
-determine where the working copy is stored in the workstation, it
-should be safe to download working copies of The CentOS Artwork
-Repository anywhere in the workstation. One just have to be sure that
-the value of TCAR_WORKDIR environment variable does match the location
-of the working copy you are using.
-
-=== Download Your Working Copy
-
-In order to use The CentOS Artwork Repository you need to download a
-working copy from the central repository into your workstation.  To
-download such working copy use the following command:
-
-----------------------------------------------------------------------
-git clone gitolite@centos.org.cu/centos-artwork.git
-----------------------------------------------------------------------
-
-This command will create your working copy inside your home directory,
-specifically in a directory named <filename
-class="directory">artwork.git</filename>. Inside this directory you
-will find all the files you need to work with inside The CentOS
-Artwork Repository. If you want to have your working copy in a
-location different to that one shown above.
-
-The first time you download the working copy it contains no image
-files, nor documentation, or localized content inside it. This is
-because all the files provided in the working copy are source files
-(e.g., the files needed to produce other files) and it is up to you to
-render them in order to produce the final files (e.g., images and
-documentation) used to implement The CentOS Project corporate visual
-identity.
-
-=== Configure Administrative Tasks
-
-Most of the administrative tasks you need to perform in your working
-copy of The CentOS Artwork Repository are standardized inside the
-*prepare* functionality of *centos-art.sh* script. Inside
-*centos-art.sh* script, all administrative task are invoked through
-the *sudo* command. Thus, in order for the *centos-art.sh* script to
-perform administrative tasks, you need to update the *sudo*'s
-configuration in a way that such administrative actions be allowed.
-
-At time of this writing the *centos-art.sh* script
-implements just one administrative task, that is package management.
-Nevertheless, in the future, other administrative tasks might be
-included as well (e.g., installing themes locally from the working
-copy for testing purposes.).
-
-To update the *sudo*'s configuration, execute the *visudo* command as
-``root''.  Later, uncoment the <varname>Cmnd_Alias</varname> related
-to ``SOFTWARE'' and add a line for your username allowing software
-commands. This configuration is illustrated in <xref
-linkend="repo-ws-config-sudoers-example" />.
-
-[[repo-ws-config-sudoers-example]]
-.The /etc/sudoers configuration file
-======================================================================
-----------------------------------------------------------------------
-## Installation and management of software
-Cmnd_Alias SOFTWARE = /bin/rpm, /usr/bin/up2date, /usr/bin/yum
-
-## Next comes the main part: which users can run what software on
-## which machines (the sudoers file can be shared between multiple
-## systems).
-## Syntax:
-##
-##      user    MACHINE=COMMANDS
-##
-## The COMMANDS section may have other options added to it.
-##
-## Allow root to run any commands anywhere
-root    ALL=(ALL)       ALL
-
-## Allow the centos user to run installation and management of
-## software anywhere.
-al      ALL=(ALL)       SOFTWARE
-----------------------------------------------------------------------
-======================================================================
-
-[[repo-ws-config-runout]]
-=== Run Preparation Tool
-
-Once you've both downloaded a working copy from The CentOS Artwork
-Repository and configured the *sudo* configuration file successfully,
-run the *prepare* functionality of *centos-art.sh* script to complete
-the configuration process using the following command:
-
-----------------------------------------------------------------------
-~/artwork/Scripts/Bash/centos-art.sh prepare
-----------------------------------------------------------------------
+Then, using this feature, you checkout a new branch and repeat the
+rendition process until you've gathered all the information you need
+to build a tar.bz2 package.  At this point, you can create a tar.bz2
+package and remove the +Final+ directory to cleanup the workspace.  As
+part of this process, the tar.bz2 package created could be moved
+automatically to a public place local in your workstation or remote
+somewhere on the Internet.
 
 [[repo-convs-filename-rfiles]]
-== Repository File Names
+== The Repository File Names
 
 Inside The CentOS Artwork Repository, file names are always written in
 lowercase.  Digits (e.g., 0, 1, 2), hyphen (-), dot (.) and low line
@@ -397,8 +173,6 @@ lowercase.  Digits (e.g., 0, 1, 2), hyphen (-), dot (.) and low line
 characters, don't use them as first character in the file name.
 
 === File Names Written Correctly
-
-The following file names are written correctly:
 
 * +01-welcome.png+
 * +splash.png+
@@ -411,13 +185,13 @@ The following file names are written correctly:
 * +Splash.png+
 * +AnacondaHeader.png+
 
-== Repository Link Names
+== The Repository Link Names
 
 Inside The CentOS Artwork Repository, links are always symbolic and
 follow the same name convention used by regular files, as described in
 <<repo-convs-filename-rfiles>>.
 
-== Repository Directory Names
+== The Repository Directory Names
 
 Inside The CentOS Artwork Repository, directory names are all written
 capitalized and sometimes in cammel case. Digits (e.g., 0, 1, 2),
@@ -426,8 +200,6 @@ case you use hyphen and dot characters, don't use them as first
 character in the directory name.
 
 === Directory Names Written Correctly
-
-The following directory names are written correctly:
 
 * +Identity+
 * +Themes+
@@ -438,8 +210,6 @@ The following directory names are written correctly:
 
 === Directory Names Written Incorrectly
 
-The following directory names are written incorrectly:
-
 * +identity+
 * +theMes+
 * +MOTIFS+
@@ -447,163 +217,98 @@ The following directory names are written incorrectly:
 * +.0.1+
 * +.0.1-35+
 
-== Repository Directory Structure
+[[repository-install]]
+== The Repository Installation
 
-Occasionly, you may find that new components of The CentOS Project
-corporate visual identity need to be added to the repository in order
-to work them out. If that is the case, the first question we need to
-ask ourselves, before starting to create directories blindly all over,
-is: _What is the right place to store it?_
+[[repository-install-git]]
+=== Git
 
-To create a directory structure inside the repository you need to
-define the concept behind it first. Later you need to create a new
-directory inside the repository, remembering that there are locations
-inside the repository that already define concepts you probably would
-prefer to reuse.  For example, the +Artworks/Themes/Motifs+ directory
-stores artistic motifs of different themes, the
-+Artworks/Themes/Models+ directory stores design models for themes,
-the +Documentation+ directory stores documentation, +Locales+ stores
-translation messages, and the +Automation+ stores automation scripts.
+The CentOS Artwork Repository is available online for anyone to make
+local clones of it using a Git client but pushing changes to The
+CentOS Artwork Repository is restricted to members of The CentOS
+Artwork SIG, only.  In case someone without permission to push changes
+up to central repository finds problems and wants to propose one or
+more solutions, data exchange is always possible through patches via
+e-mail with people able to push changes up to central repository.
 
-The best suggestion we can probably give you would be to send a mail
-with your questions to the mailto:centos-devel@centos.org[CentOS
-developers mailing list]
-(mailto:centos-devel@centos.org[centos-devel@centos.org]).  This is
-the place where development of The CentOS Artwork Repository takes place and surely, in
-community, it will be possible to find a place for your new component
-inside the repository.
+* ssh://gitolite@centos.org.cu:centos-artwork.git
 
-The following sub-sections describe relevant directories of The CentOS
-Artwork Repository that you can use as reference to know where the
-files you are looking for are stored in and where you can store new
-files, as well.
+[[repository-install-yum]]
+=== Yum
 
-=== The +Artworks/+ Directory
+The CentOS Artwork Repository is also available for installing using
+RPM packages from *[CentOS-Artwork]* Yum repository. The packages in
+this repository provide automation scripts, design models, artistic
+motifs and customizations that you can find useful for your own
+projects.  When you install packages from this repository, you are
+installing a framework to produce both images and documentation for
+different locales, consistently.  Nonetheless, the information you
+produce this way is not recorded in The CentOS Artwork Repository.
 
-This directory contains files affecting the visual style of The CentOS
-Project. This directory organizes Brushes, Gradients, Fonts, Palettes,
-Patterns Themes and the web environment customizable files.
+== The Repository Configuration
 
-=== The +Artworks/Brands/+ Directory
-
-This directory ...
-
-=== The +Artworks/Brushes/+ Directory
-
-This directory contains GIMP brushes. Brushes stored in this directory
-will be available inside GIMP's brushes dialog.
-
-=== The +Artworks/Documentation/+ Directory
-
-
-This directory ...
-
-=== The +Artworks/Fonts/+ Directory
-
-This directory contains font files. Font files stored in this
-directory will be available to be used from applications like GIMP and
-Inkscape.
-
-=== The +Artworks/Gradients/+ Directory
-
-This directory contains GIMP gradients. Gradients stored in this
-directory will be available inside GIMP's gradients dialog. This
-directory organizes gradient files inside
-
-=== The +Artworks/Icons/+ Directory
-
-This directory ...
-
-=== The +Artworks/Palettes/+ Directory
-
-This directory ...
-
-=== The +Artworks/Patterns/+ Directory
-
-This directory contains GIMP patterns. Patterns stored in this
-directory will be available inside GIMP's patterns dialog.
-
-=== The +Artworks/Themes/+ Directory
-
-This directory ...
-
-=== The +Artworks/Webenv/+ Directory
-
-This directory ...
-
-=== The +Automation/+ Directory
-
-This directory ...
-
-== Repository Authoring
+== The Repository Authoring
 
 The content produced inside The CentOS Artwork Repository is copyright
-of The CentOS Project.  This is something you, as author, should be
-aware of because you are contributing your creation's rights to
-someone else; The CentOS Project in this case.  This way, your work is
-distributed using ``The CentOS Project'' as copyright holder, not your
-name (even you remain as natural author of the work).  Because The
-CentOS Project is the copyright holder, is the license chosen by The
-CentOS Project the one applied to your work, so it is the one you need
-to agree with before making a creation inside The CentOS Artwork
+of The CentOS Artwork SIG.  This is something you, as author, should
+be aware of because you are contributing your creation's rights to
+someone else; The CentOS Artwork SIG in this case.  This way, your
+work is distributed using ``The CentOS Artwork SIG'' as copyright
+holder, not your name (even you remain as natural author of the work).
+Because The CentOS Artwork SIG is the copyright holder, is the license
+chosen by The CentOS Artwork SIG the one applied to your work, so it
+is the one you need to agree with before making a creation inside The
+CentOS Artwork Repository.
+
+The CentOS Artwork SIG is an organizational unit of The CentOS
+Project. The CentOS Artwork SIG is formed by one or more core
+developers and devoted community members whom have contributed a
+significant amount of work to The CentOS Project visual identity. Core
+developers provide a bond between The CentOS Artwork SIG and The
+CentOS Project.  Community members, in coordination with core
+developers, lead most of the work inside The CentOS Artwork
 Repository.
 
-The CentOS Project is a community project controlled by its own
-community of users.  Inside the community, The CentOS Administrators
-group is the higher authority and the only one able to set core
-decision like the kind of license used inside the project and
-subproject like The CentOS Artwork Repository.
-
 The redistribution conditions of The CentOS Artwork Repository are
-described in ...
+described in <<repository-copying>>.
 
-== Repository Publishing
+[[repository-publishing]]
+== The Repository Publishing
 
 When you perform changes inside your working copy, those changes are
-local to your working copy only. In order for you to share your
-changes with others, you need to push them up to the central
-repository the working copy you are using was initially downloaded
-from. To push your changes up to the central repository see
-git-push(1) man page.
+local to your working copy, only. In order for you to publish your
+changes up to the central repository, you need to push them up across
+the Internet, using git-push(1) command.  Initially, no one is able to
+write changes up to the central repository except members of The
+CentOS Artwork SIG. To be member of The CentOS Artwork SIG, it is
+necessary to prove the sustained interest on it by contributing work,
+fixing issues, making any clever suggestion (e.g., a patch) or just
+explaining in the community what you intend to contribute.  These
+restrictions are necessary in order to protect The CentOS Artwork
+Repository from spammers.
 
-Initially, you won't be able to publish your changes to The CentOS
-Artwork Repository immediately. It is necessary that you prove your
-interest in contributing first sending a mail to the
-http://lists.centos.org/mailman/listinfo/centos-devel[CentOS
-Developers mailing list]
-(mailto:centos-devel@centos.org[centos-devel@centos.org]), preferably
-in conjunction with a description of the changes you pretend to
-commit. This restriction is necessary in order to protect the source
-repository from spammers.
+Once write accesses have being granted to someone, they remain valid
+and there is no need for that person to request them again the next
+time he or she decides to push new changes up to the central
+repository. Persons with write access are considered member of The
+CentOS Artwork SIG and included in the AUTHORS file distributed with
+The CentOS Artwork Repository.
 
-Once you've received access to publish your changes, they will remain
-valid to you and there is no need for you to request permission to
-publish new changes as long as you behave as a good cooperating
-citizen.
+When publishing changes up to central repository, it is nice to show
+respect on the work already made by others and share ideas with
+authors before changing relevant parts of their work, specially in
+situations when the access required to realize the changes has been
+granted to you already. The feeling produced by this behaviour is so
+self-motivating that you might cross the line at some point but that
+is fine as long as it has emerged from the good will and
+inexperienced.  In these situations, education bursts naturally from
+more experienced members in the community to correct the behaviour and
+keep the order.
 
-As a good cooperating citizen one understand of a person who respects
-the work already done by others and share ideas with authors before
-changing relevant parts of their work, specially in situations when
-the access required to realize the changes has been granted already.
-Of course, there is a time when conversation has taken place already,
-the paths has been traced and changing the work is so obvious that
-there is no need for you to talk about it; that's because you already
-did, you already built the trust to keep going. As complement, the
-mailing list mentioned above is available for sharing ideas in a way
-that good relationship between community citizens could be constantly
-balanced.
+[[repository-copying]]
+== The Repository Copying
 
-The relationship between community citizens is monitored by repository
-administrators. Repository administrators are responsible of granting
-that everything goes the way it needs to go in order for The CentOS
-Artwork Repository to accomplish its mission (see <<repo-mission>>).
-
-== Repository Copying Conditions
-
-The CentOS Project uses The CentOS Artwork Repository to produce The
-CentOS Project corporate visual identity.
-
-The The CentOS Artwork Repository is not in the public domain; it is
+The CentOS Artwork Repository is not in the public domain; it is
 copyrighted and there are restrictions on their distribution, but
 these restrictions are designed to permit everything that a good
 cooperating citizen would want to do.  What is not allowed is to try
@@ -630,21 +335,12 @@ recipients to know that what they have is not what we distributed, so
 that any problems introduced by others will not reflect on our
 reputation.
 
-The The CentOS Artwork Repository is released as a GPL work.
-Individual packages used by The CentOS Artwork Repository include
-their own licenses and the The CentOS Artwork Repository license
-applies to all packages that it does not clash with.  If there is a
-clash between the The CentOS Artwork Repository license and individual
-package licenses, the individual package license applies instead.
-
 The precise conditions of the license for the The CentOS Artwork
-Repository are found in (...). This manual specifically is covered by
-the conditions found in (...).
+Repository are found in <<licenses-gpl>>. This manual specifically is
+covered by the conditions found in <<licenses-gfdl>>.
 
-[[repo-history]]
-== History
-
-=== 2008
+[[repository-history]]
+== The Repository History
 
 The CentOS Artwork Repository started at
 mailto:centos-devel@centos.org[The CentOS Developers Mailing List]
@@ -661,7 +357,7 @@ the proposition of creating a Subversion repository where translations
 and image production could be distributed inside The CentOS Community.
 
 http://wiki.centos.org/KaranbirSingh[Karanbir Singh] considered the
-idea intresting and provided the infrastructure necessary to support
+idea interesting and provided the infrastructure necessary to support
 the effort.  This way, https://projects.centos.org/trac/artwork[The
 CentOS Artwork SIG] and https://projects.centos.org/svn/artwork[The
 CentOS Artwork Repository] were officially created and made world wide
@@ -683,509 +379,11 @@ http://www.google.com/search?q=anaconda+slides+site%3Alists.centos.org]
 
 From this time on The CentOS Artwork Repository has been evolving into
 an automated production environment where The CentOS Community can
-conceive The CentOS Project corporate visual identity.
-
-The exact changes commited to The CentOS Artwork Repository through
-history can be found in the
-https://projects.centos.org/trac/artwork/timeline[repository logs] so
-you can know the real history about it. For those of you who just want
-to get a glance of changes committed, see <<repo-history>>.
-
-=== 2009
-
-Around 2009, the rendition script was at a very rustic state where
-only slide images could be produced, so it was redesigned to extend
-the image production to other areas, different from slide images.  In
-this configuration, one SVG file was used as input to produce a
-translated instance of it which, in turn, was used to produce one
-translated PNG image as output. The SVG translated instance was
-created through SED replacement commands. The translated PNG image was
-created from the SVG translated instance using Inkscape command-line
-interface.
-
-The repository directory structure was prepared to receive the
-rendition script using design templates and translation files in the
-same location. There was one directory structure for each art work
-that needed to be produced. In this configuration, if you would want
-to produce the same art work with a different visual style or
-structure, it was needed to create a new directory structure for it
-because both the image structure and the image visual style were
-together in the design template.
-
-The rendition script was moved to a common place and linked from
-different directory structures. There was no need to have the same
-code in different directory structures if it could be in just one
-place and then be linked from different locations.  
-
-Corporate identity concepts began to be considered. As referece, it
-was used the book "Corporate Identity" by Wally Olins (1989) and
-http://en.wikipedia.org/Corporate_identity[Wikipedia related links].
-This way, the rendition script main's goal becomes to: _automate the
-production process of a monolithic corporate visual identity
-structure, based on the mission and the release schema of The CentOS
-Project_.
-
-The repository directory structures began to be documented by mean of
-flat text files. Later, documentation in flat text files was moved
-onto LaTeX format and this way The CentOS Artwork User Guide was
-initiated.
-
-=== 2010
-
-Around 2010, the rendition script changed its name from *render.sh* to
-*centos-art.sh* and became a collection of functionalities where
-rendition was just one among others (e.g., documentation and
-localization).
-
-The *centos-art.sh* was initially conceived to automate frequent tasks
-inside the repository based in the idea of Unix toolbox: to create
-small and specialized tools that do one thing well.  This way,
-functionalities inside *centos-art.sh* began to be identified and
-separated one another. For example, when images were rendered, there
-was no need to load functionalities related to documentation manual.
-This layout moved us onto ``common functionalities'' and ``specific
-functionalities'' inside *centos-art.sh* script. Common
-functionalities are loaded when *centos-art.sh* script is initiated
-and are available to specific functionalities.  
-
-Suddenly, no need was found to keep all the links spreaded around the
-repository in order to execute the *centos-art.sh* script from
-different locations.  The *centos-art* command-line interface was used
-instead. The *centos-art* command-line interface is a symbolic link
-stored inside the +\~/bin+ directory pointing to *centos-art.sh*
-script.  As default configuration, inside The CentOS Distribution, the
-path to +\~/bin+ is included in the search path for commands (see PATH
-environment variable).  This way, using the *centos-art* command-line
-interface, it is possible to execute the *centos-art.sh* script from
-virtually anywhere inside the workstation, just as we frequently do
-with regular commands.
-
-Start using GNU getopt as default option parser inside the
-*centos-art.sh* script.
-
-The repository directory structure was updated to improve the
-implementation of corporate visual identity concepts.  Specially in
-the area related to themes. Having both structure and style in the
-same file introduced content duplication when producing art works.
-Because of this reason, they were separated into two different
-directory structures: the design models and the artistic motifs
-directory structures.  From this point on, the *centos-art.sh* was
-able to produce themes as result of arbitrary combinations between
-design models (structure) and artistic motifs (visual styles).
-
-In the documentation area, the documents in LaTeX format were migrated
-to Texinfo format. In this configuration, each directory structure in
-the repository has a documentation entry associated in a Texinfo
-structure which can be read, edited and administered (e.g., renamed,
-deleted and copied) interactively through *centos-art.sh* script.
-Additionally, the texi2html program was used to produced customized
-XHTML output in conjunction with CSS from The CentOS Web Environment.
-
-=== 2011
-
-Around 2011, the *centos-art.sh* script was
-redesigned to start translating XML-based files (e.g., SVG and Docbook
-files) through *xml2po* program and shell scripts
-(e.g., Bash scripts) through GNU gettext tools.  This configuration
-provided a stronger localization interface for graphic designers,
-translators and programmers. The SED replacement files are no longer
-used to handle localization.  
-
-The *render*, *help* and
-*locale* functionalities consolidated themselves as
-the most frequent tasks performed in The CentOS Artwork Repository working copy.
-Additionally, the *prepare* and
-*tuneup* functionalities were also maintained as
-useful tasks.
-
-In the documentation area, it was introduced the transformation of
-localized DocBook XML DTD instances through the
-*render* and *locale*
-functionalities.  In this configuration, you use
-*locale* functionality to localize DocBook source
-files to your prefered language and later, using the
-*render* functionality, you can produce the
-localized XTHML and PDF output as specified in a XSLT layer.
-Unfortunly, the transformation DocBook XML -> FO -> PDF (through
-PassiveTex) seems to be buggy inside CentOS 5.5, so it was commented
-inside the *centos-art.sh* script. Most documentation
-is now organized in DocBook format, even Texinfo format remains as the
-only format with automated production tasks.
-
-In the automation area, the *centos-art.sh* script
-introduced the capability of reading configuration files. The main
-goal here was moving some command-line options from functionalities
-onto a more persistent medium.  Most configuration files were set to
-define the position of brands inside images and documentation manual
-specific options.
-
-[[repo-history-2012]]
-=== 2012
-
-The CentOS Artwork Repository development was eventually stopped at
-November 2011 until July 2012 when we needed to make the
-*centos-art.sh* script a bit more customizable than it presently was.
-For example, it was considered as a need that functionalities inside
-the *centos-art.sh* script must be not just conceived independent one
-another but reusable in different contexts as well.
-
-[[repo-history-2012-1]]
-==== Make Localization Of *centos-art.sh* Script Specific To Different Contexts
-
-The procedure used to locale messages inside the *centos-art.sh*
-script has to be re-designed in order to accept such pluggable
-behavior into the script. We couldn't publish unique
-+centos-art.sh.po+ and +centos-art.sh.mo+ files because they may
-contain different information in different contexts. For example, if
-you are using the *render* and
-*help* functionalities you only need translation
-messages for them and not those from other functionalities that may
-exist in the central repository but you didn't download nor use into
-your working copy.
-
-One solution for this could be to have independent PO files for each
-functionality of *centos-art.sh* script which are
-combined to create the final PO and MO files that
-*gettext* uses to retrive translated strings
-when *centos-art.sh* script is running. For this
-solution to be effective, you must be selective about the
-functionalities and locales directories you download into your working
-copy. For example, if you want to use the render functionality and its
-locale messages only, you must download the required directories and
-exclude others.
-
-[NOTE]
-======================================================================
-In case you don't want to be selective and download the whole
-repository, the creation of the +centos-art.sh.po+,
-+centos-art.sh.pot+ and
-+centos-art.sh.mo+ files will occur automatically
-the first time you run the *prepare* functionality
-(which require the *locale* functionality to be
-available), or later, by running the following command:
-
-----------------------------------------------------------------------
-centos-art locale Scripts/Bash --update
-----------------------------------------------------------------------
-
-For more information about the *prepare* and *locale* functionalities,
-see their respective manuals.
-======================================================================
-
-[[repo-history-2012-2]]
-.Directory structure of a rendering-only context
-======================================================================
-----------------------------------------------------------------------
-/home/centos/Projects/artwork/
-|-- Locales/
-|   `-- Scripts/
-|       `-- Bash/
-|           `-- es_ES/
-|               |-- Functions/
-|               |   |-- Commons/
-|               |   |   |-- messages.po
-|               |   |   `-- messages.pot
-|               |   |-- Locales/
-|               |   |   |-- messages.po
-|               |   |   `-- messages.pot
-|               |   `-- Render/
-|               |       |-- messages.po
-|               |       `-- messages.pot
-|               |-- LC_MESSAGES/
-|               |   `-- centos-art.sh.mo
-|               |-- centos-art.sh.po
-|               `-- centos-art.sh.pot
-`-- Scripts/
-    `-- Bash/
-        |-- Functions/
-        |   |-- Commons/
-        |   |-- Locales/
-        |   `-- Render/
-        `-- centos-art.sh
-----------------------------------------------------------------------
-======================================================================
-
-As shown in <<repo-history-2012-2>>, both *Commons* and *Locales*
-functionalities will always be required directories. The +Commons+
-directory contains the common functionalities and the *Locales*
-directory contains the standard procedures you need to run in order to
-build the final +centos-art.sh.mo+ file used by *gettext* to retrive
-translation strings when the *centos-art.sh* script is running.
-Remember that +centos-art.sh.pot+, +centos-art.sh.po+ files aren't
-under version control and they are built by combining each
-funtionality message.po file into a PO and later a MO file.  
-
-A practical example of using the solution described above may be found
-when you are working on the corporate identity of The CentOS Project
-and then need to start a new corporate identity project for another
-organization.  You want to keep the directory structure of The CentOS
-Artwork Repository and its automation tool, the *centos-art.sh*
-script.  Your new project requires you to introduce new
-functionalities to *centos-art.sh* which don't fit the needs of The
-CentOS Project (e.g., you want to introduce a *report* functionality
-to mesure how much connect time do you consume through your PPP
-internface.) or you just want to keep the directory structure of your
-new project as simple as possible.
-
-To go through this it is possible to mix specific parts of different
-central repositories into one single working copy.  This is the
-working copy you'll use to manage your new project. In
-<<repo-history-2012-1>>, we see how the +Render+, +Locales+ and
-+Commons+ directories which come from the The CentOS Artwork
-Repository has been integrated into the working copy of your new
-project.
-
-----------------------------------------------------------------------
-/home/al/Projects/Myapp/
-|-- Locales/
-|   `-- Scripts/
-|       `-- Bash/         
-|           `-- es_ES/
-|               |-- Functions/
-|               |   |-- Commons/ &lt;--| from https://projects.centos.org/svn/artwork/
-|               |   |   |-- messages.po
-|               |   |   `-- messages.pot
-|               |   |-- Locales/ &lt;--| from https://projects.centos.org/svn/artwork/
-|               |   |   |-- messages.po
-|               |   |   `-- messages.pot
-|               |   |-- Render/  &lt;--| from https://projects.centos.org/svn/artwork/
-|               |   |   |-- messages.po
-|               |   |   `-- messages.pot
-|               |   `-- Report/
-|               |       |-- messages.po
-|               |       `-- messages.pot
-|               |-- LC_MESSAGES/
-|               |   `-- myapp.sh.mo
-|               |-- myapp.sh.po
-|               `-- myapp.sh.pot
-`-- Scripts/
-    `-- Bash/
-        |-- Functions/
-        |   |-- Commons/ &lt;--| from https://projects.centos.org/svn/artwork/
-        |   |-- Locales/ &lt;--| from https://projects.centos.org/svn/artwork/
-        |   |-- Render/  &lt;--| from https://projects.centos.org/svn/artwork/
-        |   `-- Report/
-        `-- myapp.sh
-----------------------------------------------------------------------
-
-At this point, your working copy contains files from two different
-central repositories. One repository provides the files of your new
-organization project and the other one provides the files related to
-the *render* functionality from The CentOS Artwork Repository.  In
-this environment, all updates commited to the +Render+, +Locales+ and
-+Commons+ directories at The CentOS Artwork Repository will be
-available to you too, the next time you update your working copy.
-Likewise, if you change something in any of these directories and
-commit your changes, your changes will be available to poeple working
-in The CentOS Artwork Repository the next time they update their
-working copies.
-
-Understanding the need of mixing different central repositories into a
-single working copy is an important step for reusing the
-functionalities that come with centos-art.sh script, but it is not
-enough if you want to customize the information produced by it.  By
-default, the centos-art.sh script uses information related to The
-CentOS Project.  You probably need to change this if you are producing
-images to a different organization than The CentOS Project. For
-example, some of the information you might need to change would be the
-copyright holder, brands, domain names, mailing lists, and so forth.
-To change this information you need to duplicate the file
-+centos-art.sh+ and rename it to something else.  Later, you need to
-edit the renamed version and change variables inside according your
-needs. In <<repo-history-2012-1>>, we used the name *myapp.sh* instead
-of *centos-art.sh* so the information we set inside it could reflect
-the specific needs that motivated the creation of a new project
-without affecting those from The CentOS Project.
-
-Most of the information you need to change in your duplicated version
-of +centos-art.sh+ file is controlled by a set of read-only variables.
-You modify these variables here and they will be available all along
-the script execution time. For example, you can change the value of
-CLI_WRKCOPY variable inside your duplicated version of +centos-art.sh+
-to change the absolute path you use to store your working copy.
-
-==== Enhance The CentOS Logo Construction
-
-The CentOS Logo is made of two different components known as The
-CentOS Symbol and The CentOS Type.  Presently (at the end of
-September), to produce these components, we create one SVG image for
-each PNG image we want to produce, store it in
-+Identity/Models/Brands/Logos+ directory structure and run the
-command:
-
-----------------------------------------------------------------------
-centos-art render Identity/Images/Brands/Logos*
-----------------------------------------------------------------------
-
-This model works and scales well in situations when there isn't a need
-to reuse final images among themselves. However, when you need to
-reuse images among themselves, a better solution is required. The goal
-here would be: don't create SVG images for PNG
-images you can build based on other PNG images.
-
-This might be achieved through one of the following ways:
-
-- Create a new specific functionality to achieved the goal.  Needed
-  because the *render* specific functionality uses SVG files as
-  reference to build images (i.e., one SVG image produces one PNG
-  image).
-
-- Modify *render* functionality to work in different modes based on
-  file type or file extension.  The first mode would use SVG files as
-  reference to build PNG images (just as it was doing so far).  The
-  second mode would use a configuration file named +render.conf+ as
-  reference inside the design models directory you want to produce
-  images for so as to build the related PNG images.  In this second
-  case, the configuration file specifies how final PNG images will be
-  produced (e.g., by appending or overlapping them one another).
-
-For example, consider the following command-line:
-
-----------------------------------------------------------------------
-centos-art render Identity/Images/Brands/Logos
-----------------------------------------------------------------------
-
-This command should evaluate which type of rendition will be done,
-based on whether the source file is a scalable vector graphic (SVG) or
-a configuration file.  To make this decision, the *centos-art.sh*
-script looks for SVG files first, and configuration files later.  When
-SVG files are found, the *centos-art.sh* script uses a list of SVG
-files and process them one by one excluding any related configuration
-file that could exist.  On the other hand, if no SVG file is found
-inside the related design model directory structure, the
-*centos-art.sh* script will use the configuration file with the name
-+render.conf+ to create images as specified inside it. When neither a
-SVG or a configuration file is found inside the design model directory
-structure, the *centos-art.sh* script finishes its execution without
-any error message.  For example, if no SVG file is found inside
-+Identity/Models/Brands/Logos/+ directory and the
-+Identity/Models/Brands/Logos/images.conf+ configuration file exists
-therein with the following content:
-
-----------------------------------------------------------------------
-[centos.png]
-models  = "Identity/Models/Brands/Symbols/centos-symbol-forlogos.svgz Identity/Models/Brands/Types/centos.svgz"
-formats = "xpm jpg"
-heights = "48 78"
-fgcolor = "000000 ffffff"
-bgcolor = "ffffff-0"
-command = "/usr/bin/convert +append"
-
-[centos-artwork.png]
-models  = "Identity/Models/Brands/Symbols/centos-symbol-forlogos.svgz Identity/Models/Brands/Types/centos.svgz Identity/Models/Brands/Types/artwork.svgz"
-formats = "xpm jpg"
-heights = "48 78"
-fgcolor = "000000 ffffff"
-bgcolor = "ffffff-0"
-command = "/usr/bin/convert +append"
-----------------------------------------------------------------------
-
-The *centos-art.sh* script should produce the
-following image files:
-
-----------------------------------------------------------------------
-Identity/Images/Brands/Logos/000000/ffffff-0/48/centos.jpg
-Identity/Images/Brands/Logos/000000/ffffff-0/48/centos.png
-Identity/Images/Brands/Logos/000000/ffffff-0/48/centos.xpm
-Identity/Images/Brands/Logos/000000/ffffff-0/48/centos-artwork.png
-Identity/Images/Brands/Logos/000000/ffffff-0/48/centos-artwork.jpg
-Identity/Images/Brands/Logos/000000/ffffff-0/48/centos-artwork.xmp
-Identity/Images/Brands/Logos/000000/ffffff-0/78/centos.jpg
-Identity/Images/Brands/Logos/000000/ffffff-0/78/centos.png
-Identity/Images/Brands/Logos/000000/ffffff-0/78/centos.xpm
-Identity/Images/Brands/Logos/000000/ffffff-0/78/centos-artwork.png
-Identity/Images/Brands/Logos/000000/ffffff-0/78/centos-artwork.jpg
-Identity/Images/Brands/Logos/000000/ffffff-0/78/centos-artwork.xmp
-Identity/Images/Brands/Logos/ffffff/ffffff-0/48/centos.jpg
-Identity/Images/Brands/Logos/ffffff/ffffff-0/48/centos.png
-Identity/Images/Brands/Logos/ffffff/ffffff-0/48/centos.xpm
-Identity/Images/Brands/Logos/ffffff/ffffff-0/48/centos-artwork.png
-Identity/Images/Brands/Logos/ffffff/ffffff-0/48/centos-artwork.jpg
-Identity/Images/Brands/Logos/ffffff/ffffff-0/48/centos-artwork.xmp
-Identity/Images/Brands/Logos/ffffff/ffffff-0/78/centos.jpg
-Identity/Images/Brands/Logos/ffffff/ffffff-0/78/centos.png
-Identity/Images/Brands/Logos/ffffff/ffffff-0/78/centos.xpm
-Identity/Images/Brands/Logos/ffffff/ffffff-0/78/centos-artwork.png
-Identity/Images/Brands/Logos/ffffff/ffffff-0/78/centos-artwork.jpg
-Identity/Images/Brands/Logos/ffffff/ffffff-0/78/centos-artwork.xmp
-----------------------------------------------------------------------
-
-The final location for storing images output inside the repository is
-determined by using the design model directory provided as argument.
-Basically, the *centos-art.sh* script changes the
-path components from Models to Images and adds foreground color,
-background color, height value and image name to it to differentiate
-rendered images.
-
-In case you need to restrict the amount of files you want to produce
-including their formats, heights, colors and commands, you need to
-modify the content of the related +render.conf+ configuration file.
-There is not any command-line option available for such tasks. The
-most *render* command-line options can do for you is when there are
-more than one configuration file inside the same design model
-directory and you need to specify which one of them will be used as
-reference. In such case you can use the
-<option>--filter="REGEX"</option> option.  
-
-When images are produced through configuration files, the
-*centos-art.sh* script takes the order provided in
-the list of design models to build the list of images you will work
-with through the command specified. For example, the order in which
-images will be appended or overlapped.  
-
-Localization of logo images will not be and must not be supported in
-any way. That would bring disastrous confusion in the area of visual
-recognition.
-
-=== 2013
-
-Development of CentOS Artwork Repository was eventually stopped at
-November, 2012, when I moved myself from Cienfuegos to Havana city for
-working. I returned on May 14th of 2013 and continued developing The
-CentOS Artwork Repository at home.  Considered a
-Git+Gitolite+Gitweb+MantisBT infrastructure for CentOS Artwork
-Repository and started working on it in my workstation.  This, in
-order to implement a distributed work flow for The CentOS Artwork
-Repository based on Git version control system.
-
-[[repository-history-2013-UpdateRepositoryLayout]]
-==== Update Repository Directories Structure
-
-I face the following situation: I am working on a documentation
-project named ``solinfo-network''.  While I was organizing it, I found
-that the directory structure of The CentOS Artwork Repository fits
-quite well the needs of ``solinfo-network'' documentation project.
-However, I don't want to duplicate automation scripts in two separate
-projects, but share them between themselves (i.e., changes committed
-to automation scripts are pushed to one single place, not two.).
-
-When we use Subversion repositories, it is possible to checkout
-specific parts of different repositories into a new repository. This
-is very useful if we need to create several projects that share the
-same component and we don't want to duplicate the common component in
-two or more different projects but ``share'' it between them.
-
-When we use Git repository, it is not possible to checkout specific
-parts of a repository but the complete tree. So, in order to share
-common components of a repository we need to create one repository for
-each common component we want to share and then use Git
-submodules<citation>see progit-book, page 152.</citation>  This
-requires that brand new repositories be created for each component we
-want to share.
-
-In both situations, including Git and Subversion repositories, it is
-necessary that we define very well the structure of each component we
-want to share, so it can be ``plugged'' nicely into other projects.
-Likewise, other projects must have the same directory structure the
-pluggable component was design to fit in. If these two conditions can
-be reached, it would be possible to reuse repositories components and
-concentrate efforts.  The current directory structure The CentOS
-Artwork Repository is set in allows components inside Subversion
-repositories to be reused by related working copies.  However, we
-cannot do the same if it is stored in a Git repository.  In order for
-Git repositories to be able to share components with other Git
-repositories, The CentOS Artwork Repository directory structure needs
-to be reorganized to better delineate each component the repository is
-made of.
+conceive The CentOS Project corporate visual identity.  The exact
+changes committed to The CentOS Artwork Repository through history can
+be found in the repository logs. footnote:[From 2008 to 2010 at
+https://projects.centos.org/trac/artwork/timeline, and from 2011 up to
+nowadays at
+https://centos.org.cu/git/?p=centos-artwork.git;a=summary)]
 
 // vim: set syntax=asciidoc:

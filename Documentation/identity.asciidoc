@@ -12,8 +12,7 @@ web sites, using the distribution, or acting on social events, the one
 unique name and one unique visual style connects them all to say: Hey!
 we are all part of The CentOS Project.
 
-The CentOS Mission
-------------------
+== The CentOS Mission
 
 The CentOS Project exists to produce The CentOS Distribution, an
 Enterprise-class Linux Distribution derived from sources freely
@@ -41,8 +40,7 @@ http://www.centos.org/modules/newbb/[Forums], and a dynamic
 http://www.centos.org/modules/smartfaq/[FAQ].
 
 [[centos-visual-manifestations]]
-The CentOS Visual Manifestations
---------------------------------
+== The CentOS Visual Manifestations
 
 The CentOS Artwork SIG has identified the following visual
 manifestations for The CentOS Project organization:
@@ -52,8 +50,7 @@ manifestations for The CentOS Project organization:
 * The CentOS Showroom -- to control the appearance of goods produced
   by industrial means.
 
-The CentOS Distribution
-~~~~~~~~~~~~~~~~~~~~~~~
+=== The CentOS Distribution
 
 This visual manifestation communicates its existence through software
 packages.  There are packages that make a remarkable use of images,
@@ -70,8 +67,7 @@ _redhat-artwork_).
 - The release schema (lifetime) and all the stuff related (e.g.,
   release notes, documentation, erratas, etc.).
 
-The CentOS Web Environment
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== The CentOS Web Environment
 
 This visual manifestation communicates its existence through web
 applications.  These web applications are free software and come from
@@ -91,8 +87,7 @@ is object of work for this visual manifestation.
   as well as RPMs and SRPMs used to build them up in different
   architectures.
 
-The CentOS Showroom
-~~~~~~~~~~~~~~~~~~~
+=== The CentOS Showroom
 
 This visual manifestation communicates its existence through
 production of industrial goods carrying The CentOS Brand.  These
@@ -110,8 +105,7 @@ produced here include the following:
   sleeves included).
 
 [[centos-brand]]
-The CentOS Brand
-----------------
+== The CentOS Brand
 
 The CentOS Brand is the main graphical identification of The CentOS
 Project.  The CentOS Artwork SIG uses The CentOS Brand to connect all
@@ -142,8 +136,7 @@ whole rendition process is fully automated, the fact of propagating
 brand information through a variable number of images is fairly simple
 and exact.
 
-The CentOS Symbol
-~~~~~~~~~~~~~~~~~
+=== The CentOS Symbol
 
 The CentOS Symbol is the graphical part of The CentOS Logo. The CentOS
 Artwork SIG uses The CentOS Symbol to ``brand'' images produced by The
@@ -156,29 +149,25 @@ images from on it. Final images produced from automation scripts vary
 in format, color and size but The CentOS Symbol proportion is strictly
 retained in all of them.
 
-Construction
-^^^^^^^^^^^^
+==== Construction
 
 1. ...
 
-Usage Restrictions
-^^^^^^^^^^^^^^^^^^
+==== Usage Restrictions
 
 In order to apply The CentOS Symbol to other images correctly, the
 following usage restrictions must be complied:
 
 1. ...
 
-Color Restrictions
-^^^^^^^^^^^^^^^^^^
+==== Color Restrictions
 
 In order to apply The CentOS Symbol to other images correctly, the
 following color restrictions must be complied:
 
 1. ...
 
-Acceptable Variations
-^^^^^^^^^^^^^^^^^^^^^
+==== Acceptable Variations
 
 Printing too many different colors on specific sorts of media may
 result very expensive sometimes, so the following acceptable
@@ -186,8 +175,7 @@ variations for The CentOS Symbol are also available:
 
 1. ...
 
-The CentOS Type
-~~~~~~~~~~~~~~~
+=== The CentOS Type
 
 The CentOS Type is the typographical part of The CentOS Logo.  The
 CentOS Type is used to ``brand'' images produce by The CentOS Project
@@ -206,29 +194,25 @@ proportion is strictly retained in all of them.
 
 image:corporate-fonts.png[corporate-fonts.png]
 
-Construction
-^^^^^^^^^^^^
+==== Construction
 
 1. ...
 
-Usage Restrictions
-^^^^^^^^^^^^^^^^^^
+==== Usage Restrictions
 
 In order to apply The CentOS Type to other images correctly, the
 following usage restrictions must be complied:
 
 1. ...
 
-Color Restrictions
-^^^^^^^^^^^^^^^^^^
+==== Color Restrictions
 
 In order to apply The CentOS Symbol to other images correctly, the
 following color restrictions must be complied:
 
 1. ...
 
-Acceptable Variations
-^^^^^^^^^^^^^^^^^^^^^
+==== Acceptable Variations
 
 Printing too many different colors on specific sorts of media may
 result very expensive sometimes, so the following acceptable
@@ -236,8 +220,7 @@ variations for The CentOS Type are also available:
 
 1. ...
 
-The CentOS Logo
-~~~~~~~~~~~~~~~
+=== The CentOS Logo
 
 The CentOS Logo is the combination of The CentOS Symbol and The CentOS
 Type. The CentOS Artwork SIG uses The CentOS Logo to ``brand'' images
@@ -253,29 +236,25 @@ for automation scripts to combine them in a great number of ways to
 produce a great number of final images for The CentOS Logos and with
 high levels of exactitude.
 
-Construction
-^^^^^^^^^^^^
+==== Construction
 
 image:corporate-logo-howto.png[corporate-logo-howto.png]
 
-Usage Restrictions
-^^^^^^^^^^^^^^^^^^
+==== Usage Restrictions
 
 In order to apply The CentOS Logo to other images correctly, the
 following usage restrictions must be complied:
 
 1. ...
 
-Color Restrictions
-^^^^^^^^^^^^^^^^^^
+==== Color Restrictions
 
 In order to apply The CentOS Logo to other images correctly, the
 following color restrictions must be complied:
 
 1. ...
 
-Acceptable Variations
-^^^^^^^^^^^^^^^^^^^^^
+==== Acceptable Variations
 
 Printing too many different colors on specific sorts of media may
 result very expensive sometimes, so the following acceptable
@@ -283,8 +262,7 @@ variations for The CentOS Logo are also available:
 
 1. ...
 
-The CentOS Palette
-------------------
+== The CentOS Palette
 
 In addition to colors used in The CentOS Symbol (9ccd2aff, 932279ff,
 262577ff, efa724ff) and The CentOS Default Background Color
@@ -302,8 +280,7 @@ appropriate number of colors and let the *render* module of
 *centos-art.sh* script to do the rest.
 
 [[centos-themes]]
-The CentOS Themes
------------------
+== The CentOS Themes
 
 The CentOS themes organize visual styles for all the visual
 manifestation The CentOS Project is made of. In order to automate the
@@ -313,8 +290,7 @@ have been divided into ``design models'' and ``artistic motifs.''
 image:identity-themes.png[identity-themes.png]
 
 [[centos-themes-models]]
-Design Models
-~~~~~~~~~~~~~
+=== Design Models
 
 Design models are compressed SVG files created with Inkscape. They
 describe the image files used to implement the CentOS project visual
@@ -344,8 +320,7 @@ initiate rendition for and the related design models set in the
 rendition configuration file.
 
 [[centos-themes-motifs]]
-Artistic Motifs
-~~~~~~~~~~~~~~~
+=== Artistic Motifs
 
 Artistic motifs are PNG images holding the background information of
 each design model available.  One important characteristic of artistic
@@ -359,8 +334,7 @@ information on them. The brand information is set later using
 automation scripts and final branding images, when final images are
 produced.
 
-The CentOS Behavior
--------------------
+== The CentOS Behavior
 
 The CentOS Behavior is focused on the effective social interaction of
 each member involved in the organization (e.g., core developers,
@@ -372,8 +346,7 @@ itself to achieve it.
 The CentOS Behavior is based on a meritocracy (the more you do the
 more you are allowed to do).
 
-The CentOS Visual Structure
----------------------------
+== The CentOS Visual Structure
 
 The CentOS Project has a monolithic visual structure. In it, The
 CentOS Project expresses its visual identity through one unique name
