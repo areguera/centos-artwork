@@ -43,11 +43,8 @@ declare -xr TCAR_BASEDIR=/usr/share/tcar
 # customized later by the user.
 declare -xr TCAR_WORKDIR=/tmp
 
-# Base directory where repository automation scripts are installed in.
-declare -xr TCAR_SCRIPT_BASEDIR=${TCAR_BASEDIR}/scripts
-
 # Base directory where automation script modules are installed in.
-declare -xr TCAR_SCRIPT_MODULES_BASEDIR=${TCAR_SCRIPT_BASEDIR}/modules
+declare -xr TCAR_SCRIPT_MODULES_BASEDIR=${TCAR_BASEDIR}/modules
 
 # Directory to store temporal files.
 declare -xr TCAR_SCRIPT_TEMPDIR=$(mktemp -p /tmp -d ${TCAR_SCRIPT_NAME}-XXXXXX)
@@ -126,7 +123,7 @@ declare -x  TCAR_FLAG_DEBUG='false'
 ######################################################################
 
 # Export script's environment functions.
-for SCRIPT_FILE in $(ls ${TCAR_SCRIPT_BASEDIR}/Scripts/*.sh);do
+for SCRIPT_FILE in $(ls ${TCAR_BASEDIR}/tcar_*.sh);do
     if [[ -x ${SCRIPT_FILE} ]];then
         . ${SCRIPT_FILE}
         export -f $(grep '^function ' ${SCRIPT_FILE} | cut -d' ' -f2)
