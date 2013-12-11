@@ -1,0 +1,109 @@
+/*
+ * Docbook -> Headings
+ * 
+ * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+ *
+ * This CSS is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This CSS is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *
+ * ----------------------------------------------------------------------
+ * $Id: headings.css 5257 2012-08-28 18:02:18Z al $
+ * ----------------------------------------------------------------------
+ */
+
+div.book > div.titlepage h1.title,
+div.article > div.titlepage h1.title,
+div.part > div.titlepage h1.title {
+    background-color: #204c8d;
+    background-image: url("../Images/h1-bg.png");
+    color: #fff;
+    padding: 1.5em;
+    text-align: center;
+    }
+
+div.book > div.titlepage div.author {
+    }
+
+div.book > div.titlepage h2.subtitle,
+div.book > div.titlepage h3.author {
+    margin-top: 0.5em;
+    }
+
+div.book > div.titlepage p.copyright {
+    }
+
+div.book > div.titlepage div.legalnotice {
+    margin-bottom: 1.5em;
+    }
+
+div.book > div.titlepage div.revhistory {
+    margin-bottom: 1.5em;
+    }
+
+div.book > div.titlepage div.abstract p.title {
+    margin-bottom: 0;
+    }
+
+div.preface > div.titlepage h2.title {
+    font-size: 2em;
+    margin-top: 1em;
+    }
+
+div.appendix > div.titlepage h2.title,
+div.index > div.titlepage h2.title,
+div.chapter > div.titlepage h2.title {
+    margin-top: 1em;
+    font-size: 1.7em;
+    }
+
+div.sect1 > div.titlepage h2.title,
+div.section > div.titlepage h2.title {
+    margin-top: 1em;
+    font-size: 1.7em;
+    }
+
+div.sect2 > div.titlepage h3.title,
+div.section > div.titlepage h3.title {
+    font-size: 1.4em;
+    }
+
+div.sect3 > div.titlepage h4.title,
+div.section > div.titlepage h4.title {
+    font-size: 1.2em;
+    }
+
+div.refnamediv {
+    padding-top: 1.5em;
+    }
+
+div.refentry div.refnamediv h2 span {
+    font-family: "DejaVuLG Mono", monospace
+    }
+
+div.refentry div.refsynopsisdiv h2,
+div.refnamediv h2,
+div.refentry div.refsection h2,
+div.refsect1 h2 {
+    border-bottom: 1px solid #DADADA;
+    }
+
+div.reference div.titlepage h1,
+div.reference div.titlepage h2 {
+    margin: 0.5em 0;
+    }
+
+div.figure p.title {
+    margin-top: 1.5em;
+    margin-bottom: 0.3em;
+    }
