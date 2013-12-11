@@ -1,0 +1,140 @@
+centos-art.sh(1)
+================
+
+Name
+----
+
+centos-art.sh - The CentOS artwork repository automation tool.
+
+Synopsis
+--------
+
+*centos-art.sh* [*--help*|*--version*]::
+    Print information about *centos-art.sh* script itself.
+
+*centos-art.sh* *MODULE* [*--help|--version*]::
+    Print information about the specified module. See <<modules>>
+    below to see which modules *centos-art.sh* script supports.
+
+Description
+-----------
+
+*centos-art.sh* exists to standardize frequent tasks inside the CentOS
+artwork repository. Inside *centos-art.sh* script, frequent tasks are
+organized inside modules.
+
+When you execute the *centos-art.sh* script in a terminal, it requests
+you to enter the absolute path of CentOS artwork repository in your
+workstation. This information is required in order for *centos-art.sh*
+to know where the repository directory structure you want to work with
+is stored in.  Later, once *centos-art.sh* knows where your copy of
+CentOS artwork repository is stored in, it initializes configuration
+variables and global functions. At this point, it continues reading
+the command-line arguments to retrieve the module's name, process
+common options next to it, store module-specific options and initiates
+the module's environment by executing the module's initialization
+script, based on the module's name retrieved from the command-line.
+
+[[modules]]
+Modules
+-------
+
+The *centos-art.sh* script supports the following modules:
+
+*prepare*::
+    Standardize configuration tasks needed by your working copy (e.g.,
+    verify whether required packages are installed or not in your
+    workstation, calls render module to produce images and manuals in
+    the correct order). This is the first task you should run in your
+    workstation, just after downloading a fresh working copy of CentOS
+    artwork repository.
+
+*render*::
+    Standardize the way content is produced inside the repository.
+    This function relies on configuration files to do its work.
+    Whenever you need to produce images, documentation or localized
+    content this is the module you'll need to use.
+
+*locale*::
+    Standardize the way translatable strings are retrieved from source
+    files and put into portable objects for you to edit.  Portable
+    objects produced by this module are used by *render* module to
+    produce localized content.  Whenever you need to produce the
+    intermediate files holding the translatable strings required to
+    produce localized content, use this module.
+
+*tuneup*::
+    Standardize maintenance tasks frequently run inside the repository
+    (e.g., reset written by, copyright and license information inside
+    shell script's top-comments; transform probably malformed HTML
+    documents into valid documents, and remove unused tags inside SVG
+    documents.).
+
+[[options]]
+Options
+-------
+
+The *centos-art.sh* script supports the following options:
+
+*--help*::
+    Print script documentation.
+
+*--version*::
+    Print script version.
+
+*--debug*::
+    Run the script in debugging mode. This option is very useful if
+    you want to get a closer look to the way modules are opened and
+    closed inside *centos-art.sh* script.
+
+*--quiet*::
+    Run the script quietly. This option reduces the amount of
+    information the *centos-art.sh* script prints out when processing
+    source files.
+
+*--yes*::
+    Run the script in affirmative mode. This is answering ``yes'' to
+    all ``yes or no'' questions. This option is useful when you run
+    *centos-art.sh* with the *--quiet* option.
+
+[[exit-status]]
+Exit Status
+-----------
+
+* 0 -- Exit successfully without errors.
+* 1 -- Exit with errors.
+
+[[bugs]]
+Bugs
+----
+
+* https://centos.org.cu/bugs/[https://centos.org.cu/bugs/]
+
+Author
+------
+
+The *centos-art.sh* script has received contribution from the
+following people:
+
+* Alain Reguera Delgado <mailto:al@centos.org.cu[al@centos.org.cu]>, 2009-2013
+
+Copyright
+---------
+
+Copyright (C) 2009-2013 The CentOS Artwork SIG
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or (at
+your option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+// vim: set syntax=asciidoc:

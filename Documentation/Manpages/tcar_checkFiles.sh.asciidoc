@@ -1,0 +1,135 @@
+tcar_checkFiles(1)
+==================
+
+== Name
+
+tcar_checkFiles - Standardize constructions for file verifications.
+
+== Synopsis
+
+*cli_checkFiles [-d|-e|-f|-h|-x] LOCATION*
+
+== Description
+
+The *cli_checkFiles* exists to answer basic questions like ``Is
++LOCATION+ is a regular file?'' and ``Is +LOCATION+ a directory?''.
+The answer to such questions affects the script execution flow in the
+following way: when the answer positive (e.g., +LOCATION+ is a regular
+file), the script passes the test silently and continues its
+execution.  When the answer is negative(e.g., +LOCATION+ is not a
+regular file), the script finishes its execution immediately with an
+error message.
+
+The *cli_checkFiles* function is exported to *centos-art.sh* script
+environment in the very beginning of its execution and will be
+available all along its execution lifetime. You can use this function
+inside common and specific functions whenever you need to verify files
+inside the The CentOS Artwork Repository.
+
+The *cli_checkFiles* function is available inside the *centos-art.sh*
+script only as part of its execution environment. This function is
+exported to *centos-art.sh* script just after executing the script
+from the command-line and will be available all along the script
+lifetime. So, you can use this function both in common and specific
+functionalities of centos-art.sh script.
+
+The *cli_checkFiles* function doesn't create
+subsequent execution environments.
+
+== Usage
+
+Use the *cli_checkFiles* function inside *centos-art.sh* script
+whenever you need to control the script execution flow based on file
+type (e.g., regular files, directories, links, etc.) verifications.
+
+== Options
+
+The *cli_checkFiles* function accepts the following options:
+
+-d::
+    Verifies whether +LOCATION+ exists and is a directory. If it
+    doesn't exists or isn't a directory, an error message is printed
+    and the script finishes its execution.  Otherwise, if it exists
+    and is a directory, the script continues its execution normally.
+-e::
+    Verifies whether +LOCATION+ exists or not. If it doesn't exist, an
+    error message is printed and the script finishes its execution.
+    Otherwise, if it does exists, the script continues its execution
+    normally.
+-f::
+    Verifies whether +LOCATION+ exists and is a regular file. If it
+    doesn't exists or isn't a regular file, an error message is
+    printed and the script finishes its execution.  Otherwise, if it
+    exists and is a regular file, the script continues its execution
+    normally.
+-h::
+    Verifies whether +LOCATION+ exists and is a symbolic link. If it
+    doesn't exists or isn't a symbolic link, an error message is
+    printed and the script finishes its execution immediately.
+    Otherwise, if it does exist and is a symbolic link, the script
+    continue its execution normally.
+-x::
+    Verifies whether +LOCATION+ exists and execution permission is
+    granted. If it doesn't exist or hasn't execution permission, the
+    script finishes its execution immediately. Otherwise, if it exists
+    and has execution permissions, the script continues its execution
+    normally.
+
+The value of the +LOCATION+ argument must be an absolute path to the
+file you want to verify. If such file doesn't exists in any supported
+form, the script finishes its execution with an error message.
+
+== Examples
+
+The following example was taken from *centos-art.sh* script
+initialization phase.  Notice the position of *cli_checkFiles*
+function inside the loop. If some of the function files we need to
+export doesn't have execution rights, *cli_checkFiles* will finish the
+script execution immediately with an error message.
+
+----------------------------------------------------------------------
+for FUNCFILE in ${FUNCFILES};do
+
+    # Verify the execution rights for function file.
+    cli_checkFiles -x ${FUNCFILE}
+
+    # Initialize the function file.
+    . ${FUNCFILE}
+
+    # Export the function names inside the file to current shell
+    # script environment.
+    export -f $(egrep "${PATTERN}" ${FUNCFILE} | gawk '{ print $2 }')
+
+done
+----------------------------------------------------------------------
+
+== Bugs
+
+See https://centos.org.cu/bugs/
+
+== Authors
+
+The *tcar_checkFiles* function has received contributions from the
+following people:
+
+- Alain Reguera Delgado <al@centos.org.cu>, =COPYRIGHT_YEAR_LIST=
+
+== License
+
+Copyright (C) =COPYRIGHT_YEAR_LIST= =COPYRIGHT_HOLDER=
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or (at
+your option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+// vim: set syntax=asciidoc:
