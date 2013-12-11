@@ -1,0 +1,107 @@
+tcar_getFilesList.sh(1)
+=======================
+
+== Name
+
+tcar_getFilesList - Create customized list of files for further
+processing.
+
+== Synopsis
+
+*tcar_getFilesList [--pattern|--mindepth|--maxdepth|--type|--uid] LOCATION*
+
+== Description
+
+The *tcar_getFilesList* standardizes the way list of files are built
+inside the *centos-art.sh* script.  This function outputs a sorted and
+unique list of files based on the options and location provided as
+argument. This function is an interface to the *find* command. Don't
+use *find* command directly inside the centos-art.sh script. Instead,
+use the *tcar_getFilesList* function.
+
+The +LOCATION+ arguments must be the absolute path to a directory and
+specifies where the search of files in any form (e.g., directories,
+links, etc.) will take place in. If +LOCATION+ isn't a directory, the
+script finishes its execution with an error message.
+
+The *tcar_getFilesList* accepts the following options:
+
+--pattern="REGEX"::
+    This option specifies a posix-egrep type regular expression as
+    value. This regular expression is applied to path specified in
+    +LOCATION+ argument. Only file paths that match this regular
+    expression inside +LOCATION+ directory will be included in the
+    final list of files. By default, if this option is not provided,
+    the ``+^/.*[[:alnum:]_/-]+$+'' regular expression
+    is used.
++
+When you use the *tcar_getFilesList* you don't need to specified the
+absolute path of files you want to look for.  This is something
+*tcar_getFilesList* already does for you.  When you use this function,
+the value you pass as regular expression isn't the final regular
+expression used. Instead, the regular expression you pass is used to
+build the final regular expression passed to *find* command.  The
+final regular expression passed to find is ``+^/.*${PATTERN}$+'',
+where +${PATTERN}+ is the value you passed to *--pattern* option as
+REGEX.
+
+--mindepth="NUMBER"::
+    This option specifies the minimal +NUMBER+ of levels deep the
+    search should go under the directory +LOCATION+ specified. For
+    example, if you specify *--mindepth="2"* the search will start two
+    levels deep considering the path provided as section. 
+
+--maxdepth="NUMBER"::
+    This option specifies the maximum +NUMBER+ of levels deep the
+    search should go under the directory +LOCATION+ specified. For
+    example, if you specify *--maxdepth="2"* the search will begin in
+    the very same directory path you provided as +LOCATION+ and stop
+    two levels deep using it as section.
+
+--type="STRING"::
+    This option specifies the type of files being searched. This
+    option accepts the same values the *find* *-type* option does.
+    However, the following +STRING+ values are the most used inside
+    the script so far:
++
+- d &mdash; directory.
+- f &mdash; regular file.
+
+--uid="NUMBER"::
+    This option specifies the numeric user id of the files you want to
+    search. Only files that match this numeric user id will be added
+    to the final list of files.
+
+Use the *tcar_getFilesList* whenever you need to build list of files
+for further processing.
+
+== Bugs
+
+See https://centos.org.cu/bugs/
+
+== Authors
+
+The *tcar_checkFiles* function has received contributions from the
+following people:
+
+- Alain Reguera Delgado <al@centos.org.cu>, =COPYRIGHT_YEAR_LIST=
+
+== License
+
+Copyright (C) =COPYRIGHT_YEAR_LIST= =COPYRIGHT_HOLDER=
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or (at
+your option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+// vim: set syntax=asciidoc:
