@@ -44,7 +44,7 @@ declare -xr TCAR_BASEDIR=/usr/share/tcar/scripts
 declare -xr TCAR_WORKDIR=/tmp
 
 # Base directory where automation script modules are installed in.
-declare -xr TCAR_SCRIPT_MODULES_BASEDIR=${TCAR_BASEDIR}/modules
+declare -xr TCAR_MODULE_BASEDIR=${TCAR_BASEDIR}/modules
 
 # Directory to store temporal files.
 declare -xr TCAR_SCRIPT_TEMPDIR=$(mktemp -p /tmp -d ${TCAR_SCRIPT_NAME}-XXXXXX)
