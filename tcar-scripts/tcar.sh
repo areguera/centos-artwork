@@ -58,7 +58,7 @@ declare -x TCAR_SCRIPT_MANUALS=/usr/share/man
 declare -x  TCAR_SCRIPT_EDITOR=/usr/bin/vim
 
 # Base directory where automation script modules are installed in.
-declare -x  TCAR_MODULE_BASEDIR=${TCAR_BASEDIR}/modules
+declare -x  TCAR_SCRIPT_MODULES_BASEDIR=${TCAR_BASEDIR}/modules
 
 ######################################################################
 # Internationalization
