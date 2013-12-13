@@ -43,9 +43,6 @@ declare -xr TCAR_BASEDIR=/usr/share/tcar/scripts
 # customized later by the user.
 declare -xr TCAR_WORKDIR=/tmp
 
-# Base directory where automation script modules are installed in.
-declare -xr TCAR_MODULE_BASEDIR=${TCAR_BASEDIR}/modules
-
 # Directory to store temporal files.
 declare -xr TCAR_SCRIPT_TEMPDIR=$(mktemp -p /tmp -d ${TCAR_SCRIPT_NAME}-XXXXXX)
 
@@ -59,6 +56,9 @@ declare -x TCAR_SCRIPT_MANUALS=/usr/share/man
 
 # Default text editor.
 declare -x  TCAR_SCRIPT_EDITOR=/usr/bin/vim
+
+# Base directory where automation script modules are installed in.
+declare -x  TCAR_MODULE_BASEDIR=${TCAR_BASEDIR}/modules
 
 ######################################################################
 # Internationalization
