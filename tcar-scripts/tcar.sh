@@ -52,13 +52,13 @@ declare -xr TCAR_SCRIPT_TEMPDIR=$(mktemp -p /tmp -d ${TCAR_SCRIPT_NAME}-XXXXXX)
 declare -xr TCAR_SCRIPT_CONFIG=${HOME}/.tcar.conf
 
 # Base directory where man pages are searched at.
-declare -x TCAR_SCRIPT_MANUALS=/usr/share/man
+declare -xr TCAR_SCRIPT_MANUALS=/usr/share/man
+
+# Base directory where automation script modules are installed in.
+declare -xr TCAR_SCRIPT_MODULES_BASEDIR=${TCAR_BASEDIR}/modules
 
 # Default text editor.
 declare -x  TCAR_SCRIPT_EDITOR=/usr/bin/vim
-
-# Base directory where automation script modules are installed in.
-declare -x  TCAR_SCRIPT_MODULES_BASEDIR=${TCAR_BASEDIR}/modules
 
 ######################################################################
 # Internationalization
