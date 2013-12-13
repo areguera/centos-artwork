@@ -1,0 +1,149 @@
+prepare(1)
+==========
+
+Name
+----
+
+prepare - Prepare your workstation for using the repository.
+
+Synopsis
+--------
+
+*centos-art.sh prepare [OPTIONS]*
+
+Description
+-----------
+
+The first time you download the CentOS artwork repository into your
+workstation, you only find source files inside the repository. In
+order to produce each component of CentOS corporate visual identity,
+it is necessary that you first transform the source files (e.g.,
++.svgz+, +.asciidoc+, +.po+) into final files (e.g., +.png+, +.html+,
++.mo+).  This process is known as _preparing your workstation to use
+the repository_ and is standardized through the *prepare* module. This
+way, the *prepare* module is the first command you execute after
+downloading a fresh copy of CentOS artwork repository.
+
+When you execute the *prepare* module without any option, it first
+checks existence of required packages (see --packages), then updates
+the locale information required by *centos-art.sh* script to show
+messages in your current locale, later renders documentation (see
+--documents) and images (see --images) using source files available
+inside the repository. Finally, it updates the link relation that
+connects content inside the repository and the applications outside it
+(see --links).
+
+When you execute the *prepare* module with options, the order in which
+preparation actions take place is set by the order in which you passed
+the options.  See <<options>>, for more information about available
+options and what they do.
+
+Once the *prepare* module completes its execution, both your
+workstation and your copy of CentOS artwork repository will be ready
+for production.
+
+[[options]]
+Options
+-------
+
+The *prepare* module accepts the following options:
+
+*--help*::
+    Print module's documentation.
+
+*--version*::
+    Print module's version.
+
+*--packages*::
+    This option verifies whether you have installed the required
+    packages in your workstation or not. If they are not installed an
+    error will be printed telling you what the missing package is, so
+    you can install it. It is important that all the required packages
+    be installed for *centos-art.sh* script modules to work as
+    expected.
++
+[NOTE]
+======================================================================
+When you are verifying packages, be aware that it is required that you
+have installed EPEL repository. The EPEL configuration package
+(*epel-release*) isn't part of CentOS distribution and you need to
+download it and install it manually. The *epel-release* package can be
+found in either of the locations (based on your system version):
+
+ * For CentOS-5: http://download.fedoraproject.org/pub/epel/5/i386/[http://download.fedoraproject.org/pub/epel/5/i386/]
+ * For CentOS-6: http://download.fedoraproject.org/pub/epel/6/i386/[http://download.fedoraproject.org/pub/epel/6/i386/]
+======================================================================
+
+*--locales*::
+    This option looks for all translatable strings inside the
+    *centos-art.sh* script, updates the related POT and PO files and
+    produces the related MO file using the specific locale environment
+    information the script was run in. If the PO file already have
+    translations, they are preserved and used to build the MO file.
+
+*--links*::
+    This updates the link information that connects the information
+    inside the repository with the information outside the repository.
+    For example, inside the repository we have the font information
+    required to build messages in specific typography, such
+    information isn't by default in the default system locations so we
+    install them in the home directory of the user running the
+    *prepare* module, using symbolic links.
++
+Whenever you need to update this information, use this option. Take
+care that all links previously created in the target location will be
+removed and recreated again. So, you can change the name relation in
+the configuration files and install the changes without leaving broken
+links in the target location.
++
+The file that controls the link configuration is inside the repository
+at +Automation/Modules/Prepare/Modules/Links/Configs/render.conf+.
+
+*--images*::
+    This option produces images from source files available inside the
+    repository, using the correct order. When you use this option,
+    centos-art.sh script calls the render module internally which
+    produces content for all configuration (+render.conf+) files found
+    inside the repository.
+
+*--documents*::
+    This options produces documentation from source files available
+    inside the repository. When you pass this option, the current
+    locale information is considered to produce the documentation. If
+    the current locale doesn't have translation files set for the
+    current locale information, English language is used as default
+    language.
+
+Author
+------
+
+The *prepare* module has received contributions from the following
+people:
+
+ * Alain Reguera Delgado <mailto:al@centos.org.cu[al@centos.org.cu]>, 2009-2013
+
+Copyright
+---------
+
+Copyright (C) 2009-2013 The CentOS Project
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or (at
+your option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+See Also
+--------
+
+centos-art.sh(1), centos-art.sh-render(1), centos-art.sh-locale(1)
+
+// vim: set syntax=asciidoc:
