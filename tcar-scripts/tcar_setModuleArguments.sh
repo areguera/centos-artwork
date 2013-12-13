@@ -49,7 +49,7 @@ function tcar_setModuleArguments {
     # isn't any or dot is provided, redefine the TCAR_MODULE_ARGUMENT
     # variable to use the current location the tcar.sh script
     # was called from.
-    if [[ -z "${@}" ]];then
+    if [[ -z "${TCAR_MODULE_ARGUMENT}" ]];then
         TCAR_MODULE_ARGUMENT=${PWD}
     fi
 
