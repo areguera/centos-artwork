@@ -1,0 +1,69 @@
+/*
+ * Docbook -> Lists
+ * 
+ * Copyright (C) 2009, 2010, 2011 The CentOS Artwork SIG
+ *
+ * This CSS is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This CSS is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *
+ * ----------------------------------------------------------------------
+ * $Id: lists.css 5257 2012-08-28 18:02:18Z al $
+ * ----------------------------------------------------------------------
+ */
+
+ul {
+    list-style: url("../Images/ul.png") disc;
+    }
+
+span.term {
+    font-weight: bold;
+    }
+
+/* Table of contents
+-----------------------------------------------*/
+
+.toc,
+.index,
+.list-of-figures,
+.list-of-examples,
+.list-of-tables {
+    margin: 1em 0 2em 0;
+    }
+
+.toc dl,
+.index dl,
+.list-of-figures dl,
+.list-of-examples dl,
+.list-of-tables dl {
+    margin: 0;
+    }
+
+.toc dl dt,
+.index dl dt,
+.list-of-figures dl dt,
+.list-of-examples dl dt,
+.list-of-tables dl dt {
+    margin: 0.3em 0 0.3em 0;
+    }
+
+.toc dl dd {
+    margin-bottom: 0;
+    }
+
+.toc p,
+.list-of-figures p,
+.list-of-examples p,
+.list-of-tables p {
+    margin-bottom: 0.5em;
+    }
