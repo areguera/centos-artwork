@@ -1,0 +1,656 @@
+render(1)
+=========
+
+Name
+----
+
+render - Standardize production tasks based on configuration files.
+
+Synopsis
+--------
+
+centos-art.sh render [OPTIONS] [DIRECTORY ...]
+
+Description
+-----------
+
+When you execute the *render* module, it looks for configuration files
+inside the ``DIRECTORY'' specified in the command-line and processes
+them in the order they were found. When no ``DIRECTORY'' is specified
+to *centos-art.sh* script, the *render* module looks for configuration
+files inside the current directory it was executed from.  If no
+configuration file is found, the *render* module will end its
+execution with an error message.
+
+Options
+-------
+
+The *render* module accepts the following options:
+
+*--help*::
+    Print module's documentation.
+*--version*::
+    Print module's version.
+*--filter="REGEX"*::
+    This option reduces the number of section blocks inside
+    configuration files the *render* module will take for processing.
+    ``REGEX'' is a regular expression pattern matching one or more
+    section names inside the configuration files found under
+    ``DIRECTORY''.
+
+Configuration Files
+-------------------
+
+The configuration files are regular files with the +.conf+ extension.
+The name of configuration files is frequently chosen for helping you
+to remember what the configuration files are for and, in some cases,
+for producing section blocks in specific order.
+
+The format used in configuration files use section blocks in the form
++[section-name]+. Each section block ends when the next section block
+begins or at the end of the file. Section blocks contain one or more
+variable definitions in the form +option = "value"+.  In the specific
+case of *render* module, the +section-name+ is an alphanumeric value
+and points to the final file or directory you want to save the
+processing results in. The configuration variables describe how to
+produce the file or directory specified as +section-name+.  Name
+values in the +section-name+ don't accept variables or any kind of
+expansion in it, but configuration values do.  Commentaries are
+introduced by using the +#+ character at the beginning of lines.
+Commentaries defined this way are excluded from processing so you can
+use them freely.
+
+The configuration files are processed from top to bottom. This is a
+very important aspect to consider in situations where you need to
+grantee specific priority for content production (e.g., you have
+several files in a configuration file and need to produce some of them
+before others). So, because configuration files are processed from top
+to bottom, section blocks set first in the configuration file are
+processed first and section blocks set later are processed later.
+
+The configuration files can be divided in separated configuration
+files to produce specific section blocks with a given priority.  For
+example, if you have the file ``render.conf'', you can divide its
+content in ``render-1.conf'', ``render-2.conf'' to produce section
+blocks inside ``render-1.conf'' first and ``render-2.conf'' later.
+This sort of division might be very useful when the configuration file
+begins to grow, or you want to control the order in which specific
+groups of files are produced inside ``DIRECTORY''.
+
+Inside configuration files, configuration variables can take different
+meanings based on the section contexts. The context of a section block
+is defined by the *render-type* variables.
+
+*render-type*::
+    Optional. This variable specifies the type of content rendition
+    the *render* module will perform. This variable can take one of
+    the following values: ``archive'', ``asciidoc'', ``compress'',
+    ``images'', ``palette'', and ``svg''. When this variable is not
+    set, the *render* module tries to determine the type of rendition
+    based on the file extension of the first file passed through
+    *render-from* variable. If no valid value is found there either,
+    the *render* module ends with an error message.
+*render-from*::
+    Required. This variable specifies the file name of the source file
+    (design model) used to produce the final file specified in the
+    section line. This option can receive absolute paths and relative
+    paths.  Absolute paths begin with a slash (``/'') character while
+    relative paths begin with the dot slash (``./'') characters or no
+    character at all. This variable can receive more than one value by
+    using either path expansion in one variable definition, or several
+    variables definitions.
+
+Using Paths
+~~~~~~~~~~~
+
+When you provide absolute paths inside configuration files, there
+isn't confusion about the location where the file is or should be.
+However, it introduces rigidity to directory structures inside the
+working copy when it is necessary to move directories from one place
+to another inside the working copy.  To eliminate this mobility
+restrictions, relative paths can be used to create modular directory
+structures.
+
+When you use relative paths inside configuration files, paths are
+relative to the location where the configuration file is stored in.
+This way it is possible to move whole directory structures without
+touching the configuration file and still have a render-able
+structures inside the working copy.  However, relative paths get
+limited in situations where the production process needs files outside
+the directory where the configuration file is stored in. In such
+cases, a combination of relative and absolute paths is the solution to
+apply.
+
+When we need to use absolute paths to several files in the same
+directory (e.g., we are combining them all to produce a new image) but
+outside the current directory the configuration file is stored in, it
+is possible to use a list of absolute paths one beside another
+separated by space or we can use path expansion which is shorter and
+easier to read.  Path expansion is interpreted when you enclose a list
+of file names in curly brackets using comma as separator without
+spaces (e.g., +/some/dir/{file1,file2,file3}+). In order for path
+expansion to work correctly, all the file names you put inside the
+curly brackets' list must exist in the location specified first.
+
+Using Environment Variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The configuration files let you to use environment variables inside
+them. This might result very useful when you need to provide absolute
+paths based on variable information (e.g., the current locale
+information).  Some of the most important environment variables used
+by *centos-art.sh* script -and its configuration files- are described
+below:
+
++TCAR_BASEDIR+::
+    This variable contains the absolute path to your repository's
+    working copy. The value of this variable is defined as read-only
+    inside *centos-art.sh* script and cannot be modified later. As a
+    matter of convenience, users make use of their ``~/.bash_profile''
+    file to define this variable there and, this way, skip the
+    sometimes annoyance absolute path questioning the *centos-art.sh*
+    script does in order to know the absolute path of the working copy
+    it is going to work with.
++
+Whenever you set absolute paths inside configuration files to refer
+locations inside your working copy, it is necessary that you use the
++TCAR_BASEDIR+ environment variable in front of each path definition
+you set.
++TCAR_SCRIPT_LANG_LL+::
+    This variable contains the language part of the current locale
+    information. For instance, if the current locale is
+    ``en_US.UTF-8'', the value of this variable would be ``en''.
++TCAR_SCRIPT_LANG_CC+::
+    This variable contains the country part of the current locale
+    information. For instance, if the current locale is
+    ``en_US.UTF-8'', the value of this variable would be ``US''.
++TCAR_SCRIPT_LANG_LC+::
+    This variable contains the current locale information in ll_CC
+    format (e.g., es_ES).
++LANG+::
+    This variable contains the environment's current locale
+    information.
+
+Rendering Archives
+~~~~~~~~~~~~~~~~~~
+
+When the *render-type* variable is set to +archive+, the *render*
+module takes the list of files set through *render-from* variable and
+applies the value of *command* to them all in order to produce the
+final file specified in the section line. When the command variable is
+not specified, the +/bin/tar --remove-files -czf+ command is used as
+default.
+
+Rendering Image Files
+~~~~~~~~~~~~~~~~~~~~~
+
+When the *render-type* variable is set to +svg+, the section block is
+interpreted for rendering image files. When rendering image files, the
+*render-from* variable must point to a SVG files (either compressed or
+uncompressed). The following following complementary variables are
+also accepted:
+
+*render-flow*::
+    Optional. This variable specifies the rendition flow to follow
+    when transforming SVG files into PNG images. This variable can
+    take either +base+ or +extended+ as value. The +base+ rendition
+    flow takes one SVG file and produces just one PNG image for it.
+    The +extended+ value applies the +base+ rendition flow and then
+    transform the final PNG image to different heights, formats,
+    foreground colors and background colors. By default, when this
+    variable is not set, the +base+ rendition flow is used.
+*export-id*::
+    Optional. This variable specifies the export id you want to use as
+    reference to produce PNG images from SVG files. The export-id is
+    an attribute you specified as unique value to an objects inside
+    the SVG file in order to export that object only but not the rest
+    in the SVG file. If this variable is not provided or it is empty,
+    the drawing area of the SVG file is used as reference to produce
+    the final PNG image.
+*heights*::
+    Optional. This variable is available only for +extended+ rendition
+    flow and specifies the different image heights you want to create
+    copies of the final PNG image. The values specified in this
+    variable are separated by white space and should be understandable
+    by ImageMagick tool set. When this variable is not provided, the
+    *render* module will create copies of final PNG image for several
+    standard heights.
+*formats*::
+    Optional. This variable is available only for +extended+ rendition
+    flow and specifies the different image formats you want to create
+    copies of the final PNG image. The values specified in this
+    variable are separated by white space and should be supported by
+    ImageMagick tool set.  When this variable is not provided or set
+    in the configuration file, the *render* module will create copies
+    of final PNG image for several standard formats.
++
+[TIP]
+To see the list of possible image formats supported by ImageMagick
+tool set, run the following command: *+identify -list format+*.
+
+*fgcolors*::
+    Optional. This variable is available only for +extended+ rendition
+    flow and specifies the different foreground colors you want to
+    create copies of the final PNG image. To do this, the image you
+    want to copy should be rendered with black color (000000) so the
+    color replacement can be performed. The values specified in this
+    variable are separated by white space and should be understandable
+    by ImageMagick tool set. When this variable is not provided the
+    black foreground (+000000+) is used.
+*bgcolors*::
+    Optional. This variable is available only for +extended+ rendition
+    flow and specifies the different background colors you want to
+    create copies of the final PNG image. This variable uses
+    Inkscape's _--export-background_ and _--export-background-opacity_
+    options to control the background information of final PNG images.
+    Possible values to this variable take the form +XXXXXX-X+, where
+    the first six +X+ represent a color in hexadecimal format and the
+    final +X+ might be 1 or 0. 1 for full opacity and 0 for full
+    transparency.  Intermediate values between 0 and 1 (e.g., 0.55)
+    can be given to control the background opacity. When this variable
+    is not provided, white background full transparency (+ffffff-0+)
+    is used as default value.
+*command*::
+    Optional. This variable specifies the command used to modify the
+    production of final images. During the rendition process, images
+    are produced inside a temporal directory, and later moved to its
+    final location using the command specified as value in this
+    variable. When this variable is not specified, it can take one of
+    two values based on the amount of files passed through
+    *render-from* variable.  When just one file is passed through the
+    *render-from* variable, the default value for this variable is
+    +/bin/cp+, but when there are reference to more than one file, the
+    value of this option is +/usr/bin/convert +append+ which combines
+    all images into the final images.
+*comment*::
+    Optional. This variable contains a sentence describing the image
+    you are creating. This information is written in the +comment+
+    field of PNG images. When this variable is empty, no comment
+    information will be written to the final PNG image files.
+*brand*::
+    Optional. This variable describes the branding information applied
+    to final images. The value of this variable has the form
+    +FILENAME:GEOMETRY+, where +FILENAME+ is the absolute path to the
+    PNG image you want to apply as brand and, +GEOMETRY+ takes the
+    form +xHEIGHT+X+Y+. In order to apply brand information to final
+    images correctly, the brand images files you want to apply must be
+    available. In case they don't exist the *render* module ends its
+    execution with an error message.
+
+Rendering Image Files From Other Image Files
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To render image files from other image files, the *render-type*
+variable must be set to ``images'' and one or more image files must be
+provided in the *render-from* variable. When the *render* module finds
+a section block with this characteristics, it applies the value of
+*command* variable to all files found in *render-from* variable to
+produce the final file specified in the section name. 
+
+When the *command* variable is not specified, the ``/usr/bin/convert
+-append'' command is used as default.  This command takes all the
+images passed through *render-from* and appends them from top to
+bottom and saves the result in the file you specified in the section
+name.  When you render files this way, the order in which you define
+source files through *render-from* may affect the final result based
+in the *command* you provided.
+
+The ``images'' rendition type provides an interface for external image
+manipulation programs, like ImageMagick and NetPbm. You can use these
+programs to manipulate images in great detail through the
+command-line.
+
+Rendering Images With Reduced Number Of Colors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When the *render-type* variable is set to +palette+, the section block
+where this variable was defined is interpreted for producing images
+with a reduced number of colors. In these cases, the *render-from*
+variable must point to an image file. The following complementary
+variables are also accepted:
+
+*palette-gpl*::
+    Required. This variable addresses the palette of colors that will
+    be use for reducing colors. Generally, the palette of color file
+    ends with the +.gpl+ extension and is stored in the same directory
+    of the configuration file. This file can be produced by GIMP and
+    provides an optimized set of colors for the specific image you
+    provided in the *render-from* variable.
++
+To find the optimized set of colors, you need to open the image
+specified in *render-from* in GIMP, reduce its colors to the desired
+number using GIMP's Indexed feature and, then, create a new palette by
+importing it from the indexed image file. Once you have the palette
+this way, you need to edit it using the Palettes dialog to add the
+hexadecimal value of each color in the palette to the comment field,
+so you have a palette file similar to the following:
++
+----------------------------------------------------------------------
+GIMP Palette
+Name: Syslinux-Default
+Columns: 16
+#
+ 32  76 141 204c8d
+ 37  82 146 255292
+ 52  94 153 345e99
+ 73 110 162 496ea2
+ 91 124 172 5b7cac
+108 136 180 6c88b4
+120 146 186 7892ba
+131 158 193 839ec1
+255 255 255 ffffff
+146 170 200 92aac8
+162 182 209 a2b6d1
+183 199 219 b7c7db
+204 216 230 ccd8e6
+221 229 238 dde5ee
+235 241 245 ebf1f5
+246 251 254 f6fbfe
+----------------------------------------------------------------------
++
+{asciidoc-br}
++
+Now that the palette has been created, you can set a path to
+*palette-gpl* variable. Even you can set path of *palette-gpl* from
+GIMP's palettes directory (+~/.gimp-x.x/palettes/+), it is much more
+preferable that you copy the palette file from that location to the
+configuration file's DIRECTORY inside the repository and put it under
+version control, so others can take benefit of it.  The palette file
+is an integral part of color specific image reduction so it must be
+near the configuration file you use for such actions.
+
+Rendering Documentation Files
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To render documentation files, the *render-type* variable must be set
+to ``asciidoc'' and the *render-from* variable must point to an
+Asciidoc file. When the *render* module finds this information in a
+section block, it takes the asciidoc file as source and transforms it
+into a docbook file using the *asciidoc* program. The docbook file is
+created temporarily for further format transformations and removed
+later, once the final format has been rendered.
+
+When the *render* module creates the intermediate docbook file, it
+considers the current locale information of your environment (e.g., by
+reading the LANG environment variable). In case the current locale
+information is different to English (e.g., the value of LANG
+environment variable doesn't begin with the ``en'' characters), the
+docbook file will be localized based on the translation file specified
+in the *locale-from* variable, before applying further format
+transformations to it. This way, further format transformations from
+the temporarily docbook file will end up being localized as well. If
+the *locale-from* variable is not present in the section block, the
+intermediate docbook file won't be localized which make the final
+result to be not localized either.
+
+When you set the *render-type* variable to ``asciidoc'', the section
+blocks need to have the *render-flow* variable set to ``article'',
+``book'' or ``manpage''.  This information defines the way the
+intermediate docbook file is produced from the asciidoc file and, by
+extension, the possible final results, too.
+
+When *render-flow* variable is set to ``article'' or ``book'', it is
+possible to produce final files in ``xhtml'' format but not in
+``manpage'' format. This is because man pages require a specific
+document structure that both articles and books don't need to have.
+When producing articles and books in XHTML format, you can use the
+*render-page* variable to control whether to produce the entire book
+or article in just one file (``single'') or in separate files linked
+one another (``chunks'').
+
+When *render-flow* variable is set to ``manpage'' it is possible to
+set the *formats* variable to either ``manpage'' or ``xhtml'' in order
+to render the docbook file as man page or XHTML format, respectively.
+The final files produced this way are stored in the +man${MANSECT}/+
+or +htmlman${MANSECT}+ directories based on the format you choose. If
+you are producing man pages to a language different to English, these
+directories would be +${LANG}/man${MANSECT}/+ and
++${LANG}/htmlman${MANSECT}+, instead.  The structure of these paths is
+required in order for *man* command to find the man pages in different
+locales. The value of the man's volume section can be set using the
+*mansect* variable. If this variable is not set, the value of man's
+volume section will be 1.
+
+When *render-flow* variable is not set, the ``article'' value is used
+as default value.
+
+When the *formats* variable has the ``xhtml'' value, you need to set
+the *images-from* and *styles-from* variables inside the related
+section block, no matter what the value of *render-flow* would be. The
+value of *images-from* and *styles-from* variables must point to a
+directory, inside the working copy, containing the share images and
+CSS files used by XHTML documents, respectively.  If none of these two
+variables are set the directories
++${TCAR_BASEDIR}/Artworks/Icons/Webenv+ and
++${TCAR_BASEDIR}/Artworks/Webenv/Docbook/1.69.1/Css+ will be used for
+them.
+
+When the *formats* variable is not set, the ``xhtml'' value is used as
+default value.
+
+Rendering Localized Images
+--------------------------
+
+To produce localized content, you need to set the *locale-from*
+variable in the section block you want to provide translations and
+point its value to the translation file where string translations will
+take place. Then, you need to check the value of LANG environment
+variable to be sure it has the locale information you want to
+translate messages for.
+
+If the LANG environment variable has the value you expect, run the
+*locale* module on the ``DIRECTORY'' you want to locale content.  This
+read the source files you specified in *render-from* variable and
+would create the translation files (a.k.a., portable objects) you need
+to edit to provide the string translations from one language to
+another. Verify the translation file exist and edit it to provide the
+strings translations. Once the strings have been translated, execute
+the *render* module on the ``DIRECTORY''.
+
+When the *render* module finds the *locale-from* variable in a section
+block, it uses the *xml2po* program to create a localized instance of
+each source file it finds in *render-from* variable.  Then, using the
+source files' localized instances, it produces the final files based
+on *render-type* variable's value.
+
+Examples
+--------
+
+Here are some practical configuration examples you can use as
+reference to create your own configuration files.
+
+----------------------------------------------------------------------
+[Xhtml-single]
+render-type     = "asciidoc"
+render-flow     = "article"
+render-from     = "corporate.asciidoc"
+locale-from     = "${TCAR_SCRIPT_LANG_LC}/messages.po"
+images-from     = "${TCAR_BASEDIR}/Artworks/Icons/Webenv"
+styles-from     = "${TCAR_BASEDIR}/Artworks/Webenv/Docbook/1.69.1/Css"
+formats         = "xhtml"
+render-page     = "single"
+----------------------------------------------------------------------
+
+{asciidoc-br}
+
+When the *render* module reads this configuration file, it initiates
+the +asscidoc+ module which in turn initiates the +xhtml+ module for
+transforming the +corporate.asciidoc+ file into +corporate.docbook+ file
+using +article+ as document type and
++${TCAR_SCRIPT_LANG_LC}/messages.po+ as source for localization. As
+result, the *render* module produces the
++${TCAR_SCRIPTS_LANG_LC}/Xhtml-single/index.html+ file, using the same
+directory of the configuration file as base directory.
+
+----------------------------------------------------------------------
+[centos-artwork.png]
+render-from = "${TCAR_BASEDIR}/Artworks/Brands/Types/Webenv/centos.org/{centos,artwork}.svgz"
+formats     = "xpm pdf jpg tif"
+heights     = "16 20 22 24 32 36 38 40 48 64 72 78 96 112 124 128 148 164 196 200 512"
+fgcolors    = "000000 ffffff"
+bgcolors    = "ffffff-0"
+command     = "/usr/bin/convert +append"
+----------------------------------------------------------------------
+
+{asciidoc-br}
+
+When the *render* module reads this configuration file, it takes the
++centos.svgz+ and +artwork.svgz+ files as source to produce the
++centos.png+ and +artwork.png+ files considering the first value in
+the list of heights, background, foreground colors specified in the
+configuration file.  Then, it combines the results horizontally to
+create the +centos-artwork.png+ file. Later, the +centos-artwork.png+
+file is converted to produce one image file for each image format
+specified in the configuration file. At this point, all the process
+repeats again but for the next height and color values in the list.
+
+{asciidoc-br}
+
+----------------------------------------------------------------------
+[syslinux-splash.png]
+render-from     = "${TCAR_BASEDIR}/Artworks/Themes/Models/Distro/5/Syslinux/syslinux-splash.svgz"
+brand           = "${TCAR_BASEDIR}/Artworks/Brands/Types/Default/Images/ffffff/ffffff-0/48/centos.png:x48+20+232"
+brand           = "${TCAR_BASEDIR}/Artworks/Brands/Types/Numbers/Images/ffffff/ffffff-0/96/5.png:x96+300+184"
+
+[syslinux-splash.lss]
+render-from     = "syslinux-splash.png"
+render-type     = "palette"
+palette-gpl     = "colors.gpl"
+----------------------------------------------------------------------
+
+{asciidoc-br}
+
+When the *render* module reads this configuration file, 
+
+----------------------------------------------------------------------
+[screenshot.png]
+render-type     = "svg"
+render-from     = "${TCAR_BASEDIR}/Artworks/Themes/Models/Distro/5/Gdm/screenshot.svgz"
+render-flow     = "base"
+brand           = "${TCAR_BASEDIR}/Artworks/Brands/Symbols/Default/Images/ffffff/ffffff-0/16/centos.png:x16+5+5"
+
+[800x600.tar.gz]
+render-type     = "archive"
+render-from     = "${TCAR_BASEDIR}/Artworks/Themes/Motifs/${MOTIF}/Backgrounds/Images/800x600-final.png:background.png"
+render-from     = "${TCAR_BASEDIR}/Artworks/Themes/Models/Distro/5/Gdm/GdmGreeterTheme.desktop"
+render-from     = "${TCAR_BASEDIR}/Artworks/Themes/Models/Distro/5/Gdm/GdmGreeterTheme.xml"
+render-from     = "${TCAR_BASEDIR}/Artworks/Themes/Models/Distro/5/Gdm/icon-language.png"
+render-from     = "${TCAR_BASEDIR}/Artworks/Themes/Models/Distro/5/Gdm/icon-reboot.png"
+render-from     = "${TCAR_BASEDIR}/Artworks/Themes/Models/Distro/5/Gdm/icon-session.png"
+render-from     = "${TCAR_BASEDIR}/Artworks/Themes/Models/Distro/5/Gdm/icon-shutdown.png"
+render-from     = "screenshot.png"
+command         = "/bin/tar -czf"
+
+[1360x768.tar.gz]
+render-type     = "archive"
+render-from     = "${TCAR_BASEDIR}/Artworks/Themes/Motifs/${MOTIF}/Backgrounds/Images/1360x768-final.png:background.png"
+render-from     = "${TCAR_BASEDIR}/Artworks/Themes/Models/Distro/5/Gdm/GdmGreeterTheme.desktop"
+render-from     = "${TCAR_BASEDIR}/Artworks/Themes/Models/Distro/5/Gdm/GdmGreeterTheme.xml"
+render-from     = "${TCAR_BASEDIR}/Artworks/Themes/Models/Distro/5/Gdm/icon-language.png"
+render-from     = "${TCAR_BASEDIR}/Artworks/Themes/Models/Distro/5/Gdm/icon-reboot.png"
+render-from     = "${TCAR_BASEDIR}/Artworks/Themes/Models/Distro/5/Gdm/icon-session.png"
+render-from     = "${TCAR_BASEDIR}/Artworks/Themes/Models/Distro/5/Gdm/icon-shutdown.png"
+render-from     = "screenshot.png"
+command         = "/bin/tar --remove-files -czf"
+----------------------------------------------------------------------
+
+{asciidoc-br}
+
+When the *render* module reads this configuration file, 
+
+Bugs
+----
+
+The *render* module has some issues I would like you to be aware of.
+Mainly, to see if you could help me find better solutions for them ;)
+
+Rendering Images With Reduced Number Of Colors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The process implemented to reduce image colors through GIMP's palettes
+involves too much user intervention compared with ImageMagick's
+--colors option that reduces image colors instantly without user
+intervention. Nevertheless, the procedure of reducing color through
+GIMP's palettes provides more quality to final images than
+ImageMagic's --colors option does. Also, using GIMP's palettes let us
+create LSS images from PNG images using the same exact information we
+used to reduce colors on PNG images. This is very important in order
+to have the same result in both image types.  Because of these reasons
+I prefer GIMP's palettes procedure against others methods like it is
+the case of ImageMagick's for producing images with reduced number of
+colors.
+
+Rendering PDF Files From Localized Docbook Files
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Even it is possible to produce PDF files from Docbook files using
+current applications inside CentOS-5, there are some production issues
+when we use localized docbook files as source to produce localized PDF
+files that made me not to implement them as part of *centos-art.sh*
+script by now.
+
+- When using the XML(DocBook)->XML(FO)->PDF transformation chain, the
+  result produced by _docbook-style-xsl-1.69.1-5.1_ and
+  _passivetex-1.25-5.1.1_ doesn't render heading boxes very well on
+  page's top and page's bottom.  The text put inside these boxes seem
+  to have not enough space in their respective areas.
+
+- Tried using _dblatex-0.2.8-2.el5_ but didn't work for localized docbook files
+  (i.e., those who has the +lang="lang"+ string in their root
+  element). If you just remove the language specification string it
+  just work. We need the language specification in order for internal
+  document strings like +Abstract+ and +Table of contents+ to be
+  automatically translated. When the language specific attribute is
+  present in the root element, dblatex outputs the following:
++
+----------------------------------------------------------------------
+Build the listings...
+XSLT stylesheets DocBook -  LaTeX 2e (0.2.8)
+===================================================
+Processing Revision History 
+Build 2912-corporate.docbook.pdf
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4)
+entering extended mode
+pdflatex failed
+/usr/share/texmf/tex/latex/dblatex/docbook.sty:160: No counter 'chapter' defined.
+/usr/share/texmf/tex/latex/dblatex/docbook.sty:160: leading text: \newfloat{example}{htb}{loe}[chapter]
+/usr/share/texmf/tex/latex/dblatex/docbook.sty:164: No counter 'chapter' defined.
+/usr/share/texmf/tex/latex/dblatex/docbook.sty:164: leading text: \newfloat{dbequation}{htb}{loe}[chapter]
+2912-corporate.docbook_tmp.tex:62: Illegal parameter number in definition of \@the@H@page.
+2912-corporate.docbook_tmp.tex:62: leading text: \maketitle
+2912-corporate.docbook_tmp.tex:62: Illegal parameter number in definition of \@the@H@page.
+2912-corporate.docbook_tmp.tex:62: leading text: \maketitle
+2912-corporate.docbook_tmp.tex:62: Illegal parameter number in definition of \@the@H@page.
+2912-corporate.docbook_tmp.tex:62: leading text: \maketitle
+Error: pdflatex compilation failed
+----------------------------------------------------------------------
+
+Reporting Bugs
+--------------
+Report bugs on the *automation* category of *centos-artwork* project
+at the https://centos.org.cu/bugs/[The CentOS Bugs] website.
+
+Author
+------
+Written by mailto:al@centos.org.cu[Alain Reguera Delgado], 2009-2013
+
+Copyright
+---------
+
+Copyright (C) 2009-2013 The CentOS Project
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or (at
+your option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+// vim: set syntax=asciidoc:
