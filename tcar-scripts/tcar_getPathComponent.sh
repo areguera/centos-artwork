@@ -30,12 +30,6 @@
 
 function tcar_getPathComponent {
 
-    # Define short options.
-    local ARGSS=''
-
-    # Define long options.
-    local ARGSL='release,release-major,release-minor,release-pattern,architecture,architecture-pattern,motif,motif-name,motif-version,motif-pattern,repo-dir'
-
     # Define release pattern.
     local VERSION="(([[:digit:]]+)(\.([[:digit:]]+))?)"
 
@@ -47,21 +41,12 @@ function tcar_getPathComponent {
     # motif component inside the path strings.
     local THEME_MOTIF="Themes/Motifs/(([[:alnum:]]+)/(${VERSION}))"
 
-    # Initialize arguments with an empty value and set it as local
-    # variable to this function scope. Doing this is very important to
-    # avoid any clash with higher execution environments.
-    local TCAR_MODULE_ARGUMENT=''
-
-    # Process all arguments currently available in this function
-    # environment. If either ARGSS or ARGSL local variables have been
-    # defined, argument processing goes through getopt for validation.
-    tcar_setModuleArguments "${@}"
-
-    # Redefine positional parameters using TCAR_MODULE_ARGUMENT variable.
-    eval set -- "${TCAR_MODULE_ARGUMENT}"
-
     # Define location we want to apply verifications to.
-    local LOCATION=$(echo ${@} | sed -r 's!^.*--[[:space:]](.+)$!\1!')
+    local LOCATION=${1}
+
+    # Remove location from positional parameters, so only the option
+    # remain.
+    shift 1
 
     # Look for options passed through positional parameters.
     while true;do

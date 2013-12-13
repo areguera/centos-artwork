@@ -37,8 +37,9 @@ function tcar_setModuleEnvironmentScripts {
     local TCAR_MODULE_SCRIPTS="${TCAR_MODULE_INIT_FILE}"
     if [[ -d ${TCAR_MODULE_DIR} ]];then
         TCAR_MODULE_SCRIPTS="${TCAR_MODULE_SCRIPTS}
-            $(tcar_getFilesList ${TCAR_MODULE_DIR} \
-            --pattern="${TCAR_MODULE_DIR}/${TCAR_MODULE_NAME}_[[:alnum:]]+\.sh$" --type='f')"
+            $(tcar_getFilesList \
+                -p "${TCAR_MODULE_DIR}/${TCAR_MODULE_NAME}_[[:alnum:]]+\.sh$" \
+                -t 'f' ${TCAR_MODULE_DIR})"
     fi
 
     # Verify the list of files. If no function file exists for the

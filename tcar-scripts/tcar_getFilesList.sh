@@ -29,65 +29,38 @@
 
 function tcar_getFilesList {
 
-    # Define short options.
-    local ARGSS=''
-
-    # Define long options.
-    local ARGSL='pattern:,mindepth:,maxdepth:,type:,uid:'
-
     # Initialize pattern used to reduce the find output.
     local PATTERN="${TCAR_FLAG_FILTER}"
 
     # Initialize options used with find command.
     local OPTIONS=''
 
-    # Initialize arguments with an empty value and set it as local
-    # variable to this function scope. Doing this is very important to
-    # avoid any clash with higher execution environments.
-    local TCAR_MODULE_ARGUMENT=''
+    OPTIND=1
+    while getopts "p:,a:,i:,t:,u:" OPTION "${@}"; do
 
-    # Process all arguments currently available in this function
-    # environment. If either ARGSS or ARGSL local variables have been
-    # defined, argument processing goes through getopt for validation.
-    tcar_setModuleArguments "${@}"
-
-    # Redefine positional parameters using TCAR_MODULE_ARGUMENT variable.
-    eval set -- "${TCAR_MODULE_ARGUMENT}"
-
-    while true;do
-        case "${1}" in
-
-            --pattern )
-                PATTERN="${2}"
-                shift 2
+        case "${OPTION}" in
+            p )
+                PATTERN="${OPTARG}"
                 ;;
-
-            --maxdepth )
-                OPTIONS="${OPTIONS} -maxdepth ${2}"
-                shift 2
+            a )
+                OPTIONS="${OPTIONS} -maxdepth ${OPTARG}"
                 ;;
-
-            --mindepth )
-                OPTIONS="${OPTIONS} -mindepth ${2}"
-                shift 2
+            i )
+                OPTIONS="${OPTIONS} -mindepth ${OPTARG}"
                 ;;
-
-            --type )
-                OPTIONS="${OPTIONS} -type ${2}"
-                shift 2
+            t )
+                OPTIONS="${OPTIONS} -type ${OPTARG}"
                 ;;
-
-            --uid )
-                OPTIONS="${OPTIONS} -uid ${2}"
-                shift 2
-                ;;
-
-            -- )
-                shift 1
-                break
+            u )
+                OPTIONS="${OPTIONS} -uid ${OPTARG}"
                 ;;
         esac
+
     done
+
+    # Clean up positional parameters to reflect the fact that options
+    # have been processed already.
+    shift $(( ${OPTIND} - 1 ))
 
     # At this point all options arguments have been processed and
     # removed from positional parameters. Only non-option arguments
