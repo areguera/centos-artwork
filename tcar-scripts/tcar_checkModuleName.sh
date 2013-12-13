@@ -31,8 +31,8 @@ function tcar_checkModuleName {
     local TCAR_MODULE_LIST=$(ls ${TCAR_MODULE_BASEDIR} | tr '\n' '|' \
         | sed -r 's/\|$//' | tr '[[:upper:]]' '[[:lower:]]')
 
-    tcar_checkFiles -m "^(${TCAR_MODULE_LIST})$" "${TCAR_MODULE_NAME}"
-
     tcar_printMessage "TCAR_MODULE_LIST : ${TCAR_MODULE_LIST}" --as-debugger-line
+
+    tcar_checkFiles -m "^(${TCAR_MODULE_LIST})$" "${TCAR_MODULE_NAME}"
 
 }
