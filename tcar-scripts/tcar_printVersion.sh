@@ -27,14 +27,14 @@
 
 function tcar_printVersion {
 
-    local PROGRAM_NAME=${1:-${TCAR_SCRIPT_NAME}}
+    local PROGRAM_NAME=${1:-${TCAR_SCRIPT_PACKAGE}}
     local YEAR=$(tcar_printCopyrightInfo --year)
     local HOLDER=$(tcar_printCopyrightInfo --holder)
 
-    if [[ ${PROGRAM_NAME} == ${TCAR_SCRIPT_NAME} ]];then
-        tcar_printMessage "${TCAR_SCRIPT_NAME} ${TCAR_SCRIPT_VERSION}" --as-stdout-line
+    if [[ ${PROGRAM_NAME} == ${TCAR_SCRIPT_PACKAGE} ]];then
+        tcar_printMessage "${TCAR_SCRIPT_PACKAGE} ${TCAR_SCRIPT_VERSION}" --as-stdout-line
     else
-        tcar_printMessage "${PROGRAM_NAME} (${TCAR_SCRIPT_NAME}) ${TCAR_SCRIPT_VERSION}" --as-stdout-line
+        tcar_printMessage "${PROGRAM_NAME} (${TCAR_SCRIPT_PACKAGE}) ${TCAR_SCRIPT_VERSION}" --as-stdout-line
     fi
     tcar_printMessage "Copyright (C) ${YEAR} ${HOLDER}" --as-stdout-line
     tcar_printMessage "`eval_gettext "\\\$PROGRAM_NAME comes with NO WARRANTY, to the extent permitted by law. You may redistribute copies of \\\$PROGRAM_NAME under the terms of the GNU General Public License. For more information about these matters, see the files named COPYING."`" --as-stdout-line | fold --width=66 --spaces

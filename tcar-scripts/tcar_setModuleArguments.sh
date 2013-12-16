@@ -63,7 +63,7 @@ function tcar_setModuleArguments {
 
         # Process positional parameters using getopt's option validation.
         TCAR_MODULE_ARGUMENT=$(getopt -o "${ARGSS}" -l "${ARGSL}" \
-            -n "${TCAR_SCRIPT_COMMAND} (${TCAR_MODULE_NAME})" -- "${@}")
+            -n "${TCAR_SCRIPT_PACKAGE} (${TCAR_MODULE_NAME})" -- "${@}")
 
         # Verify getopt's exit status and finish the script execution
         # with an error message, if it failed.

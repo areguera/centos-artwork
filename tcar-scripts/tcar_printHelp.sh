@@ -42,7 +42,7 @@ function tcar_printHelp {
         if [[ ${TCAR_MANPAGE_NAME} =~ '^--help=[[:alnum:]_-.]+' ]];then
             TCAR_MANPAGE_NAME=$(echo ${TCAR_MANPAGE_NAME} | cut -d'=' -f2)
         else
-            TCAR_MANPAGE_NAME=${TCAR_SCRIPT_NAME}
+            TCAR_MANPAGE_NAME=${TCAR_SCRIPT_PACKAGE}
         fi
     fi
 

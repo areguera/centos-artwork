@@ -28,9 +28,8 @@
 # Identity
 ######################################################################
 
-declare -xr TCAR_SCRIPT_NAME="tcar.sh"
-declare -xr TCAR_SCRIPT_VERSION='0.8'
-declare -xr TCAR_SCRIPT_COMMAND="tcar"
+declare -xr TCAR_SCRIPT_PACKAGE="tcar"
+declare -xr TCAR_SCRIPT_VERSION="$(rpm -q -qf "%{VERSION}" ${TCAR_SCRIPT_PACKAGE})"
 
 ######################################################################
 # Paths
@@ -44,7 +43,7 @@ declare -xr TCAR_BASEDIR=/usr/share/tcar/scripts
 declare -xr TCAR_WORKDIR=/tmp
 
 # Directory to store temporal files.
-declare -xr TCAR_SCRIPT_TEMPDIR=$(mktemp -p /tmp -d ${TCAR_SCRIPT_NAME}-XXXXXX)
+declare -xr TCAR_SCRIPT_TEMPDIR=$(mktemp -p /tmp -d ${TCAR_SCRIPT_PACKAGE}-XXXXXX)
 
 # Configuration files in order of reading preference. The last file in
 # the list overlaps options set in previous files in the list. Use
@@ -83,7 +82,7 @@ declare -xr TCAR_SCRIPT_LANG_CC=$(echo ${TCAR_SCRIPT_LANG_LC} | cut -d'_' -f2)
 # system to retrieve translated strings from machine object (MO) files
 # with this name. This variable is reset each time a new module is
 # loaded, so the correct files can be used.
-declare -x TEXTDOMAIN="${TCAR_SCRIPT_NAME}"
+declare -x TEXTDOMAIN="${TCAR_SCRIPT_PACKAGE}"
 
 # Set the script text domain directory. This information is used by
 # gettext system to know where the machine objects are stored in. This
