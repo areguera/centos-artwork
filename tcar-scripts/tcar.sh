@@ -36,7 +36,7 @@ declare -xr TCAR_SCRIPT_VERSION="$(rpm -q --qf "%{VERSION}" ${TCAR_SCRIPT_PACKAG
 ######################################################################
 
 # Base directory where repository files are installed in.
-declare -xr TCAR_BASEDIR=/usr/share/tcar/scripts
+declare -xr TCAR_BASEDIR=/usr/share/tcar/Scripts
 
 # Base directory where final content is produced. This value should be
 # customized later by the user.
@@ -54,7 +54,7 @@ declare -xr TCAR_SCRIPT_CONFIG=${HOME}/.tcar.conf
 declare -xr TCAR_SCRIPT_MANUALS=/usr/share/man
 
 # Base directory where automation script modules are installed in.
-declare -xr TCAR_SCRIPT_MODULES_BASEDIR=${TCAR_BASEDIR}/modules
+declare -xr TCAR_SCRIPT_MODULES_BASEDIR=${TCAR_BASEDIR}/Modules
 
 # Default text editor.
 declare -x  TCAR_SCRIPT_EDITOR=/usr/bin/vim
