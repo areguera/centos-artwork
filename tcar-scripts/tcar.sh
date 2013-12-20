@@ -29,7 +29,7 @@
 ######################################################################
 
 declare -xr TCAR_SCRIPT_PACKAGE="tcar"
-declare -xr TCAR_SCRIPT_VERSION="$(rpm -q -qf "%{VERSION}" ${TCAR_SCRIPT_PACKAGE})"
+declare -xr TCAR_SCRIPT_VERSION="$(rpm -q --qf "%{VERSION}" ${TCAR_SCRIPT_PACKAGE})"
 
 ######################################################################
 # Paths
