@@ -106,27 +106,27 @@ function tcar_setModuleEnvironment {
     tcar_checkModuleName
 
     # Define module's directory.
-    TCAR_MODULE_DIRS[${TCAR_MODULE_COUNT}]=${TCAR_MODULE_BASEDIR}/$(tcar_getRepoName "${TCAR_MODULE_NAME}" "-f")
+    TCAR_MODULE_DIRS[${TCAR_MODULE_COUNT}]=${TCAR_MODULE_BASEDIR}/$(tcar_getRepoName "${TCAR_MODULE_NAME}" "-d")
     local TCAR_MODULE_DIR=${TCAR_MODULE_DIRS[${TCAR_MODULE_COUNT}]}
     tcar_printMessage "TCAR_MODULE_DIR : ${TCAR_MODULE_DIR}" --as-debugger-line
 
     # Define module's directories not reused from module's parent
     # directory structure.
-    TCAR_MODULE_DIRS_MODULES[${TCAR_MODULE_COUNT}]=${TCAR_MODULE_DIR}/modules
+    TCAR_MODULE_DIRS_MODULES[${TCAR_MODULE_COUNT}]=${TCAR_MODULE_DIR}/Modules
     local TCAR_MODULE_DIR_MODULES=${TCAR_MODULE_DIRS_MODULES[${TCAR_MODULE_COUNT}]}
     tcar_printMessage "TCAR_MODULE_DIR_MODULES : ${TCAR_MODULE_DIR_MODULES}" --as-debugger-line
 
-    TCAR_MODULE_DIRS_CONFIGS[${TCAR_MODULE_COUNT}]=${TCAR_MODULE_DIR}/configs
+    TCAR_MODULE_DIRS_CONFIGS[${TCAR_MODULE_COUNT}]=${TCAR_MODULE_DIR}/Configs
     local TCAR_MODULE_DIR_CONFIGS=${TCAR_MODULE_DIRS_CONFIGS[${TCAR_MODULE_COUNT}]}
     tcar_printMessage "TCAR_MODULE_DIR_CONFIGS : ${TCAR_MODULE_DIR_CONFIGS}" --as-debugger-line
 
     # Define module's directories reused from module's parent
     # directory structure.
-    TCAR_MODULE_DIRS_MANUALS[${TCAR_MODULE_COUNT}]=${TCAR_MODULE_DIRS[0]}/manuals
+    TCAR_MODULE_DIRS_MANUALS[${TCAR_MODULE_COUNT}]=${TCAR_MODULE_DIRS[0]}/Manuals
     local TCAR_MODULE_DIR_MANUALS=${TCAR_MODULE_DIRS_MANUALS[${TCAR_MODULE_COUNT}]}
     tcar_printMessage "TCAR_MODULE_DIR_MANUALS : ${TCAR_MODULE_DIR_MANUALS}" --as-debugger-line
 
-    TCAR_MODULE_DIRS_LOCALES[${TCAR_MODULE_COUNT}]=${TCAR_MODULE_DIRS[0]}/locales
+    TCAR_MODULE_DIRS_LOCALES[${TCAR_MODULE_COUNT}]=${TCAR_MODULE_DIRS[0]}/Locales
     local TCAR_MODULE_DIR_LOCALES=${TCAR_MODULE_DIRS_LOCALES[${TCAR_MODULE_COUNT}]}
     tcar_printMessage "TCAR_MODULE_DIR_LOCALES : ${TCAR_MODULE_DIR_LOCALES}" --as-debugger-line
 
