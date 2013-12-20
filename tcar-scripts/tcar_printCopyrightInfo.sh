@@ -64,11 +64,10 @@ function tcar_printCopyrightInfo {
 
         --year|--last-year)
 
-            # The last year when The CentOS Project stopped working in
-            # its Corporate Visual Identity through the CentOS Artwork
-            # Repository. That is something that I hope never happens,
-            # so assume the current year as last working year.
-            date +%Y
+            # The software release year. This information should never
+            # be the current year. Instead, to make this information
+            # maintainable, relay on tcar package build-time.
+            rpm -q --qf "%{BUILDTIME:date}" tcar | gawk '{ print $4 }'
             ;;
 
         --years-range )

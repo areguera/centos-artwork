@@ -109,7 +109,7 @@ function tcar_printMessage {
             local COUNT=$(( ${#FN[*]} - 2 ))
             local SEPARATOR='`--'
             local SPACES=0
-            echo "${TCAR_SCRIPT_BASEDIR}/${TCAR_SCRIPT_NAME}" 1>&2
+            echo "${TCAR_SCRIPT_BASEDIR}/${TCAR_SCRIPT_PACKAGE}" 1>&2
             while [[ ${COUNT} -gt 0  ]];do
                 if [[ ${COUNT} -eq $(( ${#FN[*]} - 2 )) ]];then
                     echo ${SEPARATOR} ${FN[${COUNT}]} 1>&2
@@ -123,7 +123,7 @@ function tcar_printMessage {
             ;;
 
         --as-toknowmore-line )
-            tcar_printMessage "`gettext "To know more, run"` ${TCAR_SCRIPT_COMMAND} ${MESSAGE} --help" --as-stderr-line
+            tcar_printMessage "`gettext "To know more, run"` ${TCAR_SCRIPT_PACKAGE} ${MESSAGE} --help" --as-stderr-line
             ;;
 
         --as-yesornorequest-line )
