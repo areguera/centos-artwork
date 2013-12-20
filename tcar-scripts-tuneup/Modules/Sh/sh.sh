@@ -27,6 +27,5 @@
 function sh {
 
     sh_setTopComment
-    sh_setVariableNames
 
 }
