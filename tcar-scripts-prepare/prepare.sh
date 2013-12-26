@@ -1,17 +1,22 @@
 #!/bin/bash
 ######################################################################
 #
-#   prepare.sh -- This module standardizes repository configuration
-#   tasks.
+#   prepare.sh -- This module standardizes configuration tasks related
+#   to repository workplace.
 #
-#   When you download a fresh working copy of CentOS artwork
-#   repository, most of its content is in source format. You need to
-#   process source formats in order to produce final content and make
-#   the connections between components (e.g., render brand images so
-#   they can be applied to other images). This function takes care of
-#   those actions and should be the first module you run in your
-#   workstation after downloading a fresh working copy of CentOS
-#   artwork repository.
+#   When you install The CentOS Artwork Repository most of its content
+#   is in source format. In order to produce final content and make
+#   the connections between the produced components, you need to
+#   process the source formats somewhere inside your workstation.
+#   This module takes the first non-option argument passed in the
+#   command-line as the workplace where you are going to process
+#   source formats in your workstation. During the preparation
+#   process, this module creates the workplace directory structure,
+#   the workplace connection with The CentOS Artwork Repository using
+#   symbolic links, and images required to brand other images.
+#
+#   This module should be the first module you run in your workstation
+#   after installing The CentOS Artwork Repository.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -36,17 +41,13 @@
 
 function prepare {
 
-    local ACTION=''
-    local ACTIONS=''
-
     prepare_getOptions
 
-    if [[ -z ${ACTIONS} ]];then
-        ACTIONS='packages locales images docs links'
-    fi
+    # Define absolute path to workplace. The workplace is where final
+    # images produced from source files will be stored and organized
+    # in.
+    local TCAR_WORKPLACE=${TCAR_SCRIPT_ARGUMENT}
 
-    for ACTION in ${ACTIONS};do
-        tcar_setModuleEnvironment -m "${ACTION}" -t "child" ${TCAR_MODULE_ARGUMENT}
-    done
+    prepare_setWorkplace
 
 }

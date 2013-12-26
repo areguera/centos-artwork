@@ -1,9 +1,9 @@
 #!/bin/bash
 ######################################################################
 #
-#   locales.sh -- This module retrieves translatable strings from
-#   automation scripts and creates the related machine objects, so
-#   script messages can be rendered in different languages.
+#   prepare_getWorkplaceConf.sh -- This function prints to standard
+#   output all the models configuration files (and their templates)
+#   from The CentOS Artwork Repository.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -26,8 +26,8 @@
 #
 ######################################################################
 
-function locales {
+function prepare_getWorkplaceConf {
 
-    tcar_setModuleEnvironment locale "Automation/centos-art.sh" --update
+    tcar_getFilesList -p '.+\.conf(\.tpl)?$' -t 'f' ${TCAR_BASEDIR}/Models/
 
 }
