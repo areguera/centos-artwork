@@ -32,26 +32,26 @@ function prepare_setWorkplace {
 
     local CONF=''
 
-    if [[ -d ${TCAR_WORKPLACE} ]];then
+    if [[ -d ${TCAR_WORKDIR} ]];then
         tcar_printMessage "`gettext "The workplace you provided already exist and will be removed."`" --as-stdout-line
         tcar_printMessage "`gettext "Do you want to continue?"`" --as-yesornorequest-line
-        tcar_printMessage "${TCAR_WORKPLACE}" --as-removing-line
-        rm -r ${TCAR_WORKPLACE}
+        tcar_printMessage "${TCAR_WORKDIR}" --as-removing-line
+        rm -r ${TCAR_WORKDIR}
     fi
 
-    tcar_printMessage "${TCAR_WORKPLACE}" --as-creating-line
+    tcar_printMessage "${TCAR_WORKDIR}" --as-creating-line
 
     for CONF in $(prepare_getWorkplaceConf);do
-        local TCAR_WORKPLACE_DIR=$(prepare_getWorkplaceDir ${CONF})
-        local TCAR_WORKPLACE_LNK=${TCAR_WORKPLACE_DIR}/render.conf
-        mkdir -p ${TCAR_WORKPLACE_DIR} && ln -s ${CONF} ${TCAR_WORKPLACE_LNK}
-        tcar_checkFiles -s ${TCAR_WORKPLACE_LNK}
+        local TCAR_WORKDIR_DIR=$(prepare_getWorkplaceDir ${CONF})
+        local TCAR_WORKDIR_LNK=${TCAR_WORKDIR_DIR}/render.conf
+        mkdir -p ${TCAR_WORKDIR_DIR} && ln -s ${CONF} ${TCAR_WORKDIR_LNK}
+        tcar_checkFiles -s ${TCAR_WORKDIR_LNK}
     done
 
-    if [[ -d ${TCAR_WORKPLACE}/Brands ]];then
+    if [[ -d ${TCAR_WORKDIR}/Brands ]];then
         tcar_printMessage "`gettext "The workplace doesn't include images for branding other images."`"
         tcar_printMessage "`gettext "Do you want to render them now?"`" --as-yesornorequest-line
-        prepare_setRenderEnvironment -o "render-type" -v "svg" ${TCAR_WORKPLACE}/Brands
+        prepare_setRenderEnvironment -o "render-type" -v "svg" ${TCAR_WORKDIR}/Brands
     fi
 
 }

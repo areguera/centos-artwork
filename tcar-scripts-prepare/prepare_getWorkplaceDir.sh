@@ -31,7 +31,7 @@ function prepare_getWorkplaceDir {
     local DIRECTORY=$1 
 
     echo ${DIRECTORY} \
-        | sed -r -e "s!${TCAR_BASEDIR}/Models/!${TCAR_WORKPLACE}/!" \
+        | sed -r -e "s!${TCAR_BASEDIR}/Models/!${TCAR_WORKDIR}/!" \
                  -e 's!/[a-z]+\.conf(\.tpl)?$!!'
 
 }
