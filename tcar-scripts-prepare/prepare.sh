@@ -43,7 +43,7 @@ function prepare {
 
     prepare_getOptions
 
-    for TCAR_WORKDIR ${TCAR_SCRIPT_ARGUMENT};do
+    for TCAR_WORKDIR in ${TCAR_SCRIPT_ARGUMENT};do
         prepare_setWorkplace
     done
 
