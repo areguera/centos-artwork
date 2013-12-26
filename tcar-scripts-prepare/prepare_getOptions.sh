@@ -33,7 +33,7 @@ function prepare_getOptions {
     local ARGSS="h::,v"
 
     # Define long options we want to support.
-    local ARGSL="help::,version,packages,locales,links,documents,images,conf"
+    local ARGSL="help::,version"
 
     # Redefine arguments using getopt(1) command parser.
     tcar_setModuleArguments
@@ -52,36 +52,6 @@ function prepare_getOptions {
 
             -v | --version )
                 tcar_printVersion "${TCAR_MODULE_NAME}"
-                ;;
-
-            --packages )
-                ACTIONS="${ACTIONS} packages"
-                shift 1
-                ;;
-
-            --locales )
-                ACTIONS="${ACTIONS} locales"
-                shift 1
-                ;;
-
-            --links )
-                ACTIONS="${ACTIONS} links"
-                shift 1
-                ;;
-
-            --documents )
-                ACTIONS="${ACTIONS} documents"
-                shift 1
-                ;;
-
-            --images )
-                ACTIONS="${ACTIONS} images"
-                shift 1
-                ;;
-
-            --conf )
-                ACTIONS="${ACTIONS} conf"
-                shift 1
                 ;;
 
             -- )

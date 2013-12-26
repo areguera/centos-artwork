@@ -1,8 +1,9 @@
 #!/bin/bash
 ######################################################################
 #
-#   documents.sh -- This function renders all documentation files
-#   inside the repository using the render module.
+#   prepare_getWorkplaceDir.sh -- This function transform absolute
+#   paths to configuration files inside The CentOS Artwork Repository
+#   to directory absolute paths inside the workplace.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -25,22 +26,12 @@
 #
 ######################################################################
 
-function documents {
+function prepare_getWorkplaceDir {
 
-    # Define base location where configuration files will be searched
-    # from. You can provide more than one location here.
-    local DIRS='/'
+    local DIRECTORY=$1 
 
-    # Define the name of the option you want to look configuration
-    # files for.
-    local NAME='render-type'
-
-    # Define the value of the option you want to look configuration
-    # files for.
-    local VALUE='asciidoc'
-
-    # Render configuration files that match specified options and
-    # values in the search directories.
-    prepare_setRenderEnvironment -o "${NAME}" -v "${VALUE}" "${DIRS}" 
+    echo ${DIRECTORY} \
+        | sed -r -e "s!${TCAR_BASEDIR}/Models/!${TCAR_WORKPLACE}/!" \
+                 -e 's!/[a-z]+\.conf(\.tpl)?$!!'
 
 }
