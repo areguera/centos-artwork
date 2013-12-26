@@ -36,11 +36,15 @@ declare -xr TCAR_SCRIPT_VERSION="$(rpm -q --qf "%{VERSION}" ${TCAR_SCRIPT_PACKAG
 ######################################################################
 
 # Base directory where repository files are installed in.
-declare -xr TCAR_BASEDIR=/usr/share/tcar/Scripts
+declare -xr TCAR_BASEDIR=/usr/share/tcar
 
-# Base directory where final content is produced. This value should be
-# customized later by the user.
+# Base directory where final content is produced in. This value is
+# also known as the "workplace" and should be customized later by the
+# user, using the prepare module of tcar script.
 declare -xr TCAR_WORKDIR=/tmp
+
+# Base directory where automation scripts are installed in.
+declare -xr TCAR_SCRIPT_BASEDIR=${TCAR_BASEDIR}/Scripts
 
 # Directory to store temporal files.
 declare -xr TCAR_SCRIPT_TEMPDIR=$(mktemp -p /tmp -d ${TCAR_SCRIPT_PACKAGE}-XXXXXX)
@@ -54,7 +58,7 @@ declare -xr TCAR_SCRIPT_CONFIG=${HOME}/.tcar.conf
 declare -xr TCAR_SCRIPT_MANUALS=/usr/share/man
 
 # Base directory where automation script modules are installed in.
-declare -xr TCAR_SCRIPT_MODULES_BASEDIR=${TCAR_BASEDIR}/Modules
+declare -xr TCAR_SCRIPT_MODULES_BASEDIR=${TCAR_SCRIPT_BASEDIR}/Modules
 
 # Default text editor.
 declare -x  TCAR_SCRIPT_EDITOR=/usr/bin/vim
@@ -88,7 +92,7 @@ declare -x TEXTDOMAIN="${TCAR_SCRIPT_PACKAGE}"
 # gettext system to know where the machine objects are stored in. This
 # variable is reset each time a new module is loaded, so the correct
 # files can be used.
-declare -x TEXTDOMAINDIR=/usr/share/locale
+declare -xr TEXTDOMAINDIR=/usr/share/locale
 
 ######################################################################
 # Global Flags
@@ -122,7 +126,7 @@ declare -x  TCAR_FLAG_DEBUG='false'
 ######################################################################
 
 # Export script's environment functions.
-for SCRIPT_FILE in $(ls ${TCAR_BASEDIR}/tcar_*.sh);do
+for SCRIPT_FILE in $(ls ${TCAR_SCRIPT_BASEDIR}/tcar_*.sh);do
     if [[ -x ${SCRIPT_FILE} ]];then
         . ${SCRIPT_FILE}
         export -f $(grep '^function ' ${SCRIPT_FILE} | cut -d' ' -f2)

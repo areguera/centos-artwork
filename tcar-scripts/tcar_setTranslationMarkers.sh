@@ -120,7 +120,7 @@ function tcar_setTranslationMarkers {
     fi
 
     # Define repository translation markers.
-    SRC[((++${#SRC[*]}))]='=(REPO_TLDIR|REPO_HOME|TCAR_BASEDIR|TCAR_WORKDIR)='
+    SRC[((++${#SRC[*]}))]='=(REPO_TLDIR|REPO_HOME|TCAR_BASEDIR)='
     DST[((++${#DST[*]}))]="${TCAR_BASEDIR}"
 
     # Do replacement of nested translation markers.
