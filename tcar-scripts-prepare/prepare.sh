@@ -43,11 +43,8 @@ function prepare {
 
     prepare_getOptions
 
-    # Define absolute path to workplace. The workplace is where final
-    # images produced from source files will be stored and organized
-    # in.
-    local TCAR_WORKDIR=${TCAR_SCRIPT_ARGUMENT}
-
-    prepare_setWorkplace
+    for TCAR_WORKDIR ${TCAR_SCRIPT_ARGUMENT};do
+        prepare_setWorkplace
+    done
 
 }
