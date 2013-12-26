@@ -41,7 +41,7 @@ declare -xr TCAR_BASEDIR=/usr/share/tcar
 # Base directory where final content is produced in. This value is
 # also known as the "workplace" and should be customized later by the
 # user, using the prepare module of tcar script.
-declare -xr TCAR_WORKDIR=/tmp
+declare -x TCAR_WORKDIR=/tmp
 
 # Base directory where automation scripts are installed in.
 declare -xr TCAR_SCRIPT_BASEDIR=${TCAR_BASEDIR}/Scripts
