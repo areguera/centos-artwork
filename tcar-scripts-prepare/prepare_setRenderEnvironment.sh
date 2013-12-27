@@ -100,9 +100,9 @@ function prepare_setRenderEnvironment {
         # Define the list of configuration files the render module
         # will use as reference to produce documentation. At this
         # point it is very difficult that DIRECTORY doesn't exist or
-        # be outside the repository directory structure.
+        # be outside the workplace directory structure.
         CONFIGURATION_FILES[++${#CONFIGURATION_FILES[*]}]=$(tcar_getFilesList \
-            -p '.+\.conf$' -t 'f' ${DIRECTORY} \
+            -p '.+\.conf$' -t 'l' ${DIRECTORY} \
                 | xargs egrep ${CONFIGURATION_PATTERN} | cut -d: -f1 | sort | uniq)
 
     done
