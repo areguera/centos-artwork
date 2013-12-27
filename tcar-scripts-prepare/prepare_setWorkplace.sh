@@ -35,7 +35,7 @@ function prepare_setWorkplace {
     if [[ -d ${TCAR_WORKDIR} ]];then
         tcar_printMessage "`gettext "The workplace you provided already exist and will be removed."`" --as-stdout-line
         tcar_printMessage "`gettext "Do you want to continue?"`" --as-yesornorequest-line
-        tcar_printMessage "${TCAR_WORKDIR}" --as-removing-line
+        tcar_printMessage "${TCAR_WORKDIR}" --as-deleting-line
         rm -r ${TCAR_WORKDIR}
     fi
 
@@ -51,7 +51,7 @@ function prepare_setWorkplace {
     if [[ -d ${TCAR_WORKDIR}/Brands ]];then
         tcar_printMessage "`gettext "The workplace doesn't include images for branding other images."`" --as-stdout-line
         tcar_printMessage "`gettext "Do you want to render them now?"`" --as-yesornorequest-line
-        prepare_setRenderEnvironment -o "render-type" -v "svg" ${TCAR_WORKDIR}/Brands
+        prepare_setRenderEnvironment -o "render-type" -v "svg" Brands
     fi
 
 }
