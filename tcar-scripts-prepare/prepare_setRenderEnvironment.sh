@@ -90,10 +90,9 @@ function prepare_setRenderEnvironment {
 
     for DIRECTORY in ${@};do
 
-        # Clean-up the search path. This location must point a
-        # directory inside the repository. References to directories
-        # outside the repository are not supported.
-        DIRECTORY=$(tcar_checkRepoDirSource ${DIRECTORY})
+        # Clean-up the search path. This location must point to a
+        # directory inside the workplace.
+        DIRECTORY=$(tcar_checkWorkDirSource ${DIRECTORY})
 
         # Verify the search path. It must exist and being a directory.
         tcar_checkFiles -ed ${DIRECTORY}
