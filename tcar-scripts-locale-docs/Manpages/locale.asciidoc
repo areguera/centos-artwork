@@ -1,0 +1,127 @@
+locale(1)
+=========
+
+Name
+----
+
+locale - Create, edit and delete translation files for images,
+documents and automation scripts.
+
+Synopsis
+--------
+
+*centos-art.sh locale --help*::
+    Print module's documentation.
+
+*centos-art.sh locale --version*::
+    Print module's version.
+
+*centos-art.sh locale DIRECTORY [--update|--edit|--delete|--filter="REGEX"]*::
+    Perform directory localization.
+
+*centos-art.sh locale FILE [--update|--edit|--delete]*::
+    Perform file localization.
+
+Description
+-----------
+
+The *locale* produces translations files for images, documents and
+automation scripts based on the LANG environment variable. In order to
+produce locale-specific translation files, the current language
+information set by the LANG environment variable must be different to
+English (`en'). If the current language is English, the *locale*
+module ends its execution with an error message. When the current
+language is different to English, the *locale* looks for source files,
+based on the arguments you passed through the command-line.
+
+When the argument you provided is a ``DIRECTORY'', the *locale* module
+looks for configuration files inside it and produces translation files
+based on the *render-from* and *locale-from* variables set in there.
+On the other hand, when a ``FILE'' is provided, it takes the file
+extension (i.e., the characters after the last dot in the file name)
+and looks recursively in the file's directory for all the files that
+have the same file extension the ``FILE'' does, and builds the list of
+source files that will be used to produce the translation files. In
+this case, the translation files are stored in a ``Locales''
+directory, at the same level of the ``FILE'' you provided as argument
+to *locale* module's command-line.
+
+Translation files are the files we use to store translatable strings.
+These files can be either portable objects (`.po'), machine objects
+(`.po') or portable object templates (`.pot'). Machine objects are
+built from portable objects. Portable objects are built from portable
+object templates (`.pot').  Portable object templates are built using
+*xgettext* or *xml2po* programs, according to the source files you are
+retrieving translatable strings from. From these files, portable
+objects (`.po') are used by *render* module to produce both localized
+images and localized documentation while machine objects (`.mo') are
+used by *gettext* program to produce localized output messages from
+automation scripts.
+
+Options
+-------
+
+The *locale* module accepts the following options:
+
+*--help*::
+    Print module's documentation.
+*--version*::
+    Print module's version.
+*--filter="REGEX"*::
+    When ``DIRECTORY'' is passed as argument, this option reduces the
+    number of section blocks inside configuration files the *locale*
+    module will take for processing by using the ``REGEX'' value is a
+    regular expression pattern to match one or more section names
+    inside the configuration files found under ``DIRECTORY''. When
+    ``FILE'' is passed as argument, in the other hand, it limits the
+    number of files that will be set in the list of source files used
+    to build the final translation files.
+*--update*::
+*--edit*::
+*--delete*::
+
+Localizing Image Files
+----------------------
+
+Hi
+
+Localizing Documentation Files
+------------------------------
+
+Hi
+
+Localizing Automation Scripts
+-----------------------------
+
+Hi
+
+Author
+------
+
+Written by mailto:al@centos.org.cu[Alain Reguera Delgado]
+
+Copyright
+---------
+
+Copyright (C) 2009-2013 The CentOS Project
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or (at
+your option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+See Also
+--------
+
+centos-art.sh(1), centos-art.sh-render(1), gettext(1)
+
+// vim: set syntax=asciidoc:
