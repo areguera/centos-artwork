@@ -1,0 +1,106 @@
+hello(1)
+========
+
+Name
+----
+
+hello - Print out greetings and exit successfully.
+
+Synopsis
+--------
+
+*centos-art hello [OPTIONS]*
+
+Description
+-----------
+
+The *hello* module is very simple. Its main purpose is to print out
+the ``Hello, World!'' greeting to standard output and exit
+successfully.  You can use options to change the greeting message and
+the way it is printed out. The *hello* module provides a very simple
+example you can use as base to understand how modules work inside
+*centos-art.sh* script. You can this understanding to start writing
+your own modules for *centos-art.sh* script.
+
+Options
+-------
+
+The *hello* module accepts the following options:
+
+*-h | --help*::
+    Print out module's documentation.
+
+*-v | --version*::
+    Print out module's version and legal status.
+
+*-d | --debug*::
+    Run the script in debugging mode. This option is very useful if
+    you want to get a closer look to module environments being
+    executed and destroyed at run-time.
+
+*-g "TEXT" | --greeting="TEXT"*::
+    Set a different greeting message to be printed out. This option
+    accepts a value as argument. The text you provide must not have
+    empty spaces on it. By default, when you don't provide this
+    option, *hello* module prints out ``Hello, World'' as greeting. If
+    translations of this message are available for your locale, they
+    will be printed instead.
+
+*-l | --lower*::
+    Print greeting message in lowercase. The final output is printed
+    out all in one line.
+
+*-u | --upper*::
+    Print greeting message in uppercase. The final output is printed
+    out all in one line.
+
+*-c | --camel*::
+    Print greeting messages in camel-case (e.g., "HeLlO, WoRlD!").
+    The output is printed out one character per line. This might not
+    have sense but it helps to describe how execution of sibling
+    modules work. Notice that, when printing final output, punctuation
+    marks doesn't count for formating.
+
+*-r | --random*::
+    Print letters of a greeting message in a random order (e.g.,
+    rdodldrl!,,!).  The final output is printed out one character per
+    line. This might not have sense but it helps to describe how
+    recursive execution of sibling modules work.
+
+Exit Status
+-----------
+
+The *hello* module ends its execution with one of the following exit
+status:
+
+* 0 -- Exit successfully without errors.
+* 1 -- Exit with errors.
+
+Authors
+-------
+
+The *hello* module has received contribution from the following
+people:
+
+* Alain Reguera Delgado <mailto:al@centos.org.cu[al@centos.org.cu]>, 2013
+
+Copyright
+---------
+
+Copyright (C) 2009-2013 The CentOS Artwork SIG
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or (at
+your option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+// vim: set syntax=asciidoc:
