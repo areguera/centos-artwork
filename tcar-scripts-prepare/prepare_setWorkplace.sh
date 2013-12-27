@@ -45,11 +45,11 @@ function prepare_setWorkplace {
         local TCAR_WORKDIR_DIR=$(prepare_getWorkplaceDir ${CONF})
         local TCAR_WORKDIR_LNK=${TCAR_WORKDIR_DIR}/render.conf
         mkdir -p ${TCAR_WORKDIR_DIR} && ln -s ${CONF} ${TCAR_WORKDIR_LNK}
-        tcar_checkFiles -s ${TCAR_WORKDIR_LNK}
+        tcar_checkFiles -h ${TCAR_WORKDIR_LNK}
     done
 
     if [[ -d ${TCAR_WORKDIR}/Brands ]];then
-        tcar_printMessage "`gettext "The workplace doesn't include images for branding other images."`"
+        tcar_printMessage "`gettext "The workplace doesn't include images for branding other images."`" --as-stdout-line
         tcar_printMessage "`gettext "Do you want to render them now?"`" --as-yesornorequest-line
         prepare_setRenderEnvironment -o "render-type" -v "svg" ${TCAR_WORKDIR}/Brands
     fi
