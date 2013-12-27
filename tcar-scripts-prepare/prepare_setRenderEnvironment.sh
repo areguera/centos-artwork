@@ -102,8 +102,8 @@ function prepare_setRenderEnvironment {
         # point it is very difficult that DIRECTORY doesn't exist or
         # be outside the repository directory structure.
         CONFIGURATION_FILES[++${#CONFIGURATION_FILES[*]}]=$(tcar_getFilesList \
-            ${DIRECTORY} -p '.+\.conf$' -t 'f' \
-            | xargs egrep ${CONFIGURATION_PATTERN} | cut -d: -f1 | sort | uniq)
+            -p '.+\.conf$' -t 'f' ${DIRECTORY} \
+                | xargs egrep ${CONFIGURATION_PATTERN} | cut -d: -f1 | sort | uniq)
 
     done
 
