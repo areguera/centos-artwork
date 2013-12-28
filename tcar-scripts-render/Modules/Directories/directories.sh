@@ -28,7 +28,7 @@
 
 function directories {
 
-    local DIRECTORY=$(tcar_checkRepoDirSource "${1}")
+    local DIRECTORY=$(tcar_checkWorkDirSource "${1}")
 
     local CONFIGURATION_FILES=$(tcar_getFilesList ${DIRECTORY} \
         --pattern=".+/.+\.conf$" --type='f')

@@ -27,7 +27,7 @@
 
 function asciidoc_setXhtmlRendition {
 
-    local LOCATION=$(tcar_checkRepoDirSource "${1}")
+    local LOCATION=$(tcar_checkWorkDirSource "${1}")
 
     RENDER_PAGES=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "render-page")
     if [[ -z ${RENDER_PAGES} ]];then

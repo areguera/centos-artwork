@@ -41,7 +41,7 @@ function render {
         # Sanitate non-option arguments to be sure they match the
         # directory conventions established by centos-art.sh script
         # against source directory locations in the working copy.
-        local ARGUMENT=$(tcar_checkRepoDirSource ${ARGUMENT})
+        local ARGUMENT=$(tcar_checkWorkDirSource ${ARGUMENT})
 
         if [[ -d ${ARGUMENT} ]];then
             tcar_setModuleEnvironment -m 'directories' -t 'child' -g ${ARGUMENT}
