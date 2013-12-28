@@ -27,6 +27,11 @@
 
 function tcar_printVersion {
 
+    # Reset text domain locally, in order to prevent this function
+    # from using the last text domain definition. By default all
+    # common functions do use the same MO file.
+    local TEXTDOMAIN="${TCAR_SCRIPT_PACKAGE}"
+
     local PROGRAM_NAME=${1:-${TCAR_SCRIPT_PACKAGE}}
     local YEAR=$(tcar_printCopyrightInfo --year)
     local HOLDER=$(tcar_printCopyrightInfo --holder)

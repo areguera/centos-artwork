@@ -39,6 +39,11 @@
 
 function tcar_printCopyrightInfo {
 
+    # Reset text domain locally, in order to prevent this function
+    # from using the last text domain definition. By default all
+    # common functions do use the same MO file.
+    local TEXTDOMAIN="${TCAR_SCRIPT_PACKAGE}"
+
     case "${1}" in
 
         --license )
@@ -99,18 +104,18 @@ function tcar_printCopyrightInfo {
             # Print tcar.sh script default copyright holder. Be
             # pragmatic about this information, please. The CentOS
             # Project exists to produce The CentOS Distribution, not
-            # tcar.sh script. Nevertheless, The CentOS Artwork
-            # SIG is an organizational unit of The CentOS Project
-            # which is focused on producing The CentOS Project
-            # corporate visual identity, by means of The CentOS
-            # Artwork Repository.  The tcar.sh script automates
-            # frequent tasks inside The CentOS Artwork Repository so,
-            # based on these considerations, the copyright holder of
-            # the tcar.sh script is "closer" to be The CentOS
-            # Artwork SIG than it would be The CentOS Project. These
-            # are the logical choosing ideas behind the copyright
-            # holder of tcar.sh script.
-            echo "The CentOS Artwork SIG"
+            # tcar.sh script. Nevertheless, The CentOS Artwork SIG is
+            # an organizational unit of The CentOS Project which is
+            # focused on producing The CentOS Project corporate visual
+            # identity, by means of The CentOS Artwork Repository.
+            # The tcar.sh script automates frequent tasks inside The
+            # CentOS Artwork Repository so, based on these
+            # considerations, the copyright holder of the tcar.sh
+            # script is "closer" to be The CentOS Artwork SIG than it
+            # would be The CentOS Project. These are the logical
+            # choosing ideas behind the copyright holder of tcar.sh
+            # script.
+            echo "`gettext "The CentOS Artwork SIG"`"
             ;;
 
         --holder-predicate )

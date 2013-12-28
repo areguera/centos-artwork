@@ -27,6 +27,11 @@
 
 function tcar_unsetModuleEnvironment {
 
+    # Reset text domain locally, in order to prevent this function
+    # from using the last text domain definition. By default all
+    # common functions do use the same MO file.
+    local TEXTDOMAIN="${TCAR_SCRIPT_PACKAGE}"
+
     # Verify suffix value used to retrieve function files.
     if [[ -z ${TCAR_MODULE_NAME} ]];then
         tcar_printMessage "`gettext "The export id was not provided."`" --as-error-line
