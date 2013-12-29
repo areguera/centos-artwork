@@ -1,20 +1,11 @@
 #!/bin/bash
 ######################################################################
 #
-#   tcar_checkWorkDirSource.sh -- This function standardizes the path
-#   construction of directories inside the workplace, using absolute
-#   paths. This function transforms relative paths passed as
-#   non-option arguments to tcar.sh script command-line into absolute
-#   paths inside the workplace. Further verifications, (e.g., whether
-#   they really exist as directories inside the working copy or not)
-#   should be realized outside this function.
-#
-#   Use this function whenever you want to be sure non-option
-#   arguments passed to tcar.sh script command-line do always point to
-#   directories inside the workplace.  Transforming relative paths
-#   into absolute paths, before processing them, is very useful when
-#   you need to execute the tcar.sh script as command (e.g., `tcar')
-#   anywhere on your workstation.
+#   tcar_checkWorkDirSource.sh -- This function prepares non-option
+#   arguments passed through the command-line for further processing.
+#   When the argument provided is not an absolute path this function
+#   transforms it into an absolute path using the current working
+#   directory.
 #
 #   Written by:
 #   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
@@ -41,36 +32,25 @@ function tcar_checkWorkDirSource {
 
     local LOCATION=${1}
 
-    # Remove any dot from arguments passed to tcar.sh script.  This
-    # way it is possible to use a single dot to reflect the current
-    # location from which tcar.sh was executed. Notice that using a
-    # dot as argument is optional (e.g., when you pass no argument to
-    # tcar command-line, the current location is used as default
-    # location). However, it might be useful to use a dot as argument
-    # when you want to include the current location in a list of
-    # arguments to process. Remember that dot slash can be used to
-    # refer locations relatively.
-    LOCATION=$(echo "${LOCATION}" | sed -r "s,^\.(/([[:alnum:]_/.-]+)?)?$,$(pwd)\1,g")
+    # Append the current working directory when the location provided
+    # isn't absolute.
+    if [[ ! ${LOCATION} =~ '^/' ]];then
+        LOCATION=${PWD}/${LOCATION}
+    fi
 
-    # Remove the workplace absolute path from location in order to
-    # avoid path duplications here.
-    LOCATION=$(echo "${LOCATION}" | sed "s,${TCAR_WORKDIR}/,,g")
-
-    # Rebuild location using the workplace absolute path. 
-    LOCATION=${TCAR_WORKDIR}/${LOCATION}
-
-    # Remove trailing slashes passed as argument. The single slash
-    # form is used to refer the repository's root directory. The
-    # single slash form passed as argument of tcar.sh script is
-    # useful to execute commands over the
-    # entire repository tree.
+    # Remove both consecutive slashes and trailing slashes from final
+    # location.
     echo "${LOCATION}" | sed -r -e 's,/+,/,g' -e 's,/+$,,g'
 
-    # There isn't a need of verifying the paths built here.  This is
-    # something we do later, using the tcar_checkFiles function. We
-    # don't do the file verification here to avoid malformed error
-    # messages when we reassign variable values using this function as
-    # reference (e.g., in order to prevent error messages from being
-    # stored inside variables.).
+    # The single slash form doesn't point to repository's root
+    # directory anymore. Instead, when a single slash is passed
+    # as argument through the command-line, it preserves its regular
+    # meaning which is pointing the workstation's file system.
+
+    # The path verification isn't appropriate here because this
+    # function is commonly used inside variable assignments and flow
+    # control doesn't take place in such situation. In case path
+    # verification fails here, the script wouldn't end its execution
+    # which contradicts the expected behaviour.
 
 }
