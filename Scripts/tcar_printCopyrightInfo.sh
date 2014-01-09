@@ -1,48 +1,47 @@
 #!/bin/bash
 ######################################################################
 #
-#   tcar_printCopyrightInfo.sh -- This function standardizes the
-#   copyright information printed on content produced by tcar.sh
-#   script.
+#   tcar - The CentOS Artwork Repository automation tool.
+#   Copyright © 2014 The CentOS Artwork SIG
 #
-#   As far as I understand, the copyright exists to make people create
-#   more.  The copyright gives creators the legal power over their
-#   creations and so the freedom to distribute them under the ethical
-#   terms the creator considers better.  At this moment I don't feel
-#   very confident about this legal affairs and their legal
-#   implications, but I need to decide what copyright information the
-#   tcar.sh script will print out when someone request
-#   information about it.  So, in that sake, I am using The CentOS
-#   Artwork SIG as copyright holder and the GNU Public License,
-#   version 2 or any later, for software distribution.
+#   This program is free software; you can redistribute it and/or
+#   modify it under the terms of the GNU General Public License as
+#   published by the Free Software Foundation; either version 2 of the
+#   License, or (at your option) any later version.
 #
-#   Written by:
-#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+#   General Public License for more details.
 #
-# Copyright (C) 2009-2013 The CentOS Artwork SIG
+#   You should have received a copy of the GNU General Public License
+#   along with this program; if not, write to the Free Software
+#   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or (at
-# your option) any later version.
-#
-# This program is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-# General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#   Alain Reguera Delgado <al@centos.org.cu>
+#   39 Street No. 4426 Cienfuegos, Cuba.
 #
 ######################################################################
 
+# Standardize the copyright information printed on content produced by
+# tcar.sh script.
+#
+# As far as I understand, the copyright exists to make people create
+# more.  The copyright gives creators the legal power over their
+# creations and so the freedom to distribute them under the ethical
+# terms the creator considers better.  At this moment I don't feel
+# very confident about this legal affairs and their legal
+# implications, but I need to decide what copyright information the
+# tcar.sh script will print out when someone request information about
+# it.  So, in that sake, I am using The CentOS Artwork SIG as
+# copyright holder and the GNU Public License, version 2 or any later,
+# for software distribution.
 function tcar_printCopyrightInfo {
 
     # Reset text domain locally, in order to prevent this function
     # from using the last text domain definition. By default all
     # common functions do use the same MO file.
-    local TEXTDOMAIN="${TCAR_SCRIPT_PACKAGE}"
+    local TEXTDOMAIN="${TCAR_SCRIPT_NAME}"
 
     case "${1}" in
 
@@ -69,10 +68,8 @@ function tcar_printCopyrightInfo {
 
         --year|--last-year)
 
-            # The software release year. This information should never
-            # be the current year. Instead, to make this information
-            # maintainable, relay on tcar package build-time.
-            rpm -q --qf "%{BUILDTIME:date}" tcar | gawk '{ print $4 }'
+            # The software release year.
+            echo 2014
             ;;
 
         --years-range )

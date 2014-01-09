@@ -1,36 +1,35 @@
 #!/bin/bash
 ######################################################################
 #
-#   tcar_printMessage.sh -- This function standardizes the way messages
-#   are printed by tcar.sh script.
+#   tcar - The CentOS Artwork Repository automation tool.
+#   Copyright © 2014 The CentOS Artwork SIG
 #
-#   Written by:
-#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
+#   This program is free software; you can redistribute it and/or
+#   modify it under the terms of the GNU General Public License as
+#   published by the Free Software Foundation; either version 2 of the
+#   License, or (at your option) any later version.
 #
-# Copyright (C) 2009-2013 The CentOS Artwork SIG
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+#   General Public License for more details.
 #
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or (at
-# your option) any later version.
+#   You should have received a copy of the GNU General Public License
+#   along with this program; if not, write to the Free Software
+#   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# This program is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-# General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#   Alain Reguera Delgado <al@centos.org.cu>
+#   39 Street No. 4426 Cienfuegos, Cuba.
 #
 ######################################################################
 
+# Standardize the way messages are printed by tcar.sh script.
 function tcar_printMessage {
 
     # Reset text domain locally, in order to prevent this function
     # from using the last text domain definition. By default all
     # common functions do use the same MO file.
-    local TEXTDOMAIN="${TCAR_SCRIPT_PACKAGE}"
+    local TEXTDOMAIN="${TCAR_SCRIPT_NAME}"
 
     local MESSAGE="${1}"
     local FORMAT="${2}"
@@ -46,7 +45,7 @@ function tcar_printMessage {
     local MESSAGE_WIDTH=66
 
     # Remove empty spaces from message.
-    MESSAGE=$(printf %s "${MESSAGE}" | sed -r -e 's!^[[:space:]]+!!')
+    #MESSAGE=$(printf %s "${MESSAGE}" | sed -r -e 's!^[[:space:]]+!!')
 
     # Print messages that will always be printed no matter what value
     # the TCAR_FLAG_QUIET variable has.
@@ -114,7 +113,7 @@ function tcar_printMessage {
             local COUNT=$(( ${#FN[*]} - 2 ))
             local SEPARATOR='`--'
             local SPACES=0
-            echo "${TCAR_SCRIPT_BASEDIR}/${TCAR_SCRIPT_PACKAGE}" 1>&2
+            echo "${TCAR_SCRIPT_BASEDIR}/${TCAR_SCRIPT_NAME}" 1>&2
             while [[ ${COUNT} -gt 0  ]];do
                 if [[ ${COUNT} -eq $(( ${#FN[*]} - 2 )) ]];then
                     echo ${SEPARATOR} ${FN[${COUNT}]} 1>&2
@@ -128,7 +127,7 @@ function tcar_printMessage {
             ;;
 
         --as-toknowmore-line )
-            tcar_printMessage "`gettext "To know more, run"` ${TCAR_SCRIPT_PACKAGE} ${MESSAGE} --help" --as-stderr-line
+            tcar_printMessage "`gettext "To know more, run"` ${TCAR_SCRIPT_NAME} ${MESSAGE} --help" --as-stderr-line
             ;;
 
         --as-yesornorequest-line )

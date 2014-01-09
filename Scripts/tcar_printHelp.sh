@@ -1,30 +1,29 @@
 #!/bin/bash
 ######################################################################
 #
-#   tcar_printHelp.sh -- This function standardizes the way
-#   tcar.sh script prints help about itself.
+#   tcar - The CentOS Artwork Repository automation tool.
+#   Copyright © 2014 The CentOS Artwork SIG
 #
-#   Written by:
-#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
+#   This program is free software; you can redistribute it and/or
+#   modify it under the terms of the GNU General Public License as
+#   published by the Free Software Foundation; either version 2 of the
+#   License, or (at your option) any later version.
 #
-# Copyright (C) 2009-2013 The CentOS Artwork SIG
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+#   General Public License for more details.
 #
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or (at
-# your option) any later version.
+#   You should have received a copy of the GNU General Public License
+#   along with this program; if not, write to the Free Software
+#   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# This program is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-# General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#   Alain Reguera Delgado <al@centos.org.cu>
+#   39 Street No. 4426 Cienfuegos, Cuba.
 #
 ######################################################################
 
+# Standardize the way tcar.sh script prints help about itself.
 function tcar_printHelp {
 
     # Retrieve the man page name. This is the file name you want to retrieve
@@ -42,7 +41,7 @@ function tcar_printHelp {
         if [[ ${TCAR_MANPAGE_NAME} =~ '^--help=[[:alnum:]_-.]+' ]];then
             TCAR_MANPAGE_NAME=$(echo ${TCAR_MANPAGE_NAME} | cut -d'=' -f2)
         else
-            TCAR_MANPAGE_NAME=${TCAR_SCRIPT_PACKAGE}
+            TCAR_MANPAGE_NAME=${TCAR_SCRIPT_NAME}
         fi
     fi
 

@@ -1,70 +1,33 @@
 #!/bin/bash
 ######################################################################
 #
-#   tcar.sh -- The CentOS Artwork Repository automation tool.
+#   tcar - The CentOS Artwork Repository automation tool.
+#   Copyright © 2014 The CentOS Artwork SIG
 #
-#   Written by:
-#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
+#   This program is free software; you can redistribute it and/or
+#   modify it under the terms of the GNU General Public License as
+#   published by the Free Software Foundation; either version 2 of the
+#   License, or (at your option) any later version.
 #
-# Copyright (C) 2009-2013 The CentOS Artwork SIG
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+#   General Public License for more details.
 #
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or (at
-# your option) any later version.
+#   You should have received a copy of the GNU General Public License
+#   along with this program; if not, write to the Free Software
+#   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# This program is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-# General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#   Alain Reguera Delgado <al@centos.org.cu>
+#   39 Street No. 4426 Cienfuegos, Cuba.
 #
 ######################################################################
 
-######################################################################
-# Identity
-######################################################################
-
-declare -xr TCAR_SCRIPT_PACKAGE="tcar"
-declare -xr TCAR_SCRIPT_VERSION="$(rpm -q --qf "%{VERSION}" ${TCAR_SCRIPT_PACKAGE})"
+declare -xr TCAR_SCRIPT_NAME="tcar"
+declare -xr TCAR_SCRIPT_VERSION="0.9"
 
 ######################################################################
-# Paths
-######################################################################
-
-# Base directory where repository files are installed in.
-declare -xr TCAR_BASEDIR=/usr/share/tcar
-
-# Base directory where final content is produced in. This value is
-# also known as the "workplace" and should be customized later by the
-# user, using the prepare module of tcar script.
-declare -x TCAR_WORKDIR=/tmp
-
-# Base directory where automation scripts are installed in.
-declare -xr TCAR_SCRIPT_BASEDIR=${TCAR_BASEDIR}/Scripts
-
-# Directory to store temporal files.
-declare -xr TCAR_SCRIPT_TEMPDIR=$(mktemp -p /tmp -d ${TCAR_SCRIPT_PACKAGE}-XXXXXX)
-
-# Configuration files in order of reading preference. The last file in
-# the list overlaps options set in previous files in the list. Use
-# colon character to separate files in the list.
-declare -xr TCAR_SCRIPT_CONFIG=${HOME}/.tcar.conf
-
-# Base directory where man pages are searched at.
-declare -xr TCAR_SCRIPT_MANUALS=/usr/share/man
-
-# Base directory where automation script modules are installed in.
-declare -xr TCAR_SCRIPT_MODULES_BASEDIR=${TCAR_SCRIPT_BASEDIR}/Modules
-
-# Default text editor.
-declare -x  TCAR_SCRIPT_EDITOR=/usr/bin/vim
-
-######################################################################
-# Internationalization
+# Script Internationalization
 ######################################################################
 
 # Set the script language information using the LC format. This format
@@ -82,47 +45,19 @@ declare -xr TCAR_SCRIPT_LANG_CC=$(echo ${TCAR_SCRIPT_LANG_LC} | cut -d'_' -f2)
 # Set function environments required by GNU gettext system.
 . gettext.sh
 
-# Set the script text domain. This information is used by gettext
-# system to retrieve translated strings from machine object (MO) files
-# with this name. This variable is reset each time a new module is
-# loaded, so the correct files can be used.
-declare -x TEXTDOMAIN="${TCAR_SCRIPT_PACKAGE}"
-
-# Set the script text domain directory. This information is used by
-# gettext system to know where the machine objects are stored in. This
-# variable is reset each time a new module is loaded, so the correct
-# files can be used.
-declare -xr TEXTDOMAINDIR=/usr/share/locale
-
 ######################################################################
-# Global Flags
+# Script Configuration Files (redefine global variables)
 ######################################################################
 
-# Set filter flag (-f|--filter).  This flag is mainly used to reduce
-# the number of files to process and is interpreted as egrep-posix
-# regular expression.  By default, when this flag is not provided, all
-# paths in the working copy will match, except files inside hidden
-# directories like `.svn' and `.git' that will be omitted.
-declare -x  TCAR_FLAG_FILTER='[[:alnum:]_/-]+'
-
-# Set verbosity flag (-q|--quiet). This flag controls whether
-# tcar.sh script prints messages or not. By default, all
-# messages are suppressed except those directed to standard error.
-declare -x  TCAR_FLAG_QUIET='false'
-
-# Set affirmative flag (-y|--yes). This flag controls whether
-# tcar.sh script does or does not pass confirmation request
-# points. By default, it doesn't.
-declare -x  TCAR_FLAG_YES='false'
-
-# Set debugger flag (-d|--debug). This flag controls whether
-# tcar.sh script does or does not print debugging information.
-# The tcar.sh script prints debug information to standard
-# output.
-declare -x  TCAR_FLAG_DEBUG='false'
+declare -xr TCAR_SCRIPT_CONFIGS="/etc/tcar/tcar.conf ${HOME}/.tcar.conf"
+for TCAR_SCRIPT_CONFIG in ${TCAR_SCRIPT_CONFIGS};do
+    if [[ -f ${TCAR_SCRIPT_CONFIG} ]];then
+        . ${TCAR_SCRIPT_CONFIG}
+    fi
+done
 
 ######################################################################
-# Global Functions
+# Script Global Functions
 ######################################################################
 
 # Export script's environment functions.
@@ -150,6 +85,14 @@ done
 trap tcar_terminateScriptExecution 0
 
 ######################################################################
+# Default Action
+######################################################################
+
+if [[ $# -eq 0 ]];then
+    tcar_printUsage
+fi
+
+######################################################################
 # Parse Command-line Arguments
 ######################################################################
 
@@ -168,7 +111,7 @@ fi
 # Initialize tcar.sh script specific options. The way tcar.sh script
 # retrieves its options isn't as sophisticated (e.g., it doesn't
 # provide valid-option verifications) as it is provided by getopt
-# command. I cannot use getopt here because it is already used when
+# command. I cannot use getopt here because it is used already when
 # loading module-specific options. Using more than one invocation of
 # getopt in the same script is not possible (e.g., one of the
 # invocations may enter in conflict with the other one when different
@@ -188,18 +131,10 @@ while true; do
 
     case "${1}" in
 
-        --help* )
+        --help )
 
             if [[ -z ${TCAR_MODULE_NAME} ]];then
-                # Print tcar.sh script's help. Consider that the
-                # --help option can receive an argument by using the
-                # equal sign (e.g.,
-                # --help=tcar_setModuleEnvironment.sh).  However, it
-                # is not possible to use spaces instead of equal sign
-                # because that would confuse other options from being
-                # parsed.
-                tcar_printHelp "${1}"
-                exit 0
+                tcar_printUsage
             else
                 # Store the argument for further processing inside the
                 # module environment that will be executed later.
@@ -210,10 +145,8 @@ while true; do
 
         --version )
 
-            # Print tcar.sh script's version.
             if [[ -z ${TCAR_MODULE_NAME} ]];then
                 tcar_printVersion
-                exit 0
             else
                 TCAR_MODULE_ARGUMENT="-g ${1} ${TCAR_MODULE_ARGUMENT}"
                 shift 1
