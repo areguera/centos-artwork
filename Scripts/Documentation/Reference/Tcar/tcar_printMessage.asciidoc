@@ -1,0 +1,192 @@
+tcar_printMessage(1)
+====================
+
+== Name
+
+tcar_printMessage.sh - Print customized messages in standard ways.
+
+== Synopsis
+
+*tcar_printMessage "MESSAGE" [--as-separator-line|--as-banner-line|--as-cropping-line|--as-tuningup-line|--as-checking-line|--as-combining-line|--as-creating-line|--as-reading-line|--as-savedas-line|--as-linkto-line|--as-movedto-line|--as-validating-line|--as-template-line|--as-configuration-line|--as-palette-line|--as-reponse-line|--as-request-line|--as-selection-line|--as-error-line|--as-toknowmore-line|--as-yesornorequest-line|--as-notrailingnew-line|--as-stdout-line|--as-stderr-line]*
+
+== Description
+
+The *tcar_printMessage* function standardizes the way centos-art.sh
+scirpt prints messages. By default, centos-art.sh script prints all
+messages to the standard output with the exception of those messages
+printed with the *--as-stderr-line* option, which are printed to
+standard error output instead.
+
+The *tcar_printMessage* function requires two arguments.  The first
+argument specifies the message you want to print and the second
+argument specifies the format you'll use to print that message.
+Because this function is so used inside the centos-art.sh script, it
+is convenient to provide localization to strings passed as +MESSAGE+
+using *gettext* constructions when they aren't paths.
+
+== Options
+
+The *tcar_printMessage* function accepts the following format options
+as second argument:
+
+--as-separator-line::
+    This format takes the first character passed as +MESSAGE+ and
+    repeats it horizontally to build a separator line.  Use this
+    format whenever you need to create a logical separation between
+    different actions.
+
+--as-banner-line::
+    This format takes the string passed as +MESSAGE+ and puts it
+    inside two horizontal separator lines. Use this format whenever
+    you need to print header information for following lines.
+
+--as-cropping-line::
+    This format is for two columns messages where +MESSAGE+ generally
+    refers to a file inside the repository.  Use this format whenever
+    you need to imply the fact that certain file has been cropped.
+
+--as-tuningup-line::
+    This format is for two columns messages where +MESSAGE+ generally
+    refers to a file inside the repository.  Use this format whenever
+    you need to imply the fact that certain file has been tuned-up.
+
+--as-checking-line::
+    This format is for two columns messages where +MESSAGE+ generally
+    refers to a file inside the repository.  Use this format whenever
+    you need to imply the fact that certain file has been checked or
+    verified (e.g., through *tcar_checkFiles* functionality).
+
+--as-combining-line::
+    This format is for two columns messages where +MESSAGE+ generally
+    refers to a file inside the repository.  Use this format whenever
+    you need to imply the fact that certain file has been combined.
+
+--as-creating-line::
+    This format is for two columns messages where +MESSAGE+ generally
+    refers to a file inside the repository.  Use this format whenever
+    you need to imply the fact that certain file has been created.
+
+--as-reading-line::
+    This format is for two columns messages where +MESSAGE+ generally
+    refers to a file inside the repository.  Use this format whenever
+    you need to imply the fact that certain file has been read.
+
+--as-savedas-line::
+    This format is for two columns messages where +MESSAGE+ generally
+    refers to a file inside the repository.  Use this format whenever
+    you need to imply the fact that certain file has been saved.
+
+--as-linkto-line::
+    This format is for two columns messages where +MESSAGE+ generally
+    refers to a file inside the repository.  Use this format whenever
+    you need to imply the fact that certain file has been linked.
+
+--as-movedto-line::
+    This format is for two columns messages where +MESSAGE+ generally
+    refers to a file inside the repository.  Use this format whenever
+    you need to imply the fact that certain file has been moved.
+
+--as-validating-line::
+    This format is for two columns messages where +MESSAGE+ generally
+    refers to a file inside the repository.  Use this format whenever
+    you need to imply the fact that certain file has been validated.
+
+--as-template-line::
+    This format is for two columns messages where +MESSAGE+ generally
+    refers to a file inside the repository.  Use this format whenever
+    you need to imply the fact that certain file is a template or
+    design model.
+
+--as-configuration-line::
+    This format is for two columns messages where +MESSAGE+ generally
+    refers to a file inside the repository.  Use this format whenever
+    you need to imply the fact that certain file is a configuration
+    file.
+
+--as-palette-line::
+    This format is for two columns messages where +MESSAGE+ generally
+    refers to a file inside the repository.  Use this format whenever
+    you need to imply the fact that certain file is a palette of
+    colors.
+
+--as-response-line::
+    This format adds +-->+ at the beginning of the string passed as
+    +MESSAGE+.  Use this format whenever you need to imply the fact
+    that certain file is considered part of a response.  For example,
+    when you need to express that a group of files will take certain
+    action, you can use this option to doing so.
+
+--as-request-line::
+    This format prints +MESSAGE+ without trailing new line.  Use this
+    format whenever you need to imply a question or yes or no request.
+
+--as-selection-line::
+    This format uses each word in +MESSAGE+ as item of a selection
+    list. Use this format whenever you need to select one of the items
+    provided as +MESSAGE+.
+
+--as-error-line::
+    This format prints error messages produced by centos-art.sh
+    script. It uses the *caller* built-in command to display the line
+    number and the filename where such error was triggered. Later, it
+    prints where to find more information by using the
+    *--as-toknowmore-line* option.
+
+--as-toknowmore-line::
+    This format takes a function name as +MESSAGE+ and prints the
+    command you can use to find more information about it. When this
+    option is passed the script finishes its execution immediately.
+    This option is used in combination with *--as-error-line* to
+    finish the script execution after an error.
+
+--as-yesornorequest-line::
+    This format takes a question as +MESSAGE+ and reads a yes or no
+    answer. When answer is negative, the script finishes its execution
+    immediately. When answer is affirmative, the script continues its
+    execution normally. 
+
+--as-notrailingnew-line::
+    Print +MESSAGE+ without any trailing
+    newline.
+
+--as-stdout-line::
+    Print +MESSAGE+ to standard output.
+    
+--as-stderr-line::
+    Print +MESSAGE+ to standard error output.
+
+== Examples
+
+...
+
+== Bugs
+
+See https://centos.org.cu/bugs/
+
+== Authors
+
+The *tcar_printMessage* function has received contributions from the
+following people:
+
+- Alain Reguera Delgado <al@centos.org.cu>, =COPYRIGHT_YEAR_LIST=
+
+== License
+
+Copyright (C) =COPYRIGHT_YEAR_LIST= =COPYRIGHT_HOLDER=
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or (at
+your option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+// vim: set syntax=asciidoc:
+// vim: set syntax=asciidoc:
