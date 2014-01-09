@@ -1,0 +1,15 @@
+//////////////////////////////////////////////////////////////////////
+tcar.asciidoc -- This file controls what documentation files related
+to common functions are included in the main reference manual as well
+as the order in which they are showed up.
+//////////////////////////////////////////////////////////////////////
+
+include::Tcar/tcar_checkFiles.asciidoc[]
+include::Tcar/tcar_checkRepoDirSource.asciidoc[]
+include::Tcar/tcar_getConfigValue.asciidoc[]
+include::Tcar/tcar_getFilesList.asciidoc[]
+include::Tcar/tcar_printMessage.asciidoc[]
+include::Tcar/tcar_setModuleEnvironment.asciidoc[]
+include::Tcar/tcar_setTranslationMarkers.asciidoc[]
+
+// vim: set syntax=asciidoc:
