@@ -1,31 +1,31 @@
-hello(1)
+tcar-hello(1)
 ========
 
 Name
 ----
 
-hello - Print out greetings and exit successfully.
+tcar-hello - Print out greetings and exit successfully.
 
 Synopsis
 --------
 
-*centos-art hello [OPTIONS]*
+*centos-art tcar-hello [OPTIONS]*
 
 Description
 -----------
 
-The *hello* module is very simple. Its main purpose is to print out
-the ``Hello, World!'' greeting to standard output and exit
+The *tcar-hello* module is very simple. Its main purpose is to print
+out the ``Hello, World!'' greeting to standard output and exit
 successfully.  You can use options to change the greeting message and
-the way it is printed out. The *hello* module provides a very simple
-example you can use as base to understand how modules work inside
-*centos-art.sh* script. You can this understanding to start writing
-your own modules for *centos-art.sh* script.
+the way it is printed out. The *tcar-hello* module provides a very
+simple example you can use as base to understand how modules work
+inside *tcar.sh* script. You can this understanding to start writing
+your own modules for *tcar.sh* script.
 
 Options
 -------
 
-The *hello* module accepts the following options:
+The *tcar-hello* module accepts the following options:
 
 *-h | --help*::
     Print out module's documentation.
@@ -42,9 +42,9 @@ The *hello* module accepts the following options:
     Set a different greeting message to be printed out. This option
     accepts a value as argument. The text you provide must not have
     empty spaces on it. By default, when you don't provide this
-    option, *hello* module prints out ``Hello, World'' as greeting. If
-    translations of this message are available for your locale, they
-    will be printed instead.
+    option, *tcar-hello* module prints out ``Hello, World'' as
+    greeting. If translations of this message are available for your
+    locale, they will be printed instead.
 
 *-l | --lower*::
     Print greeting message in lowercase. The final output is printed
@@ -70,24 +70,21 @@ The *hello* module accepts the following options:
 Exit Status
 -----------
 
-The *hello* module ends its execution with one of the following exit
-status:
+The *tcar-hello* module ends its execution with one of the following
+exit status:
 
 * 0 -- Exit successfully without errors.
 * 1 -- Exit with errors.
 
-Authors
+Author
 -------
 
-The *hello* module has received contribution from the following
-people:
-
-* Alain Reguera Delgado <mailto:al@centos.org.cu[al@centos.org.cu]>, 2013
+Written by Alain Reguera Delgado
 
 Copyright
 ---------
 
-Copyright (C) 2009-2013 The CentOS Artwork SIG
+Copyright (C) 2014 The CentOS Artwork SIG
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
