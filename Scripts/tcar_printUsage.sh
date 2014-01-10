@@ -27,17 +27,19 @@
 # script.
 function tcar_printUsage {
 
-   tcar_printMessage "`gettext "Usage"`: tcar <command> [--version] [--help] [--filter=<regex>]" --as-stdout-line=5 
-   tcar_printMessage ":                [--debug] [--yes] [--quiet] " --as-stdout-line=5
+   tcar_printMessage "`gettext "Usage"`: tcar [--version] [--help] <command> [--filter=<regex>]" --as-stdout-line=5
+   tcar_printMessage ":      [--debug] [--yes] [--quiet]" --as-stdout-line=5
    echo
 
    tcar_printMessage "`gettext "The most commonly used tcar commands are:"`" --as-stdout-line
    tcar_printMessage "    prepare: `gettext "..."`" --as-stdout-line
    tcar_printMessage "    render: `gettext "..."`" --as-stdout-line
    tcar_printMessage "    locale: `gettext "..."`" --as-stdout-line
+   tcar_printMessage "    tuneup: `gettext "..."`" --as-stdout-line
+   tcar_printMessage "    hello: `gettext "..."`" --as-stdout-line
    echo
 
-   tcar_printMessage "See 'tcar help <command>' for more information on a specific command." --as-stdout-line
+   tcar_printMessage "`gettext "See 'tcar help <command>' for more information on a specific command."`" --as-stdout-line
 
    exit 0
 
