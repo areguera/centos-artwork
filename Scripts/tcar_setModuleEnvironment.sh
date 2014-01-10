@@ -134,11 +134,8 @@ function tcar_setModuleEnvironment {
     local TCAR_MODULE_INIT_FILE=${TCAR_MODULE_INIT_FILES[${TCAR_MODULE_COUNT}]}
     tcar_printMessage "TCAR_MODULE_INIT_FILE : ${TCAR_MODULE_INIT_FILE}" --as-debugger-line
 
-    # Define module's connection with their localization files. It is
-    # required that gettext-specific variables be defined locally, in
-    # order to implement per-module localization.
-    local TEXTDOMAIN=$(basename ${TCAR_MODULE_INIT_FILE})
     tcar_printMessage "TEXTDOMAIN: ${TEXTDOMAIN}" --as-debugger-line
+    tcar_printMessage "TEXTDOMAINDIR: ${TEXTDOMAINDIR}" --as-debugger-line
 
     # Increment module's counter just before creating next module's
     # base directory.
