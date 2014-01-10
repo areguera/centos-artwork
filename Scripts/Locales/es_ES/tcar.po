@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tcar 0.9\n"
 "Report-Msgid-Bugs-To: centos-l10n-es@centos.org.cu\n"
-"POT-Creation-Date: 2014-01-10 11:40-0500\n"
-"PO-Revision-Date: 2014-01-10 11:40-0500\n"
+"POT-Creation-Date: 2014-01-10 13:02-0500\n"
+"PO-Revision-Date: 2014-01-10 13:02-0500\n"
 "Last-Translator: Localization SIG <centos-l10n-es@centos.org.cu>\n"
 "Language-Team: Español\n"
 "MIME-Version: 1.0\n"
@@ -1964,12 +1964,17 @@ msgid "See 'tcar help <command>' for more information on a specific command."
 msgstr ""
 "Para más información en un comando específico, vea 'tcar help <command>'."
 
-#: Scripts/tcar_printVersion.sh:29
+#: Scripts/tcar_printVersion.sh:30
 #, sh-format
 msgid "$TCAR_SCRIPT_NAME version $TCAR_SCRIPT_VERSION"
 msgstr "$TCAR_SCRIPT_NAME versión $TCAR_SCRIPT_VERSION"
 
-#: Scripts/tcar_printVersion.sh:31
+#: Scripts/tcar_printVersion.sh:32
+#, sh-format
+msgid "$TCAR_SCRIPT_NAME ($TCAR_MODULE_NAME) version $TCAR_SCRIPT_VERSION"
+msgstr "$TCAR_SCRIPT_NAME ($TCAR_MODULE_NAME) versión $TCAR_SCRIPT_VERSION"
+
+#: Scripts/tcar_printVersion.sh:37
 #, sh-format
 msgid ""
 "$TCAR_SCRIPT_NAME comes with NO WARRANTY, to the extent permitted by law. "
@@ -1977,7 +1982,7 @@ msgid ""
 "General Public License. For more information about these matters, see the "
 "file named COPYING."
 msgstr ""
-"$TCAR_SCRIPT_NAME viene SIN GARANTÍAS, a todo lo permitido por la ley. Usted "
+"$TCAR_SCRIPT_NAME viene SIN GARANTÍAS, hasta donde lo permita la ley. Usted "
 "puede redistribuir copias de $TCAR_SCRIPT_NAME bajo los términos de la "
 "Licencia Pública General de GNU. Para más información sobre estos asuntos, "
 "vea el fichero nombrado COPYING."

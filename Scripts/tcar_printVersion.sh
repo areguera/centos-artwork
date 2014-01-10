@@ -26,8 +26,14 @@
 # Print tcar version and license information.
 function tcar_printVersion {
 
-    tcar_printMessage "`eval_gettext "\\\$TCAR_SCRIPT_NAME version \\\$TCAR_SCRIPT_VERSION"`" --as-stdout-line
+    if [[ -z ${TCAR_MODULE_NAME} ]];then
+        tcar_printMessage "`eval_gettext "\\\$TCAR_SCRIPT_NAME version \\\$TCAR_SCRIPT_VERSION"`" --as-stdout-line
+    else
+        tcar_printMessage "`eval_gettext "\\\$TCAR_SCRIPT_NAME (\\\$TCAR_MODULE_NAME) version \\\$TCAR_SCRIPT_VERSION"`" --as-stdout-line
+    fi
+
     tcar_printCopyrightInfo
+
     tcar_printMessage "`eval_gettext "\\\$TCAR_SCRIPT_NAME comes with NO WARRANTY, to the extent permitted by law. You may redistribute copies of \\\$TCAR_SCRIPT_NAME under the terms of the GNU General Public License. For more information about these matters, see the file named COPYING."`" --as-stdout-line | fold --width=66 --spaces
 
     exit 0
