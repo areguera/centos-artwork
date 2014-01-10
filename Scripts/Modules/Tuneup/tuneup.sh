@@ -42,9 +42,8 @@ function tuneup {
         if [[ -f ${ARGUMENT} ]];then
             local FILES=${ARGUMENT}
         elif [[ -d ${ARGUMENT} ]];then
-            local FILES=$(tcar_getFilesList ${ARGUMENT} \
-                --pattern=".+${FILE_EXTENSION_REGEX}" \
-                --type='f' | egrep ${TCAR_FLAG_FILTER})
+            local FILES=$(tcar_getFilesList -p ".+${FILE_EXTENSION_REGEX}" -t 'f' ${ARGUMENT} \
+                | egrep ${TCAR_FLAG_FILTER})
         else
             tcar_printMessage "`gettext "The argument provided isn't valid."`" --as-error-line
         fi

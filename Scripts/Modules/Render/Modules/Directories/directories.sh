@@ -29,11 +29,9 @@ function directories {
 
     local DIRECTORY=$(tcar_checkWorkDirSource "${1}")
 
-    local CONFIGURATION_FILES=$(tcar_getFilesList ${DIRECTORY} \
-        --pattern=".+/.+\.conf$" --type='f')
+    local CONFIGURATION_FILES=$(tcar_getFilesList -p '.+/.+\.conf$' -t 'f' ${DIRECTORY})
 
-    local CONFIGURATION_SYMLINKS=$(tcar_getFilesList ${DIRECTORY} \
-        --pattern=".+/.+\.conf$" --type='l')
+    local CONFIGURATION_SYMLINKS=$(tcar_getFilesList -p '.+/.+\.conf$' -t 'l' ${DIRECTORY})
 
     local CONFIGURATIONS="${CONFIGURATION_FILES} ${CONFIGURATION_SYMLINKS}"
 

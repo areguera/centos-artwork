@@ -63,13 +63,10 @@ function directories {
     # Build list of supported files which locale module will extract
     # translatable strings from.
     if [[ ${LOCALE_FLAG_RECURSIVE} == 'true' ]];then
-        FILES=$(tcar_getFilesList ${DIRECTORY} \
-            --type=f --pattern="${LOCALE_SUPPORTED_FILES}" \
+        FILES=$(tcar_getFilesList  -t 'f' -p "${LOCALE_SUPPORTED_FILES}" ${DIRECTORY} \
             | egrep "${TCAR_FLAG_FILTER}")
     else
-        FILES=$(tcar_getFilesList ${DIRECTORY} \
-            --mindepth=1 --maxdepth=1 --type=f \
-            --pattern="${LOCALE_SUPPORTED_FILES}" \
+        FILES=$(tcar_getFilesList -i 1 -a 1 -t 'f' -p "${LOCALE_SUPPORTED_FILES}" ${DIRECTORY} \
             | egrep "${TCAR_FLAG_FILTER}")
     fi
 

@@ -43,12 +43,9 @@ function sh {
     # translatable strings inside. By default only scripts in the
     # current directory will be looked out.
     if [[ ${LOCALE_FLAG_RECURSIVE} == 'true' ]];then
-        FILES=$(tcar_getFilesList "${DIRECTORY}" \
-            --type=f --pattern='.+\.sh$')
+        FILES=$(tcar_getFilesList -t 'f' -p '.+\.sh$' "${DIRECTORY}")
     else
-        FILES=$(tcar_getFilesList "${DIRECTORY}" \
-            --mindepth=1 --maxdepth=1 --type=f \
-            --pattern='.+\.sh$')
+        FILES=$(tcar_getFilesList -i '1' -a '1' -t 'f' -p '.+\.sh$' "${DIRECTORY}")
     fi
 
     # Verify found files existence and type before processing them.
