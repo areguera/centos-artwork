@@ -38,8 +38,8 @@ function tcar_checkWorkDirSource {
     fi
 
     # Remove both consecutive slashes and trailing slashes from final
-    # location.
-    echo "${LOCATION}" | sed -r -e 's,/+,/,g' -e 's,/+$,,g'
+    # location. Remove dot-slash, as well.
+    echo "${LOCATION}" | sed -r -e 's,/+,/,g' -e 's,/+$,,g' -e 's,\./,,g'
 
     # The single slash form doesn't point to repository's root
     # directory anymore. Instead, when a single slash is passed
