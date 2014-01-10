@@ -134,7 +134,7 @@ while true; do
         --help )
 
             if [[ -z ${TCAR_MODULE_NAME} ]];then
-                tcar_printUsage
+                tcar_printHelp
             else
                 # Store the argument for further processing inside the
                 # module environment that will be executed later.
