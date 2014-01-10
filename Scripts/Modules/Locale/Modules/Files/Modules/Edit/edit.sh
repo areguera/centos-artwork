@@ -30,6 +30,6 @@ function edit {
 
     tcar_printMessage "${PO_FILE}" --as-editing-line
 
-    ${TCAR_USER_EDITOR} ${PO_FILE}
+    ${TCAR_SCRIPT_EDITOR} ${PO_FILE}
 
 }
