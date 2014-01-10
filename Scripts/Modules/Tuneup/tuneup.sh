@@ -1,30 +1,29 @@
 #!/bin/bash
 ######################################################################
 #
-#   tuneup.sh -- This module standardizes source code file
-#   maintainance inside the repository.
+#   tcar - The CentOS Artwork Repository automation tool.
+#   Copyright © 2014 The CentOS Artwork SIG
 #
-#   Written by:
-#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
+#   This program is free software; you can redistribute it and/or
+#   modify it under the terms of the GNU General Public License as
+#   published by the Free Software Foundation; either version 2 of the
+#   License, or (at your option) any later version.
 #
-# Copyright (C) 2009-2013 The CentOS Artwork SIG
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+#   General Public License for more details.
 #
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or (at
-# your option) any later version.
+#   You should have received a copy of the GNU General Public License
+#   along with this program; if not, write to the Free Software
+#   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
-# This program is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-# General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#   Alain Reguera Delgado <al@centos.org.cu>
+#   39 Street No. 4426 Cienfuegos, Cuba.
 #
 ######################################################################
 
+# Standardize source files maintenance.
 function tuneup {
 
     # Define file extensions tuneup module will look for processing.
@@ -35,7 +34,7 @@ function tuneup {
     for ARGUMENT in ${TCAR_MODULE_ARGUMENT};do
 
         # Sanitate non-option arguments to be sure they match the
-        # directory conventions established by centos-art.sh script
+        # directory conventions established by tcar.sh script
         # against source directory locations in the working copy.
         local ARGUMENT=$(tcar_checkRepoDirSource ${ARGUMENT})
 

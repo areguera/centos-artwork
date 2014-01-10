@@ -1,22 +1,22 @@
-tuneup(1)
-=========
+tcar-tuneup(1)
+==============
 
 Name
 ----
 
-tuneup - Standardizes source code maintenance tasks inside the
+tcar-tuneup - Standardizes source code maintenance tasks inside the
 repository.
 
 Synopsis
 --------
 
-*centos-art.sh tuneup [FILE ...|DIRECTORY ...] [--filter="REGEX"]*::
+*tcar tuneup [FILE ...|DIRECTORY ...] [--filter="REGEX"]*::
     Execute source code maintenance tasks.
 
 Description
 -----------
 
-When you run the *tuneup* module it may enter into either file or
+When you run the *tuneup* command it may enter into either file or
 directory processing, based on whether you provide a file or directory
 as argument for processing in the command-line.  When you provide a
 file as argument to *tuneup* module, it uses the file's extension as
@@ -46,7 +46,7 @@ When processing svg files, *tuneup* uses the inkscape's --vaccumm
 option to cleanup source code and applies few sed commands to modify
 inkscape's metadata using dynamic information like document title,
 date, copyright information, urls, and locale information retrieved
-from from centos-art.sh script and the file location inside the
+from from tcar.sh script and the file location inside the
 repository.
 
 Each time you create a new svg file or change one, it is advisable to
@@ -143,15 +143,15 @@ Options
 Examples
 --------
 
-*centos-art.sh tuneup Automation/Scripts*::
+*tcar.sh tuneup Automation/Scripts*::
     This command updates the top comment and variable name references
     of all files inside the Automation/Scripts directory, recursively.
 
-*centos-art.sh tuneup Automation/Scripts/tcar_printVersion.sh*::
+*tcar.sh tuneup Automation/Scripts/tcar_printVersion.sh*::
     This commands updates the top comment and variable name references
     inside the tcar_printVersion.sh file only.
 
-*centos-art.sh tuneup Automation/Scripts --filter="tcar_print.+\.sh$"*::
+*tcar.sh tuneup Automation/Scripts --filter="tcar_print.+\.sh$"*::
     This command updates the top comment and variable name refrences
     inside files which name only begins with ``tcar_print'' followed
     by any character and ends with ``.sh''. All other files won't be
@@ -162,25 +162,22 @@ Examples
 Author
 ------
 
-The *tuneup* module has received contributions from the following
-people:
-
-    * mailto:al@centos.org.cu[Alain Reguera Delgado], =COPYRIGHT_YEAR_FIRST=-=COPYRIGHT_YEAR_LAST=
+Written by Alain Reguera Delgado
 
 [[copyright]]
 
 Copyright
 ---------
 
-Copyright (C) =COPYRIGHT_YEAR_FIRST=-=COPYRIGHT_YEAR_LAST= =COPYRIGHT_HOLDER=
+Copyright (C) =COPYRIGHT_YEAR_LAST= =COPYRIGHT_HOLDER=
 
-The *tuneup* module is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation; either version 2 of the
-License, or (at your option) any later version.
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or (at
+your option) any later version.
 
-Tue *tuneup* module is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 General Public License for more details.
 
@@ -193,6 +190,6 @@ Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 See Also
 --------
 
-centos-art.sh(1), xmllint(1)
+tcar.sh(1), xmllint(1)
 
 // vim: set syntax=asciidoc:
