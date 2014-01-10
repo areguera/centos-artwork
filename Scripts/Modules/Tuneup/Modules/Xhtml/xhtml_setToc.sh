@@ -1,48 +1,47 @@
 #!/bin/bash
-###################################################################### 
+######################################################################
 #
-#   xhtml_setToc.sh -- This functionality transforms web page headings
-#   to make them accessible through a table of contents.  The table of
-#   contents is expanded in place, wherever the <div
-#   class="toc"></div> piece of code be in the page.  Once the <div
-#   class="toc"></div> piece of code has be expanded, there is no need
-#   to put anything else in the page.
+#   tcar - The CentOS Artwork Repository automation tool.
+#   Copyright © 2014 The CentOS Artwork SIG
 #
-#   In order for the tuneup functionality to transform headings, you
-#   need to put headings in just one line using one of the following
-#   forms:
+#   This program is free software; you can redistribute it and/or
+#   modify it under the terms of the GNU General Public License as
+#   published by the Free Software Foundation; either version 2 of the
+#   License, or (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+#   General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program; if not, write to the Free Software
+#   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#
+#   Alain Reguera Delgado <al@centos.org.cu>
+#   39 Street No. 4426 Cienfuegos, Cuba.
+#
+######################################################################
+
+# Transform web page headings to make them accessible through a table
+# of contents.  The table of contents is expanded in place, wherever
+# the <div class="toc"></div> piece of code be in the page.  Once the
+# <div class="toc"></div> piece of code has be expanded, there is no
+# need to put anything else in the page.
+#
+# In order for the tuneup functionality to transform headings, you
+# need to put headings in just one line using one of the following
+# forms:
 #
 #   <h1><a name="">Title</a></h1>
 #   <h1><a href="">Title</a></h1>
 #   <h1><a name="" href="">Title</a></h1>
 #
-#   In the example above, h1 can vary from h1 to h6. Closing tag must
-#   be present and also match the openning tag. The value of `name'
-#   and `href' options from the anchor element are set dynamically
-#   using the md5sum output of combining the page location, the head-
-#   string and the heading string.
-#
-#   Written by:
-#   * Alain Reguera Delgado <al@centos.org.cu>, 2009-2013
-#
-# Copyright (C) 2009-2013 The CentOS Artwork SIG
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or (at
-# your option) any later version.
-#
-# This program is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-# General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#
-######################################################################
-
+# In the example above, h1 can vary from h1 to h6. Closing tag must be
+# present and also match the openning tag. The value of `name' and
+# `href' options from the anchor element are set dynamically using the
+# md5sum output of combining the page location, the head- string and
+# the heading string.
 function xhtml_setToc {
 
     # Define variables as local to avoid conflicts outside.
