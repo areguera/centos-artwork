@@ -52,7 +52,7 @@ function files {
     # Define package name written in POT and PO files. This is the
     # name of the initialization file you provided as argument to the
     # command line to provide localization for.
-    local PACKAGE_NAME=$(basename ${RENDER_FROM})
+    local PACKAGE_NAME=$(tcar_getFileName ${RENDER_FROM})
 
     # Define package version written in POT and PO files. The script
     # version is used here.  Modules doesn't have a version by now.
