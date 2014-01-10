@@ -44,7 +44,7 @@ function render {
 
         if [[ -d ${ARGUMENT} ]];then
             tcar_setModuleEnvironment -m 'directories' -t 'child' -g ${ARGUMENT}
-        elif [[ -f ${ARGUMENT} ]] && [[ ${ARGUMENT} =~ '\.conf$' ]];then
+        elif [[ -f ${ARGUMENT} || -h ${ARGUMENT} ]] && [[ ${ARGUMENT} =~ '\.conf$' ]];then
             tcar_setModuleEnvironment -m 'files' -t 'child' -g ${ARGUMENT}
         else
             tcar_printMessage "${ARGUMENT} `gettext "isn't supported."`" --as-error-line
