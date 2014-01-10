@@ -43,11 +43,6 @@
 # levels.
 function tcar_setModuleArguments {
 
-    # Reset text domain locally, in order to prevent this function
-    # from using the last text domain definition. By default all
-    # common functions do use the same MO file.
-    local TEXTDOMAIN="${TCAR_SCRIPT_NAME}"
-
     # Verify non-option arguments passed to command-line. If there
     # isn't any or dot is provided, redefine the TCAR_MODULE_ARGUMENT
     # variable to use the current location the tcar.sh script

@@ -28,11 +28,6 @@
 # temporal files inside tcar.sh script.
 function tcar_getTemporalFile {
 
-    # Reset text domain locally, in order to prevent this function
-    # from using the last text domain definition. By default all
-    # common functions do use the same MO file.
-    local TEXTDOMAIN="${TCAR_SCRIPT_NAME}"
-
     # Define base name for temporal file. This is required when svg
     # instances are created previous to be parsed by inkscape in order
     # to be exported as png. In such cases .svg file extension is

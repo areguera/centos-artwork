@@ -31,11 +31,6 @@
 # finishes its execution.
 function tcar_checkFiles {
 
-    # Reset text domain locally, in order to prevent this function
-    # from using the last text domain definition. By default all
-    # common functions do use the same MO file.
-    local TEXTDOMAIN="${TCAR_SCRIPT_NAME}"
-
     # Initialize local array variables.
     local -a CONDITION_COMMAND
     local -a CONDITION_PATTERN

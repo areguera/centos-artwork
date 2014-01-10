@@ -27,11 +27,6 @@
 # script environment.
 function tcar_setModuleEnvironmentScripts {
 
-    # Reset text domain locally, in order to prevent this function
-    # from using the last text domain definition. By default all
-    # common functions do use the same MO file.
-    local TEXTDOMAIN="${TCAR_SCRIPT_NAME}"
-
     # Define the pattern used to retrieve function names from function
     # files.
     local FUNCTION_PATTERN="^function[[:space:]]+${TCAR_MODULE_NAME}(_[[:alnum:]]+)?[[:space:]]+{[[:space:]]*$"

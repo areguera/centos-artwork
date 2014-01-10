@@ -26,11 +26,6 @@
 # Print tcar version and license information.
 function tcar_printVersion {
 
-    # Reset text domain locally, in order to prevent this function
-    # from using the last text domain definition. By default all
-    # common functions do use the same MO file.
-    local TEXTDOMAIN="${TCAR_SCRIPT_NAME}"
-
     tcar_printMessage "`eval_gettext "\\\$TCAR_SCRIPT_NAME version \\\$TCAR_SCRIPT_VERSION"`" --as-stdout-line
     tcar_printCopyrightInfo
     tcar_printMessage "`eval_gettext "\\\$TCAR_SCRIPT_NAME comes with NO WARRANTY, to the extent permitted by law. You may redistribute copies of \\\$TCAR_SCRIPT_NAME under the terms of the GNU General Public License. For more information about these matters, see the file named COPYING."`" --as-stdout-line | fold --width=66 --spaces
