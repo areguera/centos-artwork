@@ -22,9 +22,9 @@ provided by The CentOS Artwork Repository you need to create a
 directory in your workstation where you can store the files you
 produce and the configuration files provided by the installed
 repository.  This directory is known as the ``repository workplace''
-and you should create it using the *prepare* module of *tcar* script.
+and you should create it using the *tcar-prepare* command.
 
-The *prepare* module creates the workplace in the location you
+The *tcar-prepare* module creates the workplace in the location you
 specified as argument in the command-line. Inside the workplace, there
 is one directory for each visual manifestation The CentOS Project is
 made of. Each directory inside the workplace might exist to organize
@@ -34,22 +34,22 @@ content is produced inside of it. The configuration files inside the
 workplace are symbolic links to configuration files inside The CentOS
 Artwork Repository installed in your workstation.
 
-The first time you create the workplace using the *prepare* module, it
-doesn't include images required to brand other images (e.g., The
-CentOS Symbol and The CentOS Type). This is something you need to do
-in order for images requiring brand information to be rendered as they
-are expected. Rendering images related to brands might consume some
-time but it is something that needs to be done just once, unless
-variations to brand information be introduced to The CentOS Artwork
-Repository, in which case it would be required to render them again to
-propagate the changes introduced to brand information the next time
-images requiring them be rendered.
+The first time you create the workplace using the *tcar-prepare*
+module, it doesn't include images required to brand other images
+(e.g., The CentOS Symbol and The CentOS Type). This is something you
+need to do in order for images requiring brand information to be
+rendered as they are expected. Rendering images related to brands
+might consume some time but it is something that needs to be done just
+once, unless variations to brand information be introduced to The
+CentOS Artwork Repository, in which case it would be required to
+render them again to propagate the changes introduced to brand
+information the next time images requiring them be rendered.
 
 [[options]]
 Options
 -------
 
-The *prepare* module accepts the following options:
+The *tcar-prepare* module accepts the following options:
 
 *--help*::
     Print module's documentation.
@@ -57,18 +57,15 @@ The *prepare* module accepts the following options:
 *--version*::
     Print module's version.
 
-Authors
--------
+Author
+------
 
-The *prepare* module has received contributions from the following
-people:
-
- * Alain Reguera Delgado <mailto:al@centos.org.cu[al@centos.org.cu]>, 2009-2013
+Written by Alain Reguera Delgado
 
 Copyright
 ---------
 
-Copyright (C) 2009-2013 The CentOS Artwork SIG
+Copyright (C) 2014 The CentOS Artwork SIG
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
