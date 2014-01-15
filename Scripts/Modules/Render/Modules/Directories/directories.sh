@@ -27,7 +27,7 @@
 # provided in the command-line points to a directory.
 function directories {
 
-    local DIRECTORY=$(tcar_printAbsolutePath "${1}")
+    local DIRECTORY=$(tcar_printPath "${1}")
 
     local CONFIGURATION_FILES=$(tcar_getFilesList -p '.+/.+\.conf$' -t 'f' ${DIRECTORY})
 

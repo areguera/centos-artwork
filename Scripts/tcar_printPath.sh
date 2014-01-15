@@ -23,14 +23,49 @@
 #
 ######################################################################
 
+# Print non-option arguments passed through the command-line for
+# further processing.
 function tcar_printPath {
 
-    local LOCATION=${1}
+    # Define base directory's default value.
+    local BASEDIR="${PWD}"
 
-    # Remove consecutive slashes, trailing slashes and any dot-slash
-    # or double-dot slash construction from final location.
-    if [[ ${LOCATION} ]];then
-        echo "${LOCATION}" | sed -r -e 's,/+,/,g' -e 's,/+$,,g' -e 's,\.+/,,g'
-    fi
+    # Define the function's options.
+    OPTIND=1
+    while getopts "b:" OPTION "${@}"; do
+
+        case "${OPTION}" in
+
+             b )
+                BASEDIR=${OPTARG}
+                ;;
+
+        esac
+
+    done
+
+    # Clean up positional parameters to reflect the fact that options
+    # have been processed already.
+    shift $(( ${OPTIND} - 1 ))
+
+    # Retrieve all locations passed as non-option arguments to this
+    # function.
+    local LOCATIONS="${@}"
+
+    for LOCATION in ${LOCATIONS};do
+
+        # Concatenate both base directory and provided location to
+        # build the final path.
+        if [[ ${BASEDIR} =~ '^/' && ! ${LOCATION} =~ '^/' ]];then
+            LOCATION=${BASEDIR}/${LOCATION}
+        fi
+
+        # Remove consecutive slashes, trailing slashes and any
+        # dot-slash or double-dot slash constructions from final
+        # location.
+        echo "${LOCATION}" \
+            | sed -r -e 's,/+,/,g' -e 's,/+$,,g' -e 's,\.+/,,g'
+
+    done
 
 }

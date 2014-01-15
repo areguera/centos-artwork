@@ -74,9 +74,7 @@ function conf {
         if [[ -z ${LOCALE_FROM} ]];then
             tcar_printMessage "${CONFIGURATION} `gettext "hasn't locale-from set in."`" --as-error-line
         fi
-        if [[ ! ${LOCALE_FROM} =~ "^/" ]];then
-            LOCALE_FROM=$(dirname ${CONFIGURATION})/${LOCALE_FROM}
-        fi
+        LOCALE_FROM=$(tcar_printPath -b "$(dirname ${CONFIGURATION})" "${LOCALE_FROM}")
 
         # Re-define package name written in POT and PO files. This is
         # the name of the initialization file you provided as argument

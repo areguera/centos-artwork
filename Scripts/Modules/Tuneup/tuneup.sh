@@ -36,7 +36,7 @@ function tuneup {
         # Sanitate non-option arguments to be sure they match the
         # directory conventions established by tcar.sh script
         # against source directory locations in the working copy.
-        local ARGUMENT=$(tcar_printAbsolutePath ${ARGUMENT})
+        local ARGUMENT=$(tcar_printPath "${ARGUMENT}")
 
         # Build list of files to process.
         if [[ -f ${ARGUMENT} ]];then

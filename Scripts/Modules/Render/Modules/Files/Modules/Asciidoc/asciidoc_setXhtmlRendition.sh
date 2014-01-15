@@ -26,7 +26,7 @@
 # Standardize the way docbook files are transformed in XHTML format.
 function asciidoc_setXhtmlRendition {
 
-    local LOCATION=$(tcar_printAbsolutePath "${1}")
+    local LOCATION=$(tcar_printPath "${1}")
 
     RENDER_PAGES=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "render-page")
     if [[ -z ${RENDER_PAGES} ]];then
@@ -38,11 +38,13 @@ function asciidoc_setXhtmlRendition {
     if [[ -z ${IMAGES_FROM} ]];then
         IMAGES_FROM="${TCAR_WORKDIR}/Webenv/Final"
     fi
+    IMAGES_FROM=$(tcar_printPath "${IMAGES_FROM}")
 
     STYLES_FROM=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "styles-from")
     if [[ -z ${STYLES_FROM} ]];then
         STYLES_FROM="${TCAR_BASEDIR}/Models/Documentation/Css"
     fi
+    STYLES_FROM=$(tcar_printPath "${STYLES_FROM}")
 
     # When producing chunks, take into consideration that both single
     # and chunks share images produced in the root location. If we
