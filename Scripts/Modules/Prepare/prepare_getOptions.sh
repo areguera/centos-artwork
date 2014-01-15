@@ -29,10 +29,10 @@
 function prepare_getOptions {
 
     # Define short options we want to support.
-    local ARGSS="h::,v"
+    local ARGSS="h,v"
 
     # Define long options we want to support.
-    local ARGSL="help::,version"
+    local ARGSL="help,version"
 
     # Redefine arguments using getopt(1) command parser.
     tcar_setModuleArguments
@@ -46,7 +46,7 @@ function prepare_getOptions {
         case "${1}" in
 
             -h | --help )
-                tcar_printHelp "${2}"
+                tcar_printHelp
                 ;;
 
             -v | --version )
