@@ -23,11 +23,14 @@
 #
 ######################################################################
 
-# Print configuration files (and their templates) to standard output. 
-function prepare_getWorkplaceConf {
+# Describe options and most frequently used commands related to tcar
+# script.
+function prepare_printUsage {
 
-    local DIRECTORY=${1:-${TCAR_BASEDIR}/Models}
+   tcar_printMessage "`gettext "Usage"`: tcar prepare [--version] [--help] <WORKDIR> " --as-stdout-line=5
+   tcar_printMessage ":      [--debug] [--yes] [--quiet]" --as-stdout-line=5
+   echo
 
-    tcar_getFilesList -p '.+\.conf(\.tpl)?$' -t 'f' ${DIRECTORY}
+   exit 0
 
 }

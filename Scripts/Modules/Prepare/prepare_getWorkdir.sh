@@ -25,12 +25,12 @@
 
 # Transform absolute paths to configuration files inside The CentOS
 # Artwork Repository to directory absolute paths inside the workplace.
-function prepare_getWorkplaceDir {
+function prepare_getWorkdir {
 
-    local DIRECTORY=$1 
+    local DIRECTORY=$1
 
     echo ${DIRECTORY} \
         | sed -r -e "s!${TCAR_BASEDIR}/Models/!${TCAR_WORKDIR}/!" \
-                 -e 's!/[a-z]+\.conf(\.tpl)?$!!'
+                 -e 's!/[a-z]+\.conf\.tpl$!!'
 
 }

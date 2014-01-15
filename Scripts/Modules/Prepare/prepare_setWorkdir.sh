@@ -24,7 +24,9 @@
 ######################################################################
 
 # Create the repository's workplace.
-function prepare_setWorkplace {
+function prepare_setWorkdir {
+
+    TCAR_WORKDIR=$(tcar_printPath ${TCAR_WORKDIR})
 
     local CONF=''
 
@@ -37,8 +39,8 @@ function prepare_setWorkplace {
 
     tcar_printMessage "${TCAR_WORKDIR}" --as-creating-line
 
-    for CONF in $(prepare_getWorkplaceConf);do
-        local TCAR_WORKDIR_DIR=$(prepare_getWorkplaceDir ${CONF})
+    for CONF in $(prepare_getWorkdirConf);do
+        local TCAR_WORKDIR_DIR=$(prepare_getWorkdir ${CONF})
         local TCAR_WORKDIR_LNK=${TCAR_WORKDIR_DIR}/render.conf
         mkdir -p ${TCAR_WORKDIR_DIR} && ln -s ${CONF} ${TCAR_WORKDIR_LNK}
         tcar_checkFiles -h ${TCAR_WORKDIR_LNK}
@@ -47,7 +49,7 @@ function prepare_setWorkplace {
     if [[ -d ${TCAR_WORKDIR}/Brands ]];then
         tcar_printMessage "`gettext "The workplace doesn't include images for branding other images."`" --as-stdout-line
         tcar_printMessage "`gettext "Do you want to render them now?"`" --as-yesornorequest-line
-        prepare_setRenderEnvironment -o "render-type" -v "svg" Brands
+        prepare_setRenderEnvironment -o "render-type" -v "svg" ${TCAR_WORKDIR}/Brands
     fi
 
 }
