@@ -89,8 +89,8 @@ render-from = "pagination-bg-2.svgz"
 [powered_by_centos.png]
 render-type = "svg"
 render-from = "powered_by_centos.svgz"
-brand       = "${TCAR_BASEDIR}/Artworks/Brands/Symbols/Default/Final/ffffff-0/ffffff/26/centos.png:x26+3+3"
-brand       = "${TCAR_BASEDIR}/Artworks/Brands/Types/Default/Final/ffffff-0/ffffff/11/centos.png:x11+30+15.7"
+brand       = "${TCAR_WORKDIR}/Brands/Symbols/Default/Final/ffffff-0/ffffff/26/centos.png:x26+3+3"
+brand       = "${TCAR_WORKDIR}/Brands/Types/Default/Final/ffffff-0/ffffff/11/centos.png:x11+30+15.7"
 
 [redirect.png]
 render-type = "svg"

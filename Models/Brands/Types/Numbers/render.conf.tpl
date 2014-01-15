@@ -1,6 +1,6 @@
 [0.png]
 render-type = "svg"
-render-from = "${TCAR_BASEDIR}/Artworks/Brands/Types/Numbers/0.svgz"
+render-from = "${TCAR_BASEDIR}/Models/Brands/Types/Numbers/0.svgz"
 render-flow = "extended"
 export-id   = "CENTOSARTWORK"
 formats     = "xpm pdf jpg tif"
@@ -10,7 +10,7 @@ bgcolors    = "ffffff-0"
 
 [1.png]
 render-type = "svg"
-render-from = "${TCAR_BASEDIR}/Artworks/Brands/Types/Numbers/1.svgz"
+render-from = "${TCAR_BASEDIR}/Models/Brands/Types/Numbers/1.svgz"
 render-flow = "extended"
 export-id   = "CENTOSARTWORK"
 formats     = "xpm pdf jpg tif"
@@ -20,7 +20,7 @@ bgcolors    = "ffffff-0"
 
 [2.png]
 render-type = "svg"
-render-from = "${TCAR_BASEDIR}/Artworks/Brands/Types/Numbers/2.svgz"
+render-from = "${TCAR_BASEDIR}/Models/Brands/Types/Numbers/2.svgz"
 render-flow = "extended"
 export-id   = "CENTOSARTWORK"
 formats     = "xpm pdf jpg tif"
@@ -30,7 +30,7 @@ bgcolors    = "ffffff-0"
 
 [3.png]
 render-type = "svg"
-render-from = "${TCAR_BASEDIR}/Artworks/Brands/Types/Numbers/3.svgz"
+render-from = "${TCAR_BASEDIR}/Models/Brands/Types/Numbers/3.svgz"
 render-flow = "extended"
 export-id   = "CENTOSARTWORK"
 formats     = "xpm pdf jpg tif"
@@ -40,7 +40,7 @@ bgcolors    = "ffffff-0"
 
 [4.png]
 render-type = "svg"
-render-from = "${TCAR_BASEDIR}/Artworks/Brands/Types/Numbers/4.svgz"
+render-from = "${TCAR_BASEDIR}/Models/Brands/Types/Numbers/4.svgz"
 render-flow = "extended"
 export-id   = "CENTOSARTWORK"
 formats     = "xpm pdf jpg tif"
@@ -50,7 +50,7 @@ bgcolors    = "ffffff-0"
 
 [5.png]
 render-type = "svg"
-render-from = "${TCAR_BASEDIR}/Artworks/Brands/Types/Numbers/5.svgz"
+render-from = "${TCAR_BASEDIR}/Models/Brands/Types/Numbers/5.svgz"
 render-flow = "extended"
 export-id   = "CENTOSARTWORK"
 formats     = "xpm pdf jpg tif"
@@ -60,7 +60,7 @@ bgcolors    = "ffffff-0"
 
 [6.png]
 render-type = "svg"
-render-from = "${TCAR_BASEDIR}/Artworks/Brands/Types/Numbers/6.svgz"
+render-from = "${TCAR_BASEDIR}/Models/Brands/Types/Numbers/6.svgz"
 render-flow = "extended"
 export-id   = "CENTOSARTWORK"
 formats     = "xpm pdf jpg tif"
@@ -70,7 +70,7 @@ bgcolors    = "ffffff-0"
 
 [7.png]
 render-type = "svg"
-render-from = "${TCAR_BASEDIR}/Artworks/Brands/Types/Numbers/7.svgz"
+render-from = "${TCAR_BASEDIR}/Models/Brands/Types/Numbers/7.svgz"
 render-flow = "extended"
 export-id   = "CENTOSARTWORK"
 formats     = "xpm pdf jpg tif"
@@ -80,7 +80,7 @@ bgcolors    = "ffffff-0"
 
 [8.png]
 render-type = "svg"
-render-from = "${TCAR_BASEDIR}/Artworks/Brands/Types/Numbers/8.svgz"
+render-from = "${TCAR_BASEDIR}/Models/Brands/Types/Numbers/8.svgz"
 render-flow = "extended"
 export-id   = "CENTOSARTWORK"
 formats     = "xpm pdf jpg tif"
@@ -90,7 +90,7 @@ bgcolors    = "ffffff-0"
 
 [9.png]
 render-type = "svg"
-render-from = "${TCAR_BASEDIR}/Artworks/Brands/Types/Numbers/9.svgz"
+render-from = "${TCAR_BASEDIR}/Models/Brands/Types/Numbers/9.svgz"
 render-flow = "extended"
 export-id   = "CENTOSARTWORK"
 formats     = "xpm pdf jpg tif"
@@ -100,7 +100,7 @@ bgcolors    = "ffffff-0"
 
 [dot.png]
 render-type = "svg"
-render-from = "${TCAR_BASEDIR}/Artworks/Brands/Types/Numbers/dot.svgz"
+render-from = "${TCAR_BASEDIR}/Models/Brands/Types/Numbers/dot.svgz"
 render-flow = "extended"
 export-id   = "CENTOSARTWORK"
 formats     = "xpm pdf jpg tif"

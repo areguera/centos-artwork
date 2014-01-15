@@ -2,7 +2,7 @@
 render-type     = "svg"
 render-from     = "${TCAR_BASEDIR}/Models/Distro/5/Gdm/screenshot.svgz"
 render-flow     = "base"
-brand           = "${TCAR_BASEDIR}/Artworks/Brands/Symbols/Default/Final/ffffff/ffffff-0/16/centos.png:x16+5+5"
+brand           = "${TCAR_WORKDIR}/Brands/Symbols/Default/Final/ffffff-0/ffffff/16/centos.png:x16+5+5"
 
 [800x600.tar.gz]
 render-type     = "archive"
