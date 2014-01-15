@@ -91,7 +91,7 @@ function prepare_setRenderEnvironment {
 
         # Clean-up the search path. This location must point to a
         # directory inside the workplace.
-        DIRECTORY=$(tcar_checkWorkDirSource ${DIRECTORY})
+        DIRECTORY=$(tcar_printAbsolutePath ${DIRECTORY})
 
         # Verify the search path. It must exist and being a directory.
         tcar_checkFiles -ed ${DIRECTORY}

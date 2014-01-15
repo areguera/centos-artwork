@@ -28,7 +28,7 @@
 # link.
 function files {
 
-    local CONFIGURATION=$(tcar_checkWorkDirSource "${1}")
+    local CONFIGURATION=$(tcar_printAbsolutePath "${1}")
 
     local -a SECTIONS
     local SECTION=''

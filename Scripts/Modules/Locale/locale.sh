@@ -61,7 +61,7 @@ function locale {
     # are files or directories.
     for ARGUMENT in ${TCAR_MODULE_ARGUMENT};do
 
-        local ARGUMENT=$(tcar_checkWorkDirSource "${ARGUMENT}")
+        local ARGUMENT=$(tcar_printAbsolutePath "${ARGUMENT}")
 
         if [[ -f ${ARGUMENT} ]];then
             tcar_setModuleEnvironment -m "files" -t "child" -g "${ARGUMENT}"

@@ -23,33 +23,16 @@
 #
 ######################################################################
 
-# Prepare non-option arguments passed through the command-line for
-# further processing.  When the argument provided is not an absolute
-# path this function transforms it into an absolute path using the
-# current working directory.
-function tcar_checkWorkDirSource {
+# Print non-option arguments passed through the command-line for
+# further processing.
+function tcar_printAbsolutePath {
 
     local LOCATION=${1}
 
-    # Append the current working directory when the location provided
-    # isn't absolute.
     if [[ ! ${LOCATION} =~ '^/' ]];then
         LOCATION=${PWD}/${LOCATION}
     fi
 
-    # Remove both consecutive slashes and trailing slashes from final
-    # location. Remove dot-slash, as well.
-    echo "${LOCATION}" | sed -r -e 's,/+,/,g' -e 's,/+$,,g' -e 's,\./,,g'
-
-    # The single slash form doesn't point to repository's root
-    # directory anymore. Instead, when a single slash is passed
-    # as argument through the command-line, it preserves its regular
-    # meaning which is pointing the workstation's file system.
-
-    # The path verification isn't appropriate here because this
-    # function is commonly used inside variable assignments and flow
-    # control doesn't take place in such situation. In case path
-    # verification fails here, the script wouldn't end its execution
-    # which contradicts the expected behaviour.
+    tcar_printPath "${LOCATION}"
 
 }

@@ -26,7 +26,7 @@
 # Standardize the way docbook files are transformed in XHTML format.
 function asciidoc_setXhtmlRendition {
 
-    local LOCATION=$(tcar_checkWorkDirSource "${1}")
+    local LOCATION=$(tcar_printAbsolutePath "${1}")
 
     RENDER_PAGES=$(tcar_getConfigValue "${CONFIGURATION}" "${SECTION}" "render-page")
     if [[ -z ${RENDER_PAGES} ]];then

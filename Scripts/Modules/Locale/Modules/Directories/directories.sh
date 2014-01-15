@@ -33,7 +33,7 @@ function directories {
     # Sanitate non-option arguments to be sure they match the
     # directory conventions established by centos-art.sh script
     # against source directory locations in the working copy.
-    local DIRECTORY=$(tcar_checkWorkDirSource ${1})
+    local DIRECTORY=$(tcar_printAbsolutePath ${1})
 
     # Define regular expression used by locale module to determine the
     # file extension that it can retrieve translatable strings from,

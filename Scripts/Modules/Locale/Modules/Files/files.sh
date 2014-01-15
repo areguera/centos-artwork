@@ -28,7 +28,7 @@
 function files {
 
     # Define absolute path of argument passed in the command-line.
-    local RENDER_FROM=$(tcar_checkWorkDirSource "${1}")
+    local RENDER_FROM=$(tcar_printAbsolutePath "${1}")
 
     # Verify the argument passed in the command-line is a regular
     # file.
