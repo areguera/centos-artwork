@@ -3,7 +3,7 @@
 
 [centos-logo.png]  
 render-type = "svg"
-render-from = "${TCAR_BASEDIR}/Artworks/Brands/{Symbols/Webenv/centos.svgz,Types/Webenv/centos.svgz}"
+render-from = "${TCAR_BASEDIR}/Models/Brands/{Symbols/Webenv/centos.svgz,Types/Webenv/centos.svgz}"
 render-flow = "extended"
 export-id   = "CENTOSARTWORK"
 formats     = "xpm pdf jpg tif"

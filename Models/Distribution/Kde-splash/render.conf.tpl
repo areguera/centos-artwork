@@ -1,21 +1,21 @@
 [splash_active_bar.png]
 render-type     = "svg"
-render-from     = "${TCAR_BASEDIR}/Artworks/Themes/Models/Distro/5/Ksplash/splash_active_bar.svgz"
+render-from     = "${TCAR_BASEDIR}/Models/Distro/5/Ksplash/splash_active_bar.svgz"
 render-flow     = "base"
 
 [splash_bottom.png]
 render-type     = "svg"
-render-from     = "${TCAR_BASEDIR}/Artworks/Themes/Models/Distro/5/Ksplash/splash_bottom.svgz"
+render-from     = "${TCAR_BASEDIR}/Models/Distro/5/Ksplash/splash_bottom.svgz"
 render-flow     = "base"
 
 [splash_inactive_bar.png]
 render-type     = "svg"
-render-from     = "${TCAR_BASEDIR}/Artworks/Themes/Models/Distro/5/Ksplash/splash_inactive_bar.svgz"
+render-from     = "${TCAR_BASEDIR}/Models/Distro/5/Ksplash/splash_inactive_bar.svgz"
 render-flow     = "base"
 
 [splash_top.png]
 render-type     = "svg"
-render-from     = "${TCAR_BASEDIR}/Artworks/Themes/Models/Distro/5/Ksplash/splash_top.svgz"
+render-from     = "${TCAR_BASEDIR}/Models/Distro/5/Ksplash/splash_top.svgz"
 render-flow     = "base"
 brand           = "${TCAR_BASEDIR}/Artworks/Brands/Types/Default/Final/ffffff/ffffff-0/24/centos.png:x24+10+189"
 brand           = "${TCAR_BASEDIR}/Artworks/Brands/Types/Numbers/Final/ffffff/ffffff-0/48/5.png:x48+150+165"

@@ -1,7 +1,7 @@
 [splash.png]
 render-type     = "svg"
 render-flow     = "base"
-render-from     = "${TCAR_BASEDIR}/Artworks/Themes/Models/Distro/5/Grub/splash.svgz"
+render-from     = "${TCAR_BASEDIR}/Models/Distro/5/Grub/splash.svgz"
 
 [splash.xpm]
 render-type     = "palette"
