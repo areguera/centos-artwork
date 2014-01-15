@@ -1,5 +1,5 @@
 tcar-hello(1)
-========
+=============
 
 Name
 ----
@@ -9,23 +9,23 @@ tcar-hello - Print out greetings and exit successfully.
 Synopsis
 --------
 
-*centos-art tcar-hello [OPTIONS]*
+*tcar hello [OPTIONS]*
 
 Description
 -----------
 
-The *tcar-hello* module is very simple. Its main purpose is to print
-out the ``Hello, World!'' greeting to standard output and exit
+The *hello* module is very simple. Its main purpose is to print out
+the ``Hello, World!'' greeting to standard output and exit
 successfully.  You can use options to change the greeting message and
-the way it is printed out. The *tcar-hello* module provides a very
-simple example you can use as base to understand how modules work
-inside *tcar.sh* script. You can this understanding to start writing
-your own modules for *tcar.sh* script.
+the way it is printed out. The *hello* module provides a very simple
+example you can use as base to understand how modules work inside the
+*tcar.sh* script. You can this understanding to start writing your own
+modules for *tcar.sh* script.
 
 Options
 -------
 
-The *tcar-hello* module accepts the following options:
+The *hello* module accepts the following options:
 
 *-h | --help*::
     Print out module's documentation.
@@ -35,14 +35,14 @@ The *tcar-hello* module accepts the following options:
 
 *-d | --debug*::
     Run the script in debugging mode. This option is very useful if
-    you want to get a closer look to module environments being
+    you want to get a closer look at module environments being
     executed and destroyed at run-time.
 
 *-g "TEXT" | --greeting="TEXT"*::
     Set a different greeting message to be printed out. This option
     accepts a value as argument. The text you provide must not have
     empty spaces on it. By default, when you don't provide this
-    option, *tcar-hello* module prints out ``Hello, World'' as
+    option, the *hello* module prints out ``Hello, World'' as default
     greeting. If translations of this message are available for your
     locale, they will be printed instead.
 
@@ -70,8 +70,8 @@ The *tcar-hello* module accepts the following options:
 Exit Status
 -----------
 
-The *tcar-hello* module ends its execution with one of the following
-exit status:
+The *hello* module ends its execution with one of the following exit
+status:
 
 * 0 -- Exit successfully without errors.
 * 1 -- Exit with errors.
