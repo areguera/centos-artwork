@@ -43,32 +43,24 @@
 # levels.
 function tcar_setModuleArguments {
 
-    # Verify non-option arguments passed to command-line. If there
-    # isn't any or dot is provided, redefine the TCAR_MODULE_ARGUMENT
-    # variable to use the current location the tcar.sh script
-    # was called from.
-    if [[ -z "${TCAR_MODULE_ARGUMENT}" ]];then
-        TCAR_MODULE_ARGUMENT=${PWD}
+    # Verify presence of either short or long options in the
+    # environment. There is not anything to do here if they both are
+    # empty.
+    if [[ -z ${ARGSS} && -z ${ARGSL} ]];then
+        return
     fi
 
-    # Verify presence of either short or long options in the
-    # environment. If they are present apply option validation through
-    # getopt.
-    if [[ ! -z ${ARGSS} ]] || [[ ! -z ${ARGSL} ]];then
+    # Redefine positional parameters using TCAR_MODULE_ARGUMENT variable.
+    eval set -- "${TCAR_MODULE_ARGUMENT}"
 
-        # Redefine positional parameters using TCAR_MODULE_ARGUMENT variable.
-        eval set -- "${TCAR_MODULE_ARGUMENT}"
+    # Process positional parameters using getopt's option validation.
+    TCAR_MODULE_ARGUMENT=$(getopt -o "${ARGSS}" -l "${ARGSL}" \
+        -n "${TCAR_SCRIPT_NAME} (${TCAR_MODULE_NAME})" -- "${@}")
 
-        # Process positional parameters using getopt's option validation.
-        TCAR_MODULE_ARGUMENT=$(getopt -o "${ARGSS}" -l "${ARGSL}" \
-            -n "${TCAR_SCRIPT_NAME} (${TCAR_MODULE_NAME})" -- "${@}")
-
-        # Verify getopt's exit status and finish the script execution
-        # with an error message, if it failed.
-        if [[ $? -ne 0 ]];then
-            tcar_printMessage "`gettext "The argument verification failed."`" --as-error-line
-        fi
-
+    # Verify getopt's exit status and finish the script execution with
+    # an error message, if it failed.
+    if [[ $? -ne 0 ]];then
+        tcar_printMessage "`gettext "The argument verification failed."`" --as-error-line
     fi
 
 }
