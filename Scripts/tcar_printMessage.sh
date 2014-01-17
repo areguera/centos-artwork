@@ -108,7 +108,7 @@ function tcar_printMessage {
             local COUNT=$(( ${#FN[*]} - 2 ))
             local SEPARATOR='`--'
             local SPACES=0
-            echo "${TCAR_SCRIPT_BASEDIR}/${TCAR_SCRIPT_NAME}" 1>&2
+            echo "${0}" 1>&2
             while [[ ${COUNT} -gt 0  ]];do
                 if [[ ${COUNT} -eq $(( ${#FN[*]} - 2 )) ]];then
                     echo ${SEPARATOR} ${FN[${COUNT}]} 1>&2
