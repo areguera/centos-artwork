@@ -26,9 +26,11 @@
 # Standardize content rendition.
 function render {
 
+    tcar_checkWorkplace
+
     # Define flag to control whether final content is produced inside
     # locale directories or not.
-    LOACLE_FLAG_NO_LOCALE='false'
+    LOCALE_FLAG_NO_LOCALE='false'
 
     # Interpret arguments and options passed through command-line.
     render_getOptions
