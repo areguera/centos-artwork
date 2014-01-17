@@ -38,6 +38,8 @@
 #   the command-line and the --recursive option is also provided).
 function locale {
 
+    tcar_checkWorkplace
+
     # Define flags controlling they way locale module produce
     # localization files.
     local LOCALE_FLAG_RECURSIVE="false"
